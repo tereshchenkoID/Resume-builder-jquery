@@ -1,0 +1,80 @@
+.nav {
+  @include flex(center, center);
+
+  &__list {
+    @include flex(center, center);
+  }
+
+  &__item {
+
+    + .nav {
+
+      &__item {
+        @include make-spacer(ml, 5);
+      }
+    }
+  }
+
+  &__link {
+    @include font-size(16px, 24px);
+
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    font-weight: var(--bold);
+
+    &::after {
+      @include size(0, 2px);
+      @include transition(transform);
+
+      position: absolute;
+      bottom: rem(-8px);
+      left: 0;
+      transform: scaleX(0);
+      background-color: var(--red);
+      width: 100%;
+      content: '';
+    }
+
+    &--is-active {
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &:hover {
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &--mobile {
+    @include make-spacer(py, 4);
+    @include make-spacer(px, 3);
+
+    display: block;
+
+    .nav {
+
+      &__list {
+        display: block;
+      }
+
+      &__link {
+        @include font-size(24px, 32px);
+      }
+
+      &__item {
+        @include make-spacer(ml, 0);
+        @include make-spacer(mb, 3);
+
+        &:last-child {
+          @include make-spacer(mb, 0);
+        }
+      }
+    }
+  }
+}

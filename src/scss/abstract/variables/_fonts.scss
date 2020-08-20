@@ -1,0 +1,104 @@
+$heading-fonts: (
+  (
+    'local-first-name': 'Raleway Light',
+    'local-second-name': 'Raleway-Light',
+    'url': '/fonts/ralewaylight',
+    'weight': 300,
+    'style': normal
+  ),
+  (
+    'local-first-name': 'Raleway Light Italic',
+    'local-second-name': 'Raleway-LightItalic',
+    'url': '/fonts/ralewaylightitalic',
+    'weight': 300,
+    'style': italic
+  ),
+  (
+    'local-first-name': 'Raleway Regular',
+    'local-second-name': 'Raleway-Regular',
+    'url': '/fonts/ralewayregular',
+    'weight': 400,
+    'style': normal
+  ),
+  (
+    'local-first-name': 'Raleway Italic',
+    'local-second-name': 'Raleway-Italic',
+    'url': '/fonts/ralewayitalic',
+    'weight': 400,
+    'style': italic
+  ),
+  (
+    'local-first-name': 'Raleway Bold',
+    'local-second-name': 'Raleway-Bold',
+    'url': '/fonts/ralewaybold',
+    'weight': 700,
+    'style': normal
+  ),
+  (
+    'local-first-name': 'Raleway Bold Italic',
+    'local-second-name': 'Raleway-BoldItalic',
+    'url': '/fonts/ralewaybolditalic',
+    'weight': 700,
+    'style': italic
+  ),
+  (
+    'local-first-name': 'Raleway ExtraBold',
+    'local-second-name': 'Raleway-ExtraBold',
+    'url': '/fonts/ralewayextrabold',
+    'weight': 800,
+    'style': italic
+  ),
+  (
+    'local-first-name': 'Raleway ExtraBold Italic',
+    'local-second-name': 'Raleway-ExtraBoldItalic',
+    'url': '/fonts/ralewayextrabolditalic',
+    'weight': 800,
+    'style': italic
+  )
+);
+
+$regular-fonts: (
+  (
+    'local-first-name': 'Roboto Light',
+    'local-second-name': 'Roboto-Light',
+    'url': '/fonts/Robotolight',
+    'weight': 300,
+    'style': normal
+  ),
+  (
+    'local-first-name': 'Roboto Light Italic',
+    'local-second-name': 'Roboto-LightItalic',
+    'url': '/fonts/Robotolightitalic',
+    'weight': 300,
+    'style': italic
+  ),
+  (
+    'local-first-name': 'Roboto',
+    'local-second-name': 'Roboto-Regular',
+    'url': '/fonts/Roboto',
+    'weight': 400,
+    'style': normal
+  ),
+  (
+    'local-first-name': 'Roboto Italic',
+    'local-second-name': 'Roboto-Italic',
+    'url': '/fonts/Robotoitalic',
+    'weight': 400,
+    'style': italic
+  ),
+  (
+    'local-first-name': 'Roboto Bold',
+    'local-second-name': 'Roboto-Bold',
+    'url': '/fonts/Robotobold',
+    'weight': 700,
+    'style': normal
+  ),
+  (
+    'local-first-name': 'Roboto Bold Italic',
+    'local-second-name': 'Roboto-BoldItalic',
+    'url': '/fonts/Robotobolditalic',
+    'weight': 700,
+    'style': italic
+  )
+);
+

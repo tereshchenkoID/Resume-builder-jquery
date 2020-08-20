@@ -1,0 +1,8 @@
+mixin footer-menu(menu)
+  nav.footer-menu
+    p.footer-menu__title Продукт
+
+    ul.footer-menu__list
+      each link in menu
+        li.footer-menu__item
+          a.footer-menu__link.js-pages(href=link.path)= link.text

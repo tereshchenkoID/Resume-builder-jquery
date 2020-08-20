@@ -1,0 +1,14 @@
+include _footer-menu
+include ../partials/_footer-info
+
+footer(class=`footer ${footerRedBorder === true ? 'footer--red-border' : ''}`)
+  .container.container--inverse
+    .footer__wrap
+      +footer-info
+      .footer__menu-wrap
+        +footer-menu(productList)
+        +footer-menu(companyList)
+        +footer-menu(supportList)
+
+  .container.container--inverse.container--borderless
+    p.footer__copy 2019 – All rights reserved – ENESTECH Software

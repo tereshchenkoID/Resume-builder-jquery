@@ -1,0 +1,32 @@
+mixin favicon(size, rel, href)
+  link(
+    rel=rel
+    href=href + size + "x" + size + ".png"
+    sizes=size + "x" + size
+    type="image/png"
+  )
+
+mixin msFavicon(size)
+  meta(name="msapplication-TileImage" content="ms-icon-" + size + "x" + size + ".png")
+
+- var pathToIcon = '/img';
+- var appleIcon = ['180', '152', '144', '120', '114', '76', '72', '60', '57'];
+- var androidIcon = ['192', '144', '96', '72', '48'];
+- var favIcon = ['96', '32', '16'];
+- var msIcon = ['70', '144', '150', '310'];
+
+each item in appleIcon
+  +favicon(item, 'apple-touch-icon', pathToIcon + '/apple-icon-')
+
+each item in androidIcon
+  +favicon(item, 'icon', pathToIcon + '/android-icon-')
+
+each item in favIcon
+  +favicon(item, 'icon', pathToIcon + '/favicon-')
+
+link(rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon")
+
+meta(name="msapplication-TileColor" content="#3bbbe9")
+
+each size in msIcon
+  +msFavicon(size)

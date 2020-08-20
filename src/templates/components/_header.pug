@@ -1,0 +1,29 @@
+header.header
+  .header__logo-wrap
+    a(href="/" class="header__logo" id="logo")
+      +icon('twitter', 'header__logo-image')
+
+  .header__container
+    .header__nav
+      +nav
+
+    .header__buttons
+      a(href="/", class="button button--white button--h48 button--secondary header__demo") ДЕМО
+      a(href="/", class="button button--h48 header__demo") ПОПРОБОВАТЬ БЕСПЛАТНО
+
+  .header__controls
+
+    button(class="hamburger hamburger--slider header__hamburger js-menu-toggle", type="button", id="hamburger")
+      span(class="hamburger-box")
+        span(class="hamburger-inner")
+
+    .language.header__language.js-button-wrapper
+      button(class="language__trigger js-dropdown-button" type="button")
+        span.language__label RU
+      ul.language__list.js-dropdown-menu
+        li.language__item
+          a(href="/" class="language__button js-dropdown__item") EN
+        li.language__item
+          a(href="/" class="language__button") ES
+        li.language__item
+          a(href="/" class="language__button") TR

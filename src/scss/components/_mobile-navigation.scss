@@ -1,0 +1,26 @@
+.mobile-navigation {
+  @include size(100%);
+
+  display: block;
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  z-index: map-get($z-indexes, mobile-nav);
+  background-color: var(--senet-black);
+
+  &__lang {
+    @include make-spacer(px, 3);
+    @include make-spacer(py, 3);
+
+    border-top: 1px solid var(--grey-500);
+    border-bottom: 1px solid var(--grey-500);
+  }
+
+  &__socials {
+    @include flex;
+    @include make-spacer(pt, 3);
+    @include make-spacer(px, 3);
+  }
+}

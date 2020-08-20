@@ -1,0 +1,35 @@
+// Colors
+
+.u-color-white {
+  color: #fff;
+}
+
+.u-color-senet-red {
+  color: var(--senet-red);
+}
+
+// Text Align
+
+.u-text-center {
+  text-align: center;
+
+  &-sm {
+    @include media-breakpoint-up(sm) {
+      text-align: center;
+    }
+  }
+}
+
+.u-text-left {
+  text-align: left;
+}
+
+// Font Weight
+
+.u-text-bold {
+  font-weight: var(--bold);
+}
+
+.u-text-light {
+  font-weight: var(--light);
+}

@@ -1,0 +1,74 @@
+.language {
+  position: relative;
+  color: var(--white);
+
+  &__trigger {
+    @include flex($align-items: center);
+
+    color: var(--grey-200);
+    font-weight: var(--bold);
+
+    &.is-open {
+
+      + .language__list {
+        transform: translateY(0);
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .language__arrow {
+        transform: rotateZ(0);
+      }
+    }
+  }
+
+  &__arrow {
+    @include font-size(8px);
+    @include transition(transform);
+
+    transform: rotateZ(-180deg);
+    transform-origin: center;
+    pointer-events: none;
+  }
+
+  &__label {
+    @include make-spacer(mr, half);
+
+    pointer-events: none;
+  }
+
+  &__list {
+    @include make-spacer(py, 1);
+    @include transition(#{visibility, transform, opacity});
+
+    position: absolute;
+    top: rem(32px);
+    left: 50%;
+    transform: translateY(rem(-16px));
+    visibility: hidden;
+    opacity: 0;
+    z-index: 3;
+    margin-left: rem(-44px);
+    box-shadow: 0 0 4px var(--senet-black);
+    background-color: var(--grey-600);
+    width: rem(88px);
+  }
+
+  &__button {
+    @include font-size(16px);
+    @include make-spacer(py, 1);
+    @include make-spacer(pl, 3);
+    @include make-spacer(pr, 2);
+    @include transition(background-color);
+
+    display: block;
+    text-align: left;
+    text-decoration: none;
+    color: var(--grey-200);
+    font-weight: var(--bold);
+
+    &:hover {
+      background-color: var(--senet-black);
+    }
+  }
+}

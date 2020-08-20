@@ -1,0 +1,18 @@
+.u-visible {
+
+  &-sm {
+    display: none;
+
+    @include media-breakpoint-up(sm) {
+      display: block;
+    }
+  }
+
+  &-md {
+    display: none;
+
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+  }
+}

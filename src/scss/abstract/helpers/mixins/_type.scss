@@ -1,0 +1,83 @@
+// stylelint-disable at-rule-empty-line-before
+
+@function get-nth($list, $number: 1) {
+  @if ($number <= length($list)) {
+    @return nth($list, $number);
+  } @else {
+    @return null;
+  }
+}
+
+@mixin make-if-exist($param, $param-name) {
+  @if ($param != null) {
+    #{$param-name}: $param;
+  }
+}
+
+@mixin make-type($target, $size-map, $font-breakpoints-map: $grid-breakpoints, $base-name: null) {
+  $breakpoints-map: map_get($size-map, $target);
+
+  @each $breakpoint, $params in $breakpoints-map {
+    $size: get-nth($params, 1);
+    $weight: get-nth($params, 2);
+    $line-height: get-nth($params, 3);
+
+    @if $breakpoint == $base-name {
+      @include make-if-exist($size, 'font-size');
+      @include make-if-exist($weight, 'font-weight');
+      @include make-if-exist($line-height, 'line-height');
+    } @else {
+      @include media-breakpoint-up($breakpoint, $font-breakpoints-map) {
+        @include make-if-exist($size, font-size);
+        @include make-if-exist($weight, font-weight);
+        @include make-if-exist($line-height, line-height);
+      }
+    }
+  }
+}
+
+@mixin make-type-for($target, $size-map, $font-breakpoints-map: $grid-breakpoints, $base-name: null) {
+
+  #{$target} {
+    @include make-type($target, $size-map, $font-breakpoints-map, $base-name);
+  }
+}
+
+@mixin make-all-type($size-map, $font-breakpoints-map: $grid-breakpoints, $base-name: null) {
+  @each $selector, $breakpoints-map in $size-map {
+    @include make-type-for(
+      $target: $selector,
+      $size-map: $size-map,
+      $font-breakpoints-map: $font-breakpoints-map,
+      $base-name: $base-name
+    );
+  }
+}
+
+
+// Example
+//
+// define map with typography properties
+
+//$type-map: (
+//    ".h1": (
+//        null: ($h2-font-size),
+//        md: ($h1-font-size),
+//        lg: (($h1-font-size * 1.2))
+//    ),
+//    ".h2": (
+//        null: ($h2-font-size),
+//        md: ($h1-font-size),
+//        lg: (($h1-font-size * 1.2))
+//    ),
+//    ".subtitle": (
+//        null: ($h3-font-size),
+//        md: ($h2-font-size, 400, 1.25)
+//    ),
+//    ".lead": (
+//        null: ($h4-font-size, 400, 1.5),
+//        md: (($h1-font-size / 2), 400, 1.5)
+//    )
+//);
+
+//@include make-all-type($type-map);

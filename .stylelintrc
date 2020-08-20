@@ -1,0 +1,139 @@
+{
+  "extends": [
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-concentric-order"
+  ],
+  "plugins": [
+    "stylelint-order",
+    "stylelint-scss"
+  ],
+  "rules": {
+    "at-rule-empty-line-before": [ "always", {
+      "except": [
+        "blockless-after-same-name-blockless",
+        "first-nested"
+      ],
+      "ignore": ["after-comment"]
+    }],
+    "at-rule-no-unknown": null,
+    "at-rule-semicolon-newline-after": "always",
+    "scss/at-rule-no-unknown": true,
+    "string-quotes": "single",
+    "no-duplicate-selectors": true,
+    "selector-combinator-space-after": "always",
+    "selector-attribute-quotes": "always",
+    "selector-attribute-operator-space-before": "never",
+    "selector-attribute-operator-space-after": "never",
+    "selector-attribute-brackets-space-inside": "never",
+    "declaration-block-trailing-semicolon": "always",
+    "declaration-no-important": true,
+    "declaration-colon-space-before": "never",
+    "declaration-colon-space-after": "always",
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "number-leading-zero": "always",
+    "function-url-quotes": "always",
+    "font-weight-notation": "numeric",
+    "font-family-name-quotes": "always-where-required",
+    "comment-whitespace-inside": "always",
+    "comment-empty-line-before": [ "always", {
+      "except": ["first-nested"],
+      "ignore": ["stylelint-commands"]
+    }],
+    "custom-property-empty-line-before": [ "always", {
+      "except": [
+        "after-custom-property",
+        "first-nested"
+      ],
+      "ignore": [
+        "after-comment",
+        "inside-single-line-block"
+      ]
+    }],
+    "declaration-empty-line-before": [ "always", {
+      "except": [
+        "after-declaration",
+        "first-nested"
+      ],
+      "ignore": [
+        "after-comment",
+        "inside-single-line-block"
+      ]
+    }],
+    "at-rule-no-vendor-prefix": true,
+    "rule-empty-line-before": "always",
+    "media-feature-range-operator-space-before": "always",
+    "media-feature-range-operator-space-after": "always",
+    "media-feature-parentheses-space-inside": "never",
+    "media-feature-colon-space-before": "never",
+    "media-feature-colon-space-after": "always",
+    "order/properties-alphabetical-order": null,
+    "max-nesting-depth": 4,
+    "selector-class-pattern": null,
+    "value-list-max-empty-lines": 0,
+    "value-list-comma-newline-after": "always-multi-line",
+    "value-list-comma-space-after": "always-single-line",
+    "no-eol-whitespace": true,
+    "property-case": "lower",
+    "unit-case": "lower",
+    "declaration-property-value-blacklist": {
+      "/^border/": ["none"]
+    },
+    "order/order": [
+      "custom-properties",
+      "dollar-variables",
+      {
+        "type": "at-rule",
+        "name": "include",
+        "hasBlock": false
+      },
+      "declarations",
+      {
+        "type": "rule",
+        "selector": "^&::\\w+$"
+      },
+      "rules",
+      {
+        "type": "rule",
+        "selector": "^&:\\w+$"
+      },
+      {
+        "type": "rule",
+        "selector": "^&__\\w+$"
+      },
+      {
+        "type": "at-rule",
+        "name": "include",
+        "parameter": "xs",
+        "hasBlock": true
+      },
+      {
+        "type": "at-rule",
+        "name": "include",
+        "parameter": "sm",
+        "hasBlock": true
+      },
+      {
+        "type": "at-rule",
+        "name": "include",
+        "parameter": "md",
+        "hasBlock": true
+      },
+      {
+        "type": "at-rule",
+        "name": "include",
+        "parameter": "lg",
+        "hasBlock": true
+      },
+      {
+        "type": "rule",
+        "selector": "^&.\\w+$"
+      },
+      {
+        "type": "rule",
+        "selector": "^&--\\w+$"
+      }
+    ]
+  },
+  "ignoreFiles": ["**/_sprite-svg.scss"]
+}

@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+//
+// Non Compiled Files
+//
+
+@import 'config';
+
+//
+// Custom Properties
+//
+
+@import 'base/variables/index';
+
+//
+// Global Styles
+//
+
+@import 'base/index';
+
+//
+// Generated sprite
+//
+
+@import 'generated/index';
+
+//
+// Libs
+//
+
+@import 'lib/index';
+
+//
+// Containers
+//
+
+@import 'containers/index';
+
+//
+// Components
+//
+
+@import 'components/index';
+
+//
+// Pages
+//
+
+@import 'pages/index';
+
+
+//
+// Utilities
+//
+
+@import 'utilities/index';

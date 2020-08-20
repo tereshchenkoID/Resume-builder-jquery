@@ -1,0 +1,15 @@
+@mixin font-face($family, $fonts) {
+  @each $font in $fonts {
+    @font-face {
+      font-family: $family;
+      src:
+        local(map-get($font, 'local-first-name')),
+        local(map-get($font, 'local-second-name')),
+        url('#{map-get($font, 'url')}.woff2') format('woff2'),
+        url('#{map-get($font, 'url')}.woff') format('woff'),
+        url('#{map-get($font, 'url')}.ttf') format('truetype');
+      font-weight: map-get($font, 'weight');
+      font-style: map-get($font, 'style');
+    }
+  }
+}

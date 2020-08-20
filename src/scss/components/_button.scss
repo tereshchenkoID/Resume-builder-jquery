@@ -1,0 +1,103 @@
+.button {
+  @include flex(center, center, $display: inline-flex);
+  @include make-spacer(m, 0);
+  @include make-spacer(px, 2);
+  @include make-spacer(px, 4, sm);
+  @include font-size(14px, 60px);
+  @include transition(#{background-color, color, border-color});
+
+  position: relative;
+  outline: none;
+  border: 2px solid var(--senet-red);
+  border-radius: 1px;
+  background-color: var(--senet-red);
+  cursor: pointer;
+  min-width: rem(128px);
+  vertical-align: middle;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--grey-100);
+  user-select: none;
+  -webkit-appearance: none; // stylelint-disable-line
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+  font-family: var(--headings-font-family);
+  font-weight: var(--bold);
+
+  &:disabled {
+    border-color: var(--grey-100);
+    background-color: var(--grey-100);
+    pointer-events: none;
+  }
+
+  &:hover {
+    border-color: var(--red);
+    background-color: var(--red);
+  }
+
+  &--secondary {
+    border-color: var(--senet-red);
+    background-color: transparent;
+    color: var(--senet-black);
+    font-weight: var(--bold);
+
+    &:disabled {
+      border-color: var(--grey-100);
+      pointer-events: none;
+    }
+
+    &:hover {
+      border-color: var(--senet-red);
+      background-color: var(--senet-red);
+      color: var(--grey-100);
+    }
+  }
+
+  &--white {
+    color: var(--white);
+
+    &:hover {
+      color: var(--white);
+    }
+  }
+
+  &--inline {
+    border: 0;
+  }
+
+  &--fluid {
+    width: 100%;
+  }
+
+  &--no-min-width {
+    min-width: auto;
+  }
+
+  &--h48 {
+    @include font-size(14px, 44px);
+  }
+
+  &--pricing-button {
+    @include make-spacer(mx, auto);
+    @include make-spacer(mx, 0, lg);
+
+    width: 100%;
+
+    @include media-breakpoint-up(sm) {
+      width: rem(320px);
+    }
+  }
+
+  &--load-more {
+    @include make-spacer(mx, auto);
+
+    width: 100%;
+
+    @include media-breakpoint-up(sm) {
+      @include flex;
+
+      width: rem(385px);
+    }
+  }
+}
