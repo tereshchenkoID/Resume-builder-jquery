@@ -8,49 +8,22 @@
   grid-template-columns: rem(160px) 1fr rem(80px);
   z-index: map-get($z-indexes, header);
   border-bottom: 1px solid var(--grey-500);
-  background-color: var(--senet-black);
+  background-color: var(--accent);
   font-family: var(--headings-font-family);
 
-  @include media-breakpoint-up(lg) {
-    grid-template-columns: rem(256px) 1fr rem(128px);
-  }
-
-  &__logo-image {
+  &__logo {
     @include size(auto, rem(24px));
 
     display: block;
-    color: var(--white);
+
+    .main-logo {
+      @include size(rem(88px), rem(24px));
+
+      fill: var(--black);
+    }
 
     @include media-breakpoint-up(lg) {
       @include size(auto, rem(32px));
-    }
-  }
-
-  &__logo-wrap {
-    @include flex(center, center);
-
-    border-right: 1px solid var(--grey-500);
-  }
-
-  &__container {
-    @include flex(space-between, center);
-    @include make-spacer(px, 4, lg);
-    @include make-spacer(px, 9, xxl);
-  }
-
-  &__controls {
-    @include make-spacer(px, 3);
-    @include make-spacer(px, 6, lg);
-    @include flex(center, center);
-
-    border-left: 1px solid var(--grey-500);
-
-    &.is-disabled {
-      pointer-events: none;
-    }
-
-    &:focus {
-      outline: none;
     }
   }
 
@@ -72,14 +45,7 @@
     }
   }
 
-  &__demo {
-
-    &:first-of-type {
-      @include make-spacer(mr, 2);
-    }
-
-    @include media-breakpoint-down(md) {
-      display: none;
-    }
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: rem(256px) 1fr rem(128px);
   }
 }

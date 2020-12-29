@@ -7,7 +7,7 @@
   right: 0;
   transform: translateY(-50%);
   z-index: map-get($z-indexes, scroll-to-top-button);
-  background-color: var(--senet-black);
+  background-color: var(--accent);
 
   &__icon {
     transform: rotateZ(-90deg);

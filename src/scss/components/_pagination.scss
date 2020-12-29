@@ -98,19 +98,19 @@
     }
 
     &--is-active {
-      color: var(--senet-black);
+      color: var(--accent);
 
       &::before {
-        background-color: var(--senet-black);
+        background-color: var(--accent);
         height: rem(2px);
       }
     }
 
     &:hover {
-      color: var(--senet-black);
+      color: var(--accent);
 
       &::before {
-        background-color: var(--senet-black);
+        background-color: var(--accent);
       }
     }
 

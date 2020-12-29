@@ -8,96 +8,53 @@
 
   position: relative;
   outline: none;
-  border: 2px solid var(--senet-red);
-  border-radius: 1px;
-  background-color: var(--senet-red);
+  border: 1px solid var(--black);
+  border-radius: rem(4px);
+  background-color: var(--black);
   cursor: pointer;
   min-width: rem(128px);
   vertical-align: middle;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  color: var(--grey-100);
+  color: var(--white);
   user-select: none;
   -webkit-appearance: none; // stylelint-disable-line
   -webkit-tap-highlight-color: transparent;
   text-align: center;
-  font-family: var(--headings-font-family);
+  font-family: var(--font-family);
   font-weight: var(--bold);
 
   &:disabled {
-    border-color: var(--grey-100);
-    background-color: var(--grey-100);
+    opacity: 0.8;
     pointer-events: none;
   }
 
   &:hover {
-    border-color: var(--red);
-    background-color: var(--red);
+    background-color: var(--white);
+    color: var(--black);
   }
 
-  &--secondary {
-    border-color: var(--senet-red);
-    background-color: transparent;
-    color: var(--senet-black);
-    font-weight: var(--bold);
-
-    &:disabled {
-      border-color: var(--grey-100);
-      pointer-events: none;
-    }
+  &--primary {
+    border-color: var(--accent);
+    background-color: var(--accent);
+    color: var(--black);
 
     &:hover {
-      border-color: var(--senet-red);
-      background-color: var(--senet-red);
-      color: var(--grey-100);
-    }
-  }
-
-  &--white {
-    color: var(--white);
-
-    &:hover {
+      background-color: var(--black);
       color: var(--white);
     }
   }
 
-  &--inline {
-    border: 0;
-  }
+  &--secondary {
+    border-color: var(--white);
+    background-color: transparent;
+    color: var(--white);
 
-  &--fluid {
-    width: 100%;
-  }
-
-  &--no-min-width {
-    min-width: auto;
-  }
-
-  &--h48 {
-    @include font-size(14px, 44px);
-  }
-
-  &--pricing-button {
-    @include make-spacer(mx, auto);
-    @include make-spacer(mx, 0, lg);
-
-    width: 100%;
-
-    @include media-breakpoint-up(sm) {
-      width: rem(320px);
-    }
-  }
-
-  &--load-more {
-    @include make-spacer(mx, auto);
-
-    width: 100%;
-
-    @include media-breakpoint-up(sm) {
-      @include flex;
-
-      width: rem(385px);
+    &:hover {
+      border-color: var(--accent);
+      background-color: transparent;
+      color: var(--accent);
     }
   }
 }

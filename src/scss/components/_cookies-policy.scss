@@ -10,7 +10,7 @@
   border-radius: 2px 2px 0 0;
   background-color: var(--grey-100);
   width: 100%;
-  color: var(--senet-black);
+  color: var(--accent);
 
   @include media-breakpoint-up(sm) {
     @include flex($align-items:flex-start);

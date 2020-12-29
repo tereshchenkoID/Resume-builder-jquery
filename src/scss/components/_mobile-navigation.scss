@@ -8,7 +8,7 @@
   left: 0;
   transform: translateX(-100%);
   z-index: map-get($z-indexes, mobile-nav);
-  background-color: var(--senet-black);
+  background-color: var(--accent);
 
   &__lang {
     @include make-spacer(px, 3);

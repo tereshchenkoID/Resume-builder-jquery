@@ -1,5 +1,11 @@
-mixin languages()
-  .languages
-    button(class="languages__button is-active" type="button") en
-    span.languages__delimiter /
-    button.languages__button(type="button") ru
+mixin languages(className)
+  .language.js-button-wrapper(class=`${className}`)
+    button(class="language__trigger js-dropdown-button" type="button")
+      span.language__label RU
+    ul.language__list.js-dropdown-menu
+      li.language__item
+        a(href="/" class="language__button js-dropdown__item") EN
+      li.language__item
+        a(href="/" class="language__button") ES
+      li.language__item
+        a(href="/" class="language__button") TR
