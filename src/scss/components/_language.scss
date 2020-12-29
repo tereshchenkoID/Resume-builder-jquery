@@ -49,7 +49,7 @@
     opacity: 0;
     z-index: 3;
     margin-left: rem(-44px);
-    box-shadow: 0 0 4px var(--senet-black);
+    box-shadow: 0 0 4px var(--accent);
     background-color: var(--grey-600);
     width: rem(88px);
   }
@@ -68,7 +68,7 @@
     font-weight: var(--bold);
 
     &:hover {
-      background-color: var(--senet-black);
+      background-color: var(--accent);
     }
   }
 }

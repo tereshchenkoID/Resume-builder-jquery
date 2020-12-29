@@ -8,11 +8,10 @@ const menu = () => {
   const mobileNav = document.getElementById('mobile-navigation');
   const mobileLang = document.getElementById('mobile-languages');
   const mobileSocials = document.getElementById('mobile-socials');
-  const languages = mobileLang.querySelector('.languages').children;
   const socialLinks = mobileSocials.querySelectorAll('.social-list__item');
   const navListItems = mobileNav.querySelectorAll('.nav__item');
   const eventType = isTouchDevice() ? 'touchstart' : 'click';
-  const staggerElements = [...navListItems, ...languages, ...socialLinks];
+  const staggerElements = [...navListItems, ...socialLinks];
 
   const closeMenu = () => {
     hamburger.classList.remove('is-active');
