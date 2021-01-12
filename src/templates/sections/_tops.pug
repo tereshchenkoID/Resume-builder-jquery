@@ -1,0 +1,17 @@
+div.section
+  .container
+
+    h2.section__title.h1 WePlay
+      span.accent-background.js-accent-background-animate.active TOPs
+    p.section__subtitle More than 400 highly skilled experts are involved in WePlay Esports holding business
+      | areas and projects. The holding focuses on competencies that apply to all business units.
+
+    .tops
+      ul.tops__list
+        each item in weplayTops
+          li.tops__item
+            img(src=item.image class="tops__image")
+            .tops__profile
+              p.tops__title= item.name
+              p.tops__title= item.lastName
+              p.tops__subtitle= item.position
