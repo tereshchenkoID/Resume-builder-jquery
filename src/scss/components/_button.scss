@@ -2,8 +2,9 @@
   @include flex(center, center, $display: inline-flex);
   @include make-spacer(m, 0);
   @include make-spacer(px, 2);
+  @include make-spacer(py, 1);
   @include make-spacer(px, 4, sm);
-  @include font-size(14px, 60px);
+  @include font-size(14px);
   @include transition(#{background-color, color, border-color});
 
   position: relative;
@@ -12,9 +13,8 @@
   border-radius: rem(4px);
   background-color: var(--black);
   cursor: pointer;
-  min-width: rem(128px);
+  min-height: rem(40px);
   vertical-align: middle;
-  text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   color: var(--white);
@@ -25,14 +25,29 @@
   font-family: var(--font-family);
   font-weight: var(--bold);
 
-  &:disabled {
-    opacity: 0.8;
+  .icon {
+    @include font-size(rem(22px));
+    @include make-spacer(mr, 1);
+
+    vertical-align: middle;
+  }
+
+  &:disabled,
+  &[disabled],
+  &.disabled {
+    opacity: 0.6;
     pointer-events: none;
   }
 
   &:hover {
-    background-color: var(--white);
-    color: var(--black);
+    background-color: var(--black);
+    color: var(--white);
+  }
+
+  &--md {
+    @include font-size(14px);
+
+    min-height: rem(48px);
   }
 
   &--primary {
@@ -41,8 +56,8 @@
     color: var(--black);
 
     &:hover {
-      background-color: var(--black);
-      color: var(--white);
+      background-color: var(--accent-hover);
+      color: var(--black);
     }
   }
 
