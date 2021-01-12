@@ -10,8 +10,6 @@
       li.tops__item
         img(src=item.image class="tops__image")
         .tops__profile
-          p.tops__title
-            span.tops__accent= item.name
-          p.tops__title
-            span.tops__accent= item.lastName
+          p.tops__title= item.name
+          p.tops__title= item.lastName
           p.tops__subtitle= item.position
