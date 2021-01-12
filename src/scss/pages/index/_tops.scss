@@ -1,6 +1,7 @@
 .tops {
 
   &__list {
+    @include reset-list;
     @include make-spacer(mt, 6);
     @include make-spacer(mt, 8, md);
 
@@ -70,7 +71,7 @@
   &__title {
     @include font-size(24px, 32px);
 
-    font-weight: var(--bold);
+    font-weight: var(--extra-bold);
 
     @include media-breakpoint-up(md) {
       @include font-size(32px);
