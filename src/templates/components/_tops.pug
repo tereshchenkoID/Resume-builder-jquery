@@ -1,0 +1,17 @@
+.tops
+  .title-wrap
+    // TODO: add title component here
+    h2.h1.title WePlay
+      span(class=`${isActive ? 'title__accent' : 'title__accent'}`) TOPs
+    p.tops__subtitle More than 400 highly skilled experts are involved in WePlay Esports holding business areas and projects. The holding focuses on competencies that apply to all business units.
+
+  ul.tops__list
+    each item in weplayTops
+      li.tops__item
+        img(src=item.image class="tops__image")
+        .tops__profile
+          p.tops__title
+            span.tops__accent= item.name
+          p.tops__title
+            span.tops__accent= item.lastName
+          p.tops__subtitle= item.position
