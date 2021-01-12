@@ -1,0 +1,24 @@
+.accent-background {
+  position: relative;
+
+  &::after {
+    @include transition(width);
+
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background-color: var(--accent);
+    width: 0;
+    content: '';
+  }
+
+  &.active {
+
+    &::after {
+      width: 100%;
+    }
+  }
+}

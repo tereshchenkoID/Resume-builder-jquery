@@ -1,0 +1,26 @@
+div.section
+  .container
+    ul.indicator
+      each indicator in indicators
+        li.indicator__item
+          .indicator__title(data-digit-animation=indicator.title)= indicator.title
+          if indicator.highlight
+            .indicator__subtitle
+              span.accent-background.active= indicator.subtitle
+          else
+            .indicator__subtitle
+              span= indicator.subtitle
+
+    h2.section__title.h1
+      span.accent-background.js-accent-background-animate.active Worldwide
+      |  presence
+    p.section__subtitle We provide a wide range of opportunities for cooperation from selling media rights for our
+      | broadcasts to organizing eSports tournaments in our arenas in Europe and the USA.
+
+    .worldwide
+      img.worldwide__decore(src="img/map.png")
+      ul.worldwide__list
+        each worldwide in worldwides
+          li.worldwide__item
+            p.worldwide__title=worldwide.title
+            p.worldwide__subtitle=worldwide.subtitle

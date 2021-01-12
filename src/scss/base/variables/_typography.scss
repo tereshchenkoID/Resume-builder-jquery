@@ -2,7 +2,8 @@
   --font-family: #{$regular-fonts-list};
   --light: #{$fw-light};
   --regular: #{$fw-base};
-  --bold: #{$fw-headings};
+  --bold: #{$fw-bold};
+  --extra-bold: #{$fw-headings};
   --font-size: #{rem($fs-base)};
   --line-height: #{$lh-base};
   --headings-line-height: #{$lh-headings};
