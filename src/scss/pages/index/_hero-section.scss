@@ -1,0 +1,151 @@
+.hero-section {
+  background-color: var(--black);
+  color: var(--white);
+
+  .icon {
+    @include size(rem(24px));
+  }
+
+  &__title,
+  &__subtitle,
+  &__buttons,
+  &__socials {
+    @include make-spacer(mb, 3);
+
+    width: 100%;
+  }
+
+  &__wrapper {
+    @include flex($direction: column);
+    @include make-spacer(pt, 11);
+    @include make-spacer(pt, 13, sm);
+    @include make-spacer(pt, 16, md);
+    @include make-spacer(pt, 0, lg);
+
+    position: relative;
+    min-height: 100vh;
+
+    @include media-breakpoint-up(lg) {
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    @include make-spacer(mb, 2, sm);
+    @include make-spacer(mb, 4, md);
+    @include font-size(32px,40px);
+
+    font-weight: var(--extra-bold);
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(48px, 56px);
+
+      text-align: center;
+    }
+
+    @include media-breakpoint-up(md) {
+      @include font-size(64px, 72px);
+    }
+  }
+
+  &__subtitle {
+    @include font-size(18px, 24px);
+    @include make-spacer(mb, 4, sm);
+    @include make-spacer(mb, 6, md);
+
+    @include media-breakpoint-up(sm) {
+      text-align: center;
+    }
+
+    @include media-breakpoint-up(md) {
+      @include font-size(24px, 32px);
+    }
+  }
+
+  &__buttons {
+    @include make-spacer(mb, 8, sm);
+    @include make-spacer(mb, 0, md);
+
+    .button {
+      width: 100%;
+
+      @include media-breakpoint-up(sm) {
+        max-width: 176px;
+      }
+
+      @include media-breakpoint-up(md) {
+        max-width: 212px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        max-width: 173px;
+      }
+
+      &--primary {
+        @include make-spacer(mb, 3);
+        @include make-spacer(mb, 0, sm);
+        @include make-spacer(mr, 3, sm);
+      }
+    }
+
+    @include media-breakpoint-up(sm) {
+      @include flex($justify-content: center);
+    }
+  }
+
+  &__socials {
+
+    .icon {
+      @include make-spacer(ml, 3);
+      @include make-spacer(ml, 0, md);
+      @include make-spacer(mt, 3, md);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include make-spacer(mb, 0);
+
+      position: absolute;
+      top: 0;
+      right: rem(65px);
+      bottom: 0;
+      writing-mode: vertical-rl;
+      width: auto;
+    }
+  }
+
+  &__subscribe {
+    @include font-size(16px, 24px);
+    @include flex($align-items: center);
+
+    font-weight: var(--bold);
+
+    @include media-breakpoint-up(sm) {
+      justify-content: center;
+    }
+  }
+
+  &__anchor {
+    @include font-size(14px);
+
+    display: none;
+    text-decoration: none;
+    font-weight: var(--bold);
+
+    .icon {
+      @include make-spacer(mt, 1);
+      @include size(24px);
+
+      fill: var(--accent);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include flex($align-items: center, $direction: column);
+
+      position: absolute;
+      bottom: rem(32px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
