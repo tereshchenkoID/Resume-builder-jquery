@@ -28,7 +28,12 @@ const scrollAnimation = () => {
   ScrollTrigger.batch('.js-accent-background-animate', {
     start: "top 60%",
     toggleClass: "active",
-    once: true,
+    // once: true,
+  })
+
+  ScrollTrigger.batch('.js-image-animation', {
+    start: "top 100%",
+    toggleClass: "active",
   })
 };
 
