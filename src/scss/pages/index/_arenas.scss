@@ -41,7 +41,7 @@
   &__column {
 
     &:last-child {
-      @include make-spacer(px, 13);
+      @include make-spacer(px, 13, lg);
     }
   }
 
