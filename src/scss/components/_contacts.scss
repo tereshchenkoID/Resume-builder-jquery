@@ -6,14 +6,21 @@
 
   &__item {
     @include flex(flex-start, center);
+    @include make-spacer(mb, 3);
   }
 
   &__link {
+    @include font-size(14px, 22px);
+
     text-decoration: none;
     color: var(--black);
   }
 
-  &__icon {
+  &__text {
+    @include font-size(14px, 22px);
+  }
+
+  .icon {
     @include size(rem(24px));
     @include make-spacer(mr, 1);
   }

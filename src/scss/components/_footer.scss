@@ -8,8 +8,42 @@
     font-weight: var(--extra-bold);
   }
 
+  &__wrapper {
+    @include make-spacer(py, 8);
+
+    border-bottom: 1px solid var(--accent-hover);
+  }
+
+  &__logo-wrap {
+    @include flex(center, center, column);
+
+    @include media-breakpoint-up(sm) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  // TODO: delete when social component include
+  &__subscribe {
+    @include flex(center, center, column);
+
+    @include media-breakpoint-up(sm) {
+      flex-direction: row;
+    }
+  }
+
+  .icon {
+    @include size(rem(24px));
+  }
+
   &__logo {
+    @include make-spacer(mb, 3);
+    @include make-spacer(mb, 0, sm);
     @include size(rem(132px), rem(35px));
+
+    @include media-breakpoint-up(md) {
+      @include size(rem(173px), rem(47px));
+    }
 
     .main-logo {
       fill: var(--black);
@@ -17,6 +51,8 @@
   }
 
   &__menu-wrap {
+    @include make-spacer(py, 6);
+
     display: grid;
     grid-row-gap: rem(48px);
 
@@ -47,6 +83,42 @@
       @include media-breakpoint-up(md) {
         grid-row: 1;
         grid-column: 4;
+      }
+    }
+  }
+
+  &__copyright {
+    @include make-spacer(py, 4);
+
+    border-top: 1px solid var(--accent-hover);
+  }
+
+  &__copy-wrap {
+    display: grid;
+    grid-row-gap: rem(32px);
+
+    @include media-breakpoint-up(sm) {
+      grid-template-columns: rem(176px) auto;
+      grid-column-gap: rem(24px);
+    }
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: rem(358px) rem(358px) auto;
+      grid-column-gap: rem(32px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: rem(450px) rem(496px) auto;
+      grid-column-gap: rem(48px);
+    }
+  }
+
+  &__text {
+    @include font-size(14px, 22px);
+
+    @include media-breakpoint-up(md) {
+      &:last-child {
+        justify-self: flex-end;
       }
     }
   }

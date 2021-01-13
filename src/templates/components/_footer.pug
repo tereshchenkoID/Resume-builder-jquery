@@ -1,12 +1,21 @@
 include _footer-menu
 
 footer.footer
-  .container
-    .footer__logo-wrap
-      .footer__logo
-        a(href="/" class="footer__logo")
-          +logo
 
+  .footer__wrapper
+    .container
+      .footer__logo-wrap
+        .footer__logo
+          a(href="/" class="footer__logo")
+            +logo
+        // TODO: add social component here
+        .footer__socials
+          p.p.footer__subscribe Follow us on
+            //span
+            +icon('facebook-white', 'icon')
+            +icon('linkedin-white', 'icon')
+
+  .container
     .footer__menu-wrap
       .footer__column
         h4.footer__title Contacts
@@ -21,3 +30,11 @@ footer.footer
         h4.footer__title Subscribe
 
     .footer__copyright-wrap
+
+  .footer__copyright
+    .container
+      .footer__copy-wrap
+        p.footer__text 1013 Centre RD STE 403B, Wilmington, DE, USA
+        p.footer__text © 2012 - 2020 WePlay Esports Media Holding. Part of TECHIA Holding. All rights reserved.
+        // TODO: add language component here
+        p.footer__text RU
