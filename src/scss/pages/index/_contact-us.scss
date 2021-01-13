@@ -1,0 +1,26 @@
+.contact-us {
+
+  &__title {
+    @include font-size(32px, 40px);
+    @include make-spacer(mb, 4);
+
+    font-weight: var(--extra-bold);
+  }
+
+  &__block {
+    @include make-spacer(mb, 6);
+  }
+
+  &__country {
+    @include font-size(24px, 32px);
+    @include make-spacer(mb, 2);
+
+    font-weight: var(--extra-bold);
+  }
+
+  &__address {
+    @include font-size(16px, 24px);
+
+    font-weight: var(--bold);
+  }
+}
