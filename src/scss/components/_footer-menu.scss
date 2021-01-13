@@ -1,0 +1,15 @@
+.footer-menu {
+
+  &__list {
+    @include reset-list;
+  }
+
+  &__item {
+    @include make-spacer(mb, 2);
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--black);
+  }
+}

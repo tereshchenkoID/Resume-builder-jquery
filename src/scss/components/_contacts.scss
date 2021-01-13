@@ -1,0 +1,20 @@
+.contacts {
+
+  &__list {
+    @include reset-list;
+  }
+
+  &__item {
+    @include flex(flex-start, center);
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--black);
+  }
+
+  &__icon {
+    @include size(rem(24px));
+    @include make-spacer(mr, 1);
+  }
+}

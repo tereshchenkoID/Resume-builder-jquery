@@ -1,6 +1,23 @@
 include _footer-menu
 
 footer.footer
-  .footer__logo
-    a(href="/" class="footer__logo")
-      +logo
+  .container
+    .footer__logo-wrap
+      .footer__logo
+        a(href="/" class="footer__logo")
+          +logo
+
+    .footer__menu-wrap
+      .footer__column
+        h4.footer__title Contacts
+        include ./_contacts
+      .footer__column
+        h4.footer__title Company
+        +footer-menu(companyList)
+      .footer__column
+        h4.footer__title Policies
+        +footer-menu(policiesList)
+      .footer__column
+        h4.footer__title Subscribe
+
+    .footer__copyright-wrap
