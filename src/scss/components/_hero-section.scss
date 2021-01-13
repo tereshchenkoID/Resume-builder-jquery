@@ -43,12 +43,16 @@
   }
 
   &__socials {
-    @include flex;
 
     .icon {
       @include size(rem(24px));
       @include make-spacer(ml, 3);
     }
+  }
+
+  &__subscribe {
+    @include font-size(18px,24px);
+    @include flex($align-items: center);
   }
 }
 
