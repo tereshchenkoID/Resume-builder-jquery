@@ -15,7 +15,7 @@ $regular-fonts-list: prepend($fallback-fonts-list, $regular-font);
 
 $fw-light: 300;
 $fw-base: 400;
-$fw-bold: 500;
+$fw-bold: 700;
 $fw-headings: 800;
 
 //
@@ -47,45 +47,39 @@ $fs-h6: rem(24px);
 $tag-types: (
   'h1': (
     null: ($fs-h5),
-    sm: ($fs-h5),
-    md: ($fs-h3),
+    sm: ($fs-h3),
+    md: ($fs-h1),
     lg: ($fs-h1),
-    xl: ($fs-h1)
   ),
   'h2': (
     null: ($fs-h6),
     sm: ($fs-h5),
     md: ($fs-h5),
-    lg: ($fs-h4),
-    xl: ($fs-h4)
+    lg: ($fs-h2),
   ),
   'h3': (
     null: (rem(24px)),
     sm: ($fs-h5),
     md: ($fs-h5),
-    lg: ($fs-h4),
-    xl: ($fs-h4)
+    lg: ($fs-h3)
   ),
   'h4': (
     null: ($fs-h6),
     sm: ($fs-h5),
     md: ($fs-h5),
-    lg: ($fs-h5),
-    xl: ($fs-h5)
+    lg: ($fs-h4),
   ),
   'h5': (
     null: ($fs-h6),
     sm: ($fs-h6),
     md: ($fs-h5),
-    lg: ($fs-h5),
-    xl: ($fs-h5)
+    lg: ($fs-h5)
   ),
   'h6': (
     null: ($fs-h6),
     sm: ($fs-h6),
     md: ($fs-h6),
     lg: ($fs-h6),
-    xl: ($fs-h6)
   ),
   'p': (
     null: (rem(14px), 400, 1.43),
@@ -96,44 +90,38 @@ $tag-types: (
   ),
   '.h1': (
     null: ($fs-h6),
-    sm: ($fs-h4),
-    md: ($fs-h4),
-    lg: ($fs-h3),
-    xl: ($fs-h3)
+    sm: ($fs-h3),
+    md: ($fs-h1),
+    lg: ($fs-h1),
   ),
   '.h2': (
     null: ($fs-h6),
     sm: ($fs-h5),
-    md: ($fs-h5),
-    lg: ($fs-h4),
-    xl: ($fs-h4)
+    md: ($fs-h2),
+    lg: ($fs-h2),
   ),
   '.h3': (
     null: (rem(24px)),
     sm: ($fs-h5),
-    md: ($fs-h5),
-    lg: ($fs-h4),
-    xl: ($fs-h4)
+    md: ($fs-h3),
+    lg: ($fs-h3),
   ),
   '.h4': (
     null: ($fs-h6),
     sm: ($fs-h5),
-    md: ($fs-h5),
-    lg: ($fs-h5),
-    xl: ($fs-h5)
+    md: ($fs-h4),
+    lg: ($fs-h4),
   ),
   '.h5': (
     null: ($fs-h6),
     sm: ($fs-h6),
     md: ($fs-h5),
     lg: ($fs-h5),
-    xl: ($fs-h5)
   ),
   '.h6': (
     null: ($fs-h6),
     sm: ($fs-h6),
     md: ($fs-h6),
     lg: ($fs-h6),
-    xl: ($fs-h6)
   )
 );

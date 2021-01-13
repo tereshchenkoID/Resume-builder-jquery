@@ -7,34 +7,36 @@ extends layouts/_layout
 
 block content
   main
-    //.container
-    include components/_hero-section.pug
+    .container
+      h1.h1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem in labore laboriosam minima
+      p lorem
+      +icon('twitter', 'icon')
+      +icon('mail', 'icon')
+      +icon('phone', 'icon')
 
-      //h1.h1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem in labore laboriosam minima
-      //p lorem
-      //+icon('twitter', 'icon')
-      //+icon('mail', 'icon')
-      //+icon('phone', 'icon')
-      //
-      //ul(style="background: var(--grey-300)").u-px-8.u-py-8.u-mb-24
-      //  li.u-mb-24
-      //    a(href="/", class="button") Contact us
-      //  li.u-mb-24
-      //    a(href="/", class="button button--secondary") Contact us
-      //  li.u-mb-24
-      //    a(href="/", class="button" disabled) Contact us
-      //  li.u-mb-24
-      //    a(href="/", class="button button--secondary button--md")
-      //      +icon('play')
-      //      | Watch video
-      //  li.u-mb-24
-      //    a(href="/", class="button button--primary button--md") Contact us
-      //.section
-      //  div(style="background: var(--grey-300); height: 100vh")
-      //    a(href="/", class="button animated") Contact us
-      //.section
-      //  div(style="background: var(--grey-100); height: 100vh")
-      //    a(href="/", class="button animated") Contact us
-      //.section
-      //  div(style="background: var(--grey-200); height: 100vh")
-      //    a(href="/", class="button animated") Contact us
+      ul(style="background: var(--grey-300)").u-px-8.u-py-8.u-mb-24
+        li.u-mb-24
+          a(href="/", class="button") Contact us
+        li.u-mb-24
+          a(href="/", class="button button--secondary") Contact us
+        li.u-mb-24
+          a(href="/", class="button" disabled) Contact us
+        li.u-mb-24
+          a(href="/", class="button button--secondary button--md")
+            +icon('play')
+            | Watch video
+        li.u-mb-24
+          a(href="/", class="button button--primary button--md") Contact us
+      .section
+        div(style="background: var(--grey-300); height: 100vh")
+          a(href="/", class="button animated") Contact us
+      .section
+        div(style="background: var(--grey-100); height: 100vh")
+          a(href="/", class="button animated") Contact us
+      .section
+        div(style="background: var(--grey-200); height: 100vh")
+          a(href="/", class="button animated") Contact us
+          a(href="/", class="button button--primary") Contact us
+    include components/_hero-section.pug
+    include sections/_worldwide
+    include sections/_tops

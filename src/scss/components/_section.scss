@@ -1,0 +1,24 @@
+.section {
+  @include make-spacer(py, 12);
+  @include make-spacer(py, 16, md);
+
+  &__title {
+    @include make-spacer(mb, 3);
+
+    text-align: center;
+  }
+
+  &__subtitle {
+    @include font-size(16px, 24px);
+    @include make-spacer(mb, 6);
+    @include make-spacer(mb, 8, md);
+    @include make-spacer(mx, auto, md);
+
+    font-weight: var(--bold);
+
+    @include media-breakpoint-up(sm) {
+      max-width: rem(620px);
+      text-align: center;
+    }
+  }
+}
