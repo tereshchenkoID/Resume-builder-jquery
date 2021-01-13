@@ -1,5 +1,7 @@
 .accent-background {
+  display: inline-block;
   position: relative;
+  vertical-align: top;
 
   &::after {
     @include transition(width);

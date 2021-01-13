@@ -3,7 +3,6 @@
   @include make-spacer(m, 0);
   @include make-spacer(px, 2);
   @include make-spacer(py, 1);
-  @include make-spacer(px, 4, sm);
   @include font-size(14px);
   @include transition(#{background-color, color, border-color});
 

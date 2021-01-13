@@ -1,6 +1,6 @@
 .section {
-  @include make-spacer(py, 12);
-  @include make-spacer(py, 16, md);
+  @include make-spacer(py, 6);
+  @include make-spacer(py, 8, md);
 
   &__title {
     @include make-spacer(mb, 3);
@@ -10,8 +10,7 @@
 
   &__subtitle {
     @include font-size(16px, 24px);
-    @include make-spacer(mb, 6);
-    @include make-spacer(mb, 8, md);
+    @include make-spacer(mb, 0);
     @include make-spacer(mx, auto, md);
 
     font-weight: var(--bold);
@@ -20,5 +19,19 @@
       max-width: rem(620px);
       text-align: center;
     }
+  }
+
+  &__header {
+    @include make-spacer(mb, 6);
+    @include make-spacer(mb, 8, md);
+  }
+
+  &__icon {
+    @include size(rem(174px), rem(108px));
+    @include make-spacer(mb, 4);
+  }
+
+  &__word {
+    @include make-spacer(mx, 2);
   }
 }
