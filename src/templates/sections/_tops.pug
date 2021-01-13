@@ -10,7 +10,8 @@ div.section
       ul.tops__list
         each item in weplayTops
           li.tops__item
-            img(src=item.image class="tops__image")
+            .image-animation.js-image-animation
+              img.image-animation__wrapper(src=item.image class="tops__image")
             .tops__profile
               p.tops__title= item.name
               p.tops__title= item.lastName
