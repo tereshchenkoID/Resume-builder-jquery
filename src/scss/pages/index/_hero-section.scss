@@ -2,6 +2,10 @@
   background-color: var(--black);
   color: var(--white);
 
+  .icon {
+    @include size(rem(24px));
+  }
+
   &__title,
   &__subtitle,
   &__buttons,
@@ -19,7 +23,7 @@
     @include make-spacer(pt, 0, lg);
 
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
 
     @include media-breakpoint-up(lg) {
       justify-content: center;
@@ -34,22 +38,18 @@
     font-weight: var(--extra-bold);
 
     @include media-breakpoint-up(sm) {
-      @include font-size(48px,56px);
+      @include font-size(48px, 56px);
 
       text-align: center;
     }
 
     @include media-breakpoint-up(md) {
-      @include font-size(64px,72px);
-    }
-
-    &--highlight {
-      background-color: var(--accent);
+      @include font-size(64px, 72px);
     }
   }
 
   &__subtitle {
-    @include font-size(18px,24px);
+    @include font-size(18px, 24px);
     @include make-spacer(mb, 4, sm);
     @include make-spacer(mb, 6, md);
 
@@ -58,7 +58,7 @@
     }
 
     @include media-breakpoint-up(md) {
-      @include font-size(24px,32px);
+      @include font-size(24px, 32px);
     }
   }
 
@@ -96,7 +96,6 @@
   &__socials {
 
     .icon {
-      @include size(rem(24px));
       @include make-spacer(ml, 3);
       @include make-spacer(ml, 0, md);
       @include make-spacer(mt, 3, md);
@@ -115,7 +114,7 @@
   }
 
   &__subscribe {
-    @include font-size(16px,24px);
+    @include font-size(16px, 24px);
     @include flex($align-items: center);
 
     font-weight: var(--bold);
@@ -140,7 +139,7 @@
     }
 
     @include media-breakpoint-up(md) {
-      @include flex($align-items: center ,$direction: column);
+      @include flex($align-items: center, $direction: column);
 
       position: absolute;
       bottom: rem(32px);
