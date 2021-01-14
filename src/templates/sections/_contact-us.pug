@@ -2,20 +2,42 @@ div.section
   .container
 
     h2.section__title.h1
-      | We are ready to &nbsp;
-      span.accent-background.js-accent-background-animate.active collaborate
+      | We are ready to
+      span.accent-background.section__word.js-accent-background-animate collaborate
 
     .contact-us
       .contact-us__item
+        picture
+          source(srcset="img/map.webp, img/map@2x.webp 2x" type="image/webp")
+          source(srcset="img/map.png img/map@2x.png 2x" type="image/jpeg")
+          img.contact-us__decore(src="img/map.png" alt="map")
         p.contact-us__title Our offices
-        .contact-us__block
+        .contact-us__location
           p.contact-us__country USA
-          p.contact-us__address 5425 Grosvenor Blvd, Los Angeles, CA 90066, United States
+          p.contact-us__address
+            | 5425 Grosvenor Blvd,
+            br
+            |Los Angeles, CA 90066, United States
 
-        .contact-us__block
+        .contact-us__location
           p.contact-us__country Ukraine
-          p.contact-us__address Dniprovska Embankment, 21, Kyiv, 02081
+          p.contact-us__address
+            |Dniprovska Embankment, 21, Kyiv, 02081
 
       .contact-us__item
         p.contact-us__title Drop us a line
+        form.contact-us__form
+          .input.input--error.contact-us__input
+            input(type="text" placeholder="Name (company)" name="name")
+            span.input__alert asdasda
+          .input.contact-us__input
+            input(type="email" placeholder="E-mail" name="email")
+            span.input__alert asdasda
+          .input.contact-us__input.contact-us__input--textarea
+            textarea(name="message" placeholder="Message here")
+          .contact-us__group
+            include ../components/_checkbox
+            span.contact-us__policy I agree with Terms of use and Privacy policy
+          .contact-us__input
+            input(type="submit" value="Send").button
 

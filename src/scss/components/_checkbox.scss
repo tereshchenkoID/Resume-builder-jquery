@@ -1,0 +1,59 @@
+.checkbox {
+  height: auto;
+
+  // stylelint-disable-next-line
+  input {
+    display: none;
+  }
+
+  input:checked + label::after {
+    display: block;
+  }
+
+  input:checked + label::before {
+    background-color: var(--accent);
+  }
+
+  label {
+    position: relative;
+
+    &::before {
+      @include make-spacer(mr, 1);
+
+      display: inline-block;
+      position: relative;
+      transition: all 0.2s;
+      border: 1px solid var(--grey-250);
+      border-radius: 2px;
+      background-color: transparent;
+      cursor: pointer;
+      padding: 11px;
+      vertical-align: middle;
+      content: '';
+    }
+
+    &::after {
+      @include size(10px, 14px);
+
+      display: none;
+      position: absolute;
+      top: 2px;
+      left: 7px;
+      transform: rotate(45deg);
+      transition: all 0.2s;
+      border: solid var(--white);
+      border-width: 0 2px 2px 0;
+      content: '';
+    }
+  }
+
+  &--error {
+
+    label {
+
+      &::before {
+        border-color: var(--red);
+      }
+    }
+  }
+}
