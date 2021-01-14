@@ -33,6 +33,7 @@ const scrollAnimation = () => {
 
   ScrollTrigger.batch('.js-image-animation', {
     start: "top 100%",
+    stop: "top -100%",
     toggleClass: "active",
   })
 };
