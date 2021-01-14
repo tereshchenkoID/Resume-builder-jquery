@@ -1,0 +1,17 @@
+.footer-menu {
+
+  &__list {
+    @include reset-list;
+  }
+
+  &__item {
+    @include make-spacer(mb, 2);
+  }
+
+  &__link {
+    @include font-size(14px, 22px);
+
+    text-decoration: none;
+    color: var(--black);
+  }
+}
