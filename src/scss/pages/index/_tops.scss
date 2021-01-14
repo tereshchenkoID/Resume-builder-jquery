@@ -24,13 +24,16 @@
   &__item {
 
     &:nth-child(2n) {
+      justify-self: end;
       text-align: right;
     }
 
     @include media-breakpoint-up(sm) {
+      justify-self: end;
       text-align: right;
 
       &:nth-child(-n+2) {
+        justify-self: start;
         text-align: left;
       }
     }
@@ -46,7 +49,7 @@
     }
   }
 
-  &__image {
+  &__image-wrap {
     @include make-spacer(mb, 3);
     @include make-spacer(mb, 0, md);
 
@@ -63,6 +66,12 @@
     @include media-breakpoint-up(lg) {
       width: rem(275px);
     }
+  }
+
+  &__image {
+    @include size(100%);
+
+    object-fit: cover;
   }
 
   &__profile {

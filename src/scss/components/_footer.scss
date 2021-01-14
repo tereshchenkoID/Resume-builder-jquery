@@ -44,10 +44,10 @@
     @include media-breakpoint-up(md) {
       @include size(rem(173px), rem(47px));
     }
+  }
 
-    .main-logo {
-      fill: var(--black);
-    }
+  .main-logo {
+    fill: var(--black);
   }
 
   &__menu-wrap {
