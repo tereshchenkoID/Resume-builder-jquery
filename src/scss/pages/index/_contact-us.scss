@@ -62,6 +62,7 @@
     @include font-size(16px, 24px);
 
     font-weight: var(--bold);
+    font-style: normal;
   }
 
   &__form {
