@@ -1,7 +1,16 @@
 .checkbox {
   height: auto;
 
-  // stylelint-disable-next-line
+  &.has-error {
+
+    label {
+
+      &::before {
+        border-color: var(--red);
+      }
+    }
+  }
+
   input {
     display: none;
   }
@@ -16,6 +25,7 @@
 
   label {
     position: relative;
+    height: rem(24px);
 
     &::before {
       @include make-spacer(mr, 1);
@@ -33,27 +43,17 @@
     }
 
     &::after {
-      @include size(10px, 14px);
+      @include size(rem(10px), rem(14px));
 
       display: none;
       position: absolute;
-      top: 2px;
-      left: 7px;
+      top: rem(2px);
+      left: rem(7px);
       transform: rotate(45deg);
       transition: all 0.2s;
       border: solid var(--white);
       border-width: 0 2px 2px 0;
       content: '';
-    }
-  }
-
-  &--error {
-
-    label {
-
-      &::before {
-        border-color: var(--red);
-      }
     }
   }
 }

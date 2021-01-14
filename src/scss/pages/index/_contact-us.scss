@@ -1,15 +1,5 @@
 .contact-us {
-  @include media-breakpoint-up(sm) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: rem(24px);
-  }
 
-  @include media-breakpoint-up(md) {
-    grid-column-gap: rem(32px);
-  }
-
-  // stylelint-disable-next-line
   .button {
     @include make-spacer(mb, 0);
 
@@ -104,20 +94,34 @@
   }
 
   &__input {
-    @include size(100%, 40px);
+    @include size(100%, rem(40px));
     @include make-spacer(mb, 3);
 
     &--textarea {
-      height: 80px;
+      height: rem(80px);
     }
   }
 
   &__group {
     @include flex;
     @include make-spacer(mb, 3);
+
+    @include media-breakpoint-up(md) {
+      align-items: center;
+    }
   }
 
   &__policy {
     @include font-size(14px, 22px);
+  }
+
+  @include media-breakpoint-up(sm) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: rem(24px);
+  }
+
+  @include media-breakpoint-up(md) {
+    grid-column-gap: rem(32px);
   }
 }

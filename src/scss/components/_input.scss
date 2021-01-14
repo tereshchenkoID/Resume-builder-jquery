@@ -3,6 +3,17 @@
 
   position: relative;
 
+  &.has-error {
+
+    input {
+      border-color: var(--red);
+    }
+
+    .input__alert {
+      display: block;
+    }
+  }
+
   input,
   textarea {
     @include size(100%);
@@ -31,16 +42,5 @@
 
     display: none;
     color: var(--red);
-  }
-
-  &--error {
-
-    input {
-      border-color: var(--red);
-    }
-
-    .input__alert {
-      display: block;
-    }
   }
 }
