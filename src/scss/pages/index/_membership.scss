@@ -16,13 +16,13 @@
     @include size(rem(173px));
     @include make-spacer(mx, auto);
     @include make-spacer(mb, 2);
+  }
 
-    img {
-      @include size(100%);
+  &__image {
+    @include size(100%);
 
-      display: block;
-      object-fit: contain;
-    }
+    display: block;
+    object-fit: contain;
   }
 
   &__title {
