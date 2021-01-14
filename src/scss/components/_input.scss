@@ -1,0 +1,49 @@
+.input {
+  @include size(100%);
+
+  position: relative;
+
+  &.has-error {
+
+    .input {
+
+      &__item {
+        border-color: var(--red);
+      }
+
+      &__alert {
+        display: block;
+      }
+    }
+  }
+
+  &__item,
+  &__textarea {
+    @include size(100%);
+    @include make-spacer(px, 2);
+    @include font-size(14px, 22px);
+
+    border: 1px solid var(--grey-250);
+    border-radius: 4px;
+    resize: none;
+
+    &::placeholder {
+      color: var(--disabled);
+    }
+
+    &:focus {
+      outline: none;
+
+      &::placeholder {
+        visibility: hidden;
+      }
+    }
+  }
+
+  &__alert {
+    @include font-size(12px, 16px);
+
+    display: none;
+    color: var(--red);
+  }
+}

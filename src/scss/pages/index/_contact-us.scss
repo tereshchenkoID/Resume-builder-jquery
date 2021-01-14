@@ -1,0 +1,121 @@
+.contact-us {
+
+  .button {
+    @include make-spacer(mb, 0);
+
+    width: 100%;
+  }
+
+  &__item {
+
+    &:first-child {
+      @include make-spacer(px, 10, md);
+      @include make-spacer(px, 12, lg);
+
+      position: relative;
+    }
+  }
+
+  &__decore {
+    position: absolute;
+    bottom: rem(48px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    max-width: 100%;
+    max-height: 100%;
+
+    @include media-breakpoint-up(sm) {
+      @include absolute-center;
+    }
+
+    @include media-breakpoint-up(md) {
+      top: unset;
+      bottom: 0;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  &__title {
+    @include font-size(32px, 40px);
+    @include make-spacer(mb, 4);
+
+    font-weight: var(--extra-bold);
+  }
+
+  &__location {
+    @include make-spacer(mb, 6);
+
+    &:last-child {
+      @include make-spacer(mb, 0, sm);
+    }
+  }
+
+  &__country {
+    @include font-size(24px, 32px);
+    @include make-spacer(mb, 2);
+
+    font-weight: var(--extra-bold);
+  }
+
+  &__address {
+    @include font-size(16px, 24px);
+
+    font-weight: var(--bold);
+    font-style: normal;
+  }
+
+  &__form {
+    @include flex($direction: column);
+
+    width: rem(288px);
+
+    @include media-breakpoint-up(sm) {
+      width: rem(276px);
+    }
+
+    @include media-breakpoint-up(md) {
+      width: rem(375px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: rem(480px);
+    }
+  }
+
+  &__input {
+    @include size(100%, rem(40px));
+    @include make-spacer(mb, 3);
+
+    &--textarea {
+      height: rem(80px);
+    }
+
+    &--button {
+      @include make-spacer(mb, 0);
+    }
+  }
+
+  &__group {
+    @include flex;
+    @include make-spacer(mb, 3);
+
+    @include media-breakpoint-up(md) {
+      align-items: center;
+    }
+  }
+
+  &__policy {
+    @include font-size(14px, 22px);
+  }
+
+  @include media-breakpoint-up(sm) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: rem(24px);
+  }
+
+  @include media-breakpoint-up(md) {
+    grid-column-gap: rem(32px);
+  }
+}
