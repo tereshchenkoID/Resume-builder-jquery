@@ -62,12 +62,12 @@
     }
 
     @include media-breakpoint-up(md) {
-      grid-template-columns: rem(168px) rem(168px) rem(168px) auto;
+      grid-template-columns: repeat(3, rem(168px)) auto;
       grid-column-gap: rem(32px);
     }
 
     @include media-breakpoint-up(lg) {
-      grid-template-columns: rem(202px) rem(202px) rem(202px) auto;
+      grid-template-columns: repeat(3, rem(202px)) auto;
       grid-column-gap: rem(48px);
     }
   }

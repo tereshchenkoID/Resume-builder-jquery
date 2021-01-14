@@ -16,11 +16,7 @@
     color: var(--black);
   }
 
-  &__text {
-    @include font-size(14px, 22px);
-  }
-
-  .icon {
+  &__icon {
     @include size(rem(24px));
     @include make-spacer(mr, 1);
   }

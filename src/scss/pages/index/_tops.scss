@@ -4,13 +4,16 @@
     @include reset-list;
     @include make-spacer(mt, 6);
     @include make-spacer(mt, 8, md);
+    @include make-spacer(mx, auto);
 
     display: grid;
     grid-row-gap: rem(48px);
+    max-width: rem(425px);
 
     @include media-breakpoint-up(sm) {
       grid-template-columns: repeat(2, 1fr);
       grid-gap: rem(48px) rem(24px);
+      max-width: 100%;
     }
 
     @include media-breakpoint-up(md) {
