@@ -18,10 +18,9 @@
   }
 
   &__wrapper {
-    @include transition(#{transform, opacity}, 0.9s);
+    @include transition(transform, 0.8s);
 
-    transform: scale(0.99);
-    opacity: 0;
+    transform: scale(1.15);
   }
 
   &.active {
@@ -34,7 +33,6 @@
 
     .image-animation__wrapper {
       transform: scale(1);
-      opacity: 1;
     }
   }
 }
