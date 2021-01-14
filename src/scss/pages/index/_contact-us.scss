@@ -9,11 +9,10 @@
   &__item {
 
     &:first-child {
-      position: relative;
+      @include make-spacer(px, 10, md);
+      @include make-spacer(px, 12, lg);
 
-      @include media-breakpoint-up(md) {
-        @include flex($align-items: center, $direction: column);
-      }
+      position: relative;
     }
   }
 
@@ -29,6 +28,12 @@
     @include media-breakpoint-up(sm) {
       @include absolute-center;
     }
+
+    @include media-breakpoint-up(md) {
+      top: unset;
+      bottom: 0;
+      transform: translate(-50%, 0);
+    }
   }
 
   &__title {
@@ -36,14 +41,6 @@
     @include make-spacer(mb, 4);
 
     font-weight: var(--extra-bold);
-
-    @include media-breakpoint-up(md) {
-      width: rem(295px);
-    }
-
-    @include media-breakpoint-up(lg) {
-      width: rem(375px);
-    }
   }
 
   &__location {
@@ -51,14 +48,6 @@
 
     &:last-child {
       @include make-spacer(mb, 0, sm);
-    }
-
-    @include media-breakpoint-up(md) {
-      width: rem(295px);
-    }
-
-    @include media-breakpoint-up(lg) {
-      width: rem(375px);
     }
   }
 
@@ -99,6 +88,10 @@
 
     &--textarea {
       height: rem(80px);
+    }
+
+    &--button {
+      @include make-spacer(mb, 0);
     }
   }
 

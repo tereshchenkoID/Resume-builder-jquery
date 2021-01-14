@@ -3,7 +3,7 @@
 
   &.has-error {
 
-    label {
+    &__label {
 
       &::before {
         border-color: var(--red);
@@ -11,19 +11,19 @@
     }
   }
 
-  input {
-    display: none;
-  }
-
-  input:checked + label::after {
+  &__item:checked + &__label::after {
     display: block;
   }
 
-  input:checked + label::before {
+  &__item:checked + &__label::before {
     background-color: var(--accent);
   }
 
-  label {
+  &__item {
+    display: none;
+  }
+
+  &__label {
     position: relative;
     height: rem(24px);
 

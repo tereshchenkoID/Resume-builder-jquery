@@ -5,17 +5,20 @@
 
   &.has-error {
 
-    input {
-      border-color: var(--red);
-    }
+    .input {
 
-    .input__alert {
-      display: block;
+      &__item {
+        border-color: var(--red);
+      }
+
+      &__alert {
+        display: block;
+      }
     }
   }
 
-  input,
-  textarea {
+  &__item,
+  &__textarea {
     @include size(100%);
     @include make-spacer(px, 2);
     @include font-size(14px, 22px);

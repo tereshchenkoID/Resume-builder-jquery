@@ -1,9 +1,9 @@
 div.section
   .container
-
-    h2.section__title.h1
-      | We are ready to
-      span.accent-background.section__word.js-accent-background-animate collaborate
+    .section__header
+      h2.section__title.h1
+        | We are ready to
+        span.accent-background.section__word.js-accent-background-animate collaborate
 
     .contact-us
       .contact-us__item
@@ -28,16 +28,16 @@ div.section
         p.contact-us__title Drop us a line
         form.contact-us__form
           .input.has-error.contact-us__input
-            input(type="text" placeholder="Name (company)" name="name")
+            input(type="text" placeholder="Name (company)" name="name" class="input__item")
             span.input__alert asdasda
           .input.contact-us__input
-            input(type="email" placeholder="E-mail" name="email")
+            input(type="email" placeholder="E-mail" name="email" class="input__item")
             span.input__alert asdasda
           .input.contact-us__input.contact-us__input--textarea
-            textarea(name="message" placeholder="Message here")
+            textarea(name="message" placeholder="Message here" class="input__textarea")
           .contact-us__group
             include ../components/_checkbox
             span.contact-us__policy I agree with Terms of use and Privacy policy
-          .contact-us__input
+          .contact-us__input.contact-us__input--button
             input(type="submit" value="Send").button
 
