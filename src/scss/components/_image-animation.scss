@@ -18,7 +18,7 @@
   }
 
   &__wrapper {
-    @include transition(#{transform, opacity}, 0.8s);
+    @include transition(transform, 0.8s);
 
     transform: scale(1.15);
   }
