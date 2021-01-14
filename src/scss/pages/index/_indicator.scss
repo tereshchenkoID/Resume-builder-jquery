@@ -6,6 +6,7 @@
   text-align: center;
 
   &__title {
+    @include flex(center);
     @include font-size(64px);
     @include make-spacer(mb, 2);
     @include make-spacer(mb, 1, md);
@@ -32,6 +33,34 @@
     &:not(:last-child) {
       @include make-spacer(mb, 6);
       @include make-spacer(mb, 0, sm);
+    }
+  }
+
+  &__digit {
+    display: block;
+
+    &-1 {
+      width: rem(40px);
+
+      @include media-breakpoint-up(md) {
+        width: rem(60px);
+      }
+    }
+
+    &-2 {
+      width: rem(85px);
+
+      @include media-breakpoint-up(md) {
+        width: rem(125px);
+      }
+    }
+
+    &-3 {
+      width: rem(130px);
+
+      @include media-breakpoint-up(md) {
+        width: rem(194px);
+      }
     }
   }
 

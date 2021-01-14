@@ -3,7 +3,7 @@
     ul.indicator
       each indicator in indicators
         li.indicator__item
-          .indicator__title(data-digit-animation=indicator.title)= indicator.title
+          .indicator__title(data-digit=indicator.title)= indicator.title
           if indicator.highlight
             .indicator__subtitle
               span.accent-background.js-accent-background-animate= indicator.subtitle

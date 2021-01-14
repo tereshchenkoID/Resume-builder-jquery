@@ -67,11 +67,17 @@
     img {
       @include size(100%);
 
-      position: absolute;
-      top: 0;
-      left: 0;
+      display: block;
       object-fit: cover;
     }
+  }
+
+  &__wrapper {
+    @include size(100%);
+
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   &__button {
