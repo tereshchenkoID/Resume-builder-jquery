@@ -8,12 +8,54 @@
 
     .tops
       ul.tops__list
-        each item in weplayTops
-          li.tops__item
+        li.tops__item
+          .tops__image-wrap
             .image-animation.js-image-animation
-              img.image-animation__wrapper(src=item.image class="tops__image", alt=item.alt)
-            .tops__profile
-              h3
-                span.tops__title= item.name
-                span.tops__title= item.lastName
-              p.tops__subtitle= item.position
+              picture
+                source(srcset='img/tops/lazebnikov.webp img/tops/lazebnikov@2.webp 2x', type="image/webp")
+                source(srcset='img/tops/lazebnikov.jpg img/tops/lazebnikov@2.jpg 2x', type="image/jpeg")
+                img.tops__image(src='img/tops/lazebnikov.jpg' alt='Yura Lazebnikov')
+          .tops__profile
+            h3
+              span.tops__title Yura
+              span.tops__title Lazebnikov
+            p.tops__subtitle Managing partner
+
+        li.tops__item
+          .tops__image-wrap
+            .image-animation.js-image-animation
+              picture
+                source(srcset='img/tops/krot.webp img/tops/krot@2.webp 2x', type="image/webp")
+                source(srcset='img/tops/krot.jpg img/tops/krot@2.jpg 2x', type="image/jpeg")
+                img.tops__image(src='img/tops/krot.jpg' alt='Oleg Krot')
+          .tops__profile
+            h3
+              span.tops__title Oleg
+              span.tops__title Krot
+            p.tops__subtitle Managing partner
+
+        li.tops__item
+          .tops__image-wrap
+            .image-animation.js-image-animation
+              picture
+                source(srcset='img/tops/humeniuk.webp img/tops/humeniuk@2.webp 2x', type="image/webp")
+                source(srcset='img/tops/humeniuk.jpg img/tops/humeniuk@2.jpg 2x', type="image/jpeg")
+                img.tops__image(src='img/tops/humeniuk.jpg' alt='Oleh Humeniuk')
+          .tops__profile
+            h3
+              span.tops__title Oleh
+              span.tops__title Humeniuk
+            p.tops__subtitle CEO
+
+        li.tops__item
+          .tops__image-wrap
+            .image-animation.js-image-animation
+              picture
+                source(srcset='img/tops/bilonogov.webp img/tops/bilonogov@2.webp 2x', type="image/webp")
+                source(srcset='img/tops/bilonogov.jpg img/tops/bilonogov@2.jpg 2x', type="image/jpeg")
+                img.tops__image(src='img/tops/bilonogov.jpg' alt='Max Bilonogov')
+          .tops__profile
+            h3
+              span.tops__title Max
+              span.tops__title Bilonogov
+            p.tops__subtitle CVO & Genreal Producer
