@@ -32,6 +32,7 @@
   }
 
   @include media-breakpoint-up(sm) {
+    border-top: 1px solid var(--grey-200);
     border-bottom: 1px solid var(--grey-200);
   }
 }

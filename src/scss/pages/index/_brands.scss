@@ -1,0 +1,107 @@
+.brands {
+  position: relative;
+  overflow: hidden;
+
+  &__quote-list {
+    @include reset-list;
+    @include make-spacer(mx, auto);
+
+    position: relative;
+    width: rem(288px);
+
+    @include media-breakpoint-up(md) {
+      width: rem(584px);
+    }
+  }
+
+  &__logo-list {
+    @include make-spacer(mt, 6);
+
+    width: rem(288px);
+
+    @include media-breakpoint-up(sm) {
+      width: rem(576px);
+    }
+
+    @include media-breakpoint-up(md) {
+      width: rem(944px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: rem(1200px);
+    }
+  }
+
+  &__quote-item {
+    text-align: center;
+  }
+
+  &__logo-wrap {
+    @include flex(center, center);
+
+    cursor: pointer;
+    height: rem(48px);
+  }
+
+  &__logo {
+    @include transition(filter);
+
+    display: block;
+    filter: grayscale(1);
+
+    &:hover {
+      filter: grayscale(0);
+    }
+  }
+
+  &__text {
+    @include font-size(18px, 26px);
+    @include make-spacer(my, 4);
+    @include make-spacer(mx, auto);
+
+    font-weight: var(--bold);
+
+    @include media-breakpoint-up(md) {
+      @include font-size(24px, 32px);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include font-size(24px, 32px);
+    }
+  }
+
+  &__link {
+    @include transition(color);
+
+    position: relative;
+    text-decoration: none;
+
+    &::after {
+      @include transition(width);
+      @include size(0, 100%);
+
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-color: var(--accent-hover);
+      content: '';
+    }
+
+    &:hover {
+      color: var(--black);
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  .slick-current {
+
+    .brands__logo {
+      filter: grayscale(0);
+    }
+  }
+}
