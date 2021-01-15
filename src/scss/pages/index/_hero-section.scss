@@ -1,8 +1,10 @@
 .hero-section {
   @include flex($direction: column);
   @include make-spacer(pt, 11);
+  @include make-spacer(mb, 6);
   @include make-spacer(pt, 13, sm);
   @include make-spacer(pt, 16, md);
+  @include make-spacer(mb, 8, md);
   @include make-spacer(pt, 0, lg);
 
   position: relative;
