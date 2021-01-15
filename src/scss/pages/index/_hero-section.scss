@@ -1,11 +1,7 @@
 .hero-section {
-  @include flex($direction: column);
-  @include make-spacer(pt, 11);
+  @include flex($justify-content: center, $direction: column);
   @include make-spacer(mb, 6);
-  @include make-spacer(pt, 13, sm);
-  @include make-spacer(pt, 16, md);
   @include make-spacer(mb, 8, md);
-  @include make-spacer(pt, 0, lg);
 
   position: relative;
   z-index: 1;
@@ -20,8 +16,7 @@
 
   &__title,
   &__subtitle,
-  &__buttons,
-  &__socials {
+  &__buttons {
     @include make-spacer(mb, 3);
 
     width: 100%;
@@ -98,17 +93,25 @@
   }
 
   &__socials {
+    @include make-spacer(py, 3);
+
+    position: absolute;
+    bottom: 0;
+
     @include media-breakpoint-up(sm) {
-      @include flex($justify-content: center);
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     @include media-breakpoint-up(md) {
       @include make-spacer(mb, 0);
 
       position: absolute;
-      top: 0;
+      top: 50%;
       right: rem(65px);
-      bottom: 0;
+      bottom: auto;
+      left: auto;
+      transform: translateY(-50%);
       writing-mode: vertical-rl;
       width: auto;
 
@@ -141,10 +144,6 @@
       left: 50%;
       transform: translateX(-50%);
     }
-  }
-
-  @include media-breakpoint-up(lg) {
-    justify-content: center;
   }
 }
 
