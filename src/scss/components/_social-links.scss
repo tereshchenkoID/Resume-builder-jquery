@@ -16,6 +16,10 @@
 
     text-decoration: none;
     color: var(--black);
+
+    &:hover {
+      color: var(--white);
+    }
   }
 
   &--white {
