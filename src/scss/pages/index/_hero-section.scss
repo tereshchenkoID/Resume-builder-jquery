@@ -1,5 +1,15 @@
 .hero-section {
-  background-color: var(--black);
+  @include flex($direction: column);
+  @include make-spacer(pt, 11);
+  @include make-spacer(pt, 13, sm);
+  @include make-spacer(pt, 16, md);
+  @include make-spacer(pt, 0, lg);
+
+  position: relative;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
   color: var(--white);
 
   .icon {
@@ -13,21 +23,6 @@
     @include make-spacer(mb, 3);
 
     width: 100%;
-  }
-
-  &__wrapper {
-    @include flex($direction: column);
-    @include make-spacer(pt, 11);
-    @include make-spacer(pt, 13, sm);
-    @include make-spacer(pt, 16, md);
-    @include make-spacer(pt, 0, lg);
-
-    position: relative;
-    min-height: 100vh;
-
-    @include media-breakpoint-up(lg) {
-      justify-content: center;
-    }
   }
 
   &__title {
@@ -53,6 +48,8 @@
     @include make-spacer(mb, 4, sm);
     @include make-spacer(mb, 6, md);
 
+    font-weight: var(--bold);
+
     @include media-breakpoint-up(sm) {
       text-align: center;
     }
@@ -70,15 +67,15 @@
       width: 100%;
 
       @include media-breakpoint-up(sm) {
-        max-width: 176px;
+        max-width: rem(176px);
       }
 
       @include media-breakpoint-up(md) {
-        max-width: 212px;
+        max-width: rem(212px);
       }
 
       @include media-breakpoint-up(lg) {
-        max-width: 173px;
+        max-width: rem(173px);
       }
 
       &--primary {
@@ -94,11 +91,8 @@
   }
 
   &__socials {
-
-    .icon {
-      @include make-spacer(ml, 3);
-      @include make-spacer(ml, 0, md);
-      @include make-spacer(mt, 3, md);
+    @include media-breakpoint-up(sm) {
+      @include flex($justify-content: center);
     }
 
     @include media-breakpoint-up(md) {
@@ -110,17 +104,11 @@
       bottom: 0;
       writing-mode: vertical-rl;
       width: auto;
-    }
-  }
 
-  &__subscribe {
-    @include font-size(16px, 24px);
-    @include flex($align-items: center);
-
-    font-weight: var(--bold);
-
-    @include media-breakpoint-up(sm) {
-      justify-content: center;
+      .follow-us__link {
+        @include make-spacer(ml, 0);
+        @include make-spacer(mt, 4);
+      }
     }
   }
 
@@ -133,7 +121,6 @@
 
     .icon {
       @include make-spacer(mt, 1);
-      @include size(24px);
 
       fill: var(--accent);
     }
@@ -146,6 +133,10 @@
       left: 50%;
       transform: translateX(-50%);
     }
+  }
+
+  @include media-breakpoint-up(lg) {
+    justify-content: center;
   }
 }
 

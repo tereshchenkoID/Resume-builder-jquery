@@ -1,0 +1,19 @@
+.follow-us {
+  @include flex($align-items: center);
+  @include font-size(16px 24px);
+
+  color: currentColor;
+  font-weight: var(--bold);
+
+  .icon {
+    @include size(100%);
+  }
+
+  &__link {
+    @include size(rem(24px));
+    @include make-spacer(ml, 4);
+
+    text-decoration: none;
+    color: currentColor;
+  }
+}

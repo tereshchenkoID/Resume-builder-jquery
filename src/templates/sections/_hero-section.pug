@@ -1,7 +1,7 @@
-section.hero-section
-  .hero-section__wrapper.container
+.hero-section(style="background-image: url('../../../img/hero-bg.jpg');")
+  .container
     h1.h1.hero-section__title
-      span.accent-background.js-accent-background-animate.active We are Esports
+      span.accent-background.section__word.js-accent-background-animate.active We are Esports
       br
       | Media Holding
     h4.h4.hero-section__subtitle
@@ -16,9 +16,7 @@ section.hero-section
         | Watch video
 
     .hero-section__socials
-      p.p.hero-section__subscribe Follow us on
-        +icon('facebook-white', 'icon')
-        +icon('linkedin-white', 'icon')
+      include ../components/_follow-us
 
     a(href="#section").hero-section__anchor.anchor Learn more
       +icon('arrow-down', 'icon')

@@ -21,6 +21,7 @@
   &__textarea {
     @include size(100%);
     @include make-spacer(px, 2);
+    @include make-spacer(py, 1);
     @include font-size(14px, 22px);
 
     border: 1px solid var(--grey-250);
