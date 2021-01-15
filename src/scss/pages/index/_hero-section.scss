@@ -106,7 +106,6 @@
     @include media-breakpoint-up(md) {
       @include make-spacer(mb, 0);
 
-      position: absolute;
       top: 50%;
       right: rem(65px);
       bottom: auto;
