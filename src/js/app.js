@@ -6,6 +6,7 @@ import scrollAnimation from './components/scroll-observer'
 import accordion from './components/accordion'
 import numAnimationOnScroll from './components/num-animatio-on-scroll'
 import anchorScroll from './components/anchor-scroll'
+import slider from './components/brands-slider'
 
 menu();
 dropdown();
@@ -13,3 +14,4 @@ scrollAnimation();
 accordion();
 numAnimationOnScroll();
 anchorScroll('a[href^=\\#]', $('.header').height());
+slider();
