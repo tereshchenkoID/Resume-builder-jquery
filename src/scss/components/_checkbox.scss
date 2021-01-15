@@ -33,7 +33,7 @@
 
     &::before {
       @include make-spacer(mr, 1);
-      @include transition;
+      @include transition(background-color);
 
       display: inline-block;
       position: relative;
