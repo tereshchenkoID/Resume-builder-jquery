@@ -58,7 +58,8 @@
       }
 
       &:first-child {
-        @include make-spacer(mr, 0);
+        @include make-spacer(mr, 4);
+        @include make-spacer(mr, 0, sm);
       }
     }
   }
