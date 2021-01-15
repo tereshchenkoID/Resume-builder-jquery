@@ -1,6 +1,6 @@
 .brands {
-  position: relative;
-  overflow: hidden;
+  @include make-spacer(pt, 12);
+  @include make-spacer(pt, 16, md);
 
   &__quote-list {
     @include reset-list;
