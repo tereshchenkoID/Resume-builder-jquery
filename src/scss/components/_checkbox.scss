@@ -32,10 +32,10 @@
 
     &::before {
       @include make-spacer(mr, 1);
+      @include transition;
 
       display: inline-block;
       position: relative;
-      transition: all 0.2s;
       border: 1px solid var(--accent);
       border-radius: 2px;
       background-color: transparent;
