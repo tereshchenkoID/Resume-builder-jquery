@@ -32,6 +32,11 @@
 
     font-weight: var(--extra-bold);
 
+    .section__word {
+      @include make-spacer(ml, 0);
+      @include make-spacer(ml, 2, sm);
+    }
+
     @include media-breakpoint-up(sm) {
       @include font-size(48px, 56px);
 
@@ -114,6 +119,7 @@
 
   &__anchor {
     @include font-size(14px);
+    @include make-spacer(pt, 2);
 
     display: none;
     text-decoration: none;
