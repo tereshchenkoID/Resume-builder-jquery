@@ -1,5 +1,5 @@
 .social-links {
-  @include flex($align-items: center);
+  @include flex(center, center, column);
   @include font-size(16px 24px);
 
   color: var(--black);
@@ -7,6 +7,19 @@
 
   .icon {
     @include size(100%);
+  }
+
+  @include media-breakpoint-up(sm) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__wrap {
+    @include flex($align-items: center);
+    @include make-spacer(ml, 0);
+    @include make-spacer(ml, 4, sm);
+    @include make-spacer(mt, 2);
+    @include make-spacer(mt, 0, sm);
   }
 
   &__link {
@@ -20,16 +33,32 @@
     &:hover {
       color: var(--white);
     }
+
+    &:first-child {
+      @include make-spacer(mr, 4);
+    }
   }
 
   &--white {
+    flex-direction: row;
+    justify-content: flex-start;
     color: var(--white);
+
+    .social-links__wrap {
+      @include make-spacer(mt, 0);
+      @include make-spacer(ml, 4);
+      @include make-spacer(ml, 0, sm);
+    }
 
     .social-links__link {
       color: var(--white);
 
       &:hover {
         color: var(--accent);
+      }
+
+      &:first-child {
+        @include make-spacer(mr, 0);
       }
     }
   }

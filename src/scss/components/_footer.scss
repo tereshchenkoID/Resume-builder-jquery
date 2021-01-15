@@ -34,6 +34,32 @@
     }
   }
 
+  &__form {
+    @include flex($direction: column);
+    @include make-spacer(mt, 3);
+  }
+
+  &__group {
+    @include make-spacer(mb, 3);
+  }
+
+  .checkbox__item:checked + .checkbox__label::before {
+    border-color: var(--white);
+  }
+
+  &__input {
+    @include size(100%, rem(40px));
+    @include make-spacer(mb, 3);
+
+    &--button {
+      @include make-spacer(mb, 0);
+
+      .button {
+        width: 100%;
+      }
+    }
+  }
+
   .icon {
     @include size(rem(24px));
   }
