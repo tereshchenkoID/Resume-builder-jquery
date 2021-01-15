@@ -43,10 +43,6 @@
     @include make-spacer(mb, 3);
   }
 
-  .checkbox__item:checked + .checkbox__label::before {
-    border-color: var(--white);
-  }
-
   &__input {
     @include size(100%, rem(40px));
     @include make-spacer(mb, 3);
