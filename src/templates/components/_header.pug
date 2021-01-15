@@ -1,17 +1,18 @@
-header.header
-  button(class="hamburger hamburger--slider header__hamburger js-menu-toggle", type="button", id="hamburger")
-    span(class="hamburger-box")
-      span(class="hamburger-inner")
+header.header.is-transparent
+  .header__hamburger-wrap
+    button(class="hamburger hamburger--slider header__hamburger js-menu-toggle", type="button", id="hamburger")
+      span(class="hamburger-box")
+        span(class="hamburger-inner")
   .header__logo-wrap
     a(href="/" class="header__logo" id="logo")
       +logo
   .header__container
     .header__nav
-      +nav
+      +nav('desktop')
+
+    .header__controls
+      +languages('header__language')
 
     .header__buttons
-      a(href="/", class="button button--white button--secondary") Contact us
-
-  .header__controls
-    +languages('header__language')
+      a(href="/", class="header__button") Contact us
 

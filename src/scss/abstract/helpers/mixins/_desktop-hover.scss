@@ -1,0 +1,8 @@
+@mixin desktop-hover {
+
+  &:hover {
+    @media(hover: hover) and (pointer: fine) {
+      @content;
+    }
+  }
+}

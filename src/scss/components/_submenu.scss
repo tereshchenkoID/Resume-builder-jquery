@@ -1,0 +1,40 @@
+.submenu {
+  @include make-spacer(pt, 3);
+  @include make-spacer(px, 2);
+
+  display: none;
+
+  &__item {
+    @include make-spacer(mb, 2);
+
+    overflow: hidden;
+
+    &:last-child {
+      @include make-spacer(mb, 0);
+    }
+  }
+
+  &__link {
+    @include font-size(16px, 24px);
+
+    text-decoration: none;
+    color: var(--black);
+  }
+
+  &--desktop {
+    @include make-spacer(py, 2);
+
+    position: absolute;
+    background-color: var(--black);
+
+    .submenu__link {
+      @include transition(background-color);
+
+      color: var(--white);
+
+      &:hover {
+        background-color: var(--accent-hover);
+      }
+    }
+  }
+}

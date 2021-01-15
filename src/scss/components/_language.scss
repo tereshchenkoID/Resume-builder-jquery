@@ -3,72 +3,141 @@
   color: var(--white);
 
   &__trigger {
+    @include size(100%);
     @include flex($align-items: center);
+    @include make-spacer(px, half);
 
-    color: var(--grey-200);
+    color: var(--black);
     font-weight: var(--bold);
 
     &.is-open {
 
       + .language__list {
-        transform: translateY(0);
+        transform: translate(-50%, 0);
         visibility: visible;
         opacity: 1;
       }
 
       .language__arrow {
-        transform: rotateZ(0);
+        transform: rotate(180deg);
       }
     }
   }
 
   &__arrow {
-    @include font-size(8px);
-    @include transition(transform);
+    @include font-size(20px);
+    @include make-spacer(ml, half);
+    @include transition(#{transform, color});
 
-    transform: rotateZ(-180deg);
+    display: inline-flex;
+    align-items: center;
     transform-origin: center;
     pointer-events: none;
   }
 
   &__label {
-    @include make-spacer(mr, half);
+    @include transition(color);
 
     pointer-events: none;
   }
 
   &__list {
-    @include make-spacer(py, 1);
+    @include make-spacer(py, 2);
     @include transition(#{visibility, transform, opacity});
 
     position: absolute;
-    top: rem(32px);
-    left: 50%;
-    transform: translateY(rem(-16px));
+    top: calc(100% + #{rem(10px)});
+    left: calc(50% + #{rem(4px)});
+    transform: translate(-50%, rem(-16px));
     visibility: hidden;
     opacity: 0;
     z-index: 3;
-    margin-left: rem(-44px);
     box-shadow: 0 0 4px var(--accent);
     background-color: var(--grey-600);
-    width: rem(88px);
+    width: rem(52px);
+  }
+
+  &__item {
+    @include make-spacer(mb, 1);
+
+    &:last-child {
+      @include make-spacer(mb, 0);
+    }
   }
 
   &__button {
-    @include font-size(16px);
-    @include make-spacer(py, 1);
-    @include make-spacer(pl, 3);
-    @include make-spacer(pr, 2);
-    @include transition(background-color);
+    @include make-spacer(pl, 1);
+    @include make-spacer(pr, 1);
+    @include font-size(14px, 22px);
+    @include transition(#{background-color, color});
 
     display: block;
-    text-align: left;
+    text-align: center;
     text-decoration: none;
     color: var(--grey-200);
-    font-weight: var(--bold);
+    font-weight: var(--regular);
+
+    &.js-dropdown__item {
+      color: var(--accent);
+
+      &:hover {
+        color: var(--white);
+      }
+    }
 
     &:hover {
-      background-color: var(--accent);
+      background-color: var(--accent-hover);
+    }
+  }
+
+  &--mobile {
+    @include flex($align-items: center);
+
+    .language__trigger {
+      @include size(auto);
+      @include make-spacer(p, 0);
+      @include make-spacer(mr, 3);
+
+      &.is-open {
+
+        + .language__list {
+          transform: translate(0, 0);
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .language__arrow {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+
+    .language__list {
+      @include size(auto);
+      @include flex($align-items: center);
+      @include make-spacer(p, 0);
+
+      position: static;
+      transform: translate(0, 0);
+      background-color: transparent;
+    }
+
+    .language__item {
+      @include make-spacer(mb, 0);
+      @include make-spacer(mr, 2);
+    }
+
+    .language__button {
+      @include make-spacer(p, 0);
+      @include font-size(16px, 24px);
+
+      color: var(--black);
+      font-weight: var(--bold);
+
+      &.js-dropdown__item {
+        background-color: var(--black);
+        color: var(--white);
+      }
     }
   }
 }

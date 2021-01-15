@@ -1,6 +1,12 @@
 mixin nav(mod)
-  nav(class=(`${mod ? `nav--${mod}` : 'nav'}`))
+  nav(class=(`nav ${mod ? `nav--${mod}` : ''}`))
     ul.nav__list
       each link in nav
         li.nav__item
-          a.nav__link.js-pages(href=link.path)= link.text
+          if link.data
+            a.nav__link.js-pages(href=link.path class=`${mod ? 'mobile-submenu-toggle' : 'submenu-toggle'}`)= link.text
+              span.nav__link-arrow
+                +icon('arrow-triangle', 'icon')
+            +submenu(mod ? mod : '', link.data)
+          else
+            a.nav__link.js-pages(href=link.path)= link.text

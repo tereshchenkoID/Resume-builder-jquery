@@ -2,10 +2,14 @@ mixin languages(className)
   .language.js-button-wrapper(class=`${className}`)
     button(class="language__trigger js-dropdown-button" type="button")
       span.language__label RU
+      span.language__arrow
+        +icon('arrow-triangle', 'icon')
     ul.language__list.js-dropdown-menu
       li.language__item
-        a(href="/" class="language__button js-dropdown__item") EN
+        a(href="/" class="language__button js-dropdown__item") En
       li.language__item
-        a(href="/" class="language__button") ES
+        a(href="/" class="language__button") Ru
       li.language__item
-        a(href="/" class="language__button") TR
+        a(href="/" class="language__button") Pt
+      li.language__item
+        a(href="/" class="language__button") Cn

@@ -8,6 +8,7 @@
 @import 'mixins/word-break';
 @import 'mixins/font-face';
 @import 'mixins/type';
+@import 'mixins/desktop-hover';
 
 @mixin smooth-font {
   -webkit-font-smoothing: antialiased;

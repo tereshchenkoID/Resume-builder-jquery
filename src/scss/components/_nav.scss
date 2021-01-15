@@ -1,5 +1,5 @@
 .nav {
-  @include flex(center, center);
+  @include flex($align-items: center);
 
   &__list {
     @include flex(center, center);
@@ -16,44 +16,73 @@
   }
 
   &__link {
+    @include flex($align-items: center, $display: inline-flex);
     @include font-size(16px, 24px);
+    @include transition(color);
 
     position: relative;
     text-decoration: none;
-    color: #fff;
+    color: var(--black);
     font-weight: var(--bold);
 
     &::after {
-      @include size(0, 2px);
-      @include transition(transform);
+      @include transition(width);
 
+      display: block;
       position: absolute;
-      bottom: rem(-8px);
+      top: 0;
+      right: 100%;
+      bottom: 0;
       left: 0;
-      transform: scaleX(0);
-      background-color: var(--red);
-      width: 100%;
+      z-index: -1;
+      background-color: var(--black);
+      width: 0;
       content: '';
     }
 
     &--is-active {
+      color: var(--white);
 
       &::after {
-        transform: scaleX(1);
+        width: 100%;
+      }
+    }
+
+    &.is-open {
+
+      .nav__link-arrow {
+        transform: rotate(180deg);
       }
     }
 
     &:hover {
+      @include media-breakpoint-up(lg) {
+        color: var(--white);
 
-      &::after {
-        transform: scaleX(1);
+        &::after {
+          width: 100%;
+        }
       }
     }
   }
 
+  &__link-arrow {
+    @include make-spacer(ml, half);
+    @include font-size(20px);
+    @include transition(transform);
+
+    display: inline-flex;
+    align-items: center;
+    transform-origin: center;
+    pointer-events: none;
+  }
+
   &--mobile {
-    @include make-spacer(py, 4);
-    @include make-spacer(px, 3);
+    @include make-spacer(py, 3);
+    @include make-spacer(px, 2);
+    @include make-spacer(px, 4, sm);
+    @include make-spacer(pt, 5, md);
+    @include make-spacer(px, 5, md);
 
     display: block;
 
@@ -64,7 +93,14 @@
       }
 
       &__link {
-        @include font-size(24px, 32px);
+        @include flex(space-between, $display: flex);
+        @include font-size(16px, 24px);
+
+        &.is-active {
+          .nav__link-arrow {
+            transform: rotate(180deg);
+          }
+        }
       }
 
       &__item {

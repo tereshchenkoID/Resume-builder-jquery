@@ -1,5 +1,6 @@
 .mobile-navigation {
-  @include size(100%);
+  @include size(100%, calc(100% - var(--header-height)));
+  @include transition(transform);
 
   display: block;
   position: fixed;
@@ -9,18 +10,34 @@
   transform: translateX(-100%);
   z-index: map-get($z-indexes, mobile-nav);
   background-color: var(--accent);
+  overflow: auto;
+
+  &.is-opened {
+    transform: translateX(0);
+  }
 
   &__lang {
-    @include make-spacer(px, 3);
-    @include make-spacer(py, 3);
+    @include make-spacer(mb, 6);
+    @include make-spacer(px, 2);
+    @include make-spacer(px, 4, sm);
+    @include make-spacer(px, 5, md);
 
-    border-top: 1px solid var(--grey-500);
-    border-bottom: 1px solid var(--grey-500);
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
   }
 
   &__socials {
     @include flex;
     @include make-spacer(pt, 3);
     @include make-spacer(px, 3);
+  }
+
+  @include media-breakpoint-up(sm) {
+    @include size(rem(308px), 100%);
+  }
+
+  @include media-breakpoint-up(md) {
+    @include size(rem(333px), 100%);
   }
 }
