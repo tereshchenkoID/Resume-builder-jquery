@@ -16,6 +16,7 @@
   }
 
   &__item:checked + &__label::before {
+    border-color: var(--accent);
     background-color: var(--accent);
   }
 
@@ -24,36 +25,42 @@
   }
 
   &__label {
+    @include flex;
+
     position: relative;
-    height: rem(24px);
+    cursor: pointer;
+    height: rem(20px);
 
     &::before {
       @include make-spacer(mr, 1);
+      @include transition(background-color);
 
       display: inline-block;
       position: relative;
-      transition: all 0.2s;
       border: 1px solid var(--grey-250);
       border-radius: 2px;
       background-color: transparent;
       cursor: pointer;
-      padding: 11px;
+      padding: rem(9px);
       vertical-align: middle;
       content: '';
     }
 
     &::after {
-      @include size(rem(10px), rem(14px));
+      @include size(rem(8px), rem(12px));
 
       display: none;
       position: absolute;
       top: rem(2px);
-      left: rem(7px);
+      left: rem(6px);
       transform: rotate(45deg);
-      transition: all 0.2s;
       border: solid var(--white);
       border-width: 0 2px 2px 0;
       content: '';
     }
+  }
+
+  &__text {
+    @include font-size(14px, 20px);
   }
 }

@@ -97,12 +97,8 @@
   }
 
   &__group {
-    @include flex;
-    @include make-spacer(mb, 3);
-
-    @include media-breakpoint-up(md) {
-      align-items: center;
-    }
+    @include make-spacer(mb, 5);
+    @include make-spacer(mb, 3, md);
   }
 
   &__policy {
