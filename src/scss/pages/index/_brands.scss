@@ -16,6 +16,7 @@
 
   &__logo-list {
     @include make-spacer(mt, 6);
+    @include make-spacer(mx, auto);
 
     width: rem(288px);
 

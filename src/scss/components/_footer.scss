@@ -1,4 +1,6 @@
 .footer {
+  @include make-spacer(mt, 8);
+
   background-color: var(--accent);
 
   &__title {

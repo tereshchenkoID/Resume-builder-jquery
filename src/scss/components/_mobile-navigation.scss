@@ -1,6 +1,6 @@
 .mobile-navigation {
-  @include size(100%, calc(100% - var(--header-height)));
   @include transition(transform);
+  @include size(100%, calc(100% - var(--header-height)));
 
   display: block;
   position: fixed;
@@ -34,10 +34,10 @@
   }
 
   @include media-breakpoint-up(sm) {
-    @include size(rem(308px), 100%);
+    width: rem(308px);
   }
 
   @include media-breakpoint-up(md) {
-    @include size(rem(333px), 100%);
+    width: rem(333px);
   }
 }
