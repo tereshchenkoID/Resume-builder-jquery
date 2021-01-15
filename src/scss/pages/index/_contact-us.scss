@@ -68,18 +68,16 @@
   &__form {
     @include flex($direction: column);
 
-    width: rem(288px);
-
     @include media-breakpoint-up(sm) {
-      width: rem(276px);
+      max-width: rem(276px);
     }
 
     @include media-breakpoint-up(md) {
-      width: rem(375px);
+      max-width: rem(375px);
     }
 
     @include media-breakpoint-up(lg) {
-      width: rem(480px);
+      max-width: rem(480px);
     }
   }
 

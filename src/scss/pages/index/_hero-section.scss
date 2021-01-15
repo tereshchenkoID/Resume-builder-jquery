@@ -30,11 +30,6 @@
 
     font-weight: var(--extra-bold);
 
-    .section__word {
-      @include make-spacer(ml, 0);
-      @include make-spacer(ml, 2, sm);
-    }
-
     @include media-breakpoint-up(sm) {
       @include font-size(48px, 56px);
 
@@ -69,6 +64,12 @@
     .button {
       width: 100%;
 
+      &:not(:last-child) {
+        @include make-spacer(mb, 3);
+        @include make-spacer(mb, 0, sm);
+        @include make-spacer(mr, 3, sm);
+      }
+
       @include media-breakpoint-up(sm) {
         max-width: rem(176px);
       }
@@ -79,12 +80,6 @@
 
       @include media-breakpoint-up(lg) {
         max-width: rem(173px);
-      }
-
-      &--primary {
-        @include make-spacer(mb, 3);
-        @include make-spacer(mb, 0, sm);
-        @include make-spacer(mr, 3, sm);
       }
     }
 
