@@ -16,6 +16,7 @@
   }
 
   &__item:checked + &__label::before {
+    border-color: var(--accent);
     background-color: var(--accent);
   }
 
@@ -36,7 +37,7 @@
 
       display: inline-block;
       position: relative;
-      border: 1px solid var(--accent);
+      border: 1px solid var(--grey-250);
       border-radius: 2px;
       background-color: transparent;
       cursor: pointer;
