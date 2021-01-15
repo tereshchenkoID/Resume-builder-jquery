@@ -16,7 +16,16 @@ const slider = () => {
     slidesToScroll: 1,
     asNavFor: '.js-slider-for',
     focusOnSelect: true,
+    mobileFirst: true,
     responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      },
       {
         breakpoint: 640,
         settings: {
