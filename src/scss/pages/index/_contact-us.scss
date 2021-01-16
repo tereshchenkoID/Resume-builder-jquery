@@ -95,8 +95,7 @@
   }
 
   &__group {
-    @include make-spacer(mb, 5);
-    @include make-spacer(mb, 3, md);
+    @include make-spacer(mb, 3);
   }
 
   &__policy {

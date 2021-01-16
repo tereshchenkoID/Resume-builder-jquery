@@ -29,7 +29,6 @@
 
     position: relative;
     cursor: pointer;
-    height: rem(20px);
 
     &::before {
       @include make-spacer(mr, 1);
@@ -41,8 +40,8 @@
       border-radius: 2px;
       background-color: transparent;
       cursor: pointer;
-      padding: rem(9px);
-      vertical-align: middle;
+      min-width: rem(24px);
+      height: rem(24px);
       content: '';
     }
 
@@ -51,8 +50,8 @@
 
       display: none;
       position: absolute;
-      top: rem(2px);
-      left: rem(6px);
+      top: rem(4px);
+      left: rem(8px);
       transform: rotate(45deg);
       border: solid var(--white);
       border-width: 0 2px 2px 0;
