@@ -1,7 +1,7 @@
 .hero-section {
   @include flex($justify-content: center, $direction: column);
   @include make-spacer(mb, 6);
-  @include make-spacer(py, 12);
+  @include make-spacer(py, 11);
   @include make-spacer(mb, 8, md);
 
   position: relative;
@@ -59,8 +59,7 @@
   }
 
   &__buttons {
-    @include make-spacer(mb, 8, sm);
-    @include make-spacer(mb, 0, md);
+    @include make-spacer(mb, 0);
 
     .button {
       width: 100%;
@@ -90,7 +89,7 @@
   }
 
   &__socials {
-    @include make-spacer(py, 3);
+    @include make-spacer(pb, 3);
 
     position: absolute;
     bottom: 0;
@@ -101,7 +100,7 @@
     }
 
     @include media-breakpoint-up(md) {
-      @include make-spacer(mb, 0);
+      @include make-spacer(pb, 0);
 
       top: 50%;
       right: rem(65px);
