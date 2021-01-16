@@ -62,4 +62,15 @@
   &__text {
     @include font-size(14px, 20px);
   }
+
+  &--white {
+
+    &::before {
+      background-color: var(--white);
+    }
+  }
+
+  &__item:checked + &--white::before {
+    border-color: var(--white);
+  }
 }

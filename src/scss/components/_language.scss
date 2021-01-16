@@ -140,4 +140,31 @@
       }
     }
   }
+
+  &--footer {
+
+    &.is-open {
+
+      + .language__list {
+        transform: translate(-50%, -30%);
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .language__arrow {
+        transform: rotate(180deg);
+      }
+    }
+
+    .language__list {
+      top: auto;
+      bottom: 100%;
+      left: calc(15% + #{rem(4px)});
+      transform: translate(-50%, rem(16px));
+
+      @include media-breakpoint-up(sm) {
+        left: calc(50% + #{rem(4px)});
+      }
+    }
+  }
 }

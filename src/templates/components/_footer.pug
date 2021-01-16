@@ -8,9 +8,8 @@ footer.footer
         .footer__logo
           a(href="/")
             +logo
-        // TODO: add social component here
         .footer__socials
-          +social-links('footer__subscribe')
+          +social-links
 
   .container
     .footer__menu-wrap
@@ -25,6 +24,16 @@ footer.footer
         +footer-menu(policiesList)
       .footer__column
         h4.footer__title Subscribe
+        form.footer__form
+          .input.footer__input
+            input(type="email" placeholder="E-mail" name="email" class="input__item")
+            span.input__alert asdasda
+          .footer__group.checkbox
+            input(type="checkbox" id="checkbox-footer" class="checkbox__item")
+            label(for="checkbox-footer" class="checkbox--white checkbox__label")
+              span.checkbox__text I agree with Terms of use and Privacy policy
+          .footer__input.footer__input--button
+            input(type="submit" value="Send").button
 
     .footer__copyright-wrap
 
@@ -33,5 +42,5 @@ footer.footer
       .footer__copy-wrap
         p.footer__text 1013 Centre RD STE 403B, Wilmington, DE, USA
         p.footer__text © 2012 - 2020 WePlay Esports Media Holding. Part of TECHIA Holding. All rights reserved.
-        // TODO: add language component here
-        p.footer__text RU
+        .footer__text
+          +languages('language--footer')

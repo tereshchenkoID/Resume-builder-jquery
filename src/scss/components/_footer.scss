@@ -25,12 +25,25 @@
     }
   }
 
-  // TODO: delete when social component include
-  &__subscribe {
-    @include flex(center, center, column);
+  &__form {
+    @include flex($direction: column);
+    @include make-spacer(mt, 3);
+  }
 
-    @include media-breakpoint-up(sm) {
-      flex-direction: row;
+  &__group {
+    @include make-spacer(mb, 3);
+  }
+
+  &__input {
+    @include size(100%, rem(40px));
+    @include make-spacer(mb, 3);
+
+    &--button {
+      @include make-spacer(mb, 0);
+
+      .button {
+        width: 100%;
+      }
     }
   }
 
