@@ -1,6 +1,7 @@
 .hero-section {
   @include flex($justify-content: center, $direction: column);
   @include make-spacer(mb, 6);
+  @include make-spacer(py, 12);
   @include make-spacer(mb, 8, md);
 
   position: relative;
@@ -118,7 +119,6 @@
 
   &__anchor {
     @include font-size(14px);
-    @include make-spacer(pt, 2);
 
     display: none;
     text-decoration: none;
