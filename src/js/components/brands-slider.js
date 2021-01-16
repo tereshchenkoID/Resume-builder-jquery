@@ -12,10 +12,11 @@ const slider = () => {
     asNavFor: '.js-slider-nav'
   });
   $slickNav.slick({
-    slidesToShow: 6,
+    slidesToShow: 2,
     slidesToScroll: 1,
     asNavFor: '.js-slider-for',
     focusOnSelect: true,
+    arrows: false,
     mobileFirst: true,
     responsive: [
       {

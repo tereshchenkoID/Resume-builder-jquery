@@ -40,7 +40,7 @@
       flex-shrink: 0;
       border: 1px solid var(--grey-250);
       border-radius: 2px;
-      background-color: var(--white);
+      background-color: transparent;
       cursor: pointer;
       content: '';
     }
@@ -61,5 +61,16 @@
 
   &__text {
     @include font-size(14px, 20px);
+  }
+
+  &--white {
+
+    &::before {
+      background-color: var(--white);
+    }
+  }
+
+  &__item:checked + &--white::before {
+    border-color: var(--white);
   }
 }

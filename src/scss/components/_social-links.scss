@@ -16,8 +16,6 @@
 
   &__wrap {
     @include flex($align-items: center);
-    @include make-spacer(ml, 0);
-    @include make-spacer(ml, 4, sm);
     @include make-spacer(mt, 2);
     @include make-spacer(mt, 0, sm);
   }
@@ -35,7 +33,8 @@
     }
 
     &:first-child {
-      @include make-spacer(mr, 4);
+      @include make-spacer(ml, 0);
+      @include make-spacer(ml, 3, sm);
     }
   }
 
@@ -46,8 +45,6 @@
 
     .social-links__wrap {
       @include make-spacer(mt, 0);
-      @include make-spacer(ml, 4);
-      @include make-spacer(ml, 0, sm);
     }
 
     .social-links__link {
@@ -58,8 +55,8 @@
       }
 
       &:first-child {
-        @include make-spacer(mr, 4);
-        @include make-spacer(mr, 0, sm);
+        @include make-spacer(ml, 3);
+        @include make-spacer(ml, 0, sm);
       }
     }
   }
