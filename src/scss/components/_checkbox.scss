@@ -31,17 +31,17 @@
     cursor: pointer;
 
     &::before {
+      @include size(rem(20px));
       @include make-spacer(mr, 1);
       @include transition(background-color);
 
       display: inline-block;
       position: relative;
+      flex-shrink: 0;
       border: 1px solid var(--grey-250);
       border-radius: 2px;
       background-color: transparent;
       cursor: pointer;
-      min-width: rem(24px);
-      height: rem(24px);
       content: '';
     }
 
@@ -50,8 +50,8 @@
 
       display: none;
       position: absolute;
-      top: rem(4px);
-      left: rem(8px);
+      top: rem(2px);
+      left: rem(6px);
       transform: rotate(45deg);
       border: solid var(--white);
       border-width: 0 2px 2px 0;
