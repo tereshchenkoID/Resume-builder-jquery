@@ -17,7 +17,7 @@
   background-color: var(--white);
   max-width: rem(480px);
 
-  &.is-open {
+  &.is-notification-open {
     transform: translateY(0);
     opacity: 1;
   }
