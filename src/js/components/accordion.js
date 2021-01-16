@@ -4,14 +4,14 @@ const accordion = () => {
   const $triggers = $('.js-accordion-trigger')
 
   $triggers.each(function () {
-    if(!$(this).hasClass('is-open')) {
+    if(!$(this).hasClass('is-accordion-open')) {
       $(this).next('.js-accordion-content').css('display', 'none')
     }
   });
 
   $triggers.click(function () {
-    $('.is-open').not(this).removeClass('is-open').next().slideUp(300);
-    $(this).toggleClass('is-open').next().slideToggle(300);
+    $('.is-accordion-open').not(this).removeClass('is-accordion-open').next().slideUp(300);
+    $(this).toggleClass('is-accordion-open').next().slideToggle(300);
   });
 }
 

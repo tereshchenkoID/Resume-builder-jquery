@@ -1,5 +1,5 @@
 .icon {
-  @include size(1em);
+  @include size(rem(24px));
 
   display: inline-block;
   flex-shrink: 0;
