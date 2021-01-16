@@ -16,7 +16,7 @@ dropdown();
 scrollAnimation();
 accordion();
 numAnimationOnScroll();
-anchorScroll('a[href^=\\#]', $('.header').height());
+anchorScroll('a[href^=\\#]', $('.header').height() - 30);
 mobileMenuAccordion();
 closeMobileMenuOnResize();
 slider();
