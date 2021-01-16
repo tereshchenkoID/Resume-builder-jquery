@@ -29,20 +29,19 @@
 
     position: relative;
     cursor: pointer;
-    height: rem(20px);
 
     &::before {
+      @include size(rem(20px));
       @include make-spacer(mr, 1);
       @include transition(background-color);
 
       display: inline-block;
       position: relative;
+      flex-shrink: 0;
       border: 1px solid var(--grey-250);
       border-radius: 2px;
       background-color: transparent;
       cursor: pointer;
-      padding: rem(9px);
-      vertical-align: middle;
       content: '';
     }
 
