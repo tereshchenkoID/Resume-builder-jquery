@@ -17,8 +17,7 @@
   }
 
   &__title,
-  &__subtitle,
-  &__buttons {
+  &__subtitle {
     @include make-spacer(mb, 3);
 
     width: 100%;
@@ -59,7 +58,6 @@
   }
 
   &__buttons {
-    @include make-spacer(mb, 0);
 
     .button {
       width: 100%;
