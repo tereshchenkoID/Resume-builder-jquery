@@ -58,6 +58,8 @@
       @include font-size(14px, 22px);
       @include transition(background-color);
 
+      margin-right: -1px;
+      margin-left: -1px;
       color: var(--black);
 
       &:hover {

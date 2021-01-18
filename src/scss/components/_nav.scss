@@ -1,6 +1,17 @@
 .nav {
   @include flex($align-items: center);
 
+  &__link-arrow {
+    @include font-size(20px);
+    @include transition(transform);
+    @include make-spacer(ml, half);
+
+    display: inline-flex;
+    align-items: center;
+    transform-origin: center;
+    pointer-events: none;
+  }
+
   &__list {
     @include flex(center, center);
   }
@@ -58,17 +69,6 @@
         }
       }
     }
-  }
-
-  &__link-arrow {
-    @include font-size(20px);
-    @include transition(transform);
-    @include make-spacer(ml, half);
-
-    display: inline-flex;
-    align-items: center;
-    transform-origin: center;
-    pointer-events: none;
   }
 
   &--mobile {

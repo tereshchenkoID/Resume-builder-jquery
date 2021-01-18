@@ -9,7 +9,7 @@ const revertHeaderColorOnScroll = () => {
 
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY < (window.innerHeight - header.offsetHeight) || window.scrollY <= 0) {
+    if (window.scrollY <= 0) {
       header.classList.add('is-transparent');
     } else {
       header.classList.remove('is-transparent');
