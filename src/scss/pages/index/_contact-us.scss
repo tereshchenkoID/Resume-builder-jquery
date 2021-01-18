@@ -9,10 +9,11 @@
   &__item {
 
     &:first-child {
-      @include make-spacer(px, 10, md);
-      @include make-spacer(px, 12, lg);
 
-      position: relative;
+      .contact-us__title {
+        @include make-spacer(px, 12, lg);
+        @include make-spacer(px, 10, md);
+      }
     }
   }
 
@@ -26,13 +27,11 @@
     max-height: 100%;
 
     @include media-breakpoint-up(sm) {
-      @include absolute-center;
+      bottom: rem(21px);
     }
 
     @include media-breakpoint-up(md) {
-      top: unset;
       bottom: 0;
-      transform: translate(-50%, 0);
     }
   }
 
@@ -41,6 +40,17 @@
     @include make-spacer(mb, 4);
 
     font-weight: var(--extra-bold);
+  }
+
+  &__block {
+    @include make-spacer(px, 10, md);
+    @include make-spacer(px, 12, lg);
+
+    position: relative;
+
+    @include media-breakpoint-up(md) {
+      min-height: rem(310px);
+    }
   }
 
   &__location {
