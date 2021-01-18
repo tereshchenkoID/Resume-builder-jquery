@@ -77,7 +77,7 @@
     color: var(--grey-200);
     font-weight: var(--regular);
 
-    &.language__button-active {
+    &.language__button-is-active {
       color: var(--accent);
 
       &:hover {
@@ -134,7 +134,7 @@
       color: var(--black);
       font-weight: var(--bold);
 
-      &.language__button-active {
+      &.language__button-is-active {
         background-color: var(--black);
         color: var(--white);
       }
@@ -151,7 +151,7 @@
       color: var(--black);
     }
 
-    .language__button-active {
+    .language__button-is-active {
       color: var(--accent);
 
       &:hover {
