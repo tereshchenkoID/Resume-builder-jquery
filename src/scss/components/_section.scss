@@ -30,8 +30,4 @@
     @include size(rem(174px), rem(108px));
     @include make-spacer(mb, 4);
   }
-
-  &__word {
-    @include make-spacer(mx, 2);
-  }
 }
