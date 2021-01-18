@@ -20,7 +20,7 @@ const slider = () => {
     mobileFirst: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 769,
         settings: {
           slidesToShow: 6,
           slidesToScroll: 1,
@@ -28,17 +28,9 @@ const slider = () => {
         }
       },
       {
-        breakpoint: 640,
+        breakpoint: 426,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 320,
-        settings: {
-          slidesToShow: 2,
           slidesToScroll: 1,
           arrows: false,
         }

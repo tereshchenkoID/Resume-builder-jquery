@@ -143,6 +143,24 @@
 
   &--footer {
 
+    .language__list {
+      background-color: var(--white);
+    }
+
+    .language__button {
+      color: var(--black);
+
+      &.js-dropdown__item {
+        color: var(--accent);
+
+        &:hover {
+          color: var(--white);
+        }
+      }
+    }
+
+
+
     &.is-open {
 
       + .language__list {
@@ -158,7 +176,7 @@
 
     .language__list {
       top: auto;
-      bottom: 100%;
+      bottom: calc(100% + #{rem(24px)});
       left: calc(15% + #{rem(4px)});
       transform: translate(-50%, rem(16px));
 
