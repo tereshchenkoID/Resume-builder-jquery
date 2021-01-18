@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import 'slick-slider'
 
-const slider = () => {
+const brandsSlider = () => {
   const $slickFor = $('.js-slider-for')
   const $slickNav = $('.js-slider-nav')
 
@@ -20,7 +20,7 @@ const slider = () => {
     mobileFirst: true,
     responsive: [
       {
-        breakpoint: 769,
+        breakpoint: 1023,
         settings: {
           slidesToShow: 6,
           slidesToScroll: 1,
@@ -28,7 +28,7 @@ const slider = () => {
         }
       },
       {
-        breakpoint: 426,
+        breakpoint: 640,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -39,4 +39,4 @@ const slider = () => {
   });
 }
 
-export default slider
+export default brandsSlider

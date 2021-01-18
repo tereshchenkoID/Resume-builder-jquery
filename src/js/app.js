@@ -6,7 +6,7 @@ import scrollAnimation from './components/scroll-observer'
 import accordion from './components/accordion'
 import numAnimationOnScroll from './components/num-animatio-on-scroll'
 import anchorScroll from './components/anchor-scroll'
-import slider from './components/brands-slider'
+import brandsSlider from './components/brands-slider'
 import mobileMenuAccordion from './components/mobile-menu-accordion'
 import closeMobileMenuOnResize from "./helpers/closeMobileMenuOnResize";
 
@@ -19,4 +19,4 @@ numAnimationOnScroll();
 anchorScroll('a[href^=\\#]', $('.header').height() - 30);
 mobileMenuAccordion();
 closeMobileMenuOnResize();
-slider();
+brandsSlider();

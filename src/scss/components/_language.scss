@@ -77,7 +77,7 @@
     color: var(--grey-200);
     font-weight: var(--regular);
 
-    &.js-dropdown__item {
+    &.language__button-active {
       color: var(--accent);
 
       &:hover {
@@ -134,7 +134,7 @@
       color: var(--black);
       font-weight: var(--bold);
 
-      &.js-dropdown__item {
+      &.language__button-active {
         background-color: var(--black);
         color: var(--white);
       }
@@ -149,17 +149,15 @@
 
     .language__button {
       color: var(--black);
-
-      &.js-dropdown__item {
-        color: var(--accent);
-
-        &:hover {
-          color: var(--white);
-        }
-      }
     }
 
+    .language__button-active {
+      color: var(--accent);
 
+      &:hover {
+        color: var(--white);
+      }
+    }
 
     &.is-open {
 
