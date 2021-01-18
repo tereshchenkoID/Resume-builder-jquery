@@ -56,7 +56,7 @@
 
       &:first-child {
         @include make-spacer(ml, 3);
-        @include make-spacer(ml, 0, sm);
+        @include make-spacer(ml, 0, md);
       }
     }
   }
