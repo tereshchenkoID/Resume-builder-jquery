@@ -11,7 +11,7 @@
   &__subtitle {
     @include font-size(16px, 24px);
     @include make-spacer(mb, 0);
-    @include make-spacer(mx, auto, md);
+    @include make-spacer(mx, auto, sm);
 
     font-weight: var(--bold);
 
@@ -27,7 +27,15 @@
   }
 
   &__icon {
-    @include size(rem(174px), rem(108px));
+    @include size(rem(132px), rem(110px));
     @include make-spacer(mb, 4);
+
+    @include media-breakpoint-only(sm) {
+      @include size(rem(174px), rem(108px));
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include size(rem(174px), rem(108px));
+    }
   }
 }

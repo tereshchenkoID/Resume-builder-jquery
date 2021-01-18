@@ -1,6 +1,4 @@
 .worldwide {
-  @include make-spacer(p, 0, md);
-
   position: relative;
 
   &__list {
@@ -57,4 +55,6 @@
     padding-top: rem(60px);
     padding-bottom: rem(60px);
   }
+
+  @include make-spacer(p, 0, md);  // stylelint-disable-line
 }
