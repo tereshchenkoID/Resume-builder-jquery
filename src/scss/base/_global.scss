@@ -41,10 +41,6 @@ body {
   }
 }
 
-p {
-  @include make-spacer(m, 0);
-}
-
 button {
   @include reset-button;
 }
