@@ -9,6 +9,7 @@
   left: 0;
   transform: translateX(-100%);
   z-index: map-get($z-indexes, mobile-nav);
+  border-top: 1px solid var(--black);
   background-color: var(--accent);
   overflow: auto;
 

@@ -27,7 +27,7 @@
   &__arrow {
     @include font-size(20px);
     @include make-spacer(ml, half);
-    @include transition(#{transform, color});
+    @include transition(transform);
 
     display: inline-flex;
     align-items: center;
@@ -52,8 +52,8 @@
     visibility: hidden;
     opacity: 0;
     z-index: 3;
-    box-shadow: 0 0 4px var(--accent);
-    background-color: var(--grey-600);
+    box-shadow: 0 0 0 1px var(--grey-200);
+    background-color: var(--white);
     width: rem(52px);
   }
 
@@ -74,7 +74,7 @@
     display: block;
     text-align: center;
     text-decoration: none;
-    color: var(--grey-200);
+    color: var(--black);
     font-weight: var(--regular);
 
     &.language__button-is-active {
@@ -119,6 +119,7 @@
 
       position: static;
       transform: translate(0, 0);
+      border: 1px solid transparent;
       background-color: transparent;
     }
 

@@ -6,13 +6,7 @@
   }
 
   &__item {
-
-    + .nav {
-
-      &__item {
-        @include make-spacer(ml, 5);
-      }
-    }
+    position: relative;
   }
 
   &__link {
@@ -67,9 +61,9 @@
   }
 
   &__link-arrow {
-    @include make-spacer(ml, half);
     @include font-size(20px);
     @include transition(transform);
+    @include make-spacer(ml, half);
 
     display: inline-flex;
     align-items: center;
@@ -93,10 +87,10 @@
       }
 
       &__link {
-        @include flex(space-between, $display: flex);
+        @include flex($justify-content: space-between);
         @include font-size(16px, 24px);
 
-        &.is-active {
+        &.is-active-link {
           .nav__link-arrow {
             transform: rotate(180deg);
           }
@@ -109,6 +103,37 @@
 
         &:last-child {
           @include make-spacer(mb, 0);
+        }
+      }
+    }
+  }
+
+  &--desktop {
+    @include flex($align-items: stretch);
+
+    .nav__list {
+      @include flex($align-items: stretch);
+    }
+
+    .nav__item {
+      @include flex($align-items: center);
+      @include make-spacer(ml, 3);
+
+      &:first-child {
+        @include make-spacer(ml, 0);
+      }
+    }
+
+    .nav__link {
+
+      &--desktop-submenu-trigger {
+
+        &::after {
+          display: none;
+        }
+
+        &:hover {
+          color: var(--black);
         }
       }
     }

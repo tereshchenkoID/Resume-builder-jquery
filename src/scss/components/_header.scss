@@ -10,7 +10,6 @@
   grid-template-rows: 1fr;
   grid-template-columns: rem(64px) 1fr auto;
   z-index: map-get($z-indexes, header);
-  border-bottom: 1px solid var(--grey-500);
   background-color: var(--accent);
   font-family: var(--headings-font-family);
 
@@ -33,6 +32,21 @@
     .nav__link {
       color: var(--white);
 
+      &--desktop-submenu-trigger {
+
+        &:hover {
+          color: var(--white);
+
+          .nav__link-arrow {
+            color: var(--accent-hover);
+          }
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+
       &::after {
         background-color: var(--accent);
       }
@@ -52,25 +66,8 @@
       color: var(--white);
     }
 
-    .language__list {
-      background-color: var(--white);
-    }
-
-    .language__button {
-      color: var(--black);
-
-      &.js-dropdown__item {
-        color: var(--accent);
-
-        &:hover {
-          color: var(--white);
-        }
-      }
-    }
-
     .header__button {
       border-color: var(--white);
-      background-color: var(--black);
       color: var(--white);
 
       &:hover {
@@ -130,6 +127,9 @@
   }
 
   &__nav {
+    @include size(100%);
+    @include flex($align-items: stretch);
+
     @include media-breakpoint-down(md) {
       display: none;
     }
