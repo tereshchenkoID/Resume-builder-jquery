@@ -29,3 +29,13 @@
 .u-text-light {
   font-weight: var(--light);
 }
+
+.u-text-block {
+
+  p {
+    @include make-spacer(mb, 2);
+    @include make-spacer(mb, 3, md);
+
+    font-weight: var(--bold);
+  }
+}

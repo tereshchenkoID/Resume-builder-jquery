@@ -1,4 +1,6 @@
 .worldwide {
+  @include make-spacer(p, 0, md);
+
   position: relative;
 
   &__list {
@@ -11,7 +13,6 @@
 
     @include media-breakpoint-up(sm) {
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      min-height: rem(320px);
     }
 
     @include media-breakpoint-up(md) {
@@ -50,5 +51,10 @@
     @include media-breakpoint-up(md) {
       align-items: center;
     }
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-top: rem(60px);
+    padding-bottom: rem(60px);
   }
 }

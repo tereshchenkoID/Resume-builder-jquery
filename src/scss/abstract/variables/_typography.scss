@@ -52,13 +52,13 @@ $tag-types: (
     lg: ($fs-h1),
   ),
   'h2': (
-    null: ($fs-h6),
+    null: ($fs-h5),
     sm: ($fs-h5),
     md: ($fs-h5),
     lg: ($fs-h2),
   ),
   'h3': (
-    null: (rem(24px)),
+    null: ($fs-h6),
     sm: ($fs-h5),
     md: ($fs-h5),
     lg: ($fs-h3)
@@ -82,26 +82,26 @@ $tag-types: (
     lg: ($fs-h6),
   ),
   'p': (
-    null: (rem(14px), 400, 1.43),
+    null: (rem(16px), 400, 1.5),
     sm: (rem(16px), 400, 1.5),
     md: (rem(16px), 400, 1.5),
     lg: (rem(16px), 400, 1.5),
     xl: (rem(16px), 400, 1.5)
   ),
   '.h1': (
-    null: ($fs-h6),
+    null: ($fs-h5),
     sm: ($fs-h3),
     md: ($fs-h1),
     lg: ($fs-h1),
   ),
   '.h2': (
-    null: ($fs-h6),
+    null: ($fs-h5),
     sm: ($fs-h5),
     md: ($fs-h2),
     lg: ($fs-h2),
   ),
   '.h3': (
-    null: (rem(24px)),
+    null: ($fs-h6),
     sm: ($fs-h5),
     md: ($fs-h3),
     lg: ($fs-h3),
