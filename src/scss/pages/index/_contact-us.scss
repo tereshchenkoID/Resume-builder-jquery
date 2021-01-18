@@ -116,7 +116,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: rem(24px);
-    align-items: flex-start;
   }
 
   @include media-breakpoint-up(md) {
