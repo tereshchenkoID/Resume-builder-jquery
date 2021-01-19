@@ -1,5 +1,6 @@
 .contact-form {
   @include make-spacer(pt, 14);
+  @include make-spacer(pt, 22, md);
 
   .button {
     @include make-spacer(mb, 0);
@@ -26,8 +27,7 @@
     }
 
     @include media-breakpoint-up(lg) {
-      grid-template-columns: rem(380px) rem(480px);
-      grid-column-gap: rem(135px);
+      grid-template-columns: repeat(2, rem(480px));
     }
   }
 
