@@ -1,0 +1,103 @@
+.contact-form {
+  @include make-spacer(pt, 14);
+
+  .button {
+    @include make-spacer(mb, 0);
+
+    width: 100%;
+  }
+
+  &__title {
+    @include make-spacer(mb, 4);
+
+    text-align: center;
+  }
+
+  &__wrapper {
+    @include media-breakpoint-up(sm) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: rem(24px);
+    }
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: repeat(2, rem(375px));
+      justify-content: center;
+    }
+
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: rem(380px) rem(480px);
+      grid-column-gap: rem(135px);
+    }
+  }
+
+  &__block {
+    @include make-spacer(mb, 6);
+  }
+
+  &__department {
+    @include make-spacer(mb, 2);
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(24px, 32px);
+    }
+  }
+
+  &__link {
+    @include transition(color);
+
+    position: relative;
+    text-decoration: none;
+    color: var(--black);
+
+    &::before {
+      @include transition(width);
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      background-color: var(--accent);
+      width: 0;
+      content: '';
+    }
+
+    &:hover {
+      color: var(--white);
+
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+
+  &__form {
+    @include flex($direction: column);
+
+    @include media-breakpoint-up(sm) {
+      max-width: rem(276px);
+    }
+
+    @include media-breakpoint-up(md) {
+      max-width: 100%;
+    }
+  }
+
+  &__input {
+    @include size(100%, rem(40px));
+    @include make-spacer(mb, 3);
+
+    &--textarea {
+      height: rem(80px);
+    }
+
+    &--button {
+      @include make-spacer(mb, 0);
+    }
+  }
+
+  &__group {
+    @include make-spacer(mb, 3);
+  }
+}
