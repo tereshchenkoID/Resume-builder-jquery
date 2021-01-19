@@ -27,7 +27,7 @@
   }
 
   &__icon {
-    @include size(rem(132px), rem(110px));
+    @include size(rem(132px), rem(82px));
     @include make-spacer(mb, 4);
 
     @include media-breakpoint-only(sm) {
