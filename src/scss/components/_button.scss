@@ -69,4 +69,15 @@
       color: var(--accent);
     }
   }
+
+  &--action {
+    background-color: var(--white);
+    color: var(--black);
+
+    &:hover {
+      border-color: var(--accent);
+      background-color: var(--white);
+      color: var(--accent);
+    }
+  }
 }

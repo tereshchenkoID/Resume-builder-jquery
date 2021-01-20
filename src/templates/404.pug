@@ -8,11 +8,4 @@ extends layouts/_layout
 
 block content
   main
-    .container
-      .container-columns
-        .container-columns__wrap
-          .container-columns__content
-            p.h1.container-columns__title Страница не найдена
-            p.container-columns__text Простите, но страница, которую вы ищете, не найдена.
-            a(href="/" class="container-columns__link") Перейти на Главную страницу »
-        .container-columns__sidebar
+    include sections/_page-404
