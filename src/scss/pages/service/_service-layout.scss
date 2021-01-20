@@ -1,0 +1,30 @@
+.service-layout {
+  @include make-spacer(pt, 14);
+  @include make-spacer(pt, 22, md);
+
+  &__title {
+    @include font-size(32px, 40px);
+
+    font-weight: var(--extra-bold);
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(48px, 56px);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include font-size(64px, 72px);
+    }
+  }
+
+  &__wrapper {
+    @include media-breakpoint-up(md) {
+      display: grid;
+      grid-template-columns: rem(212px) 1fr;
+      grid-column-gap: rem(32px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: rem(276px) 1fr;
+    }
+  }
+}
