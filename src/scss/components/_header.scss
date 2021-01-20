@@ -4,7 +4,7 @@
   @include make-spacer(px, 5, lg);
 
   display: grid;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   grid-template-rows: 1fr;
@@ -12,6 +12,10 @@
   z-index: map-get($z-indexes, header);
   background-color: var(--accent);
   font-family: var(--headings-font-family);
+
+  &.is-fixed {
+    position: fixed;
+  }
 
   &.is-transparent {
     background-color: transparent;
@@ -32,23 +36,23 @@
     .nav__link {
       color: var(--white);
 
+      &::after {
+        background-color: var(--accent);
+      }
+
       &--desktop-submenu-trigger {
-
-        &:hover {
-          color: var(--white);
-
-          .nav__link-arrow {
-            color: var(--accent-hover);
-          }
-        }
 
         &::after {
           display: none;
         }
-      }
 
-      &::after {
-        background-color: var(--accent);
+        &:hover {
+          color: var(--white);
+
+          .nav__link-arrow {  // stylelint-disable-line
+            color: var(--accent-hover);
+          }
+        }
       }
     }
 
@@ -56,6 +60,7 @@
       color: var(--white);
 
       &:hover {
+
         .language__arrow {
           color: var(--accent);
         }
