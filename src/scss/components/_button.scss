@@ -71,12 +71,12 @@
   }
 
   &--action {
-    background-color: var(--white);
+    background-color: transparent;
     color: var(--black);
 
     &:hover {
       border-color: var(--accent);
-      background-color: var(--white);
+      background-color: transparent;
       color: var(--accent);
     }
   }

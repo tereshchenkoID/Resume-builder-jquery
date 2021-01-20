@@ -10,12 +10,7 @@
     @include make-spacer(mb, 4, sm);
     @include make-spacer(mb, 6, md);
 
-    text-align: center;
     font-weight: var(--extra-bold);
-  }
-
-  &__wrapper {
-    @include flex(center, center, column);
   }
 
   &__title {
@@ -34,7 +29,7 @@
     }
   }
 
-  &__home {
+  &__button {
     width: 100%;
 
     @include media-breakpoint-up(sm) {
@@ -48,9 +43,5 @@
     @include media-breakpoint-up(lg) {
       width: rem(176px);
     }
-  }
-
-  &__button {
-    width: 100%;
   }
 }
