@@ -1,26 +1,10 @@
 .accent-background {
+  @include accent-background;
+
   display: inline-block;
-  position: relative;
   vertical-align: top;
 
-  &::after {
-    @include transition(width);
-
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    background-color: var(--accent);
-    width: 0;
-    content: '';
-  }
-
   &.active {
-
-    &::after {
-      width: 100%;
-    }
+    background-size: 100% 100%;
   }
 }

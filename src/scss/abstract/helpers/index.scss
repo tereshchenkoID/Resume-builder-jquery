@@ -43,3 +43,12 @@
   line-height: $height / $size;
   font-size: rem($size);
 }
+
+@mixin accent-background() {
+  @include transition(background-size);
+
+  background-image: linear-gradient(to bottom, var(--accent) 0%, var(--accent) 100%);
+  background-position: left 100%;
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+}
