@@ -12,10 +12,13 @@
 
   &__list {
     @include reset-list;
+    @include flex($direction: column);
   }
 
   &__item {
     @include make-spacer(mt, 2);
+
+    align-self: flex-start;
   }
 
   &__link {
@@ -24,25 +27,5 @@
     position: relative;
     text-decoration: none;
     color: var(--black);
-
-    &::after {
-      @include transition(width);
-      @include size(0, 100%);
-
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      background-color: var(--accent);
-      content: '';
-    }
-
-    &:hover {
-      color: var(--black);
-
-      &::after {
-        width: 100%;
-      }
-    }
   }
 }
