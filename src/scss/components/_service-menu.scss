@@ -1,0 +1,48 @@
+.service-menu {
+  @include make-spacer(pb, 3);
+
+  border-bottom: 1px solid var(--black);
+
+  &__title {
+    @include make-spacer(mb, 3);
+    @include font-size(20px, 28px);
+
+    font-weight: var(--extra-bold);
+  }
+
+  &__list {
+    @include reset-list;
+  }
+
+  &__item {
+    @include make-spacer(mt, 2);
+  }
+
+  &__link {
+    @include transition(color);
+
+    position: relative;
+    text-decoration: none;
+    color: var(--black);
+
+    &::after {
+      @include transition(width);
+      @include size(0, 100%);
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-color: var(--accent);
+      content: '';
+    }
+
+    &:hover {
+      color: var(--black);
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
