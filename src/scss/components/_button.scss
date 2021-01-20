@@ -69,4 +69,15 @@
       color: var(--accent);
     }
   }
+
+  &--action {
+    background-color: transparent;
+    color: var(--black);
+
+    &:hover {
+      border-color: var(--accent);
+      background-color: transparent;
+      color: var(--accent);
+    }
+  }
 }
