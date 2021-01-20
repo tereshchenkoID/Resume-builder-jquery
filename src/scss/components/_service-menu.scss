@@ -1,0 +1,31 @@
+.service-menu {
+  @include make-spacer(pb, 3);
+
+  border-bottom: 1px solid var(--black);
+
+  &__title {
+    @include make-spacer(mb, 3);
+    @include font-size(20px, 28px);
+
+    font-weight: var(--extra-bold);
+  }
+
+  &__list {
+    @include reset-list;
+    @include flex($direction: column);
+  }
+
+  &__item {
+    @include make-spacer(mt, 2);
+
+    align-self: flex-start;
+  }
+
+  &__link {
+    @include transition(color);
+
+    position: relative;
+    text-decoration: none;
+    color: var(--black);
+  }
+}
