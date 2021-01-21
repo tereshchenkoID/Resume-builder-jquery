@@ -80,8 +80,6 @@
   }
 
   &__form {
-    @include flex($direction: column);
-
     @include media-breakpoint-up(sm) {
       max-width: rem(276px);
     }
@@ -93,24 +91,6 @@
     @include media-breakpoint-up(lg) {
       max-width: rem(480px);
     }
-  }
-
-  &__row {
-    @include make-spacer(mb, 2);
-
-    width: 100%;
-  }
-
-  &__textarea {
-    @include flex($direction: column);
-  }
-
-  &__button {
-    width: 100%;
-  }
-
-  &__group {
-    @include make-spacer(mb, 3);
   }
 
   @include media-breakpoint-up(sm) {

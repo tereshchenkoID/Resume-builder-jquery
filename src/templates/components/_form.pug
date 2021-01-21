@@ -1,0 +1,18 @@
+form.form
+  .input.has-error.form__row
+    input(type="text" placeholder="Name (company)" name="name" class="input__item form__input")
+    span.input__alert asdasda
+  .input.form__row
+    input(type="email" placeholder="E-mail" name="email" class="input__item form__input")
+    span.input__alert asdasda
+  .input.form__row.form__textarea
+    textarea(name="message" placeholder="Message here" class="input__textarea")
+    span.input__alert asdasda
+  .form__group.checkbox.has-error
+    input(type="checkbox" id="checkbox" class="checkbox__item")
+    label(for="checkbox" class="checkbox__label")
+      span.checkbox__text I agree with Terms of use and Privacy policy
+  .form__submit
+    input(type="submit" value="Send").button.form__button
+  .u-my-24
+    include ../components/_notification

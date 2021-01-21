@@ -58,22 +58,4 @@
       max-width: 100%;
     }
   }
-
-  &__row {
-    @include make-spacer(mb, 2);
-
-    width: 100%;
-  }
-
-  &__textarea {
-    @include flex($direction: column);
-  }
-
-  &__button {
-    width: 100%;
-  }
-
-  &__group {
-    @include make-spacer(mb, 3);
-  }
 }
