@@ -43,7 +43,7 @@
     @include make-spacer(my, 6);
     @include make-spacer(my, 8, md);
 
-
-    background-color: var(--grey-200);
+    border-top: 1px solid var(--grey-200);
+    border-bottom: 0;
   }
 }
