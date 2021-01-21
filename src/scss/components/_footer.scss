@@ -36,7 +36,6 @@
 
   &__input {
     @include size(100%, rem(40px));
-    @include make-spacer(mb, 3);
 
     &--button {
       @include make-spacer(mb, 0);
