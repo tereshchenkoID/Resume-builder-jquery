@@ -13,7 +13,7 @@
         each mail in mails
           .contact-form__block
             h4.contact-form__department.h4= mail.department
-            a(href=`mailto:${mail.mail}`).contact-form__link.hover-accent= mail.mail
+            a(href=`mailto:${mail.mail}`).contact-form__link= mail.mail
 
       .contact-form__item
         .contact-form__form

@@ -36,14 +36,15 @@
   }
 
   &__link {
-    @include transition(color);
+    @include accent-background;
 
-    text-decoration: none;
     color: var(--black);
 
     &:hover {
-      color: var(--white);
-
+      @include media-breakpoint-up(lg) {
+        background-size: 100%  100%;
+        text-decoration: none;
+      }
     }
   }
 
