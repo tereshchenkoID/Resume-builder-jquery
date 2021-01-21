@@ -1,20 +1,21 @@
 .mobile-navigation {
-  @include transition(transform);
-  @include size(100%, calc(100% - var(--header-height)));
+  @include transition(#{transform, visibility});
+  @include size(var(--mobile-nav-width), calc(100% - #{var(--header-height)}));
 
-  display: block;
   position: fixed;
   top: var(--header-height);
   bottom: 0;
-  left: 0;
-  transform: translateX(-100%);
+  left: calc(#{var(--mobile-nav-width)} * -1);
+  visibility: hidden;
   z-index: map-get($z-indexes, mobile-nav);
   border-top: 1px solid var(--black);
   background-color: var(--accent);
+  max-width: 100%;
   overflow: auto;
 
   &.is-opened {
-    transform: translateX(0);
+    transform: translateX(100%);
+    visibility: visible;
   }
 
   &__lang {
@@ -32,13 +33,5 @@
     @include flex;
     @include make-spacer(pt, 3);
     @include make-spacer(px, 3);
-  }
-
-  @include media-breakpoint-up(sm) {
-    width: rem(308px);
-  }
-
-  @include media-breakpoint-up(md) {
-    width: rem(333px);
   }
 }
