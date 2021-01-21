@@ -2,8 +2,6 @@
   @include flex($direction: column);
 
   &__row {
-    @include make-spacer(mb, 2);
-
     width: 100%;
   }
 
