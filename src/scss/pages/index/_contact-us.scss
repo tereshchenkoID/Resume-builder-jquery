@@ -95,25 +95,21 @@
     }
   }
 
-  &__input {
-    @include size(100%, rem(40px));
-    @include make-spacer(mb, 3);
+  &__row {
+    margin-bottom: 12px;
+    width: 100%;
+  }
 
-    &--textarea {
-      height: rem(80px);
-    }
+  &__textarea {
+    @include flex($direction: column);
+  }
 
-    &--button {
-      @include make-spacer(mb, 0);
-    }
+  &__button {
+    width: 100%;
   }
 
   &__group {
     @include make-spacer(mb, 3);
-  }
-
-  &__policy {
-    @include font-size(14px, 22px);
   }
 
   @include media-breakpoint-up(sm) {

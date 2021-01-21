@@ -550,11 +550,11 @@
             <div class="contact-us__item">
               <p class="contact-us__title">Drop us a line</p>
               <form class="contact-us__form">
-                <div class="input has-error contact-us__input"><input class="input__item" type="text" placeholder="Name (company)" name="name"><span class="input__alert">asdasda</span></div>
-                <div class="input contact-us__input"><input class="input__item" type="email" placeholder="E-mail" name="email"><span class="input__alert">asdasda</span></div>
-                <div class="input contact-us__input contact-us__input--textarea"><textarea class="input__textarea" name="message" placeholder="Message here"></textarea></div>
-                <div class="contact-us__group checkbox"><input class="checkbox__item" type="checkbox" id="checkbox"><label class="checkbox__label" for="checkbox"><span class="checkbox__text">I agree with Terms of use and Privacy policy</span></label></div>
-                <div class="contact-us__input contact-us__input--button"><input class="button" type="submit" value="Send"></div>
+                <div class="input has-error contact-us__row"><input class="input__item contact-us__input" type="text" placeholder="Name (company)" name="name"><span class="input__alert">asdasda</span></div>
+                <div class="input contact-us__row"><input class="input__item contact-us__input" type="email" placeholder="E-mail" name="email"><span class="input__alert">asdasda</span></div>
+                <div class="input contact-us__row contact-us__textarea"><textarea class="input__textarea" name="message" placeholder="Message here"></textarea><span class="input__alert">asdasda</span></div>
+                <div class="contact-us__group checkbox has-error"><input class="checkbox__item" type="checkbox" id="checkbox"><label class="checkbox__label" for="checkbox"><span class="checkbox__text">I agree with Terms of use and Privacy policy</span></label></div>
+                <div class="contact-us__submit"><input class="button contact-us__button" type="submit" value="Send"></div>
                 <div class="u-my-24">
                   <div class="notification">
                     <div class="p">The form has been successfully submitted and will be processed soon</div><svg class="icon check notification__icon">
@@ -563,6 +563,23 @@
                   </div>
                 </div>
               </form>
+              <!--form.contact-us__form-->
+              <!--  .input.has-error.contact-us__input-->
+              <!--    input(type="text" placeholder="Name (company)" name="name" class="input__item")-->
+              <!--    span.input__alert asdasda-->
+              <!--  .input.contact-us__input-->
+              <!--    input(type="email" placeholder="E-mail" name="email" class="input__item")-->
+              <!--    span.input__alert asdasda-->
+              <!--  .input.contact-us__input.contact-us__input--textarea-->
+              <!--    textarea(name="message" placeholder="Message here" class="input__textarea")-->
+              <!--  .contact-us__group.checkbox-->
+              <!--    input(type="checkbox" id="checkbox" class="checkbox__item")-->
+              <!--    label(for="checkbox" class="checkbox__label")-->
+              <!--      span.checkbox__text I agree with Terms of use and Privacy policy-->
+              <!--  .contact-us__input.contact-us__input--button-->
+              <!--    input(type="submit" value="Send").button-->
+              <!--  .u-my-24-->
+              <!--    include ../components/_notification-->
             </div>
           </div>
         </div>
