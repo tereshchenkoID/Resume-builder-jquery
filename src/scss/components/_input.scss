@@ -51,9 +51,11 @@
   }
 
   &__alert {
-    @include font-size(12px, 8px);
+    @include font-size(12px);
 
     display: block;
+    margin-top: rem(1px);
+    min-height: rem(12px);
     color: transparent;
   }
 }
