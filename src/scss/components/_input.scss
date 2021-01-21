@@ -7,12 +7,13 @@
 
     .input {
 
-      &__item {
+      &__item,
+      &__textarea {
         border-color: var(--red);
       }
 
       &__alert {
-        display: block;
+        color: var(--red);
       }
     }
   }
@@ -25,7 +26,7 @@
     @include font-size(14px, 22px);
 
     border: 1px solid var(--grey-250);
-    border-radius: 4px;
+    border-radius: rem(4px);
     resize: none;
 
     &::placeholder {
@@ -41,10 +42,18 @@
     }
   }
 
-  &__alert {
-    @include font-size(12px, 16px);
+  &__item {
+    height: rem(40px);
+  }
 
-    display: none;
-    color: var(--red);
+  &__textarea {
+    height: rem(80px);
+  }
+
+  &__alert {
+    @include font-size(12px, 8px);
+
+    display: block;
+    color: transparent;
   }
 }

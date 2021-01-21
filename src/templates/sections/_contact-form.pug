@@ -16,22 +16,7 @@
             a(href=`mailto:${mail.mail}`).contact-form__link.hover-accent= mail.mail
 
       .contact-form__item
-        form.contact-form__form
-          .input.has-error.contact-form__row
-            input(type="text" placeholder="Name (company)" name="name" class="input__item contact-form__input")
-            span.input__alert asdasda
-          .input.contact-form__row
-            input(type="email" placeholder="E-mail" name="email" class="input__item contact-form__input")
-            span.input__alert asdasda
-          .input.contact-form__row.contact-form__textarea
-            textarea(name="message" placeholder="Message here" class="input__textarea")
-          .contact-form__group.checkbox
-            input(type="checkbox" id="checkbox" class="checkbox__item")
-            label(for="checkbox" class="checkbox__label")
-              span.checkbox__text I agree with Terms of use and Privacy policy
-          .contact-form__submit
-            input(type="submit" value="Send").button.contact-form__button
-          .u-my-24
-            include ../components/_notification
+        .contact-form__form
+          include ../components/_form
 
 

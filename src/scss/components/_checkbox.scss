@@ -3,7 +3,7 @@
 
   &.has-error {
 
-    &__label {
+    .checkbox__label {
 
       &::before {
         border-color: var(--red);
