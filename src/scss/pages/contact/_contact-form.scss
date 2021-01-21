@@ -2,8 +2,13 @@
 
   &__title {
     @include make-spacer(mb, 4);
+    @include font-size(24px, 32px);
 
     text-align: center;
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(32px, 40px);
+    }
   }
 
   &__wrapper {
@@ -29,6 +34,7 @@
 
   &__department {
     @include make-spacer(mb, 2);
+    @include font-size(20px, 28px);
 
     @include media-breakpoint-up(sm) {
       @include font-size(24px, 32px);
