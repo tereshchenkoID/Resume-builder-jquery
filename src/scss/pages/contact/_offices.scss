@@ -44,6 +44,7 @@
 
     color: var(--black);
     font-weight: var(--bold);
+    font-style: normal;
 
     &:hover {
       @include media-breakpoint-up(lg) {
