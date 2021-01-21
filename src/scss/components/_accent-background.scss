@@ -4,10 +4,6 @@
   display: inline-block;
   vertical-align: top;
 
-  &:hover {
-    background-size: 100% 100%;
-  }
-
   &.active {
     background-size: 100% 100%;
   }
