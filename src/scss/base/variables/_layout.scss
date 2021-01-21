@@ -1,9 +1,15 @@
 :root {
   --header-height: #{rem(64px)};
   --container-width: 100%;
+  --mobile-nav-width: 100%;
+
+  @include media-breakpoint-up(sm) {
+    --mobile-nav-width: #{rem(308px)};
+  }
 
   @include media-breakpoint-up(md) {
     --header-height: #{rem(80px)};
+    --mobile-nav-width: #{rem(333px)};
   }
 
   @include media-breakpoint-up(lg) {
