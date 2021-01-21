@@ -1,6 +1,4 @@
 .service-layout {
-  @include make-spacer(pt, 14);
-  @include make-spacer(pt, 22, md);
 
   &__title {
     @include font-size(32px, 40px);

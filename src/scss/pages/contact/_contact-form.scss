@@ -1,6 +1,4 @@
 .contact-form {
-  @include make-spacer(pt, 14);
-  @include make-spacer(pt, 22, md);
 
   &__title {
     @include make-spacer(mb, 4);

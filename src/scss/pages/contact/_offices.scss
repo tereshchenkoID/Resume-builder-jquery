@@ -38,13 +38,10 @@
   }
 
   &__link {
+    @include accent-background;
     @include font-size(16px, 24px);
     @include transition(background-size);
 
-    background-image: linear-gradient(to bottom, var(--accent) 0%, var(--accent) 98%);
-    background-position: left 100%;
-    background-repeat: no-repeat;
-    background-size: 0 100%;
     color: var(--black);
     font-weight: var(--bold);
 

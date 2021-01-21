@@ -55,6 +55,7 @@ a {
   font-size: var(--font-size);
 }
 
-ul {
+ul,
+ol {
   @include reset-list;
 }
