@@ -96,7 +96,8 @@
   }
 
   &__row {
-    margin-bottom: 12px;
+    @include make-spacer(mb, 2);
+
     width: 100%;
   }
 
