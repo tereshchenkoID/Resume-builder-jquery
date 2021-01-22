@@ -1,43 +1,33 @@
+import $ from 'jquery'
+import HEADER_OFFSET from './constats';
+
 const scrollSpyObserver = () => {
-  const sections = document.querySelectorAll('.js-scroll-spy-section');
-  const navItems = document.querySelectorAll('.js-scroll-spy');
+  const $sections = $('.js-scroll-spy-section');
+  const headerHeight = $('.header').height();
+  const headerOffset = headerHeight + HEADER_OFFSET
+  const firstSectionOffset = $sections.eq(0).offset().top
 
-  if(!sections || !navItems) return
+  $(window).on('scroll', function(){
+    const scrollTopPos = $(this).scrollTop()
 
-  const sectionsArr = [...sections];
+    $sections.each(function() {
+      const id = $(this).attr('id');
+      const offset = $(this).offset().top - headerOffset;
+      const height = $(this).height();
 
-  function activateNavByIndex(index) {
-    if (sectionsArr[index].classList.contains('active'))
-      return;
+      if(scrollTopPos < firstSectionOffset - headerOffset) {
+        $('.js-scroll-spy').removeClass('active')
+      }
 
-    const currentActive = document.querySelectorAll('.js-scroll-spy.active');
-
-    for (let i = currentActive.length - 1; i >= 0; i--) {
-      currentActive[i].classList.remove('active');
-    }
-    navItems[index].classList.add('active');
-  }
-
-  const intersectionCallback = (entries, observer) => {
-    if (entries[0].intesectionRatio <= 0)
-      return;
-
-    if (entries[0].intersectionRatio > 0.5) {
-      activateNavByIndex(sectionsArr.indexOf(entries[0].target))
-    }
-  };
-
-  const intersectionOptions = {
-    threshold: [0, 0.5, 1],
-    rootMargin: '50px 0px 0px 0px',
-    root: null
-  };
-
-  const intersectionObserver = new IntersectionObserver(intersectionCallback, intersectionOptions);
-
-  for (let i = 0; i < sections.length; i++) {
-    intersectionObserver.observe(sections[i]);
-  }
+      if(scrollTopPos >= offset && scrollTopPos < offset + height) {
+        $(`a[href="#${id}"]`)
+          .closest('.js-scroll-spy')
+          .addClass('active')
+          .siblings()
+          .removeClass('active')
+      }
+    });
+  })
 }
 
 export default scrollSpyObserver;

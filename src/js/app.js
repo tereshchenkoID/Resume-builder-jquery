@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import HEADER_OFFSET from './components/constats';
 import menu from './components/menu'
 import dropdown from './components/dropdown'
 import scrollAnimation from './components/scroll-observer'
@@ -13,6 +14,6 @@ dropdown();
 scrollAnimation();
 accordion();
 numAnimationOnScroll();
-anchorScroll('a[href^=\\#]', $('.header').height() + 30);
+anchorScroll('a[href^=\\#]', $('.header').height() + HEADER_OFFSET);
 brandsSlider();
 scrollSpyObserver();
