@@ -16,9 +16,11 @@
   }
 
   &__item {
-    @include make-spacer(mt, 2);
-
     align-self: flex-start;
+
+    &:not( :first-child ) {
+      @include make-spacer(mt, 2);
+    }
 
     &:hover {
       background-size: 100% 100%;
