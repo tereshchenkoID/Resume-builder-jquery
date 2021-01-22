@@ -18,7 +18,7 @@
     @include media-breakpoint-up(md) {
       display: grid;
       grid-template-columns: rem(212px) rem(456px);
-      grid-column-gap: rem(32px);
+      grid-column-gap: rem(24px);
       align-items: flex-start;
     }
 
