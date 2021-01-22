@@ -21,7 +21,7 @@
   }
 
   &__locations {
-    @include make-spacer(pt, 5, sm);
+    @include make-spacer(py, 5, sm);
   }
 
   &__location {
