@@ -25,7 +25,10 @@
   }
 
   &__location {
-    @include make-spacer(mb, 6);
+
+    &:not( :last-child ) {
+      @include make-spacer(mb, 6);
+    }
 
     @include media-breakpoint-up(sm) {
       text-align: center;

@@ -1,7 +1,12 @@
 .footer {
-  @include make-spacer(mt, 8);
+  @include make-spacer(mt, 6);
+  @include make-spacer(mt, 8, md);
 
   background-color: var(--accent);
+
+  .main-logo {
+    fill: var(--black);
+  }
 
   &__title {
     @include font-size(20px, 28px);
@@ -16,7 +21,7 @@
     border-bottom: 1px solid var(--accent-hover);
   }
 
-  &__logo-wrap {
+  &__logo-wrap { // stylelint-disable-line
     @include flex(center, center, column);
 
     @include media-breakpoint-up(sm) {
@@ -46,10 +51,6 @@
     }
   }
 
-  .icon {
-    @include size(rem(24px));
-  }
-
   &__logo {
     @include make-spacer(mb, 3);
     @include make-spacer(mb, 0, sm);
@@ -60,11 +61,7 @@
     }
   }
 
-  .main-logo {
-    fill: var(--black);
-  }
-
-  &__menu-wrap {
+  &__menu-wrap { // stylelint-disable-line
     @include make-spacer(py, 6);
 
     display: grid;
@@ -107,7 +104,7 @@
     border-top: 1px solid var(--accent-hover);
   }
 
-  &__copy-wrap {
+  &__copy-wrap { // stylelint-disable-line
     display: grid;
     grid-row-gap: rem(32px);
 
@@ -131,6 +128,7 @@
     @include font-size(14px, 22px);
 
     @include media-breakpoint-up(md) {
+
       &:last-child {
         justify-self: flex-end;
       }
