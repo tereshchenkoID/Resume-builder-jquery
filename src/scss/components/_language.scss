@@ -119,7 +119,7 @@
 
     .language__list {
       @include size(auto);
-      @include flex($align-items: center);
+      @include flex($align-items: center, $wrap: wrap);
       @include make-spacer(p, 0);
 
       position: static;
