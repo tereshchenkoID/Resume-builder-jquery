@@ -1,0 +1,48 @@
+.blog-hero-section {
+
+  &__bg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+  }
+
+  &__title {
+    @include font-size(32px, 38px);
+    @include make-spacer(px, 10, md);
+
+    margin-top: rem(-60px);
+    font-weight: var(--extra-bold);
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(48px, 56px);
+
+      margin-top: rem(-89px);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include font-size(64px, 72px);
+
+      margin-top: rem(-115px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-top: rem(-108px);
+    }
+  }
+
+  &__text {
+    @include accent-background;
+    @include font-size(100%);
+
+    background-size: 100%;
+    text-decoration: none;
+    color: var(--white);
+  }
+
+  &__tags {
+    @include make-spacer(mt, 3);
+    @include make-spacer(mt, 4, sm);
+    @include flex($justify-content: center);
+  }
+}
