@@ -1,7 +1,21 @@
 .tags {
-  background-color: var(--grey-300);
+  @include flex($wrap: flex-wrap);
 
   &__item {
-    color: var(--white);
+    @include accent-background;
+    @include font-size(14px, 22px);
+    @include make-spacer(mb, 1);
+
+    display: block;
+    text-decoration: none;
+    color: var(--black);
+
+    &:not( :last-child ) {
+      @include make-spacer(mr, 2);
+    }
+
+    &:hover {
+      background-size: 100% 100%;
+    }
   }
 }
