@@ -1,3 +1,129 @@
 .article {
-  background-color: var(--grey-200);
+  @include flex($direction: column);
+
+  &--horizontal-md {
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+
+      .article {
+
+        &__top {
+          @include make-spacer(mr, 4);
+          @include make-spacer(mb, 0);
+
+          flex-shrink: 0;
+          width: rem(375px);
+        }
+
+        &__bottom {
+          @include make-spacer(mt, 0);
+        }
+
+        &__title {
+          @include font-size(20px, 28px);
+
+          font-weight: var(--extra-bold);
+        }
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+
+      .article {
+
+        &__top {
+          width: rem(480px);
+        }
+      }
+    }
+  }
+
+  &__time {
+    @include font-size(14px, 22px);
+
+    position: absolute;
+    bottom: rem(16px);
+    left: rem(24px);
+    color: var(--white);
+  }
+
+  &__image {
+    display: block;
+    position: relative;
+    padding-top: 56.25%;
+    height: 0;
+    text-decoration: none;
+  }
+
+  &__picture {
+    @include size(100%);
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__body {
+    @include flex($direction: column);
+
+    height: 100%;
+  }
+
+  &__top {
+    @include make-spacer(mb, 2);
+
+    position: relative;
+  }
+
+  &__title {
+    @include font-size(16px, 24px);
+    @include make-spacer(mb, 2);
+
+    display: block;
+    text-decoration: none;
+    color: var(--black);
+    font-weight: var(--bold);
+  }
+
+  &__bottom {
+    @include make-spacer(mt, auto);
+    @include flex($align-items: center, $wrap: flex-wrap);
+  }
+
+  &__date {
+    @include font-size(14px, 22px);
+    @include make-spacer(mr, 1);
+  }
+
+  &__author {
+    @include accent-background;
+    @include font-size(14px, 22px);
+
+    text-decoration: none;
+    color: var(--black);
+    font-weight: var(--bold);
+
+    &:hover {
+      background-size: 100% 100%;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+
+    .article__time {
+      @include transition(#{transform, opacity});
+
+      transform: translateY(#{rem(24px)});
+      opacity: 0;
+    }
+
+    &:hover {
+
+      .article__time {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
 }

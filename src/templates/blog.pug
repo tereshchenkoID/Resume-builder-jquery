@@ -11,5 +11,12 @@ block content
     //temporary block
     include sections/_hero-section
 
-    .blog
-     +article
+    .section
+      .container
+        .section__header
+          h1.section__title Latest news
+        .blog
+          .search
+          .blog__grid
+            each article in articles
+              +article(article.name, 'article--horizontal-md')
