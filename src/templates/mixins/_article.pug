@@ -1,0 +1,13 @@
+mixin article(mod)
+  .article(class= mod)
+    .article__top
+      .article__image
+        +picture('img/article/article', 'jpg', 'article__picture')
+    .article__body
+      .article__tags
+        include ../components/_tags
+      .article__title The Ministry of Digital Transformation of Ukraine will support the activities of the
+        | TECHIIA holding in four directions
+      .article__bottom
+        date.article__date Nov 20, 2020
+        span.article__author Kate Litvinova
