@@ -32,12 +32,19 @@
   }
 
   &__text {
-    @include accent-background;
-    @include font-size(100%);
+    @include font-size(32px, 38px);
 
-    background-size: 100%;
+    background-color: var(--accent);
     text-decoration: none;
     color: var(--white);
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(48px, 56px);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include font-size(64px, 72px);
+    }
   }
 
   &__tags {
