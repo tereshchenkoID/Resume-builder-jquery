@@ -21,4 +21,12 @@ block content
             each article in articles
               +article(article.name, 'article--horizontal-md')
 
-    include components/_subscribe
+    .section.section__hr.subscribe
+      .container
+        .section__header
+          h2.section__title.h1
+            span.accent-background.js-accent-background-animate Subscribe
+            | !{' '}to receive cool b2b information about esports
+
+        .subscribe__wrapper
+          include components/_subscribe

@@ -4,12 +4,8 @@
   @include make-spacer(pt, 8);
   @include make-spacer(pt, 16, md);
 
-  border-top: 1px solid var(--grey-200);
-
-  &__form {
+  &__wrapper {
     @include make-spacer(mx, auto);
-
-    max-width: 100%;
 
     @include media-breakpoint-up(sm) {
       max-width: rem(378px);
@@ -28,14 +24,11 @@
     @include make-spacer(mb, 3);
   }
 
-  &__input {
+  &__button {
+    @include make-spacer(mb, 0);
 
-    &--button {
-      @include make-spacer(mb, 0);
-
-      .button {
-        width: 100%;
-      }
+    .button {
+      width: 100%;
     }
   }
 }
