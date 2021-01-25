@@ -1,0 +1,14 @@
+.subscribe-form {
+
+  &__group {
+    @include make-spacer(mb, 3);
+  }
+
+  &__button {
+    @include make-spacer(mb, 0);
+
+    .button {
+      width: 100%;
+    }
+  }
+}
