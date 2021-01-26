@@ -2,6 +2,13 @@
   @include flex($direction: column);
 
   &--horizontal-md {
+
+    .article__title {
+      @include font-size(20px, 28px);
+
+      font-weight: var(--extra-bold);
+    }
+
     @include media-breakpoint-up(md) {
       flex-direction: row;
 
@@ -17,12 +24,6 @@
 
         &__bottom {
           @include make-spacer(mt, 0);
-        }
-
-        &__title {
-          @include font-size(20px, 28px);
-
-          font-weight: var(--extra-bold);
         }
       }
     }
@@ -62,6 +63,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    object-fit: cover;
   }
 
   &__body {
