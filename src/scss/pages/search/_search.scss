@@ -1,0 +1,41 @@
+.search {
+
+  &__articles {
+    display: grid;
+    grid-gap: rem(32px);
+
+    @include media-breakpoint-up(sm) {
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: rem(24px);
+    }
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: 1fr;
+      grid-row-gap: rem(48px);
+    }
+  }
+
+  &__notification {
+    @include make-spacer(pb, 3);
+
+    border-bottom: 1px solid var(--grey-200);
+  }
+
+  &__return {
+    @include make-spacer(mt, 6);
+    @include make-spacer(mx, auto, sm);
+    @include make-spacer(ml, 17, md);
+
+    @include media-breakpoint-up(sm) {
+      width: rem(174px);
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+
+  &__icon {
+    @include size(20px);
+  }
+}
