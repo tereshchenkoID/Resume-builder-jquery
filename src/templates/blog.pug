@@ -17,7 +17,8 @@ block content
         .section__header
           h1.section__title Latest news
         .blog
-          .search
+          .blog__search
+            include components/_search-menu
           .blog__grid
             each article in articles
               +article(article.name, 'article--horizontal-md')

@@ -1,0 +1,83 @@
+.search-menu {
+  border-bottom: 1px solid var(--black);
+
+  &__link,
+  &__input {
+    @include font-size(14px, 22px);
+
+    color: var(--black);
+    font-weight: var(--bold);
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(16px, 24px);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include font-size(16px, 24px);
+    }
+  }
+
+  &__field {
+    @include flex;
+    @include make-spacer(mb, 3);
+    @include make-spacer(mb, 6, sm);
+
+    position: relative;
+    border-bottom: 1px solid var(--black);
+  }
+
+  &__input {
+    @include make-spacer(pb, 1);
+    @include make-spacer(pb, 2, sm);
+
+    border: initial;
+    width: 100%;
+
+    &::placeholder {
+      color: var(--black);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__icon {
+    @include size(22px);
+
+    display: block;
+    fill: var(--black);
+  }
+
+  &__list {
+    @include reset-list;
+    @include flex($direction: column);
+    @include make-spacer(pb, 3);
+  }
+
+  &__item {
+    align-self: flex-start;
+
+    &:not(:first-child) {
+      @include make-spacer(mt, 2);
+    }
+
+    &:hover {
+      background-size: 100% 100%;
+    }
+
+    &--active {
+      background-size: 100% 100%;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  @include media-breakpoint-up(md) {
+    position: sticky;
+    top: calc(var(--header-height) + #{rem(24px)});
+    left: 0;
+  }
+}

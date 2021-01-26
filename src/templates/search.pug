@@ -1,0 +1,36 @@
+---
+title: enestech | IT-holding
+lang: en
+hasLink: false
+isHeaderTransparent: false
+---
+extends layouts/_layout
+
+block content
+  main
+    .section
+      .container
+        .section__header
+          if articles
+            h1.section__title= articles.length + ' results for “A Good Year For Dota 2”'
+          else
+            h1.section__title Your search returned no results for “wrt”
+
+        .search
+          .search__menu
+            include components/_search-menu
+          .search__result
+            if articles
+              .search__articles
+                each article in articles
+                  +article(article.name, 'article--horizontal-md')
+            else
+              .search__notification.u-text-block Suggestions:
+                ul
+                  li Make sure all words are spelled correctly
+                  li Try different keywords
+                  li Try more general words
+            .search__return
+              a(href="/").button.search__button
+                +icon('arrow-left', 'search__icon')
+                | Back to all news
