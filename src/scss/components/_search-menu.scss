@@ -11,10 +11,6 @@
     @include media-breakpoint-up(sm) {
       @include font-size(16px, 24px);
     }
-
-    @include media-breakpoint-up(md) {
-      @include font-size(16px, 24px);
-    }
   }
 
   &__field {
@@ -39,6 +35,7 @@
 
     &:focus {
       outline: none;
+      box-shadow: none;
     }
   }
 
@@ -58,15 +55,15 @@
   &__item {
     align-self: flex-start;
 
+    &.is-active {
+      background-size: 100% 100%;
+    }
+
     &:not(:first-child) {
       @include make-spacer(mt, 2);
     }
 
     &:hover {
-      background-size: 100% 100%;
-    }
-
-    &--active {
       background-size: 100% 100%;
     }
   }
