@@ -3,7 +3,6 @@
   &__background {
     position: relative;
     min-height: 100vh;
-    overflow: hidden;
     pointer-events: none;
   }
 
@@ -12,14 +11,14 @@
 
     display: block;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 0;
+    left: 0;
     z-index: -1;
     object-fit: cover;
   }
 
   &__title {
-    @include font-size(32px, 38px);
+    @include font-size(32px, 37px);
     @include make-spacer(px, 10, md);
 
     margin-top: rem(-60px);
@@ -43,7 +42,7 @@
   }
 
   &__link {
-    @include font-size(32px, 38px);
+    @include font-size(32px, 37px);
 
     background-color: var(--accent);
     text-decoration: none;
