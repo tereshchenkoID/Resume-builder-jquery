@@ -1,6 +1,4 @@
 .search {
-  display: grid;
-  grid-gap: rem(48px);
 
   &__articles {
     display: grid;
@@ -39,20 +37,5 @@
 
   &__icon {
     @include size(20px);
-
-    transform: rotate(180deg);
-  }
-
-  @include media-breakpoint-up(sm) {
-    grid-row-gap: rem(48px);
-  }
-
-  @include media-breakpoint-up(md) {
-    grid-template-columns: rem(212px) 1fr;
-    grid-column-gap: rem(32px);
-  }
-
-  @include media-breakpoint-up(lg) {
-    grid-template-columns: rem(276px) 1fr;
   }
 }

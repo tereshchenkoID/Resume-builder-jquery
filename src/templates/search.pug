@@ -16,7 +16,7 @@ block content
           else
             h1.section__title Your search returned no results for “wrt”
 
-        .search
+        .search.two-columns-layout
           .search__menu
             include components/_search-menu
           .search__result
@@ -32,5 +32,5 @@ block content
                   li Try more general words
             .search__return
               a(href="/").button.search__button
-                +icon('arrow-slider', 'search__icon')
+                +icon('arrow-slider-left', 'search__icon')
                 | Back to all news
