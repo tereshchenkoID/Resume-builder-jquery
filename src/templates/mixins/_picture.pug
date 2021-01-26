@@ -1,4 +1,4 @@
 mixin picture(path, type, className)
   picture
-    source(srcset=`${path}.${type}, ${path}@2.${type} 2x` type=`image/${type}`)
+    source(srcset=`${path}.${type}, ${path}@2x.${type} 2x` type=`image/${type}`)
     img(src=`${path}.${type}` alt="some text" class= className)
