@@ -1,0 +1,65 @@
+.blog-hero-section {
+
+  &__background {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  &__image {
+    @include size(100%);
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+  }
+
+  &__title {
+    @include font-size(32px, 37px);
+    @include make-spacer(px, 10, md);
+
+    position: relative;
+    margin-top: rem(-60px);
+    font-weight: var(--extra-bold);
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(48px, 56px);
+
+      margin-top: rem(-89px);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include font-size(64px, 72px);
+
+      margin-top: rem(-115px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-top: rem(-108px);
+    }
+  }
+
+  &__link {
+    @include font-size(32px, 37px);
+
+    background-color: var(--accent);
+    text-decoration: none;
+    color: var(--white);
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(48px, 56px);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include font-size(64px, 72px);
+    }
+  }
+
+  &__tags {
+    @include make-spacer(mt, 3);
+    @include make-spacer(mt, 4, sm);
+    @include flex($justify-content: center);
+  }
+}
