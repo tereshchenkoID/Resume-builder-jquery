@@ -1,0 +1,14 @@
+.section.tagged-news-section
+  .container
+    .tagged-news-section__header
+      h1.section__title.h3 24 News Tagged to #Esports
+    .tagged-news-section__grid
+      each article in articles
+        +article(article.name)
+    .tagged-news-section__buttons
+      button.button.button--action.button--md
+        +icon('load-more')
+        | Load more
+      a.button.button--md(href="#")
+        +icon('arrow-left')
+        | Back to all news

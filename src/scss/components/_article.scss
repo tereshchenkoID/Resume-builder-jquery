@@ -111,6 +111,10 @@
     }
   }
 
+  &__tags {
+    @include make-spacer(mb, 1);
+  }
+
   @include media-breakpoint-up(md) {
 
     .article__time {

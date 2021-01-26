@@ -10,7 +10,7 @@ block content
   main
     include sections/_blog-hero-section
 
-    hr.section__hr
+    hr.u-section-hr
 
     .section
       .container
@@ -23,12 +23,4 @@ block content
             each article in articles
               +article(article.name, 'article--horizontal-md')
 
-    .section.section__hr.subscribe-section
-      .container
-        .section__header
-          h2.section__title.h1
-            span.accent-background.js-accent-background-animate Subscribe
-            | !{' '}to receive cool b2b information about esports
-
-        .subscribe-section__wrapper
-          include components/_subscribe-form
+    include sections/_suscribe-section

@@ -38,12 +38,4 @@
       @include size(rem(174px), rem(108px));
     }
   }
-
-  &__hr {
-    @include make-spacer(my, 6);
-    @include make-spacer(my, 8, md);
-
-    border-top: 1px solid var(--grey-200);
-    border-bottom: 0;
-  }
 }
