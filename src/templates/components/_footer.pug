@@ -24,16 +24,7 @@ footer.footer
         +footer-menu(policiesList)
       .footer__column
         h4.footer__title Subscribe
-        form.footer__form
-          .input.footer__input
-            input(type="email" placeholder="E-mail" name="email" class="input__item")
-            span.input__alert
-          .footer__group.checkbox
-            input(type="checkbox" id="checkbox-footer" class="checkbox__item")
-            label(for="checkbox-footer" class="checkbox--white checkbox__label")
-              span.checkbox__text I agree with Terms of use and Privacy policy
-          .footer__input.footer__input--button
-            input(type="submit" value="Send").button
+        include _subscribe-form
 
     .footer__copyright-wrap
 
