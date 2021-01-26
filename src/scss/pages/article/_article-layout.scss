@@ -1,8 +1,6 @@
 .article-layout {
   @include make-spacer(mx, auto);
 
-  width: 100%;
-
   @include media-breakpoint-up(md) {
     width: rem(782px);
   }
@@ -11,8 +9,22 @@
     width: rem(994px);
   }
 
-  &__author {
+  //&__author {
+  //  @include flex;
+  //}
+
+  &__date,
+  &__link {
     @include font-size(14px, 22px);
+  }
+
+  &__link {
+    @include transition(color);
+
+    position: relative;
+    text-decoration: none;
+    color: var(--black);
+    font-weight: var(--bold);
   }
 
   &__image {
@@ -32,7 +44,7 @@
       }
 
       .article-layout__load {
-        transform: translate(0, 0);
+        transform: translateY(0);
       }
     }
   }
@@ -76,19 +88,20 @@
     position: absolute;
     right: rem(24px);
     bottom: rem(16px);
-    transform: translate(0, rem(-32px));
+    transform: translateY(rem(-32px));
     z-index: 2;
   }
 
   &__credit {
     @include font-size(14px, 22px);
-    @include flex(flex-start, center);
+    @include flex($align-items: center);
     @include make-spacer(mt, 2);
 
     color: var(--disabled);
   }
 
   &__icon {
+    @include size(rem(20px));
     @include make-spacer(mr, 1);
   }
 
