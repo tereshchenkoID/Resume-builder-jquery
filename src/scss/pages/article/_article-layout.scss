@@ -9,10 +9,6 @@
     width: rem(994px);
   }
 
-  //&__author {
-  //  @include flex;
-  //}
-
   &__date,
   &__link {
     @include font-size(14px, 22px);
