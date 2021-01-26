@@ -27,6 +27,7 @@
     @include make-spacer(pb, 2, sm);
 
     border: initial;
+    box-shadow: none;
     width: 100%;
 
     &::placeholder {
@@ -35,7 +36,6 @@
 
     &:focus {
       outline: none;
-      box-shadow: none;
     }
   }
 
