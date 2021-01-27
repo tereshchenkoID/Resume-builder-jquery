@@ -25,6 +25,7 @@
   &__input {
     @include make-spacer(pb, 1);
     @include make-spacer(pb, 2, sm);
+    @include make-spacer(px, 4);
 
     border: initial;
     box-shadow: none;
@@ -34,6 +35,10 @@
       @include transition(#{opacity, transform});
 
       color: var(--black);
+    }
+
+    &:focus + .search-menu__block--close {
+      opacity: 1;
     }
 
     &:focus::placeholder {
@@ -46,8 +51,29 @@
     }
   }
 
+  &__block {
+    @include size(rem(22px));
+
+    position: absolute;
+
+    @include media-breakpoint-up(sm) {
+      margin-top: rem(2px);
+    }
+
+    &--close {
+      @include transition(opacity);
+
+      right: 0;
+      opacity: 0;
+
+      @include media-breakpoint-up(md) {
+        display: none;
+      }
+    }
+  }
+
   &__icon {
-    @include size(22px);
+    @include size(100%);
 
     display: block;
     fill: var(--black);

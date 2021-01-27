@@ -1,7 +1,9 @@
 .search-menu
   .search-menu__field
     input(type="text" placeholder="Search").search-menu__input
-    a(href="/")
+    .search-menu__block.search-menu__block--close
+      +icon("close", "search-menu__icon")
+    a(href="/").search-menu__block.search-menu__block--search
       +icon("search", "search-menu__icon")
   ul.search-menu__list
     li.search-menu__item.accent-background.is-active
