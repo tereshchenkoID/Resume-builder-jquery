@@ -31,7 +31,14 @@
     width: 100%;
 
     &::placeholder {
+      @include transition(#{opacity, transform});
+
       color: var(--black);
+    }
+
+    &:focus::placeholder {
+      transform: translateX(rem(20px));
+      opacity: 0;
     }
 
     &:focus {

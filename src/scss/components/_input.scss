@@ -30,15 +30,18 @@
     resize: none;
 
     &::placeholder {
+      @include transition(#{opacity, transform});
+
       color: var(--disabled);
+    }
+
+    &:focus::placeholder {
+      transform: translateX(rem(20px));
+      opacity: 0;
     }
 
     &:focus {
       outline: none;
-
-      &::placeholder {
-        visibility: hidden;
-      }
     }
   }
 
@@ -48,6 +51,7 @@
 
   &__textarea {
     height: rem(80px);
+    overflow-x: hidden;
   }
 
   &__alert {
