@@ -2,7 +2,7 @@
 
   &__background {
     position: relative;
-    min-height: 100vh;
+    min-height: 80vh;
   }
 
   &__image {
@@ -21,23 +21,19 @@
     @include make-spacer(px, 10, md);
 
     position: relative;
-    margin-top: rem(-60px);
+    margin-top: rem(-37px);
     font-weight: var(--extra-bold);
 
     @include media-breakpoint-up(sm) {
       @include font-size(48px, 56px);
 
-      margin-top: rem(-89px);
+      margin-top: rem(-56px);
     }
 
     @include media-breakpoint-up(md) {
       @include font-size(64px, 72px);
 
-      margin-top: rem(-115px);
-    }
-
-    @include media-breakpoint-up(lg) {
-      margin-top: rem(-108px);
+      margin-top: rem(-74px);
     }
   }
 
