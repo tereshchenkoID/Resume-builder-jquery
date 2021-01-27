@@ -9,18 +9,8 @@
     width: rem(994px);
   }
 
-  &__date,
-  &__link {
-    @include font-size(14px, 22px);
-  }
-
-  &__link {
-    @include transition(color);
-
-    position: relative;
-    text-decoration: none;
-    color: var(--black);
-    font-weight: var(--bold);
+  &__info {
+    @include flex(center);
   }
 
   &__image {

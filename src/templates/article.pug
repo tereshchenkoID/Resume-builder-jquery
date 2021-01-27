@@ -12,10 +12,8 @@ block content
       .section.article-layout
         .section__header
           h3.section__title Oleksandr Usyk and WePlay Esports Create a New Fighting Games League
-          .u-text-center-sm
-            span.article-layout__date Nov 20, 2020 !{''}
-            .accent-background
-              a.article-layout__link(href='/') Kate Litvinova
+          .article-layout__info
+            include ./components/_article-info
           .article-layout__image
             +picture('img/article/usyk', 'jpg', 'article-layout__picture')
             a.article-layout__download(href='/')
