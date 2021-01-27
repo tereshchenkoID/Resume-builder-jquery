@@ -33,18 +33,18 @@
     width: 100%;
 
     &::placeholder {
-      @include transition(#{opacity, transform});
+      @include transition(#{text-indent, opacity});
 
       color: var(--black);
     }
 
-    &:focus + .search-menu__block--close {
-      opacity: 1;
+    &:placeholder-shown ~ .search-menu__block--close {
+      opacity: 0;
     }
 
     &:focus::placeholder {
-      transform: translateX(rem(20px));
       opacity: 0;
+      text-indent: rem(20px);
     }
 
     &:focus {
@@ -65,7 +65,7 @@
       @include transition(opacity);
 
       right: 0;
-      opacity: 0;
+      opacity: 1;
 
       @include media-breakpoint-up(md) {
         display: none;

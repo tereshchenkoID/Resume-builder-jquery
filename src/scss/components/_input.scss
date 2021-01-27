@@ -30,14 +30,14 @@
     resize: none;
 
     &::placeholder {
-      @include transition(#{opacity, transform});
+      @include transition(#{opacity, text-indent});
 
       color: var(--disabled);
     }
 
     &:focus::placeholder {
-      transform: translateX(rem(20px));
       opacity: 0;
+      text-indent: rem(20px);
     }
 
     &:focus {
@@ -51,7 +51,6 @@
 
   &__textarea {
     height: rem(80px);
-    overflow-x: hidden;
   }
 
   &__alert {
