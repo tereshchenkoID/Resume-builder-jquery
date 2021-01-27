@@ -1,0 +1,119 @@
+.article-layout {
+  @include make-spacer(mx, auto);
+
+  @include media-breakpoint-up(md) {
+    width: rem(782px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: rem(994px);
+  }
+
+  &__info {
+    @include flex(center);
+  }
+
+  &__image {
+    @include make-spacer(mt, 4);
+    @include make-spacer(mt, 6, sm);
+
+    display: block;
+    position: relative;
+    padding-top: 56.25%;
+    height: 0;
+
+    &:hover {
+
+      .article-layout__download {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .article-layout__load {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__picture {
+    @include size(100%);
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+
+  &__download {
+    @include size(100%);
+    @include transition(#{visibility, opacity});
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    color: var(--white);
+
+    &::before {
+      @include size(100%);
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, var(--black-alpha-025) 76.6%, var(--black-alpha-07) 100%);
+      content: '';
+    }
+  }
+
+  &__load {
+    @include transition(transform);
+
+    position: absolute;
+    right: rem(24px);
+    bottom: rem(16px);
+    transform: translateY(rem(-32px));
+    z-index: 2;
+  }
+
+  &__credit {
+    @include font-size(14px, 22px);
+    @include flex($align-items: center);
+    @include make-spacer(mt, 2);
+
+    color: var(--disabled);
+  }
+
+  &__icon {
+    @include size(rem(20px));
+    @include make-spacer(mr, 1);
+  }
+
+  &__wrapper {
+    display: grid;
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: 1fr rem(456px) 1fr;
+    }
+
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: 1fr rem(584px) 1fr;
+    }
+  }
+
+  &__sidebar {
+    display: none;
+
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+  }
+
+  &__menu {
+    position: sticky;
+    top: calc(var(--header-height) + #{rem(24px)});
+    left: 0;
+  }
+}

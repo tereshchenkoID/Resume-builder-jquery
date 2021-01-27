@@ -9,5 +9,4 @@ mixin article(title, mod)
         include ../components/_tags
       a(href="#").article__title= title
       .article__bottom
-        span.article__date Nov 20, 2020
-        a(href="#").article__author Kate Litvinova
+        include ../components/_article-info
