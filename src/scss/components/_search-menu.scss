@@ -26,6 +26,7 @@
     @include make-spacer(pb, 1);
     @include make-spacer(pb, 2, sm);
     @include make-spacer(px, 4);
+    @include make-spacer(pr, 0, md);
 
     border: initial;
     box-shadow: none;
