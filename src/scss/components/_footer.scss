@@ -8,6 +8,24 @@
     fill: var(--black);
   }
 
+  &__socials {
+
+    .social-links {
+      flex-direction: column;
+
+      &__title {
+        @include make-spacer(mr, 0);
+        @include make-spacer(mr, 2, sm);
+        @include make-spacer(mb, 2);
+        @include make-spacer(mb, 0, sm);
+      }
+
+      @include media-breakpoint-up(sm) {
+        flex-direction: row;
+      }
+    }
+  }
+
   &__title {
     @include font-size(20px, 28px);
     @include make-spacer(mb, 3);

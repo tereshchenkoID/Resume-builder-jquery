@@ -108,8 +108,12 @@
       writing-mode: vertical-rl;
 
       .social-links__link {
-        @include make-spacer(ml, 0);
+        @include make-spacer(mr, 0);
         @include make-spacer(mt, 4);
+      }
+
+      .social-links__title {
+        @include make-spacer(mr, 0);
       }
     }
   }

@@ -1,62 +1,64 @@
 .social-links {
-  @include flex(center, center, column);
-  @include font-size(16px 24px);
-
-  color: var(--black);
-  font-weight: var(--bold);
+  @include font-size(16px, 24px);
+  @include flex($align-items: center);
 
   .icon {
     @include size(100%);
   }
 
-  @include media-breakpoint-up(sm) {
-    flex-direction: row;
-    align-items: center;
+  &__title {
+    @include make-spacer(mb, 0);
+    @include make-spacer(mr, 3);
+
+    color: var(--black);
+    font-weight: var(--bold);
   }
 
   &__wrap {
-    @include flex($align-items: center);
-    @include make-spacer(mt, 2);
-    @include make-spacer(mt, 0, sm);
+    @include flex($align-items: center, $wrap: wrap);
   }
 
   &__link {
     @include size(rem(24px));
-    @include make-spacer(ml, 3);
     @include transition(color);
+    @include make-spacer(my, half);
 
     text-decoration: none;
     color: var(--black);
 
-    &:hover {
-      color: var(--white);
+    &:not( :last-child ) {
+      @include make-spacer(mr, 3);
     }
 
-    &:first-child {
-      @include make-spacer(ml, 0);
-      @include make-spacer(ml, 3, sm);
+    &:hover {
+      color: var(--white);
     }
   }
 
   &--white {
-    flex-direction: row;
-    justify-content: flex-start;
-    color: var(--white);
 
-    .social-links__wrap {
-      @include make-spacer(mt, 0);
-    }
+    .social-links {
 
-    .social-links__link {
-      color: var(--white);
-
-      &:hover {
-        color: var(--accent);
+      &__title {
+        color: var(--white);
       }
 
-      &:first-child {
-        @include make-spacer(ml, 3);
-        @include make-spacer(ml, 0, md);
+      &__link {
+        color: var(--white);
+
+        &:hover {
+          color: var(--accent);
+        }
+      }
+    }
+  }
+
+  &--headless {
+
+    .social-links {
+
+      &__title {
+        display: none;
       }
     }
   }

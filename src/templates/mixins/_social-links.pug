@@ -1,5 +1,6 @@
 mixin social-links(modClass)
-  .social-links(class= `social-links--${modClass}`) Follow us on
+  .social-links(class= modClass ? `social-links--${modClass}`: '')
+    p.social-links__title Follow us on
     .social-links__wrap
       a(href="/").social-links__link
         +icon('facebook-white', 'icon')

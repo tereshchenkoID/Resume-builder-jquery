@@ -1,0 +1,24 @@
+---
+title: enestech | IT-holding
+lang: en
+hasLink: false
+footerRedBorder: true
+isHeaderTransparent: false
+---
+extends layouts/_layout
+
+block content
+  main
+    .section
+      .container
+        include sections/_author
+    hr.u-section-hr
+    .section
+      .container
+        .section__header
+          h3.h3.section__title Author articles
+        .three-column-grid
+          each article in [{name: 'One'}, {name: 'Two'}, {name: 'Three'}]
+            +article(article.name)
+    hr.u-section-hr
+    include sections/_suscribe-section
