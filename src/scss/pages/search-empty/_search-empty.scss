@@ -1,19 +1,4 @@
-.search {
-
-  &__articles {
-    display: grid;
-    grid-gap: rem(32px);
-
-    @include media-breakpoint-up(sm) {
-      grid-template-columns: 1fr 1fr;
-      grid-column-gap: rem(24px);
-    }
-
-    @include media-breakpoint-up(md) {
-      grid-template-columns: 1fr;
-      grid-row-gap: rem(48px);
-    }
-  }
+.search-empty {
 
   &__notification {
     @include make-spacer(pb, 3);
