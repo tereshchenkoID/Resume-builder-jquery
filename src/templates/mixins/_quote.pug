@@ -3,7 +3,7 @@ mixin quote({ mod, text, url, linkText, image, author, position })
     +icon("quote", "quote__icon")
     p.quote__text= text
     if url
-      a.quote__link(href=url, target='_blank')= linkText
+      a.quote__link(href=url, target='_blank' rel='noreferrer noopener')= linkText
     else
 
     if image
