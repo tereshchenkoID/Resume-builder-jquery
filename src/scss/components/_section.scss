@@ -6,6 +6,18 @@
     @include make-spacer(mb, 3);
 
     text-align: center;
+
+    &--limited {
+      @include make-spacer(mx, auto, md);
+
+      @include media-breakpoint-up(md) {
+        max-width: rem(620px);
+      }
+
+      @include media-breakpoint-up(lg) {
+        max-width: rem(790px);
+      }
+    }
   }
 
   &__subtitle {
