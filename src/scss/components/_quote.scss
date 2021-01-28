@@ -35,4 +35,20 @@
       }
     }
   }
+
+  &__image {
+    @include size(rem(64px));
+    @include make-spacer(mb, 2);
+
+    display: inline-block;
+    object-fit: cover;
+  }
+
+  &__author {
+    font-weight: var(--bold);
+  }
+
+  &__position {
+    @include font-size(14px, 22px);
+  }
 }

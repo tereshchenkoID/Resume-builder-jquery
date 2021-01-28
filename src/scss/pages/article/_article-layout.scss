@@ -9,6 +9,10 @@
     width: rem(994px);
   }
 
+  &__header {
+    @include make-spacer(mb, 4);
+  }
+
   &__info {
     @include flex(center);
   }
@@ -111,9 +115,32 @@
     }
   }
 
+  &__tags {
+    @include make-spacer(mb, 4);
+    @include make-spacer(pb, 2);
+    @include flex(space-between, $wrap: wrap);
+
+    border-bottom: 1px solid var(--black);
+  }
+
+  &__time {
+    @include font-size(14px, 22px);
+
+    color: var(--disabled);
+  }
+
   &__menu {
     position: sticky;
     top: calc(var(--header-height) + #{rem(24px)});
     left: 0;
+  }
+
+  &__quote {
+    @include make-spacer(mt, 6);
+    @include make-spacer(py, 6);
+
+    border-top: 1px solid var(--grey-200);
+    border-bottom: 1px solid var(--grey-200);
+    text-align: center;
   }
 }
