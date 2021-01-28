@@ -1,5 +1,8 @@
-mixin social-links(modClass)
-  .social-links(class= modClass ? `social-links--${modClass}`: '')
+mixin social-links(modClass, secondModClass)
+  .social-links(
+      class= modClass ? `social-links--${modClass}`: '',
+      class= secondModClass ? `social-links--${secondModClass}`: ''
+    )
     p.social-links__title Follow us on
     .social-links__wrap
       a(href="/").social-links__link

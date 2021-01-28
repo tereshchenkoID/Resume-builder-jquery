@@ -7,9 +7,9 @@
   }
 
   &__image {
+    @include size(rem(132px));
     @include make-spacer(mb, 3);
     @include make-spacer(mb, 0, sm);
-    @include size(rem(132px));
 
     display: block;
     object-fit: cover;

@@ -62,4 +62,17 @@
       }
     }
   }
+
+  &--secondary {
+
+    .social-links {
+
+      &__link {
+
+        &:hover {
+          color: var(--accent);
+        }
+      }
+    }
+  }
 }
