@@ -2,7 +2,7 @@
   .brands__quote-list
     ul.js-slider-for
       each quote in barndsQuotes
-        +quote('brands__quote-item', quote.text, quote.url, quote.linkText)
+        +quote(quote)
 
   .brands__logo-list
     ul.js-slider-nav

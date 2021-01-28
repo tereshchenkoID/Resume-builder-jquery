@@ -1,4 +1,4 @@
-mixin quote(mod, text, link, linkText, image, author, position)
+mixin quote({ mod, text, link, linkText, image, author, position })
   .quote(class= mod)
     +icon("quote", "quote__icon")
     p.quote__text= text

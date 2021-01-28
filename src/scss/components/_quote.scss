@@ -39,7 +39,9 @@
   &__image {
     @include size(rem(64px));
     @include make-spacer(mb, 2);
+    @include make-spacer(mx, auto);
 
+    display: block;
     object-fit: cover;
   }
 
