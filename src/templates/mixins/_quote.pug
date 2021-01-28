@@ -2,13 +2,21 @@ mixin quote(mod, text, link, linkText, image, author, position)
   .quote(class= mod)
     +icon("quote", "quote__icon")
     p.quote__text= text
-    if href
-      a.quote__link(href= link, target='_blank')= linkText
+    if link
+      a.quote__link(href=link, target='_blank')= linkText
+    else
+
     if image
       .quote__image
         +picture(image, 'jpg', 'quote__picture')
+    else
+
     .quote__info
       if author
         .quote__author= author
+      else
+
       if position
         .quote__position= position
+      else
+        
