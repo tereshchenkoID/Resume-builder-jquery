@@ -40,7 +40,6 @@
     @include size(rem(64px));
     @include make-spacer(mb, 2);
 
-    display: inline-block;
     object-fit: cover;
   }
 
