@@ -10,13 +10,13 @@ block content
   main
     .container
       .section.article-layout
-        .section__header
-          h3.section__title Oleksandr Usyk and WePlay Esports Create a New Fighting Games League
+        .article-layout__header
+          h1.h1.section__title Oleksandr Usyk and WePlay Esports Create a New Fighting Games League
           .article-layout__info
             include ./components/_article-info
           .article-layout__image
             +picture('img/article/usyk', 'jpg', 'article-layout__picture')
-            a.article-layout__download(href='/')
+            a.article-layout__download(download='usyk', href='img/article/usyk.jpg')
               +icon('download', 'article-layout__load')
           span.article-layout__credit
             +icon('image', 'article-layout__icon')
@@ -26,6 +26,10 @@ block content
             // add share component
             p.article-layout__menu Share
           .article-layout__conrent
+            .article-layout__tags
+              include ./components/_tags
+              span.article-layout__time 40 min read
+
             .u-text-block
               p.u-text-bold Media holding company and esports tournament organiser WePlay Esports has announced it will host a Mortal Kombat tournament in its purpose-built arena in Kyiv.
               h2 Incorporated rules and policies
@@ -50,7 +54,10 @@ block content
                 li.
                   By using weplay.tv, you agree to follow these Policies. If you don’t, we may suspend or delete your account.
 
+            each quote in articleQuote
+              +quote(quote)
 
+            .u-text-block
               h2 Miscellaneous
               p.
                 By using the Services, you agree to let Medium collect and use information as detailed in our Privacy Policy.
@@ -70,10 +77,11 @@ block content
                 (including your personal information and content) in and out of the United States.
 
 
-    .section.section__hr.subscribe-section
+    hr.u-section-hr
+    .section.subscribe-section
       .container
         .section__header
-          h2.section__title.h1
+          h2.section__title.h2
             span.accent-background.js-accent-background-animate Subscribe
             | !{' '}to receive cool b2b information about esports
 
