@@ -1,11 +1,9 @@
-mixin quote({ mod, text, link, linkText, image, author, position })
+mixin quote({ mod, text, url, linkText, image, author, position })
   .quote(class= mod)
     +icon("quote", "quote__icon")
     p.quote__text= text
-    if href
-      a.quote__link(href= link, target='_blank')= linkText
-    if link
-      a.quote__link(href=link, target='_blank')= linkText
+    if url
+      a.quote__link(href=url, target='_blank' rel='noreferrer noopener')= linkText
     else
 
     if image
