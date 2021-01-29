@@ -1,6 +1,6 @@
 .blog {
 
-  &__grid {
+  &__articles {
     display: grid;
     grid-gap: rem(32px);
 
@@ -14,27 +14,28 @@
       grid-row-gap: rem(48px);
     }
   }
-}
 
-.subscribe-section {
-  @include make-spacer(mt, 4);
-  @include make-spacer(mt, 8, md);
-  @include make-spacer(pt, 8);
-  @include make-spacer(pt, 16, md);
+  &__more {
+    @include make-spacer(mt, 6);
+    @include make-spacer(mx, auto, sm);
+    @include make-spacer(ml, 20, md);
 
-  &__wrapper {
-    @include make-spacer(mx, auto);
 
     @include media-breakpoint-up(sm) {
-      max-width: rem(378px);
+      max-width: rem(176px);
     }
 
     @include media-breakpoint-up(md) {
-      max-width: rem(294px);
+      max-width: rem(130px);
     }
 
     @include media-breakpoint-up(lg) {
-      max-width: rem(378px);
+      margin-left: rem(200px);
+      max-width: rem(173px);
     }
+  }
+
+  &__button {
+    width: 100%;
   }
 }
