@@ -51,21 +51,21 @@ $tag-types: (
     lg: ($fs-h1),
   ),
   'h2': (
-    null: ($fs-h5),
-    sm: ($fs-h5),
-    md: ($fs-h5),
+    null: ($fs-h3),
+    sm: ($fs-h3),
+    md: ($fs-h2),
     lg: ($fs-h2),
   ),
   'h3': (
-    null: ($fs-h6),
-    sm: ($fs-h5),
-    md: ($fs-h5),
+    null: ($fs-h4),
+    sm: ($fs-h4),
+    md: ($fs-h3),
     lg: ($fs-h3)
   ),
   'h4': (
-    null: ($fs-h6),
-    sm: ($fs-h5),
-    md: ($fs-h5),
+    null: ($fs-h4),
+    sm: ($fs-h4),
+    md: ($fs-h4),
     lg: ($fs-h4),
   ),
   'h5': (
@@ -88,26 +88,26 @@ $tag-types: (
     xl: (rem(16px), 400, 1.5)
   ),
   '.h1': (
-    null: ($fs-h5),
-    sm: ($fs-h3),
+    null: ($fs-h3),
+    sm: ($fs-h2),
     md: ($fs-h1),
     lg: ($fs-h1),
   ),
   '.h2': (
-    null: ($fs-h5),
-    sm: ($fs-h5),
+    null: ($fs-h3),
+    sm: ($fs-h3),
     md: ($fs-h2),
     lg: ($fs-h2),
   ),
   '.h3': (
-    null: ($fs-h6),
-    sm: ($fs-h5),
+    null: ($fs-h4),
+    sm: ($fs-h4),
     md: ($fs-h3),
-    lg: ($fs-h3),
+    lg: ($fs-h3)
   ),
   '.h4': (
-    null: ($fs-h6),
-    sm: ($fs-h5),
+    null: ($fs-h4),
+    sm: ($fs-h4),
     md: ($fs-h4),
     lg: ($fs-h4),
   ),
@@ -115,7 +115,7 @@ $tag-types: (
     null: ($fs-h6),
     sm: ($fs-h6),
     md: ($fs-h5),
-    lg: ($fs-h5),
+    lg: ($fs-h5)
   ),
   '.h6': (
     null: ($fs-h6),
