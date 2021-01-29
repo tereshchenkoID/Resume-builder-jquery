@@ -38,6 +38,7 @@
   &--white {
 
     .social-links {
+      display: block;
 
       &__title {
         color: var(--white);
@@ -53,12 +54,19 @@
     }
   }
 
-  &--headless {
+  &--vertical {
+    flex-direction: column;
+    align-items: flex-start;
 
     .social-links {
 
-      &__title {
-        display: none;
+      &__wrap {
+        flex-direction: column;
+      }
+
+      &__link {
+        @include make-spacer(mr, 0);
+        @include make-spacer(mt, 2);
       }
     }
   }

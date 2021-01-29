@@ -23,8 +23,8 @@ block content
             | Image credit
         .article-layout__wrapper
           .article-layout__sidebar
-            // add share component
-            p.article-layout__menu Share
+            .article-layout__menu
+              +social-links('Share', 'secondary', 'vertical')
           .article-layout__conrent
             .article-layout__tags
               include ./components/_tags
