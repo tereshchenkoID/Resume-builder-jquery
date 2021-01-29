@@ -3,7 +3,10 @@ mixin social-links(title, modClass, secondModClass)
       class= modClass ? `social-links--${modClass}`: '',
       class= secondModClass ? `social-links--${secondModClass}`: ''
     )
-    p.social-links__title= title
+    if title
+      p.social-links__title= title
+    else
+
     .social-links__wrap
       a(href="/").social-links__link
         +icon('facebook-white', 'icon')
