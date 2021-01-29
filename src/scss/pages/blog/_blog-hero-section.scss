@@ -18,7 +18,7 @@
 
   &__title {
     @include font-size(32px, 37px);
-    @include make-spacer(px, 10, md);
+    @include make-spacer(mx, auto, md);
 
     position: relative;
     margin-top: rem(-37px);
@@ -31,9 +31,14 @@
     }
 
     @include media-breakpoint-up(md) {
-      @include font-size(64px, 72px);
+      @include font-size(64px, 76px);
 
-      margin-top: rem(-74px);
+      margin-top: rem(-76px);
+      max-width: rem(782px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      max-width: rem(995px);
     }
   }
 
