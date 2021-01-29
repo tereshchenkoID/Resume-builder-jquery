@@ -1,6 +1,4 @@
 .membership {
-  @include make-spacer(py, 12, sm);
-  @include make-spacer(py, 16, md);
 
   &__grid {
     display: grid;
@@ -29,10 +27,5 @@
     @include font-size(16px, 24px);
 
     font-weight: var(--bold);
-  }
-
-  @include media-breakpoint-up(sm) {
-    border-top: 1px solid var(--grey-200);
-    border-bottom: 1px solid var(--grey-200);
   }
 }

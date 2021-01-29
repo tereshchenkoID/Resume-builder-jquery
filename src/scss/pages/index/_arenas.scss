@@ -6,6 +6,7 @@
   &:nth-child(odd) {
     @include make-spacer(pt, 8);
     @include make-spacer(pt, 14, sm);
+    @include make-spacer(pt, 8, md);
     @include make-spacer(pb, 0);
 
     border-bottom: 0;
