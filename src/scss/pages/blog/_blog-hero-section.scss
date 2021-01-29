@@ -27,13 +27,13 @@
     @include media-breakpoint-up(sm) {
       @include font-size(48px, 56px);
 
-      margin-top: rem(-55px);
+      margin-top: rem(-56px);
     }
 
     @include media-breakpoint-up(md) {
-      @include font-size(64px, 72px);
+      @include font-size(64px, 76px);
 
-      margin-top: rem(-70px);
+      margin-top: rem(-76px);
       max-width: rem(782px);
     }
 
