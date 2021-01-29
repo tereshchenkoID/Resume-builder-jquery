@@ -118,14 +118,19 @@
   &__tags {
     @include make-spacer(mb, 4);
     @include make-spacer(pb, 2);
-    @include flex(space-between, $wrap: wrap);
+    @include flex(space-between, $direction: column, $wrap: wrap);
 
     border-bottom: 1px solid var(--black);
+
+    @include media-breakpoint-up(sm) {
+      flex-direction: row;
+    }
   }
 
   &__time {
     @include font-size(14px, 22px);
 
+    display: block;
     color: var(--disabled);
   }
 
