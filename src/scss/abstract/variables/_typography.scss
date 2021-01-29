@@ -36,17 +36,17 @@ $fs-small: 12px;
 // Headings
 //
 
-$fs-h1: rem(64px);
-$fs-h2: rem(64px);
-$fs-h3: rem(48px);
-$fs-h4: rem(40px);
-$fs-h5: rem(32px);
-$fs-h6: rem(24px);
+$fs-h1: rem(64px), $fw-headings, 1.125;
+$fs-h2: rem(48px), $fw-headings, 1.166;
+$fs-h3: rem(32px), $fw-headings, 1.25;
+$fs-h4: rem(24px), $fw-headings, 1.333;
+$fs-h5: rem(16px), $fw-bold, 1.5;
+$fs-h6: rem(16px), $fw-base, 1.5;
 
 $tag-types: (
   'h1': (
-    null: ($fs-h5),
-    sm: ($fs-h3),
+    null: ($fs-h3),
+    sm: ($fs-h2),
     md: ($fs-h1),
     lg: ($fs-h1),
   ),
