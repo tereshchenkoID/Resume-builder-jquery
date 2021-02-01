@@ -69,10 +69,8 @@
     @include make-spacer(mt, 3);
     @include make-spacer(mt, 0, md);
 
-    order: 2;
-
     @include media-breakpoint-up(md) {
-      order: initial;
+      order: -1;
     }
   }
 
@@ -99,6 +97,25 @@
   }
 
   &__menu {
+    @include media-breakpoint-down(sm) {
+
+      .social-links {
+        flex-direction: row;
+
+        &__wrap {
+          flex-direction: row;
+        }
+
+        &__link {
+          @include make-spacer(my, 0);
+
+          &:not( :last-child ) { //stylelint-disable-line
+            @include make-spacer(mr, 3);
+          }
+        }
+      }
+    }
+
     @include media-breakpoint-up(md) {
       position: sticky;
       top: calc(var(--header-height) + #{rem(24px)});

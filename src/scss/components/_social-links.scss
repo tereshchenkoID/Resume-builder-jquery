@@ -35,25 +35,6 @@
     }
   }
 
-  &--vertical-md { // stylelint-disable-line
-    @include media-breakpoint-up(md) {
-      flex-direction: column;
-      align-items: flex-start;
-
-      .social-links {
-
-        &__wrap {
-          flex-direction: column;
-        }
-
-        &__link {
-          @include make-spacer(mr, 0);
-          @include make-spacer(mt, 2);
-        }
-      }
-    }
-  }
-
   &--white {
 
     .social-links {
