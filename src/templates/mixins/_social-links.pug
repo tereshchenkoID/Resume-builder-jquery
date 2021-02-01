@@ -1,4 +1,4 @@
-mixin social-links(title, modClass, secondModClass)
+mixin social-links(socials ,title, modClass, secondModClass)
   .social-links(
       class= modClass ? `social-links--${modClass}`: '',
       class= secondModClass ? `social-links--${secondModClass}`: ''
@@ -8,7 +8,7 @@ mixin social-links(title, modClass, secondModClass)
     else
 
     .social-links__wrap
-      a(href="/").social-links__link
-        +icon('facebook-white', 'icon')
-      a(href="/").social-links__link
-        +icon('linkedin-white', 'icon')
+      each social in socials
+        a(href= social.link).social-links__link
+          +icon(social.icon, 'icon')
+
