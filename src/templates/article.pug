@@ -10,7 +10,7 @@ block content
   main
     .container
       .section.article-layout
-        .section__header
+        .article-layout__header
           h1.h1.section__title Oleksandr Usyk and WePlay Esports Create a New Fighting Games League
           .article-layout__info
             include ./components/_article-info
@@ -23,9 +23,9 @@ block content
         .article-layout__wrapper
           .article-layout__sidebar
             .article-layout__menu
-              +social-links(weplaySocials, 'Share', 'secondary', 'vertical')
+              +social-links(weplaySocials, 'Share', 'secondary', 'vertical-md')
           .article-layout__conrent
-            .article-layout__tags
+            .article-layout__tags.article-layout__tags--top
               include ./components/_tags
               span.article-layout__time 40 min read
 
@@ -89,6 +89,9 @@ block content
                 span.js-total-slides
 
 
-    hr.u-section-hr.u-my-48.u-mb-64
+            hr.u-section-hr.u-mb-24.u-mt-48
+            .article-layout__tags.article-layout__tags--bottom
+              include ./components/_tags
+    hr.u-section-hr.u-my-48.u-my-64-md
     include sections/_suscribe-section
 

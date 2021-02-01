@@ -66,22 +66,28 @@
   }
 
   &__sidebar {
-    display: none;
+    @include make-spacer(mt, 2);
+    @include make-spacer(mt, 0, md);
+
+    order: 2;
 
     @include media-breakpoint-up(md) {
-      display: block;
+      order: initial;
     }
   }
 
   &__tags {
-    @include make-spacer(mb, 4);
-    @include make-spacer(pb, 2);
     @include flex(space-between, $direction: column, $wrap: wrap);
-
-    border-bottom: 1px solid var(--black);
 
     @include media-breakpoint-up(sm) {
       flex-direction: row;
+    }
+
+    &--top {
+      @include make-spacer(mb, 4);
+      @include make-spacer(pb, 2);
+
+      border-bottom: 1px solid var(--black);
     }
   }
 
@@ -93,9 +99,12 @@
   }
 
   &__menu {
-    position: sticky;
-    top: calc(var(--header-height) + #{rem(24px)});
-    left: 0;
+
+    @include media-breakpoint-up(md) {
+      position: sticky;
+      top: calc(var(--header-height) + #{rem(24px)});
+      left: 0;
+    }
   }
 
   &__quote {
