@@ -4,7 +4,7 @@ mixin gallerySlider({ mod, images })
       .gallery-slider__wrap
         .gallery-slider__item
           +picture(image.src, image.type, 'gallery-slider__picture u-img-responsive js-slide-picture', image.name)
-          a.gallery-slider__download(href= image.src, download= image.name)
+          a.gallery-slider__download(href= `${image.src}.${image.type}`, download= image.name)
             +icon('download', 'gallery-slider__load')
 
 
