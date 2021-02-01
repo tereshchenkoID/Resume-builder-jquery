@@ -76,8 +76,9 @@
       color: var(--white);
 
       &:hover {
-        border: 1px solid var(--accent);
-        color: var(--accent);
+        border-color: var(--accent);
+        background-color: var(--accent);
+        color: var(--black);
       }
     }
 
