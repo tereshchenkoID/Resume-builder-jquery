@@ -1,9 +1,11 @@
 import $ from 'jquery'
 import 'slick-slider'
 
-const $slider = $(".js-gallery-slider");
-const $currentSlide = $('.js-current-slide');
-const $totalSlides = $('.js-total-slides');
+const $slider = $('.js-gallery-slider');
+const $sliderPagination = $('.js-slider-pagination');
+const $currentSlide = $sliderPagination.find('.js-current-slide');
+const $totalSlides = $sliderPagination.find('.js-total-slides');
+const $slideTitle = $('.js-slide-title');
 const svgSpritePath = '/img/sprite.svg';
 
 const Icon = (name) => {
@@ -13,6 +15,12 @@ const Icon = (name) => {
     </svg>
   `;
 };
+
+const getPictureTitle = (slick) => {
+  return $(slick.$slides[slick.currentSlide])
+    .find('.js-slide-picture')
+    .attr('alt');
+}
 
 const options = {
   slidesToShow: 1,
@@ -30,10 +38,18 @@ const gallerySlider = () => {
   $slider.slick(options);
 
   $slider.on('afterChange', (event, slick, currentSlide) => {
+    $slideTitle.text(getPictureTitle(slick));
     $currentSlide.text(currentSlide + 1);
   });
 
   const slick = $slider.slick('getSlick');
+
+  $slideTitle.text(getPictureTitle(slick));
+
+  if (slick.slideCount === 1) {
+    $sliderPagination.hide();
+    return;
+  }
 
   $currentSlide.text(slick.currentSlide + 1);
   $totalSlides.text(slick.slideCount);

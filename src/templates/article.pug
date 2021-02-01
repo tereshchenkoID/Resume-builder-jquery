@@ -19,7 +19,7 @@ block content
             a.article-layout__download(download='usyk', href='img/article/usyk.jpg')
               +icon('download', 'article-layout__load')
           .article-layout__credit
-            include ./components/_image-title
+            +imageTitle({mod: '', text: 'Image credit'})
         .article-layout__wrapper
           .article-layout__sidebar
             .article-layout__menu
@@ -82,7 +82,7 @@ block content
               })
             .article-layout__subtitle
               .article-layout__credit
-                include ./components/_image-title
+                +imageTitle({mod: 'js-slide-title'})
               .article-layout__pagination.js-slider-pagination
                 span.js-current-slide
                 | !{' '} from !{' '}
