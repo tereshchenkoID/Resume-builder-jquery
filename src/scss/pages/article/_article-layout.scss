@@ -1,14 +1,6 @@
 .article-layout {
   @include make-spacer(mx, auto);
 
-  @include media-breakpoint-up(md) {
-    width: rem(782px);
-  }
-
-  @include media-breakpoint-up(lg) {
-    width: rem(994px);
-  }
-
   &__header {
     @include make-spacer(mb, 4);
   }
@@ -40,54 +32,20 @@
   }
 
   &__picture {
-    @include size(100%);
-
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: cover;
+    @extend %picture;
   }
 
   &__download {
-    @include size(100%);
-    @include transition(#{visibility, opacity});
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    visibility: hidden;
-    opacity: 0;
-    color: var(--white);
-
-    &::before {
-      @include size(100%);
-
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      z-index: 1;
-      background: linear-gradient(180deg, var(--black-alpha-025) 76.6%, var(--black-alpha-07) 100%);
-      content: '';
-    }
+    @extend %download;
   }
 
   &__load {
-    @include transition(transform);
-
-    position: absolute;
-    right: rem(24px);
-    bottom: rem(16px);
-    transform: translateY(rem(-32px));
-    z-index: 2;
+    @extend %load;
   }
 
   &__credit {
-    @include font-size(14px, 22px);
-    @include flex($align-items: center);
-    @include make-spacer(mt, 2);
-
-    color: var(--disabled);
+    @include make-spacer(mt, 1);
+    @include make-spacer(mt, 2, lg);
   }
 
   &__icon {
@@ -147,5 +105,35 @@
     border-top: 1px solid var(--grey-200);
     border-bottom: 1px solid var(--grey-200);
     text-align: center;
+  }
+
+  &__subtitle {
+    @include make-spacer(mt, 1);
+    @include make-spacer(mt, 2, md);
+
+    display: grid;
+    grid-gap: rem(8px);
+
+    .article-layout__credit {
+      @include make-spacer(mt, 0);
+    }
+
+    @include media-breakpoint-up(sm) {
+      grid-template-columns: 1fr auto;
+    }
+  }
+
+  &__pagination {
+    @include font-size(14px, 22px);
+
+    color: var(--disabled);
+  }
+
+  @include media-breakpoint-up(md) {
+    width: rem(782px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: rem(994px);
   }
 }

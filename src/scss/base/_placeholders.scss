@@ -1,0 +1,48 @@
+%picture {
+  @include size(100%);
+
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+// styles for download link
+
+%download {
+  @include size(100%);
+  @include transition(#{visibility, opacity});
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  color: var(--white);
+
+  // layout
+
+  &::before {
+    @include size(100%);
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, transparent 76.6%, var(--black-alpha-07) 100%);
+    content: '';
+  }
+}
+
+// animated svg icon
+
+%load {
+  @include transition(transform);
+
+  position: absolute;
+  right: rem(24px);
+  bottom: rem(16px);
+  transform: translateY(rem(-32px));
+  z-index: 2;
+}

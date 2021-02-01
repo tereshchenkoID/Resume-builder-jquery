@@ -1,0 +1,6 @@
+.image-title {
+  @include font-size(14px, 22px);
+  @include flex($align-items: center);
+
+  color: var(--disabled);
+}
