@@ -99,7 +99,6 @@
   }
 
   &__menu {
-
     @include media-breakpoint-up(md) {
       position: sticky;
       top: calc(var(--header-height) + #{rem(24px)});
