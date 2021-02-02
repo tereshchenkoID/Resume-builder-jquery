@@ -12,35 +12,6 @@
   &__image {
     @include make-spacer(mt, 4);
     @include make-spacer(mt, 6, sm);
-
-    display: block;
-    position: relative;
-    padding-top: 56.25%;
-    height: 0;
-
-    &:hover {
-
-      .article-layout__download {
-        visibility: visible;
-        opacity: 1;
-      }
-
-      .article-layout__load {
-        transform: translateY(0);
-      }
-    }
-  }
-
-  &__picture {
-    @extend %picture;
-  }
-
-  &__download {
-    @extend %download;
-  }
-
-  &__load {
-    @extend %load;
   }
 
   &__credit {

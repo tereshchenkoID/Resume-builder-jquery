@@ -1,0 +1,6 @@
+mixin download-picture(modClass)
+  .download-picture
+    .download-picture__wrapper(class= modClass)
+      +picture('img/article/usyk', 'jpg', 'download-picture__image')
+    a.download-picture__link(download='usyk', href='img/article/usyk.jpg')
+      +icon('download', 'download-picture__icon')
