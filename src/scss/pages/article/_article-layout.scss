@@ -91,6 +91,7 @@
 
   &__download {
     @include flex($align-items: center);
+    @include make-spacer(mb, 2);
 
     color: var(--black);
 
@@ -123,6 +124,10 @@
     @include media-breakpoint-up(sm) {
       grid-template-columns: 1fr auto;
     }
+  }
+
+  &__gallery {
+    @include make-spacer(mt, 6);
   }
 
   &__pagination {
