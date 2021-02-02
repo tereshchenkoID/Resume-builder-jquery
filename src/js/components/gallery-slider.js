@@ -38,6 +38,10 @@ const options = {
 };
 
 const gallerySlider = () => {
+  if (!$slider.length) {
+    return;
+  }
+
   $slider.slick(options);
 
   $slider.photoSwipe(
