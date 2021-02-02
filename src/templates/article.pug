@@ -15,9 +15,7 @@ block content
           .article-layout__info
             include ./components/_article-info
           .article-layout__image
-            +picture('img/article/usyk', 'jpg', 'article-layout__picture')
-            a.article-layout__download(download='usyk', href='img/article/usyk.jpg')
-              +icon('download', 'article-layout__load')
+            +download-picture
           .article-layout__credit
             +imageTitle({mod: '', text: 'Image credit'})
         .article-layout__wrapper

@@ -1,5 +1,8 @@
 import $ from 'jquery'
 import 'slick-slider'
+import PhotoSwipeMounter from 'jquery.photoswipe';
+
+PhotoSwipeMounter(jQuery); // mount this plugin into jQuery
 
 const $slider = $('.js-gallery-slider');
 const $sliderPagination = $('.js-slider-pagination');
@@ -36,6 +39,11 @@ const options = {
 
 const gallerySlider = () => {
   $slider.slick(options);
+
+  $slider.photoSwipe(
+    '.slick-slide:not(.slick-cloned) .js-picture-gallery', {
+      shareEl: false
+    });
 
   $slider.on('afterChange', (event, slick, currentSlide) => {
     $slideTitle.text(getPictureTitle(slick));

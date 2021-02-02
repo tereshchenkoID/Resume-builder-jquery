@@ -2,9 +2,6 @@ mixin gallerySlider({ mod, images })
   .gallery-slider.js-gallery-slider(class= mod ? mod : '')
     each image in images
       .gallery-slider__wrap
-        .gallery-slider__item
-          +picture(image.src, image.type, 'gallery-slider__picture u-img-responsive js-slide-picture', image.name)
-          a.gallery-slider__download(href= `${image.src}.${image.type}`, download= image.name)
-            +icon('download', 'gallery-slider__load')
+        +download-picture('js-picture-gallery')
 
 
