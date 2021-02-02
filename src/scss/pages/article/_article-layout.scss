@@ -125,6 +125,10 @@
     }
   }
 
+  &__gallery {
+    @include make-spacer(mt, 6);
+  }
+
   &__pagination {
     @include font-size(14px, 22px);
 
