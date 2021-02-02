@@ -91,6 +91,7 @@
 
   &__download {
     @include flex($align-items: center);
+    @include make-spacer(mb, 2);
 
     color: var(--black);
 
