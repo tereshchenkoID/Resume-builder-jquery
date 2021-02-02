@@ -48,6 +48,10 @@ block content
                 li.
                   By using weplay.tv, you agree to follow these Policies. If you don’t, we may suspend or delete your account.
 
+            a(href='/' download='polices').article-layout__download
+              |White paper
+              +icon('download')
+
             each quote in articleQuote
               +quote(quote)
 
@@ -90,6 +94,7 @@ block content
           .article-layout__sidebar
             .article-layout__menu
               +social-links(weplaySocials, 'Share', 'secondary', 'vertical')
+    include sections/_related-articles
     hr.u-section-hr.u-my-48.u-mb-64-md
     include sections/_suscribe-section
 

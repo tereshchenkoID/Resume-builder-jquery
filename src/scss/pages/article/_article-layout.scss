@@ -89,6 +89,17 @@
     }
   }
 
+  &__download {
+    @include flex($align-items: center);
+
+    color: var(--black);
+
+    .icon {
+      @include size(rem(15px));
+      @include make-spacer(ml, 1);
+    }
+  }
+
   &__quote {
     @include make-spacer(mt, 6);
     @include make-spacer(py, 6);
