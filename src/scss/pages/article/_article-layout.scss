@@ -89,8 +89,9 @@
     }
   }
 
-  &__download {
-    @include flex($align-items: center);
+  &__link {
+    @include accent-background;
+    @include flex($align-items: center, $display: inline-flex);
     @include make-spacer(mb, 2);
 
     color: var(--black);
@@ -98,6 +99,13 @@
     .icon {
       @include size(rem(15px));
       @include make-spacer(ml, 1);
+    }
+
+    &:hover {
+      @include media-breakpoint-up(lg) {
+        background-size: 100% 100%;
+        text-decoration-color: transparent;
+      }
     }
   }
 

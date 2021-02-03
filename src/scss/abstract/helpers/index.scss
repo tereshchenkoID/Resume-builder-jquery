@@ -45,7 +45,7 @@
 }
 
 @mixin accent-background() {
-  @include transition(background-size);
+  @include transition(#{background-size, text-decoration-color});
 
   background-image: linear-gradient(to bottom, var(--accent) 0%, var(--accent) 100%);
   background-position: left 100%;
