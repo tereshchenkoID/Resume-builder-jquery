@@ -4,5 +4,7 @@
       h2.section__title.h2.section__title--limited Related articles
 
     .three-column-grid
-      each article in articles
-        +article(article.name)
+      - var n = 0;
+      while n < 6
+        +article(articles[n].name)
+        - n++;
