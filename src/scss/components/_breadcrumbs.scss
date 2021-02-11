@@ -1,0 +1,59 @@
+.breadcrumbs {
+  @include make-spacer(mt, 3);
+  @include make-spacer(mx, 2);
+  @include make-spacer(mx, 4, sm);
+  @include make-spacer(mx, 5, md);
+
+  &__list {
+    @include reset-list;
+    @include flex;
+  }
+
+  &__item {
+
+    &::after {
+      @include make-spacer(mx, 1);
+
+      content: '/';
+    }
+
+    &:last-child {
+      max-width: rem(148px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      @include media-breakpoint-up(sm) {
+        max-width: rem(432px);
+      }
+
+      @include media-breakpoint-up(md) {
+        max-width: 100%;
+      }
+
+      &::after {
+        content: '';
+      }
+    }
+  }
+
+  &__link {
+    @include accent-background;
+    @include font-size(14px, 22px);
+
+    text-decoration: none;
+    color: var(--black);
+
+    &.is-disabled {
+      color: var(--disabled);
+      pointer-events: none;
+    }
+
+    &:hover {
+      @include media-breakpoint-up(lg) {
+        background-size: 100% 100%;
+        text-decoration-color: transparent;
+      }
+    }
+  }
+}
