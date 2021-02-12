@@ -1,38 +1,41 @@
 .breadcrumbs {
   @include make-spacer(mt, 3);
-  @include make-spacer(mx, 2);
-  @include make-spacer(mx, 4, sm);
-  @include make-spacer(mx, 5, md);
+  @include make-spacer(px, 2);
+  @include make-spacer(px, 4, sm);
+  @include make-spacer(px, 5, md);
 
   &__list {
     @include reset-list;
-    @include flex;
+    @include flex($wrap: wrap);
   }
 
   &__item {
+    @include make-spacer(mr, 1);
+    @include flex($align-items: center);
+
+    max-width: 100%;
+    white-space: nowrap;
 
     &::after {
-      @include make-spacer(mx, 1);
+      @include make-spacer(ml, 1);
 
+      display: inline-block;
       content: '/';
     }
 
     &:last-child {
-      max-width: rem(148px);
+      display: block;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
-
-      @include media-breakpoint-up(sm) {
-        max-width: rem(432px);
-      }
-
-      @include media-breakpoint-up(md) {
-        max-width: 100%;
-      }
+      color: var(--disabled);
 
       &::after {
-        content: '';
+        content: none;
+      }
+
+      .breadcrumbs__link {
+        color: var(--disabled);
+        pointer-events: none;
       }
     }
   }
@@ -43,11 +46,6 @@
 
     text-decoration: none;
     color: var(--black);
-
-    &.is-disabled {
-      color: var(--disabled);
-      pointer-events: none;
-    }
 
     &:hover {
       @include media-breakpoint-up(lg) {
