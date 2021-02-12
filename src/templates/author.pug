@@ -20,6 +20,6 @@ block content
         .three-column-grid
           each article in [{name: 'One'}, {name: 'Two'}, {name: 'Three'}]
             +article(article.name)
-        include ./components/_return-button
+        +return-button('return-button--single')
     hr.u-section-hr.u-pb-48.u-pb-64-md
     include sections/_suscribe-section
