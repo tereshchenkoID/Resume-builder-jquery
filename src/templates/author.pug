@@ -20,9 +20,6 @@ block content
         .three-column-grid
           each article in [{name: 'One'}, {name: 'Two'}, {name: 'Three'}]
             +article(article.name)
-        div
-          a(href="/").button.button--md.button--return
-            +icon('arrow-left', 'button__icon')
-            | Back to all news
+        include ./components/_return-button
     hr.u-section-hr.u-pb-48.u-pb-64-md
     include sections/_suscribe-section

@@ -1,0 +1,16 @@
+.return-button {
+  @include make-spacer(mt, 6);
+  @include make-spacer(mx, auto, sm);
+
+  @include media-breakpoint-up(sm) {
+    width: rem(174px);
+  }
+
+  &__button {
+    width: 100%;
+  }
+
+  &__icon {
+    @include size(20px);
+  }
+}
