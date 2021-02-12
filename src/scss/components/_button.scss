@@ -80,4 +80,16 @@
       color: var(--black);
     }
   }
+
+  &--return {
+    @include make-spacer(mt, 6);
+    @include make-spacer(mx, auto, sm);
+
+    display: flex;
+    width: 100%;
+
+    @include media-breakpoint-up(sm) {
+      width: rem(174px);
+    }
+  }
 }
