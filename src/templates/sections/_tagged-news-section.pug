@@ -5,8 +5,11 @@
     .three-column-grid
       each article in articles
         +article(article.name)
-    .tagged-news-section__buttons
-      button.button.button--action.button--md
+    .buttons-section
+      button.button.buttons-section__item.button--action
         +icon('load-more')
         | Load more
-      +return-button
+      a.button.buttons-section__item.button--md
+        +icon('arrow-left')
+        | Back to all news
+

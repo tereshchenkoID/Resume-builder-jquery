@@ -20,4 +20,7 @@ block content
             .search-result__articles
               each article in articles
                 +article(article.name, 'article--horizontal-md')
-            +return-button('return-button--single return-button--search')
+            .search-result__return
+              a(href="/").button.button--md.search-result__button
+                +icon('arrow-left', 'button__icon')
+                | Back to all news

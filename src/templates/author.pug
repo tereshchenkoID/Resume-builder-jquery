@@ -20,6 +20,10 @@ block content
         .three-column-grid
           each article in [{name: 'One'}, {name: 'Two'}, {name: 'Three'}]
             +article(article.name)
-        +return-button('return-button--single')
+        .buttons-section
+          a.button.buttons-section__item.button--md
+            +icon('arrow-left')
+            | Back to all news
+
     hr.u-section-hr.u-pb-48.u-pb-64-md
     include sections/_suscribe-section

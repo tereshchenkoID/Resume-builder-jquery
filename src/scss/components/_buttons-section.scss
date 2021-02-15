@@ -1,0 +1,23 @@
+.buttons-section {
+  @include make-spacer(mt, 6);
+  @include make-spacer(mt, 5, sm);
+  @include make-spacer(mt, 8, md);
+  @include make-spacer(mt, 12, lg);
+
+  display: grid;
+  grid-gap: rem(24px);
+
+  &__item {
+    min-width: 100%;
+
+    @include media-breakpoint-up(sm) {
+      min-width: rem(174px);
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    grid-template-columns: repeat(auto-fit, rem(174px));
+    grid-gap: rem(32px);
+    justify-content: center;
+  }
+}
