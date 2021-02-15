@@ -57,6 +57,8 @@
 
   &__time {
     @include font-size(14px, 22px);
+    @include make-spacer(mt, 1);
+    @include make-spacer(mt, 0, sm);
 
     display: block;
     color: var(--disabled);
