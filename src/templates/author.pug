@@ -21,8 +21,8 @@ block content
           each article in [{name: 'One'}, {name: 'Two'}, {name: 'Three'}]
             +article(article.name)
         .buttons-section
-          a.button.buttons-section__item.button--md
-            +icon('arrow-left')
+          a.button.button--fluid.button--md
+            +icon('arrow-left', 'button__icon')
             | Back to all news
 
     hr.u-section-hr.u-pb-48.u-pb-64-md

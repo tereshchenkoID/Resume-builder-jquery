@@ -6,10 +6,10 @@
       each article in articles
         +article(article.name)
     .buttons-section
-      button.button.buttons-section__item.button--action
-        +icon('load-more')
+      button.button.button--fluid.button--action
+        +icon('load-more', 'button__icon')
         | Load more
-      a.button.buttons-section__item.button--md(href="#")
-        +icon('arrow-left')
+      a.button.button--fluid.button--md(href="#")
+        +icon('arrow-left', 'button__icon')
         | Back to all news
 
