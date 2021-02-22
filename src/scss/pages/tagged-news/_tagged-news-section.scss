@@ -15,27 +15,4 @@
       max-width: initial;
     }
   }
-
-  &__buttons {
-    @include make-spacer(mt, 6);
-    @include make-spacer(mt, 5, sm);
-    @include make-spacer(mt, 8, md);
-    @include make-spacer(mt, 12, lg);
-
-    display: grid;
-    grid-gap: rem(24px);
-
-    .button {
-      min-width: rem(176px);
-    }
-
-    @include media-breakpoint-up(sm) {
-      grid-auto-flow: column;
-      justify-content: center;
-    }
-
-    @include media-breakpoint-up(md) {
-      grid-gap: rem(32px);
-    }
-  }
 }

@@ -4,7 +4,6 @@
   &__item {
     @include accent-background;
     @include font-size(14px, 22px);
-    @include make-spacer(mb, 1);
 
     display: block;
     text-decoration: none;
