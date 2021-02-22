@@ -9,12 +9,11 @@ const $sliderPagination = $('.js-slider-pagination');
 const $currentSlide = $sliderPagination.find('.js-current-slide');
 const $totalSlides = $sliderPagination.find('.js-total-slides');
 const $slideTitle = $('.js-slide-title');
-const svgSpritePath = '/img/sprite.svg';
 
 const Icon = (name) => {
   return `
     <svg class="icon ${name} gallery-slider__${name}">
-        <use xlink:href="${svgSpritePath}#icon-${name}">
+        <use xlink:href="#icon-${name}">
     </svg>
   `;
 };
