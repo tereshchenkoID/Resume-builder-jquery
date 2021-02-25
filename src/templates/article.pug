@@ -8,7 +8,10 @@ extends layouts/_layout
 
 block content
   main
-    include ./components/_breadcrumbs
+    +breadcrumbs({
+      mod: 'article',
+      crumbs: breadcrumbs.article,
+    })
     .container
       .section.article-layout
         .article-layout__header

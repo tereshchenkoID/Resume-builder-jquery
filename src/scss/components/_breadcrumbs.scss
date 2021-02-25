@@ -27,14 +27,8 @@
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: var(--disabled);
-
-      &::after {
-        content: none;
-      }
 
       .breadcrumbs__link {
-        color: var(--disabled);
         pointer-events: none;
       }
     }
@@ -51,6 +45,24 @@
       @include media-breakpoint-up(lg) {
         background-size: 100% 100%;
         text-decoration-color: transparent;
+      }
+    }
+  }
+
+  &--article {
+
+    .breadcrumbs__item {
+
+      &:last-child {
+        color: var(--disabled);
+
+        &::after {
+          content: none;
+        }
+
+        .breadcrumbs__link {
+          color: var(--disabled);
+        }
       }
     }
   }
