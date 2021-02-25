@@ -8,7 +8,8 @@ import numAnimationOnScroll from './components/num-animatio-on-scroll'
 import anchorScroll from './components/anchor-scroll'
 import brandsSlider from './components/brands-slider'
 import scrollSpyObserver from './components/scroll-spy'
-import gallerySlider from "./components/gallery-slider";
+import gallerySlider from "./components/gallery-slider"
+import seoBlock from './components/seo-block'
 
 menu();
 dropdown();
@@ -19,3 +20,5 @@ anchorScroll('a[href^=\\#]', $('.header').height() + HEADER_OFFSET);
 brandsSlider();
 scrollSpyObserver();
 gallerySlider();
+seoBlock();
+

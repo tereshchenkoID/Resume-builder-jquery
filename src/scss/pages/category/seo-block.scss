@@ -1,0 +1,43 @@
+.seo-block {
+  @include make-spacer(mx, auto);
+  @include make-spacer(pt, 4);
+  @include make-spacer(pb, 6);
+
+  max-width: rem(580px);
+
+  &__text {
+    @include font-size(16px, 28px);
+    @include transition(height);
+
+    height: rem(84px);
+    overflow: hidden;
+
+    &.text-is-opened {
+      height: 100%;
+    }
+  }
+
+  &__trigger {
+    @include flex($align-items: center, $display: inline-flex);
+    @include make-spacer(mt, 3);
+    @include font-size(16px, 24px);
+
+    text-decoration: underline;
+
+    &.trigger-is-active {
+
+      .seo-block__arrow {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__arrow {
+    @include make-spacer(ml, 1);
+    @include transition(transform);
+    @include font-size(0px);
+
+    transform-origin: center;
+    pointer-events: none;
+  }
+}
