@@ -1,16 +1,13 @@
+import $ from 'jquery'
 
 const seoBlock = () => {
-  const trigger = document.querySelector('.js-seo-trigger');
-  const text = document.querySelector('.js-seo-text')
+  const $trigger = $('.js-seo-trigger');
+  const $text = $('.js-seo-text');
 
-  if (!trigger && !text) {
-    return;
-  }
-
-  trigger.addEventListener('click', () => {
-    trigger.classList.toggle('trigger-is-active')
-    text.classList.toggle('text-is-opened')
-  })
+  $trigger.on('click', () => {
+    $trigger.toggleClass('trigger-is-active');
+    $text.toggleClass('text-is-opened');
+  });
 };
 
 export default seoBlock

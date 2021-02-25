@@ -33,9 +33,10 @@
   }
 
   &__arrow {
-    @include make-spacer(ml, 1);
+    @include font-size(20px);
     @include transition(transform);
-    @include font-size(0px);
+    @include make-spacer(ml, 1);
+    @include flex($align-items: center, $display: inline-flex);
 
     transform-origin: center;
     pointer-events: none;
