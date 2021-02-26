@@ -1,7 +1,9 @@
 .header-empty {
   @include flex(center, center);
   @include size(100%, var(--header-height));
-  @include make-spacer(px, 5, lg);
+  @include make-spacer(px, 2);
+  @include make-spacer(px, 4, sm);
+  @include make-spacer(px, 5, md);
 
   z-index: map-get($z-indexes, header);
   background-color: var(--accent);
