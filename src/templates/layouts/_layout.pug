@@ -7,13 +7,15 @@ html
     include _head
 
   body
-    include ../components/_header
+    block header
+      include ../components/_header
 
     block content
 
-    include ../components/_footer
-    //include ../components/_cookies-policy
-    include ../components/_mobile-navigation
+    block footer
+      include ../components/_footer
+      //include ../components/_cookies-policy
+      include ../components/_mobile-navigation
 
     block scripts
         include ../partials/_scripts
