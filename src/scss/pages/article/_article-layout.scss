@@ -64,6 +64,18 @@
     color: var(--disabled);
   }
 
+  &__category {
+    @include accent-background;
+
+    text-decoration: none;
+    color: var(--black);
+    font-weight: var(--bold);
+
+    &:hover {
+      background-size: 100% 100%;
+    }
+  }
+
   &__menu {
     @include media-breakpoint-down(sm) {
 

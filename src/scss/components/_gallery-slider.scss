@@ -1,22 +1,6 @@
 .gallery-slider {
   display: grid;
 
-  &__nav {
-    @include size(rem(40px));
-    @include transition(background-color);
-
-    background-color: rgba(245, 247, 250, 0.5);
-    color: var(--black);
-
-    &:hover {
-      background-color: var(--accent);
-    }
-
-    @include media-breakpoint-up(md) {
-      background-color: rgba(245, 247, 250, 1);
-    }
-  }
-
   &__prev {
     @include media-breakpoint-up(md) {
       transform: translate(rem(-80px), -50%);

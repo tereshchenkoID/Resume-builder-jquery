@@ -27,11 +27,11 @@ const getPictureTitle = (slick) => {
 const options = {
   slidesToShow: 1,
   prevArrow:
-    `<button type="button" class="slick-prev gallery-slider__nav gallery-slider__prev">
+    `<button type="button" class="slick-prev slider-nav gallery-slider__prev">
       ${Icon('arrow-left')}
     </button>`,
   nextArrow:
-    `<button type="button" class="slick-next gallery-slider__nav gallery-slider__next">
+    `<button type="button" class="slick-next slider-nav gallery-slider__next">
       ${Icon('arrow-right')}
     </button>`,
 };
