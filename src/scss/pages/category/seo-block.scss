@@ -1,9 +1,11 @@
 .seo-block {
-  @include make-spacer(mx, auto);
-  @include make-spacer(pt, 4);
-  @include make-spacer(pb, 6);
+  @include make-spacer(pt, 4, md);
 
-  max-width: rem(580px);
+  &__wrap {
+    @include make-spacer(mx, auto);
+
+    max-width: rem(580px);
+  }
 
   &__text {
     @include font-size(16px, 28px);
