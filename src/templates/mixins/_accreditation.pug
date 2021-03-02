@@ -1,14 +1,14 @@
 mixin accreditation(title, img, date, city)
   .accreditation
     .accreditation__top
-      a(href="/press-release-article.html").accreditation__image
+      a(href="/").accreditation__image
         +picture(img, 'jpg', 'accreditation__picture')
     .accreditation__body
-      a(href="/press-release-article.html").accreditation__title= title
+      a(href="/").accreditation__title= title
       .accreditation__info
         span.accreditation__date= date
         span.accreditation__city= city
 
     .accreditation__button
-      a.button(href="/press-release-contact.html") Get press pass
+      a.button(href="/") Get press pass
 
