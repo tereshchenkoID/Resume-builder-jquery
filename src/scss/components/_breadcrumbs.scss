@@ -7,6 +7,10 @@
   &__list {
     @include reset-list;
     @include flex($wrap: wrap);
+
+    @include media-breakpoint-up(sm) {
+      flex-wrap: nowrap;
+    }
   }
 
   &__item {

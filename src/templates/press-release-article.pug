@@ -10,20 +10,20 @@ block content
   main
     +breadcrumbs({
       mod: 'article',
-      crumbs: breadcrumbs.article,
+      crumbs: breadcrumbs.pressReleaseArticle,
     })
     .container
       .section.article-layout
         .article-layout__header
-          h1.h1.section__title Oleksandr Usyk and WePlay Esports Create a New Fighting Games League
-          .article-layout__info
-            include ./components/_article-info
+          h1.h1.section__title Introducing the Mortal Kombat 11 tournament WePlay Dragon Temple
+          .article-layout__date.u-text-center
+            span= accreditations[0].date
           .article-layout__image
             +download-picture
           .article-layout__credit
             +imageTitle({mod: '', text: 'Image credit'})
-        .article-layout__wrapper
-          .article-layout__conrent
+        .article-layout__wrapper.article-layout__wrapper--single
+          .article-layout__content
             .article-layout__topic
               a.article-layout__category(href='/category.html') Investment
               span.article-layout__time 40 min read
@@ -63,69 +63,16 @@ block content
                 worldwide, perpetual, royalty-free, fully transferable and sublicensable right and license to
                 reproduce, display, distribute, use and fully exploit such suggestions, feedback and information.
 
-              h2 No children
-              p.
-                WePlay! is only for people 16 years old and over. By using weplay.tv, you affirm that you are over 16.
-                If we learn someone under 16 is using weplay.tv, we’ll terminate their account.
+
 
             each quote in articleQuote
               +quote(quote)
 
             .u-text-block
-              h2 Incorporated rules and policies
+              h2 No children
               p.
-                By using the Services, you agree to let Medium collect and use information as detailed in our Privacy Policy.
-                If you’re outside the United States, you consent to letting WePlay! transfer, store, and process your information
-                (including your personal information and content) in and out of the United States.
-              p.
-                By using weplay.tv, you agree to follow these Policies. If you don’t, we may suspend or delete your account.
-              p.
-                We may deny access to functionality for emails at our sole discretion, for example, created using the services of
-                generating temporary emails, and whose reliability level is below the maximum permissible according to the
-                respective ratings. Should it happen please use email with another domain.
-
-              ol
-                li.
-                  By using weplay.tv, you agree to follow these Policies. If you don’t, we may suspend or delete your account.
-                li.
-                  By using weplay.tv, you agree to follow these Policies. If you don’t, we may suspend or delete your account.
-                li.
-                  By using weplay.tv, you agree to follow these Policies. If you don’t, we may suspend or delete your account.
-                li.
-                  By using weplay.tv, you agree to follow these Policies. If you don’t, we may suspend or delete your account.
-
-            a(href='/' download='polices').article-layout__link
-              |White paper
-              +icon('download')
-
-            .u-text-block
-              hr
-              h2 Miscellaneous
-              p.
-                By using the Services, you agree to let Medium collect and use information as detailed in our Privacy Policy.
-                If you’re outside the United States, you consent to letting WePlay! transfer, store, and process your information
-                (including your personal information and content) in and out of the United States.
-
-              h3 Disclaimer of warranty
-              p.
-                By using the Services, you agree to let Medium collect and use information as detailed in our Privacy Policy.
-                If you’re outside the United States, you consent to letting WePlay! transfer, store, and process your information
-                (including your personal information and content) in and out of the United States.
-
-              h3 Limitation of Liability
-              p.
-                By using the Services, you agree to let Medium collect and use information as detailed in our Privacy Policy.
-                If you’re outside the United States, you consent to letting WePlay! transfer, store, and process your information
-                (including your personal information and content) in and out of the United States.
-
-              h3 Severability
-              ul
-                li.
-                  By using weplay.tv, you agree to follow these Policies. If you don’t, we may suspend or delete your account.
-                li.
-                  By using weplay.tv, you agree to follow these Policies. If you don’t, we may suspend or delete your account.
-                li.
-                  By using weplay.tv, you agree to follow these Policies. If you don’t, we may suspend or delete your account.
+                WePlay! is only for people 16 years old and over. By using weplay.tv, you affirm that you are over 16.
+                If we learn someone under 16 is using weplay.tv, we’ll terminate their account.
 
             .article-layout__gallery
               +gallerySlider({
@@ -141,11 +88,15 @@ block content
                 span.js-total-slides
 
             hr.u-section-hr.u-mb-24.u-mt-48
-            .article-layout__tags.article-layout__tags--bottom
+            .article-layout__tags
               include ./components/_tags
-          .article-layout__sidebar
-            .article-layout__menu
-              +social-links(weplaySocials, 'Share', 'secondary', 'vertical')
+              a(href='/' download='/').article-layout__link.article-layout__link--release
+                | Download release
+                +icon('download')
+            .article-layout__accreditation
+              +accreditation(accreditations[0].name, accreditations[0].img, accreditations[0].date, accreditations[0].city)
+
+            hr.u-section-hr.u-mt-48
 
     include ./components/_article-pagination
 
@@ -153,4 +104,4 @@ block content
 
     hr.u-section-hr.u-my-48.u-mb-64-md
 
-    include sections/_subscribe-blog-section
+    include sections/_subscribe-press-room-section
