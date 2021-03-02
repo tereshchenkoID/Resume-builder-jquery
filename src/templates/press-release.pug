@@ -17,7 +17,7 @@ block content
         .container
           .section__header
             h2.h2.section__title.section__title--limited Accreditation
-          .blog__accreditations(class=`${accreditations.length < 2 ? 'blog__accreditations--single':''}`)
+          .blog__accreditations
             each accreditation in accreditations
               +accreditation(accreditation.name, accreditation.img, accreditation.date, accreditation.city)
 
