@@ -13,20 +13,20 @@ block content
       crumbs: breadcrumbs.pressReleaseArticle,
     })
     .container
-      .section.press-release-article
-        .press-release-article__header
+      .section.article-layout
+        .article-layout__header
           h1.h1.section__title Introducing the Mortal Kombat 11 tournament WePlay Dragon Temple
-          .press-release-article__date.u-text-center
+          .article-layout__date.u-text-center
             span= accreditations[0].date
-          .press-release-article__image
+          .article-layout__image
             +download-picture
-          .press-release-article__credit
+          .article-layout__credit
             +imageTitle({mod: '', text: 'Image credit'})
-        .press-release-article__wrapper
-          .press-release-article__content
-            .press-release-article__topic
-              a.press-release-article__category(href='/category.html') Investment
-              span.press-release-article__time 40 min read
+        .article-layout__wrapper.article-layout__wrapper--single
+          .article-layout__content
+            .article-layout__topic
+              a.article-layout__category(href='/category.html') Investment
+              span.article-layout__time 40 min read
 
             .u-text-block
               p.u-text-bold.
@@ -74,26 +74,26 @@ block content
                 WePlay! is only for people 16 years old and over. By using weplay.tv, you affirm that you are over 16.
                 If we learn someone under 16 is using weplay.tv, we’ll terminate their account.
 
-            .press-release-article__gallery
+            .article-layout__gallery
               +gallerySlider({
                 mod: 'article__gallery',
                 images: galleryImages
               })
-            .press-release-article__subtitle
-              .press-release-article__credit
+            .article-layout__subtitle
+              .article-layout__credit
                 +imageTitle({mod: 'js-slide-title'})
-              .press-release-article__pagination.js-slider-pagination
+              .article-layout__pagination.js-slider-pagination
                 span.js-current-slide
                 | !{' '} from !{' '}
                 span.js-total-slides
 
             hr.u-section-hr.u-mb-24.u-mt-48
-            .press-release-article__tags
+            .article-layout__tags
               include ./components/_tags
-              a(href='/' download='polices').press-release-article__link
+              a(href='/' download='polices').article-layout__link.u-mb-0
                 | Download release
                 +icon('download')
-            .press-release-article__accreditation
+            .article-layout__accreditation
               +accreditation(accreditations[0].name, accreditations[0].img, accreditations[0].date, accreditations[0].city)
 
             hr.u-section-hr.u-mt-48
@@ -104,5 +104,3 @@ block content
 
     hr.u-section-hr.u-my-48.u-mb-64-md
     include sections/_subscribe-press-room-section
-
-    div

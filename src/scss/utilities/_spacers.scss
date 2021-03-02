@@ -1,5 +1,5 @@
 $base-spacer: 8;
-$spacings: (8, 16, 24, 48, 64, 96);
+$spacings: (0, 8, 16, 24, 48, 64, 96);
 $directions: ('mt', 'mr', 'mb', 'ml', 'mx', 'my', 'pt', 'pr', 'pb', 'pl', 'px', 'py');
 
 @mixin set-spacing($spacing, $direction, $breakpoint: null) {
@@ -27,6 +27,6 @@ $directions: ('mt', 'mr', 'mb', 'ml', 'mx', 'my', 'pt', 'pr', 'pb', 'pl', 'px', 
 }
 
 .u-mx-auto {
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
