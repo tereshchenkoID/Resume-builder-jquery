@@ -143,6 +143,12 @@
         text-decoration-color: transparent;
       }
     }
+
+    &--release {
+      @include make-spacer(mb, 0);
+      @include make-spacer(mt, 4);
+      @include make-spacer(mt, 0, sm);
+    }
   }
 
   &__quote {
