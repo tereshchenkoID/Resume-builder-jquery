@@ -12,12 +12,12 @@ block content
 
     hr.u-section-hr.u-my-48
 
-    .press-release
+    .blog
       .section
         .container
           .section__header
             h2.h2.section__title.section__title--limited Accreditation
-          .press-release__accreditations(class=`${accreditations.length < 2 ? 'press-release__accreditations--single':''}`)
+          .blog__accreditations(class=`${accreditations.length < 2 ? 'press-release__accreditations--single':''}`)
             each accreditation in accreditations
               +accreditation(accreditation.name, accreditation.img, accreditation.date, accreditation.city)
 
@@ -28,14 +28,14 @@ block content
           .section__header
             h2.h2.section__title.section__title--limited Press releases
           .two-columns-layout
-            .press-release__search
+            .blog__search
               include components/_search-menu
-            .press-release__wrapper
-              .press-release__articles
+            .blog__wrapper
+              .blog__articles
                 each article in articles
                   +article(article.name, 'article--horizontal-md')
-              .press-release__more
-                button.button.button--action.button--md.press-release__button
+              .blog__more
+                button.button.button--action.button--md.blog__button
                   +icon('load-more')
                   | Load more
 

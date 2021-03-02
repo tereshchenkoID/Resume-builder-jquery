@@ -1,5 +1,30 @@
 .blog {
 
+  &__accreditations {
+    display: grid;
+    grid-gap: rem(48px);
+
+    @include media-breakpoint-up(sm) {
+      grid-gap: rem(64px);
+    }
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: rem(32px);
+    }
+
+    &--single {
+      @include media-breakpoint-up(md) {
+        grid-template-columns: 1fr;
+        justify-items: center;
+
+        .accreditation {
+          width: rem(584px);
+        }
+      }
+    }
+  }
+
   &__articles {
     display: grid;
     grid-gap: rem(32px);
