@@ -1,4 +1,9 @@
 .search-result {
+  position: relative;
+
+  &__wrapper {
+    @include make-spacer(pb, 12, md);
+  }
 
   &__articles {
     display: grid;
@@ -17,19 +22,25 @@
 
   &__return {
     @include make-spacer(mt, 6);
-    @include make-spacer(mx, auto, sm);
-    @include make-spacer(ml, 17, md);
+    @include make-spacer(mt, 0, md);
 
     @include media-breakpoint-up(sm) {
-      width: rem(174px);
+      text-align: center;
     }
 
-    @include media-breakpoint-up(lg) {
-      margin-left: rem(200px);
+    @include media-breakpoint-up(md) {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
     }
   }
 
   &__button {
     width: 100%;
+
+    @include media-breakpoint-up(sm) {
+      width: initial;
+    }
   }
 }
