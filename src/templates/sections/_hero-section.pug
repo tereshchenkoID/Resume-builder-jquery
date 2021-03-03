@@ -1,5 +1,7 @@
 .hero-section
-  +picture('img/hero-bg', 'jpg', 'hero-section__image')
+  video(class="hero-section__video" autoplay muted loop poster="img/arena-kiev.jpg")
+    source( src='img/video/bg-video.mp4' type='video/mp4')
+    source( src='img/video/bg-video.webm' type='video/webm')
   .container
     h1.h1.hero-section__title
       span.accent-background.js-accent-background-animate.active We are Esports
