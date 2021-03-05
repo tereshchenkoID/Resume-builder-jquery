@@ -21,7 +21,7 @@ const Icon = (name) => {
 const getPictureTitle = (slick) => {
   return $(slick.$slides[slick.currentSlide])
     .find('.js-slide-picture')
-    .attr('alt');
+    .attr('data-title');
 }
 
 const options = {
