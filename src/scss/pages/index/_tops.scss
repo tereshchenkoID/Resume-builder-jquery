@@ -26,6 +26,10 @@
     &:nth-child(2n) {
       justify-self: end;
       text-align: right;
+
+      .tops__image-wrap {
+        margin-left: auto;
+      }
     }
 
     @include media-breakpoint-up(sm) {
@@ -35,6 +39,17 @@
       &:nth-child(-n+2) {
         justify-self: start;
         text-align: left;
+
+        .tops__image-wrap {
+          margin-left: 0;
+        }
+      }
+
+      &:nth-child(n+3) {
+
+        .tops__image-wrap {
+          margin-left: auto;
+        }
       }
     }
 
@@ -49,10 +64,11 @@
     }
   }
 
-  &__image-wrap {
+  &__image-wrap { //stylelint-disable-line
     @include make-spacer(mb, 3);
     @include make-spacer(mb, 0, md);
 
+    flex-shrink: 0;
     width: rem(210px);
 
     @include media-breakpoint-up(sm) {
@@ -76,7 +92,6 @@
   }
 
   &__profile {
-    @include make-spacer(px, 0);
     @include make-spacer(px, 4, md);
     @include flex($direction: column);
   }
