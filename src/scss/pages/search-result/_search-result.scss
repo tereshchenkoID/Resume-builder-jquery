@@ -22,18 +22,6 @@
 
   &__return {
     @include make-spacer(mt, 6);
-    @include make-spacer(mt, 0, md);
-
-    @include media-breakpoint-up(sm) {
-      text-align: center;
-    }
-
-    @include media-breakpoint-up(md) {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-    }
   }
 
   &__button {

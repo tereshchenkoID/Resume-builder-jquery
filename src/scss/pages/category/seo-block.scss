@@ -9,13 +9,12 @@
 
   &__text {
     @include font-size(16px, 28px);
-    @include transition(height);
 
-    height: rem(84px);
+    max-height: rem(84px);
     overflow: hidden;
 
     &.text-is-opened {
-      height: 100%;
+      max-height: inherit;
     }
   }
 
