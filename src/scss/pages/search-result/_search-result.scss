@@ -22,6 +22,8 @@
 
   &__return {
     @include make-spacer(mt, 6);
+
+    text-align: center;
   }
 
   &__button {
