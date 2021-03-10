@@ -1,11 +1,9 @@
 import $ from 'jquery'
 
 const seoBlock = () => {
-  const $trigger = $('.js-seo-trigger');
-  const $text = $trigger.prev('.js-seo-text');
-
-  $trigger.on('click', () => {
-    $trigger.toggleClass('trigger-is-active');
+  $(document).on('click', '.js-seo-trigger', function(){
+    const $text = $(this).prev('.js-seo-text');
+    $(this).toggleClass('trigger-is-active');
     $text.toggleClass('text-is-opened');
   });
 };
