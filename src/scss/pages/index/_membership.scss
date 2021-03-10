@@ -11,9 +11,12 @@
   }
 
   &__wrapper {
-    @include size(rem(173px));
     @include make-spacer(mx, auto);
     @include make-spacer(mb, 2);
+
+    display: block;
+    max-width: 100%;
+    height: rem(173px);
   }
 
   &__image {
@@ -27,5 +30,10 @@
     @include font-size(16px, 24px);
 
     font-weight: var(--bold);
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--black);
   }
 }
