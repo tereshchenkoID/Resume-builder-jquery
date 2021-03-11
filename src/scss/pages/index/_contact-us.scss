@@ -73,10 +73,16 @@
   }
 
   &__address {
-    @include font-size(16px, 24px);
+    @include accent-background;
 
+    text-decoration: none;
+    color: var(--black);
     font-weight: var(--bold);
     font-style: normal;
+
+    &:hover {
+      background-size: 100% 100%;
+    }
   }
 
   &__form {
