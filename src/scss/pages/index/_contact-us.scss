@@ -75,13 +75,13 @@
   &__address {
     @include accent-background;
 
-    text-decoration: none;
     color: var(--black);
     font-weight: var(--bold);
     font-style: normal;
 
     &:hover {
       background-size: 100% 100%;
+      text-decoration: none;
     }
   }
 
