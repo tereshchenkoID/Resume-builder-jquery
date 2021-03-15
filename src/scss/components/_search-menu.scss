@@ -1,5 +1,4 @@
 .search-menu {
-  border-bottom: 1px solid var(--black);
 
   &__link,
   &__input {
@@ -90,6 +89,8 @@
     @include reset-list;
     @include flex($direction: column);
     @include make-spacer(pb, 3);
+
+    border-bottom: 1px solid var(--black);
   }
 
   &__item {

@@ -1,6 +1,4 @@
 .service-menu {
-  @include make-spacer(pb, 3, md);
-
   display: none;
 
   &__title {
@@ -13,6 +11,9 @@
   &__list {
     @include reset-list;
     @include flex($direction: column);
+    @include make-spacer(pb, 3, md);
+
+    border-bottom: 1px solid var(--black);
   }
 
   &__item {
@@ -40,6 +41,5 @@
     position: sticky;
     top: calc(var(--header-height) + #{rem(24px)});
     left: 0;
-    border-bottom: 1px solid var(--black);
   }
 }
