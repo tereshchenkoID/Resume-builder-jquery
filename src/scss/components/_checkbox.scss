@@ -28,7 +28,6 @@
     @include flex;
 
     position: relative;
-    cursor: pointer;
 
     &::before {
       @include size(rem(20px));
@@ -61,6 +60,10 @@
 
   &__text {
     @include font-size(14px, 20px);
+  }
+
+  &__link {
+    color: currentColor;
   }
 
   &--white {
