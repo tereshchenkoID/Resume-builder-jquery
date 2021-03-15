@@ -11,7 +11,10 @@ form.form
   .form__group.checkbox.has-error
     input(type="checkbox" id="checkbox" class="checkbox__item")
     label(for="checkbox" class="checkbox__label")
-      span.checkbox__text I agree with Terms of use and Privacy policy
+      span.checkbox__text I agree with!{' '}
+        a.checkbox__text--link(href="") Terms of use
+        | !{' '}and!{' '}
+        a.checkbox__text--link(href="") Privacy policy
   .form__submit
     input(type="submit" value="Send").button.form__button
   .u-mt-24
