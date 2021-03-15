@@ -28,7 +28,6 @@
     @include flex;
 
     position: relative;
-    cursor: pointer;
 
     &::before {
       @include size(rem(20px));
