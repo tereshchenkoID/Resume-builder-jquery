@@ -4,11 +4,7 @@ import PhotoSwipeMounter from 'jquery.photoswipe';
 
 PhotoSwipeMounter(jQuery); // mount this plugin into jQuery
 
-const $slider = $('.js-gallery-slider');
-const $sliderPagination = $('.js-slider-pagination');
-const $currentSlide = $sliderPagination.find('.js-current-slide');
-const $totalSlides = $sliderPagination.find('.js-total-slides');
-const $slideTitle = $('.js-slide-title');
+const $gallery = $('.js-article-layout-gallery')
 
 const Icon = (name) => {
   return `
@@ -21,7 +17,7 @@ const Icon = (name) => {
 const getPictureTitle = (slick) => {
   return $(slick.$slides[slick.currentSlide])
     .find('.js-slide-picture')
-    .attr('data-title');
+    .data('title');
 }
 
 const options = {
@@ -37,33 +33,41 @@ const options = {
 };
 
 const gallerySlider = () => {
-  if (!$slider.length) {
-    return;
-  }
+  $gallery.each(function(){
+    const $slider = $(this).find('.js-gallery-slider');
+    const $sliderPagination = $(this).find('.js-slider-pagination');
+    const $currentSlide = $sliderPagination.find('.js-current-slide');
+    const $totalSlides = $sliderPagination.find('.js-total-slides');
+    const $slideTitle = $(this).find('.js-slide-title');
 
-  $slider.slick(options);
+    if (!$slider.length) {
+      return;
+    }
 
-  $slider.photoSwipe(
-    '.slick-slide:not(.slick-cloned) .js-picture-gallery', {
-      shareEl: false
+    $slider.slick(options);
+
+    $slider.photoSwipe(
+      '.slick-slide:not(.slick-cloned) .js-picture-gallery', {
+        shareEl: false
+      });
+
+    $slider.on('afterChange', (event, slick, currentSlide) => {
+      $slideTitle.text(getPictureTitle(slick));
+      $currentSlide.text(currentSlide + 1);
     });
 
-  $slider.on('afterChange', (event, slick, currentSlide) => {
+    const slick = $slider.slick('getSlick');
+
     $slideTitle.text(getPictureTitle(slick));
-    $currentSlide.text(currentSlide + 1);
-  });
 
-  const slick = $slider.slick('getSlick');
+    if (slick.slideCount === 1) {
+      $sliderPagination.hide();
+      return;
+    }
 
-  $slideTitle.text(getPictureTitle(slick));
-
-  if (slick.slideCount === 1) {
-    $sliderPagination.hide();
-    return;
-  }
-
-  $currentSlide.text(slick.currentSlide + 1);
-  $totalSlides.text(slick.slideCount);
+    $currentSlide.text(slick.currentSlide + 1);
+    $totalSlides.text(slick.slideCount);
+  })
 }
 
 export default gallerySlider

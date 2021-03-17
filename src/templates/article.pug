@@ -127,18 +127,36 @@ block content
                 li.
                   By using weplay.tv, you agree to follow these Policies. If you don’t, we may suspend or delete your account.
 
-            .article-layout__gallery
+            .article-layout__gallery.js-article-layout-gallery
               +gallerySlider({
                 mod: 'article__gallery',
                 images: galleryImages
               })
-            .article-layout__subtitle
-              .article-layout__credit
-                +imageTitle({mod: 'js-slide-title'})
-              .article-layout__pagination.js-slider-pagination
-                span.js-current-slide
-                | !{' '} from !{' '}
-                span.js-total-slides
+              .article-layout__subtitle
+                .article-layout__credit
+                  +imageTitle({mod: 'js-slide-title'})
+                .article-layout__pagination.js-slider-pagination
+                  span.js-current-slide
+                  | !{' '} from !{' '}
+                  span.js-total-slides
+
+            .article-layout__gallery.js-article-layout-gallery
+              +gallerySlider({
+                mod: 'article__gallery',
+                images: [{
+                  name: 'Usik usik usik',
+                  src: 'img/article/usyk',
+                  type: 'jpg'
+                },]
+              })
+              .article-layout__subtitle
+                .article-layout__credit
+                  +imageTitle({mod: 'js-slide-title'})
+                .article-layout__pagination.js-slider-pagination
+                  span.js-current-slide
+                  | !{' '} from !{' '}
+                  span.js-total-slides
+
 
             hr.u-section-hr.u-mb-24.u-mt-48
             .article-layout__tags.article-layout__tags--bottom
