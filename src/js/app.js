@@ -11,6 +11,7 @@ import scrollSpyObserver from './components/scroll-spy';
 import gallerySlider from "./components/gallery-slider";
 import seoBlock from './components/seo-block';
 import categorySlider from './components/category-slider';
+import modalVideo from './components/modal-video'
 
 menu();
 dropdown();
@@ -23,4 +24,5 @@ scrollSpyObserver();
 gallerySlider();
 seoBlock();
 categorySlider();
+modalVideo();
 
