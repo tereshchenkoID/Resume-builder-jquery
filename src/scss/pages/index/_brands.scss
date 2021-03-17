@@ -18,19 +18,33 @@
     @include make-spacer(mt, 6);
     @include make-spacer(mx, auto);
 
-    width: rem(288px);
+    // spaces between slick slides and even height of slides
 
-    @include media-breakpoint-up(sm) {
-      width: rem(576px);
+    .slick-list {
+      @include flex;
     }
 
-    @include media-breakpoint-up(md) {
-      width: rem(944px);
+    .slick-track {
+      @include flex;
     }
 
-    @include media-breakpoint-up(lg) {
-      width: rem(1200px);
+    .slick-slide {
+      float: none;
+
+      > div {
+        @include flex;
+        @include size(100%);
+      }
     }
+
+    .slick-current {
+
+      .brands__logo {
+        filter: grayscale(0);
+      }
+    }
+
+    // end
   }
 
   &__quote-item {
@@ -38,26 +52,21 @@
   }
 
   &__logo-wrap {
+    @include size(100%);
     @include flex(center, center);
 
     cursor: pointer;
-    height: rem(48px);
   }
 
   &__logo {
     @include transition(filter);
 
     display: block;
+    max-width: 100%;
+    height: auto;
     filter: grayscale(1);
 
     &:hover {
-      filter: grayscale(0);
-    }
-  }
-
-  .slick-current {
-
-    .brands__logo {
       filter: grayscale(0);
     }
   }
