@@ -108,6 +108,8 @@
   &__name {
     @include make-spacer(my, 2);
     @include font-size(20px, 28px);
+
+    font-weight: var(--extra-bold);
   }
 
   &__alignment {
