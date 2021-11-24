@@ -1,7 +1,0 @@
-mixin gallerySlider({ mod, images })
-  .gallery-slider.js-gallery-slider(class= mod ? mod : '')
-    each image in images
-      .gallery-slider__wrap
-        +download-picture('js-picture-gallery', 'js-slide-picture', image.name)
-
-

@@ -1,13 +1,21 @@
 ---
-title: enestech | IT-holding
+title: Portfolio
 lang: en
-hasLink: false
-isHeaderTransparent: false
 ---
 extends layouts/_layout
 
 block content
   main
-    include sections/_contact-form
-    hr.u-section-hr.u-my-48.u-my-64-md
-    include sections/_offices
+    section.section
+      .container-fluid
+        .container
+          .row
+            .col-12.col-md-8.padding-vertical
+              +subtitle('Get in touch', false).subtitle--vertical
+              +get-in-touch
+            .col-12.col-md-4.padding-vertical
+              +subtitle('Contact Details', false).subtitle--vertical
+              .row
+                .col-12.padding-vertical
+                  +contact-list
+

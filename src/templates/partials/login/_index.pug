@@ -1,0 +1,49 @@
+mixin login
+  .login&attributes(attributes)
+    .login__form
+      .login__header
+        h5.h5.js-login-title login
+        .login__toggle.js-login-toggle
+          h6.h6.login__subtitle.js-login-subtitle Register Now
+          .login__scale
+            .login__circle
+      .login__body
+        .login__tab.login__tab--active.js-login-tab
+          .login__block
+            +field(type="text" placeholder="Login").login__field
+          .login__block
+            +field(type="password" placeholder="Password").login__field
+          .login__block
+            label(for="remember").checkbox
+              input(type="checkbox" id="remember" name="remember")
+              span
+              | Remember Me
+          .login__block
+            +button('sign in').button--primary.login__button
+
+        .login__tab.js-login-tab
+          .login__block
+            +field(type="email" placeholder="E-mail").login__field
+          .login__block
+            +field(type="text" placeholder="Login").login__field
+          .login__block
+            +field(type="password" placeholder="Password").login__field
+          .login__block
+            +field(type="password" placeholder="Repeat Password").login__field
+          .login__block
+            +button('create new account').button--primary.login__button
+
+        .login__block
+          .row
+            .col-4
+              button.button.button--google.login__button.login__social
+                i.fab.fa-google-plus-g
+                span Google
+            .col-4
+              button.button.button--twitter.login__button.login__social
+                i.fab.fa-twitter
+                span Twitter
+            .col-4
+              button.button.button--facebook.login__button.login__social
+                i.fab.fa-facebook-f
+                span Facebook

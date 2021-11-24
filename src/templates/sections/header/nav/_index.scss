@@ -1,0 +1,72 @@
+.nav {
+
+  [class^='container'] {
+    height: 100%;
+  }
+
+  .container {
+    @include media-max(map_get($grid-breakpoints, lg)) {
+      padding: 0;
+      min-width: auto;
+    }
+  }
+
+  .container-fluid {
+
+    &:first-child {
+      background-color: var(--color-secondary);
+      height: 115px;
+
+      @include media-max(map_get($grid-breakpoints, lg)) {
+        background-color: transparent;
+        padding: 0 15px;
+        height: auto;
+      }
+    }
+
+    &:last-child {
+      background-color: var(--color-grey-dark);
+      height: 65px;
+
+      @include media-max(map_get($grid-breakpoints, lg)) {
+        background-color: transparent;
+        height: auto;
+      }
+    }
+  }
+
+  &__wrapper {
+    @include flex(space-between, center);
+    @include size(100%);
+
+    position: relative;
+
+    @include media-max(map_get($grid-breakpoints, lg)) {
+      flex-direction: column;
+    }
+
+    & > * {
+      @include media-max(map_get($grid-breakpoints, lg)) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  @include media-max(map_get($grid-breakpoints, lg)) {
+    position: fixed;
+    top: 54px;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: 0.3s;
+    z-index: 5;
+    background-color: var(--color-secondary);
+    padding: 20px 0;
+    width: 320px;
+    overflow-y: auto;
+  }
+
+  &--active {
+    transform: translateX(0);
+  }
+}

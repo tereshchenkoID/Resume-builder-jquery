@@ -1,5 +1,0 @@
-mixin submenu(mod, arr)
-  ul(class=(`submenu ${mod ? `submenu--${mod} js-submenu-${mod}` : ''}`))
-    each link in arr
-      li.submenu__item
-        a.submenu__link(href= link.href)= link.name

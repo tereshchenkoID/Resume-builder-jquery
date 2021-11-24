@@ -17,9 +17,7 @@ import config from '../config';
 const renderHtml = (onlyChanged) => {
   return gulp
     .src([
-      `${config.src.templates  }/[^_]*.pug`,
-      `${config.src.templates  }/sub-pages/**/[^_]*.pug`,
-      `${config.src.templates  }/lang/**/[^_]*.pug`,
+      `${config.src.templates  }/*.pug`,
     ])
     .pipe(plumber({ errorHandler: config.errorHandler }))
     .pipe(gulpif(onlyChanged, changed(config.dest.html, { extension: '.html' })))
@@ -42,11 +40,11 @@ const build = gulp => gulp.parallel('pug');
 const watch = gulp => {
   return function() {
     gulp.watch([
-      `${config.src.templates  }/**/[^_]*.pug`
+      `${config.src.templates  }/**/*.pug`
     ], gulp.parallel('pug:changed'));
 
     gulp.watch([
-      `${config.src.templates  }/**/_*.pug`
+      `${config.src.templates  }/**/*.pug`
     ], gulp.parallel('pug'));
   }
 };

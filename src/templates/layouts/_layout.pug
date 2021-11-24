@@ -1,21 +1,16 @@
-include ../mixins/all
-include ../data/all
+include ../components/index
+include ../sections/index
+include ../partials/index
 
 doctype html
 html
   head
     include _head
-
   body
-    block header
-      include ../components/_header
-
+    +top
+    +nav
     block content
-
-    block footer
-      include ../components/_footer
-      //include ../components/_cookies-policy
-      include ../components/_mobile-navigation
-
-    block scripts
-        include ../partials/_scripts
+    +footer#footer
+    .shadow.js-shadow
+      +betslip.js-betslip
+    script(src="./js/custom.js")

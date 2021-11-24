@@ -1,10 +1,12 @@
 @charset "UTF-8";
 
+
 //
 // Non Compiled Files
 //
 
 @import 'config';
+
 
 //
 // Custom Properties
@@ -12,45 +14,45 @@
 
 @import 'base/variables/index';
 
+
+//
+// Fonts
+//
+
+@import 'base/fonts/index';
+
+
+//
+// Icons
+//
+
+@import 'base/fonts/icons';
+
+
 //
 // Global Styles
 //
 
 @import 'base/index';
 
-//
-// Generated sprite
-//
 
-@import 'generated/index';
-
-//
-// Libs
-//
-
-@import 'lib/index';
-
-//
-// Containers
-//
-
-@import 'containers/index';
 
 //
 // Components
 //
 
-@import 'components/index';
-
-//
-// Pages
-//
-
-@import 'pages/index';
+@import '../templates/components/index';
 
 
 //
-// Utilities
+// Partials
 //
 
-@import 'utilities/index';
+@import '../templates/partials/index';
+
+
+//
+// Sections
+//
+
+@import '../templates/sections/index';

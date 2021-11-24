@@ -1,0 +1,16 @@
+mixin button(text)
+  a(href="#").button&attributes(attributes)
+    span.button__text= text
+
+mixin button-social(text, icon)
+  a(href="#").button&attributes(attributes)
+    h4.h4.span.button__subtitle 50k
+    p.button__text
+      span= text
+      i.fas.fa-plus.button__circle
+    span.fab(class="fa-" + icon).button__icon
+
+mixin button-odd(text, value)
+  a(href="#").button.js-button-odd&attributes(attributes)
+    p.button__text= text
+    p.button__odd= value

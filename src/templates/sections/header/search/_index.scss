@@ -1,0 +1,89 @@
+.search {
+  @include flex(flex-end, center);
+  @include size(350px, 50px);
+
+  position: relative;
+
+  @include media-max(map_get($grid-breakpoints, lg)) {
+    width: 100%;
+  }
+
+  &--active {
+
+    .search {
+
+      &__dropdown {
+        @include flex($direction: column);
+      }
+    }
+  }
+
+  &__title,
+  &__subtitle {
+    text-transform: uppercase;
+    color: var(--color-white);
+  }
+
+  &__icon {
+    @include size(18px);
+
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    fill: var(--color-white);
+
+    svg {
+      @include size(100%);
+
+      display: block;
+    }
+  }
+
+  &__filed {
+    @include size(100%);
+
+    border: 0;
+    border-radius: 2px;
+    background-color: #484848;
+    padding-right: 50px;
+    padding-left: 20px;
+    letter-spacing: 1px;
+    color: var(--color-white);
+    font-weight: var(--typography-medium);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 0 0 3px 3px;
+    background-color: #484848;
+    max-height: 315px;
+    overflow: hidden;
+  }
+
+  &__wrapper {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  &__block {
+    @include flex($justify-content: center, $direction: column);
+
+    flex-shrink: 0;
+    padding: 5px 10px;
+    min-height: 40px;
+  }
+
+  &__text {
+    @include line-clamp(1);
+  }
+}

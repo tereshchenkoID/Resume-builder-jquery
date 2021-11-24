@@ -1,0 +1,21 @@
+mixin roster(name)
+  .roster&attributes(attributes)
+    .roster__header
+       span= name
+    .roster__content
+      .roster__row.roster__row--subtitle
+        .roster__cell
+          span NBR
+        .roster__cell
+          span PLAYER NAME
+        .roster__cell
+          span POSITION
+      - var n = 0
+      while n <= 11
+        .roster__row
+          .roster__cell
+            span= n++
+          .roster__cell
+            span HARRY STEVENSON
+          .roster__cell
+            span GOALKEEPER

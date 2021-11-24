@@ -1,0 +1,7 @@
+mixin progress
+  .progress&attributes(attributes)
+    .progress.js-progress
+      svg.progress__svg
+        circle.progress__bottom(cx='50' cy='50' r='46' transform='scale(-1, 1) translate(-100) rotate(-90, 50, 50)')
+        circle.progress__top.js-progress-top(cx='50' cy='50' r='46' transform='scale(-1, 1) translate(-100) rotate(-90, 50, 50)')
+      h5.h5.progress__text.js-progress-text

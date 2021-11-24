@@ -6,7 +6,7 @@ import config from '../config.js';
 
 gulp.task('copy:img', () => gulp
   .src([
-    `${config.src.img  }/**/*.{jpg,png,jpeg,svg,gif,mp4,webp,webm}`,
+    `${config.src.img  }/**/*.{jpg,png,jpeg,ico,svg,gif,mp4,webp,webm}`,
     `!${  config.src.img  }/svgo/**/*.*`
 	])
 	// .pipe(imagemin([], {
@@ -15,8 +15,13 @@ gulp.task('copy:img', () => gulp
   .pipe(gulp.dest(config.dest.img))
 );
 
+gulp.task('copy:js', () => gulp
+  .src(`${config.src.js  }/custom.js`)
+  .pipe(gulp.dest(config.dest.js))
+);
+
 gulp.task('copy:fonts', () => gulp
-  .src(`${config.src.fonts  }/*.{ttf,eot,woff,woff2}`)
+  .src(`${config.src.fonts  }/**/*.{ttf,eot,woff,woff2}`)
   .pipe(gulp.dest(config.dest.fonts))
 );
 
@@ -36,9 +41,9 @@ gulp.task('copy:rootfiles', () => gulp
 );
 
 // eslint-disable-next-line no-shadow
-const build = gulp => gulp.series('copy:img', 'copy:fonts');
+const build = gulp => gulp.series('copy:img', 'copy:fonts', 'copy:js', 'copy:data');
 // eslint-disable-next-line no-shadow
-const watch = gulp => () => gulp.watch(`${config.src.img  }/*`, gulp.parallel('copy:img', 'copy:fonts'));
+const watch = gulp => () => gulp.watch(`${config.src.data  }/**/*`, gulp.parallel('copy:img', 'copy:fonts', 'copy:js', 'copy:data'));
 
 module.exports.build = build;
 module.exports.watch = watch;

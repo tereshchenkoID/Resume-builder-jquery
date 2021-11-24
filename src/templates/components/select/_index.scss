@@ -1,0 +1,60 @@
+.select {
+  position: relative;
+  cursor: pointer;
+
+  &__label {
+    @include flex($align-items: center);
+    @include size(100%, 60px);
+
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    background-color: var(--color-white);
+    padding: 0 40px 0 20px;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+  }
+
+  &__dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% - 2px);
+    right: 0;
+    left: 0;
+    z-index: 1;
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    border-left: 1px solid var(--color-border);
+    border-radius: 0 0 3px 3px;
+    background-color: var(--color-white);
+  }
+
+  &__item {
+    transition: all 0.3s;
+    padding: 10px 20px;
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+
+  &--active {
+
+    .select {
+
+      &__dropdown {
+        display: block;
+      }
+
+      &__arrow {
+        transform: translateY(-50%) rotateZ(180deg);
+      }
+    }
+  }
+}

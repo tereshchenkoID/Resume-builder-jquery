@@ -1,5 +1,5 @@
 {
-  "name": "it-lend",
+  "name": "s-bet",
   "version": "0.0.1",
   "scripts": {
     "ghpages": "git subtree push --prefix build origin gh-pages",
@@ -55,7 +55,7 @@
     "gulp-svgmin": "^1.2.0",
     "gulp-svgstore": "^7.0.1",
     "gulp-util": "^3.0.8",
-    "htmlhint": "^0.11.0",
+    "htmlhint": "^0.15.2",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
     "lodash": "^4.17.11",
@@ -81,6 +81,7 @@
     "gsap": "^3.5.1",
     "jquery": "^3.4.1",
     "jquery.photoswipe": "^1.1.1",
+    "slick-carousel": "^1.8.1",
     "slick-slider": "^1.8.2"
   }
 }

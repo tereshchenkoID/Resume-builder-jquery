@@ -1,0 +1,75 @@
+$grid-padding: $base-grid-padding;
+$grid-margin: $base-grid-margin;
+$count-column: $base-grid-column;
+$count-width: 100 / $count-column;
+
+$brackpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px
+);
+
+.container {
+  position: relative;
+  padding: 0 15px;
+  min-width: var(--min-width);
+  max-width: var(--max-width);
+  margin: {
+    right: auto;
+    left: auto;
+  }
+
+  //@include media-max(map_get($grid-breakpoints, sm)) {
+  //  padding: 0 8px;
+  //}
+
+  &-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$grid-padding;
+  margin-left: -$grid-padding;
+}
+
+[class^='col-'] {
+  padding: {
+    right: $grid-padding;
+    left: $grid-padding;
+  }
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+
+  @for $i from 1 through $count-column {
+
+    &-#{$i} {
+      flex: 0 0 ($i * $count-width) * 1%;
+      max-width: ($i * $count-width) * 1%;
+    }
+  }
+}
+
+@each $status, $brackpoints-size in $brackpoints {
+  @media (min-width: $brackpoints-size) {
+
+    .col-#{$status} {
+      @for $i from 1 through $count-column {
+
+        &-#{$i} {
+          flex: 0 0 ($i * $count-width) * 1%;
+          max-width: ($i * $count-width) * 1%;
+        }
+      }
+    }
+  }
+}

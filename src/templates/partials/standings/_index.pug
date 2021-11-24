@@ -1,0 +1,58 @@
+mixin standings-smart
+  .standings&attributes(attributes)
+    .standings__header
+      .standings__cell Team Position
+      .standings__cell W
+      .standings__cell L
+      .standings__cell PTS
+    .standings__content
+      - var n = 0
+      while n <= 6
+        .standings__row
+          .standings__cell
+            h6.h6.standings__id= n++
+            .standings__logo
+              img(src="https://livedemo00.template-help.com/wt_prod-19186/images/team-atletico-37x37.png").img
+            .standings__info
+              h6.h6.standings__team Atletico
+              .standings__country Usa
+          .standings__cell
+            span 153
+          .standings__cell
+            span 30
+          .standings__cell
+            span 186
+
+
+mixin standings-full
+  .standings&attributes(attributes)
+    .standings__header
+      .standings__cell Pos
+      .standings__cell TEAM
+      .standings__cell W
+      .standings__cell L
+      .standings__cell T
+      .standings__cell PTS
+      .standings__cell DIFF
+    .standings__content
+      - var n = 0
+      while n <= 6
+        .standings__row
+          .standings__cell
+            h6.h6.standings__id= n++
+          .standings__cell
+            .standings__logo
+              img(src="https://livedemo00.template-help.com/wt_prod-19186/images/team-atletico-37x37.png").img
+            .standings__info
+              h6.h6.standings__team Atletico
+              .standings__country Usa
+          .standings__cell
+            span 153
+          .standings__cell
+            span 30
+          .standings__cell
+            span 186
+          .standings__cell
+            span 586
+          .standings__cell
+            .standings__diff +12

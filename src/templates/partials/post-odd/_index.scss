@@ -1,0 +1,67 @@
+.post-odd {
+  background-color: var(--color-white);
+
+  .row {
+    align-items: center;
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__top {
+
+    &:hover {
+
+      .post-odd {
+
+        &__img {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    padding: 20px 20px 10px;
+  }
+
+  &__title {
+    text-transform: uppercase;
+
+    a {
+      @include line-clamp(2);
+
+      color: var(--color-grey-dark);
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  &__date {
+    letter-spacing: 1px;
+    font-size: 12px;
+  }
+
+  &__link {
+    @include size(100%);
+
+    display: block;
+    overflow: hidden;
+  }
+
+  &__icon {
+    margin-right: 5px;
+  }
+
+  &__img {
+    display: block;
+    object-fit: cover;
+    transition: 0.3s;
+    width: 100%;
+    object-position: center;
+  }
+}

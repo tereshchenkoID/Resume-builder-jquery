@@ -1,7 +1,0 @@
-mixin download-picture(modClass, secondMod, name)
-  - var newName = name ? name : ''
-  .download-picture
-    .download-picture__wrapper(class= modClass)
-      +pictureForSlider('img/article/usyk', 'jpg', `download-picture__image ${secondMod}`, newName)
-    a.download-picture__link(download='usyk', href='img/article/usyk.jpg')
-      +icon('download', 'download-picture__icon')

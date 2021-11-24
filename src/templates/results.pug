@@ -1,0 +1,28 @@
+---
+title: Portfolio
+lang: en
+---
+extends layouts/_layout
+
+block content
+  main
+    section.section
+      .container-fluid
+        .container
+          .row
+            .col-12.col-md-4.padding-vertical
+              +select
+            .col-12.col-md-4.padding-vertical
+              +select
+            .col-12.col-md-4.padding-vertical
+              +select
+          .row
+            .col-12.padding-vertical
+              +subtitle('AFC CUP', false).subtitle--vertical
+            .col-12.padding-vertical
+              +result-table
+          .row
+            .col-12.padding-vertical
+              +subtitle('AFF CHAMPIONSHIP', false).subtitle--vertical
+            .col-12.padding-vertical
+              +result-table

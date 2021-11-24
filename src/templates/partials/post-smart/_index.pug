@@ -1,0 +1,27 @@
+mixin post-smart(height, size, option)
+  .post-smart&attributes(attributes)
+    .row.margin
+      .col-12.col-lg-4.padding.post-smart__top
+        .post-smart__link
+          img(height=height src="https://ld-wp73.template-help.com/wordpress/prod_18248/v1/wp-content/uploads/2018/03/thumb-sport-"+ Math.floor(Math.random() * (20 - 1) + 1) +".jpg").post-smart__img
+
+      .col-12.col-lg-8.padding.post-smart__center
+
+        .post-smart__block
+          +category('Featured News')
+
+        .post-smart__block
+          a(href="#").post-smart__title As More Japanese Take up Bodybuilding, a Veteran Chases a Championship
+
+        if option
+          .post-smart__block
+            a(href="#").post-smart__user
+              i(aria-hidden="true").far.fa-user.post-smart__icon
+              span User
+            a(href="#").post-smart__data
+              i(aria-hidden="true").far.fa-clock.post-smart__icon
+              span 11 June 2020
+
+        if size === 'lg'
+          .post-smart__block
+            p.post-smart__text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur ea eos ex nostrum numquam placeat voluptatibus? Aliquid amet aperiam cupiditate debitis eveniet libero mollitia, nulla officiis quae temporibus veritatis vero!

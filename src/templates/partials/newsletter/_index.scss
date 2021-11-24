@@ -1,0 +1,73 @@
+.newsletter {
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+
+  &__wrapper {
+    position: relative;
+    margin-top: 10px;
+  }
+
+  &__field {
+    border: 0;
+    border-bottom: 1px solid #5a5b5b;
+    padding-right: 150px;
+    padding-left: 0;
+    height: 65px;
+    text-transform: uppercase;
+    color: var(--color-text);
+    font-size: 44px;
+    font-weight: var(--typography-bold);
+
+    &:focus {
+      outline: 0;
+    }
+
+    @include media-max(map_get($grid-breakpoints, md)) {
+      padding-right: 60px;
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+
+  &__error {
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    color: #f00;
+    font-size: 12px;
+  }
+
+  &__button {
+    @include size(105px, 50px);
+
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    border: 1px solid var(--color-primary);
+    border-radius: 40px;
+    color: var(--color-primary);
+    font-size: 20px;
+
+    &:hover,
+    &--active {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    @include media-max(map_get($grid-breakpoints, md)) {
+      @include size(38px, 22px);
+
+      border: 0;
+      font-size: 16px;
+    }
+  }
+
+  &--error {
+
+    .newsletter {
+      display: block;
+    }
+  }
+}

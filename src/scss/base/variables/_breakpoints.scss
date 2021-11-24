@@ -1,0 +1,25 @@
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+// Style for grid generate
+$base-grid-padding: 	10px;
+$base-grid-margin: 		10px;
+$base-grid-column: 		12;
+//
+//
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400
+) !default;
+
+
+:root {
+  --min-width: 320px;
+  --max-width: 1280px;
+}

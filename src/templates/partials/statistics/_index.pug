@@ -1,0 +1,16 @@
+mixin statistics
+  .statistics&attributes(attributes)
+    .statistics__header Match Winner
+    .statistics__body
+      .statistics__left
+        .statistics__score.statistics__score--home
+          h4.h4.statistics__value 68.51%
+          h6.h6.statistics__side home
+      .statistics__center
+        .statistics__progress
+          +progress
+        p.statistics__text PLAYED
+      .statistics__right
+        .statistics__score.statistics__score--away
+          h4.h4.statistics__value 31.49%
+          h6.h6.statistics__side away

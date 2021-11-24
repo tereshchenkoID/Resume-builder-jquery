@@ -1,0 +1,14 @@
+.header {
+
+  .slider {
+    @include size(100%, 658px);
+
+    @include media-max(map_get($grid-breakpoints, sm)) {
+      height: 350px;
+    }
+
+    @include media-max(map_get($grid-breakpoints, lg)) {
+      height: 450px;
+    }
+  }
+}

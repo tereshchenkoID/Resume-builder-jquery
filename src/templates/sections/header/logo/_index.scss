@@ -1,0 +1,13 @@
+.logo {
+  @include size(106px, 40px);
+
+  display: block;
+  position: relative;
+  flex-shrink: 0;
+
+  &__img {
+    @include size(100%);
+
+    display: block;
+  }
+}

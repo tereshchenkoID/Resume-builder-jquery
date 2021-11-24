@@ -1,0 +1,111 @@
+.footer {
+  background-color: var(--color-secondary);
+
+  .social,
+  .logo {
+    margin-right: 20px;
+  }
+
+  .logo {
+    align-self: flex-start;
+  }
+
+  .h6 {
+    color: var(--color-text);
+  }
+
+  &__top {
+    padding: 40px 0;
+  }
+
+  &__bottom {
+    background-color: var(--color-grey-dark);
+    padding: 20px 0;
+
+    @include media-max(map_get($grid-breakpoints, md)) {
+      text-align: center;
+    }
+  }
+
+  &__menu {
+    @include flex(flex-end, center);
+
+    @include media-max(map_get($grid-breakpoints, md)) {
+      justify-content: center;
+      margin-top: 10px;
+      margin-left: -30px;
+    }
+  }
+
+  &__nav {
+    display: block;
+    padding-left: 30px;
+    text-transform: uppercase;
+    font-family: var(--font-family-alt);
+    font-size: 12px;
+
+    &:first-child {
+      padding-right: 0;
+    }
+
+    &:hover,
+    &--active {
+      color: var(--color-primary);
+    }
+
+    @include media-max(map_get($grid-breakpoints, sm)) {
+      padding-left: 15px;
+    }
+  }
+
+  &__icon {
+    @include size(35px);
+
+    float: left;
+    margin-right: 15px;
+
+    svg {
+      @include size(100%);
+
+      display: block;
+      fill: var(--color-primary);
+    }
+  }
+
+  &__block {
+    @include flex($align-items: center, $wrap: wrap);
+
+    margin-bottom: 30px;
+
+    @include media-max(map_get($grid-breakpoints, sm)) {
+      justify-content: center;
+      margin: 0 10px!important;
+
+      > * {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  &__hr {
+    @include size(1px, 30px);
+
+    margin: 0 20px;
+    border: 0;
+    background-color: var(--color-text);
+
+    @include media-max(map_get($grid-breakpoints, sm)) {
+      display: none;
+    }
+  }
+
+  &__href {
+    margin-right: 5px;
+    margin-left: 5px;
+    color: var(--color-white);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}

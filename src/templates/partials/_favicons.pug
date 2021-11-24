@@ -7,9 +7,9 @@ mixin favicon(size, rel, href)
   )
 
 mixin msFavicon(size)
-  meta(name="msapplication-TileImage" content="ms-icon-" + size + "x" + size + ".png")
+  meta(name="msapplication-TileImage" content="./img/icons/ms-icon-" + size + "x" + size + ".png")
 
-- var pathToIcon = '/img';
+- var pathToIcon = './img/icons';
 - var appleIcon = ['180', '152', '144', '120', '114', '76', '72', '60', '57'];
 - var androidIcon = ['192', '144', '96', '72', '48'];
 - var favIcon = ['96', '32', '16'];
@@ -24,9 +24,9 @@ each item in androidIcon
 each item in favIcon
   +favicon(item, 'icon', pathToIcon + '/favicon-')
 
-link(rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon")
+link(rel="shortcut icon" href="./img/icons/favicon.ico")
 
-meta(name="msapplication-TileColor" content="#3bbbe9")
+meta(name="msapplication-TileColor" content="#fff")
 
 each size in msIcon
   +msFavicon(size)

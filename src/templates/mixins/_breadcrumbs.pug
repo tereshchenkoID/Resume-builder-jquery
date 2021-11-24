@@ -1,6 +1,0 @@
-mixin breadcrumbs({ mod, crumbs })
-  .breadcrumbs(class= mod ? `breadcrumbs--${mod}`: '')
-    ul.breadcrumbs__list
-      each crumb in crumbs
-        li.breadcrumbs__item
-          a.breadcrumbs__link(href=crumb.href)= crumb.text

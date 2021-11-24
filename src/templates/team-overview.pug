@@ -1,0 +1,45 @@
+---
+title: Portfolio
+lang: en
+---
+extends layouts/_layout
+
+block content
+  main
+    section.section
+      .container-fluid
+        .container
+          .row
+            .col-12
+              +breadcrumbs
+            .col-12.col-lg-8.padding-vertical
+              .row
+                .col-12.padding-vertical
+                  +subtitle('GAME RESULTS', false).subtitle--vertical
+                .col-12.col-md-6.padding-vertical
+                  +roster('atletico').roster--home
+                .col-12.col-md-6.padding-vertical
+                  +roster('bavaria fc').roster--away
+                .col-12.padding-vertical
+                  +subtitle('GAME SCHEDULE', true).subtitle--vertical
+                .col-12.padding-vertical
+                  +schedule
+                .col-12.padding-vertical
+                  +schedule
+                .col-12.padding-vertical
+                  +schedule
+
+            .col-12.col-lg-4.padding-vertical
+              .row
+                .col-12.padding-vertical
+                  +subtitle('GAME HIGHLIGHTS', false).subtitle--vertical
+                .col-12.padding-vertical
+                  +highlights
+                .col-12.padding-vertical
+                  +subtitle('latest game results').subtitle--vertical
+                .col-12.padding-vertical
+                  +schedule-smart
+                .col-12.padding-vertical
+                  +schedule-smart
+                .col-12.padding-vertical
+                  +schedule-smart

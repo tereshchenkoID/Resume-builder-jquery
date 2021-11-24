@@ -1,0 +1,63 @@
+mixin submenu-sm
+  ul.submenu&attributes(attributes)
+    li.submenu__item
+      a(href="latest-game-results.html").submenu__link
+        span.submenu__label Latest game result
+    li.submenu__item
+      a(href="team-overview.html").submenu__link
+        span.submenu__label Team Overview
+    li.submenu__item
+      a(href="statistics.html").submenu__link
+        span.submenu__label Statistics
+    li.submenu__item
+      a(href="standings.html").submenu__link
+        span.submenu__label Standings
+    li.submenu__item
+      a(href="#").submenu__link
+        span.submenu__label Post Layouts 2
+        i.fas.fa-angle-right.submenu__icon
+      ul.submenu
+        li.submenu__item
+          a(href="#").submenu__link
+            span.submenu__label Text 4
+        li.submenu__item
+          a(href="#").submenu__link
+            span.submenu__label Text 5
+
+mixin submenu-lg
+  .submenu&attributes(attributes)
+    .row
+      .col-12.col-lg-5.padding-vertical
+        +subtitle('Elements', false).subtitle--vertical
+        .row
+          .col-6
+            a(href='#').submenu__href 404 PAGE
+          .col-6
+            a(href='#').submenu__href SHORTCODES
+          .col-6
+            a(href='#').submenu__href TYPOGRAPHY
+          .col-6
+            a(href='#').submenu__href COMING SOON
+          .col-6
+            a(href='#').submenu__href LOGIN PAGE
+          .col-6
+            a(href='#').submenu__href TEAM OVERVIEW
+          .col-6
+            a(href='#').submenu__href SCHEDULE
+          .col-6
+            a(href='#').submenu__href NEWS
+          .col-6
+            a(href='#').submenu__href BLOG POST
+          .col-6
+            a(href='#').submenu__href GALLERY
+          .col-6
+            a(href='#').submenu__href LATEST GAME RESULTS
+          .col-6
+            a(href='#').submenu__href STANDINGS
+      .col-12.col-lg-7.padding-vertical
+        +subtitle('Latest News', false).subtitle--vertical
+        .row
+          - var n = 1
+          while n < 5
+            .col-6.padding-vertical
+              +post-smart(88, 'sm', true)(data=n++)

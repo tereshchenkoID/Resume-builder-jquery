@@ -1,0 +1,27 @@
+mixin bet-sport(text)
+  .bet-sport&attributes(attributes)
+    .bet-sport__slider
+      .bet-sport__item.bet-sport__item--active.js-bet-sport-item
+        .bet-sport__image
+          .bet-sport__icon
+            .icon.icon--icon-01
+        p.bet-sport__subtitle All Sports
+        p.bet-sport__label 29
+
+      - var n = 2
+      while n <= 9
+        .bet-sport__item.js-bet-sport-item
+          .bet-sport__image
+            .bet-sport__icon
+              .icon(class="icon--icon-0" + n++)
+          p.bet-sport__subtitle Football
+          p.bet-sport__label 29
+
+      .bet-sport__item.js-bet-sport-item
+        .bet-sport__image
+          .bet-sport__icon
+            .icon.icon--icon-10
+        p.bet-sport__subtitle Football
+        p.bet-sport__label 29
+
+    .bet-sport__header= text

@@ -7,42 +7,25 @@
 body {
   @include smooth-font;
 
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  background-color: var(--white);
-  min-width: 320px;
+  background-color: #edeff4;
+  min-width: var(--min-width);
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   line-height: var(--line-height);
-  color: var(--black);
+  letter-spacing: 0.025em;
+  color: var(--color-text);
   font-family: var(--font-family);
-  font-weight: var(--regular);
-  font-feature-settings: 'pnum' on, 'lnum' on;
-
-  &.is-overflow-hidden { // stylelint-disable-line
-    overflow: hidden;
-  }
+  font-size: var(--font-size);
+  font-weight: var(--typography-regular);
 }
 
-//
-// Headings
-//
-
-@include make-all-type($tag-types);
-
-@for $i from 1 through 6 {
-
-  h#{$i},
-  .h#{$i} {
-    @include make-spacer(m, 0);
-
-    font-weight: var(--extra-bold);
-  }
+.margin {
+  margin: 0 !important;
 }
 
-p {
-  @include make-spacer(m, 0);
+.padding {
+  padding: 0 !important;
 }
 
 button {
@@ -50,11 +33,187 @@ button {
 }
 
 a {
-  text-decoration: underline;
-  color: var(--accent);
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 ul,
 ol {
   @include reset-list;
+}
+
+.picture,
+.img {
+  @include size(100%);
+
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+.shadow {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  &--active {
+    display: block;
+  }
+}
+
+[class^='col-'] {
+
+  &.padding-vertical {
+    padding-top: $grid-padding;
+    padding-bottom: $grid-padding;
+  }
+}
+
+.aside {
+  position: sticky;
+  top: 30px;
+
+  @include media-max(map_get($grid-breakpoints, lg)) {
+    position: relative;
+  }
+}
+
+.section {
+  position: relative;
+  padding: 30px 0;
+}
+
+.slider {
+
+  .slick-arrow {
+    @include flex(center, center);
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s;
+    z-index: 3;
+    font-size: 0;
+
+    &::after {
+      color: var(--color-white);
+      font-family: 'Font Awesome 5 Free';
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    @include media-max(map_get($grid-breakpoints, lg)) {
+      display: none!important;
+    }
+  }
+
+  .slick-next {
+
+    &::after {
+      content: '\f105';
+    }
+  }
+
+  .slick-prev {
+
+    &::after {
+      content: '\f104';
+    }
+  }
+
+  .slick-list,
+  .slick-track {
+    height: 100%;
+  }
+
+  .slick-slide {
+
+    > div {
+      height: 100%;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  background-image: url('../img/service/icons.png');
+  background-repeat: no-repeat;
+
+  &--icon-01 {
+    @include size(27px, 30px);
+
+    background-position: 0 0;
+  }
+
+  &--icon-02 {
+    @include size(27px, 32px);
+
+    background-position: -27px 0;
+  }
+
+  &--icon-03 {
+    @include size(30px, 33px);
+
+    background-position: -54px 0;
+  }
+
+  &--icon-04 {
+    @include size(28px, 27px);
+
+    background-position: -84px 0;
+  }
+
+  &--icon-05 {
+    @include size(28px);
+
+    background-position: -112px 0;
+  }
+
+  &--icon-06 {
+    @include size(26px);
+
+    background-position: -140px 0;
+  }
+
+  &--icon-07 {
+    @include size(25px);
+
+    background-position: -166px 0;
+  }
+
+  &--icon-08 {
+    @include size(27px, 25px);
+
+    background-position: -191px 0;
+  }
+
+  &--icon-09 {
+    @include size(26px);
+
+    background-position: -218px 0;
+  }
+
+  &--icon-10 {
+    @include size(33px, 20px);
+
+    background-position: -244px 0;
+  }
+
+  &--icon-11 {
+    @include size(26px);
+
+    background-position: -277px 0;
+  }
 }

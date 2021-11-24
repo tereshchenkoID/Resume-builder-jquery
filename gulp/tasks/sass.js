@@ -46,7 +46,7 @@ const processors = [
   // mqpacker({
   //   sort: sortMediaQueries
   // }),
-  csso
+  // csso
 ];
 
 gulp.task('sass', () => gulp
@@ -65,7 +65,7 @@ gulp.task('sass', () => gulp
 // eslint-disable-next-line no-shadow
 const build = gulp => gulp.parallel('sass');
 // eslint-disable-next-line no-shadow
-const watch = gulp => () => gulp.watch(`${config.src.scss  }/**/*.{sass,scss}`, gulp.parallel('sass'));
+const watch = gulp => () => gulp.watch(`${config.src.root  }/**/*.{sass,scss}`, gulp.parallel('sass'));
 
 module.exports.build = build;
 module.exports.watch = watch;

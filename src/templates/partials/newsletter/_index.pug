@@ -1,0 +1,8 @@
+mixin newsletter
+  .newsletter&attributes(attributes)
+    h6.h6.newsletter__title SUBSCRIBE TO OUR NEWSLETTER
+    .newsletter__wrapper
+      input(type="email" placeholder="Enter your e-mail").field.newsletter__field
+      button(type="button").newsletter__button
+        i.fas.fa-arrow-right
+    .newsletter__error The text field is required

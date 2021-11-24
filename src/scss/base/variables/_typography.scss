@@ -1,10 +1,104 @@
 :root {
-  --font-family: #{$regular-fonts-list};
-  --light: #{$fw-light};
-  --regular: #{$fw-base};
-  --bold: #{$fw-bold};
-  --extra-bold: #{$fw-headings};
-  --font-size: #{rem($fs-base)};
-  --line-height: #{$lh-base};
-  --headings-line-height: #{$lh-headings};
+  --font-size: 14px;
+  --font-family: 'Roboto', sans-serif;
+  --font-family-alt: 'Kanit', sans-serif;
+  --line-height: 1.7;
+  --typography-regular: 400;
+  --typography-medium: 500;
+  --typography-bold: 700;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--color-title);
+  font-family: var(--font-family-alt);
+  font-weight: var(--typography-medium);
+}
+
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  letter-spacing: 0.025em;
+}
+
+h1,
+.h1 {
+  line-height: 1.3;
+  font-size: 32px;
+
+  @include media-min(768) {
+    line-height: 1.15;
+    font-size: 40px;
+  }
+
+  @include media-min(1200) {
+    line-height: 1.16667;
+    font-size: 60px;
+  }
+}
+
+h2,
+.h2 {
+  line-height: 1.5;
+  font-size: 28px;
+
+  @include media-min(1200) {
+    line-height: 1.25;
+    font-size: 48px;
+  }
+}
+
+h3,
+.h3 {
+  line-height: 1.5;
+  font-size: 24px;
+
+  @include media-min(1200) {
+    line-height: 1.33333;
+    font-size: 33px;
+  }
+}
+
+h4,
+.h4 {
+  line-height: 1.35;
+  font-size: 20px;
+
+  @include media-min(1200) {
+    line-height: 1.25;
+    font-size: 24px;
+  }
+}
+
+h5,
+.h5 {
+  line-height: 1.35;
+  font-size: 18px;
+
+  @include media-min(1200) {
+    line-height: 1.22222;
+    font-size: 18px;
+  }
+}
+
+h6,
+.h6 {
+  line-height: 1.35;
+  font-size: 14px;
+
+  @include media-min(1200) {
+    line-height: 1.25;
+    font-size: 16px;
+  }
 }

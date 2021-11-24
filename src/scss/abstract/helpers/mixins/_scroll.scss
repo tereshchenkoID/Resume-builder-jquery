@@ -1,0 +1,31 @@
+@mixin scroll {
+  overflow-x: auto !important;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-button:vertical:start:decrement {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-button:vertical:end:increment {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-button:horizontal:start:decrement {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-button:horizontal:end:increment {
+    display: none;
+  }
+}

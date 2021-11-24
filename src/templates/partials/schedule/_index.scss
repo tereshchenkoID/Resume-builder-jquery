@@ -1,0 +1,152 @@
+.schedule {
+  position: relative;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  padding: 45px 15px 50px;
+  text-transform: uppercase;
+  font-weight: var(--typography-medium);
+
+  &__category {
+    color: var(--color-text);
+  }
+
+  &__head {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__side {
+    @include flex(center, center, column);
+
+    border: 1px solid var(--color-border);
+    width: 100%;
+    max-width: 200px;
+    min-height: 235px;
+
+    @include media-max(map_get($grid-breakpoints, md)) {
+      border: 0;
+      min-height: 150px;
+    }
+
+    &--left {
+      margin-right: 0;
+      margin-left: auto;
+    }
+
+    &--right {
+      margin-right: auto;
+      margin-left: 0;
+    }
+  }
+
+  &__block {
+    margin-bottom: 15px;
+    text-align: center;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__logo {
+    @include size(100%, 120px);
+    @include flex(center, center);
+
+    margin-bottom: 10px;
+    overflow: hidden;
+
+    @include media-max(map_get($grid-breakpoints, sm)) {
+      @include size(100%, 80px);
+    }
+  }
+
+  &__img {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  &__vs {
+    position: relative;
+
+    &::after {
+      right: 0;
+      left: calc(50% + 15px);
+    }
+
+    &::before {
+      right: calc(50% + 15px);
+      left: 0;
+    }
+
+    &::after,
+    &::before {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--color-border);
+      height: 1px;
+      content: '';
+    }
+
+    span {
+      @include flex(center, center);
+      @include size(30px);
+
+      margin: 0 auto;
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      color: var(--color-primary);
+      font-size: 12px;
+    }
+  }
+
+  &__time {
+    color: var(--color-primary);
+  }
+
+  &__button {
+    margin: 0 auto;
+    border-radius: 3px;
+    max-width: 120px;
+  }
+
+  &__timer {
+    @include flex(center, center);
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #59646a;
+    height: 60px;
+
+    &::before {
+      @include size(0);
+
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      border-width: 0 10px 10px;
+      border-style: solid;
+      border-color: transparent transparent #59646a;
+      content: '';
+    }
+
+    > * {
+      letter-spacing: 2px;
+      color: var(--color-white);
+    }
+  }
+
+  @include media-max(map_get($grid-breakpoints, sm)) {
+    padding-top: 25px;
+  }
+
+  &--timer {
+    padding-bottom: 100px;
+  }
+}
