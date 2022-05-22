@@ -1,0 +1,64 @@
+---
+title: Mannequin
+lang: en
+---
+extends layouts/_layout
+
+block content
+  -
+    var menu = [
+      {
+        text: 'about product',
+        link: '#section-we-better'
+      },
+      {
+        text: 'capability',
+        link: '#section-synthetics-capability'
+      },
+      {
+        text: 'WHERE it CAN work',
+        link: '#section-where-it-can-work'
+      },
+      {
+        text: 'How does it work',
+        link: '#section-how-does-it-work'
+      },
+      {
+        text: 'future technology',
+        link: '#section-future-technology'
+      }
+    ]
+
+  +nav(menu, 'synthetics').nav--inner#nav
+  main
+    +section-header(
+      'mannequin sinthetics',
+      1,
+      [
+        'synthetics/header'
+      ],
+      [
+        {
+          list: [
+            'Mannequin AI is a cutting-edge AI technology',
+            'that can create stunning images of photoshoot-grade full body digital people.'
+          ]
+        },
+        {
+          list: [
+            'The technology is ready (of course we keep working on improving it daily) and can be applied across a number of industries now.'
+          ]
+        }
+      ],
+      true,
+      'pink'
+    ).section--header#section-header
+    +section-we-better.section--we-better#section-we-better
+    +section-synthetics-capability.section--synthetics-capability#section-synthetics-capability
+    +section-where-it-can-work.section--where-it-can-work#section-where-it-can-work
+    +section-how-does-it-work.section--how-does-it-work#section-how-does-it-work
+    +section-future-technology.section--future-technology#section-future-technology
+    +section-request([
+      "Ready to try it?",
+      "Let's talk."
+    ]).section--request#section-feedback

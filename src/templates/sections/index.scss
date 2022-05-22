@@ -1,12 +1,23 @@
 @import './header/index';
 @import './footer/index';
 
-@import './header/top/index';
-@import './header/nav/index';
-@import './header/logo/index';
-@import './header/menu/index';
-@import './header/search/index';
-@import './header/submenu/index';
-@import './header/slider/index';
-@import './header/toggle/index';
-@import './header/lang/index';
+@import './section-header/index';
+@import './section-request/index';
+
+/* Home */
+@import './section-about/index';
+@import './section-product/index';
+@import './section-feedback/index';
+
+/* Stylist */
+@import './section-sales/index';
+@import './section-stylist-capability/index';
+@import './section-integration/index';
+@import './section-plan/index';
+
+/* Synthetics */
+@import './section-we-better/index';
+@import './section-synthetics-capability/index';
+@import './section-how-does-it-work/index';
+@import './section-where-it-can-work/index';
+@import './section-future-technology/index';

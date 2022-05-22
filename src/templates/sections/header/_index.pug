@@ -1,3 +1,34 @@
+include ./nav/_index
+include ./logo/_index
+include ./menu/_index
+include ./toggle/_index
+include ./dropdown/_index
+
 mixin header
   header.header&attributes(attributes)
-    +slider.slider--main.js-header-slider
+    .container-fluid
+      .container.container--gradient
+        .grid
+          .wrapper
+            h1.title
+              span AI technologies
+              span and solutions
+              span for global
+              span industries
+
+          .image
+            +picture(`home/header`, `Header`)
+
+          .board
+            p.board__divider *
+            p.board__subtitle EXAMPLE
+            p.board__keyword digital generated model for e-commerce
+
+          .circle
+            .circle__line.circle__line--sm
+            .circle__line.circle__line--lg
+            .circle__icon
+              svg(width='45' height='70' viewBox='0 0 45 70' fill='none' xmlns='http://www.w3.org/2000/svg')
+                circle(cx='22.5' cy='35.5' r='22.5' fill='#E072D2')
+                path(d='M31.048 25.52L34.632 32.048L26.76 34.8L34.632 37.488L30.792 44.272L24.392 38.64L25.992 46.96H18.504L20.04 38.64L13.704 44.336L9.736 37.424L17.608 34.672L9.8 32.112L13.448 25.52L20.104 31.088L18.44 22.64H26.056L24.392 31.088L31.048 25.52Z' fill='black')
+

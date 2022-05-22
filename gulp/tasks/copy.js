@@ -15,11 +15,6 @@ gulp.task('copy:img', () => gulp
   .pipe(gulp.dest(config.dest.img))
 );
 
-gulp.task('copy:js', () => gulp
-  .src(`${config.src.js  }/custom.js`)
-  .pipe(gulp.dest(config.dest.js))
-);
-
 gulp.task('copy:fonts', () => gulp
   .src(`${config.src.fonts  }/**/*.{ttf,eot,woff,woff2}`)
   .pipe(gulp.dest(config.dest.fonts))
@@ -41,9 +36,9 @@ gulp.task('copy:rootfiles', () => gulp
 );
 
 // eslint-disable-next-line no-shadow
-const build = gulp => gulp.series('copy:img', 'copy:fonts', 'copy:js', 'copy:data');
+const build = gulp => gulp.series('copy:img', 'copy:fonts', 'copy:data');
 // eslint-disable-next-line no-shadow
-const watch = gulp => () => gulp.watch(`${config.src.data  }/**/*`, gulp.parallel('copy:img', 'copy:fonts', 'copy:js', 'copy:data'));
+const watch = gulp => () => gulp.watch(`${config.src.data  }/**/*`, gulp.parallel('copy:img', 'copy:fonts', 'copy:data'));
 
 module.exports.build = build;
 module.exports.watch = watch;

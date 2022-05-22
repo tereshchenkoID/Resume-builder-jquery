@@ -1,0 +1,10 @@
+mixin section-request(title)
+  section.section&attributes(attributes)
+    .container-fluid
+      .container.container--gradient
+        .grid
+          h2.title.js-item-animation
+            each item in title
+              span= item
+          a(href="./index.html").link.js-item-animation Get back home
+          +feedback.js-feedback.js-item-animation

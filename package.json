@@ -14,7 +14,7 @@
       "htmlhint --config .htmlhintrc"
     ]
   },
-  "authors": "Weplay core team html",
+  "authors": "Tereshchenko I.D.",
   "devDependencies": {
     "autoprefixer": "^9.4.10",
     "babel-core": "^6.26.3",
@@ -78,7 +78,7 @@
   "dependencies": {
     "@barba/core": "^2.3.10",
     "@barba/router": "^2.1.4",
-    "gsap": "^3.5.1",
+    "gsap": "^3.10.4",
     "jquery": "^3.4.1",
     "jquery.photoswipe": "^1.1.1",
     "slick-carousel": "^1.8.1",

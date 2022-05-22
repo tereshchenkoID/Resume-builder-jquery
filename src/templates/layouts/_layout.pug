@@ -3,14 +3,13 @@ include ../sections/index
 include ../partials/index
 
 doctype html
-html
+html(lang=lang)
   head
     include _head
   body
-    +top
-    +nav
-    block content
-    +footer#footer
-    .shadow.js-shadow
-      +betslip.js-betslip
-    script(src="./js/custom.js")
+    +preloader.js-preloader
+
+    .content
+      block content
+      +footer#footer
+    script(src="./js/app.js")

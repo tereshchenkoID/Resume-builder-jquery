@@ -1,0 +1,45 @@
+---
+title: Mannequin
+lang: en
+---
+extends layouts/_layout
+
+block content
+  -
+    var menu = [
+      {
+        text: 'How does it work',
+        link: '#section-sales'
+      },
+      {
+        text: 'capability',
+        link: '#section-stylist-capability'
+      },
+      {
+        text: 'ecommerce integration',
+        link: '#section-integration'
+      }
+    ]
+
+  +nav(menu, 'stylist').nav--inner#nav
+  main
+    +section-header(
+      'Mannequin Stylist turnkey solution for your apparel eCommerce',
+      3,
+      [
+        'stylist/header',
+        'home/product-21',
+        'home/product-22'
+      ],
+      false,
+      false,
+      'blue'
+    ).section--header#section-header
+    +section-sales.section--sales#section-sales
+    +section-stylist-capability.section--stylist-capability#section-stylist-capability
+    +section-integration.section--integration#section-integration
+    +section-plan.section--plan#section-plan
+    +section-request([
+      "Let us show you the stunning",
+      "looks for YOUR website"
+    ]).section--request#section-feedback

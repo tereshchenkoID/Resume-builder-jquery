@@ -1,0 +1,50 @@
+mixin section-how-does-it-work
+  section.section&attributes(attributes)
+    .container-fluid
+      .container
+        +bullet(4, 'how does it work').js-item-animation
+        h2.title.js-item-animation This is how the technology works in a nutshell
+        .item.js-item-animation
+          .item__cell
+            p.item__id 01
+          .item__cell
+            .item__picture
+              +picture('synthetics/work-1', 'Work 1')
+          .item__cell
+            .item__icon
+              svg(width='25' height='23' viewBox='0 0 25 23' fill='none' xmlns='http://www.w3.org/2000/svg')
+                path(d='M0 11.8946L22.8816 11.8946' stroke='#282828' stroke-width='3')
+                path(d='M12.9843 21.7891L22.8789 11.8946L12.9843 2' stroke='#282828' stroke-width='3')
+          .item__cell
+            p.item__text First, you need to have a photo taken (source photo) on a real human model.
+
+        .item.js-item-animation
+          .item__cell
+            p.item__id 02
+          .item__cell
+            .item__picture
+              +picture('synthetics/work-2', 'Work 2')
+          .item__cell
+            .item__icon
+              svg(width='25' height='23' viewBox='0 0 25 23' fill='none' xmlns='http://www.w3.org/2000/svg')
+                path(d='M0 11.8946L22.8816 11.8946' stroke='#282828' stroke-width='3')
+                path(d='M12.9843 21.7891L22.8789 11.8946L12.9843 2' stroke='#282828' stroke-width='3')
+          .item__cell
+            p.item__text Second,  Mannequin AI identifies apparel and the human on the photo.
+
+        .item.js-item-animation
+          .item__cell
+            p.item__id 03
+          .item__cell
+            .item__picture
+              +picture('synthetics/work-3', 'Work 3')
+          .item__cell
+            .item__icon
+              svg(width='25' height='23' viewBox='0 0 25 23' fill='none' xmlns='http://www.w3.org/2000/svg')
+                path(d='M0 11.8946L22.8816 11.8946' stroke='#282828' stroke-width='3')
+                path(d='M12.9843 21.7891L22.8789 11.8946L12.9843 2' stroke='#282828' stroke-width='3')
+          .item__cell
+            p.item__text Third, Mannequin AI creates a digital model and blends it nicely with the apparel on the photo.
+
+        .block.js-item-animation
+          h4 But what if we told you you don't  even need to have a source photo or human models any more, along with 90% of your photoshooting staff?

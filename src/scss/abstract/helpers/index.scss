@@ -1,4 +1,8 @@
 @import 'functions';
+@import 'mixins/breakpoints';
+@import 'mixins/rem-converter';
+@import 'mixins/font-size';
+@import 'mixins/spacing';
 @import 'mixins/flexbox';
 @import 'mixins/size';
 @import 'mixins/transition';
@@ -6,7 +10,5 @@
 @import 'mixins/reset-button';
 @import 'mixins/reset-list';
 @import 'mixins/smooth-font';
-@import 'mixins/media-max';
-@import 'mixins/media-min';
 @import 'mixins/line-clamp';
 @import 'mixins/scroll';

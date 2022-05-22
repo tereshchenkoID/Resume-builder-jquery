@@ -7,25 +7,16 @@
 body {
   @include smooth-font;
 
-  background-color: #edeff4;
+  background-color: #F4F4F4;
   min-width: var(--min-width);
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   line-height: var(--line-height);
-  letter-spacing: 0.025em;
   color: var(--color-text);
   font-family: var(--font-family);
   font-size: var(--font-size);
   font-weight: var(--typography-regular);
-}
-
-.margin {
-  margin: 0 !important;
-}
-
-.padding {
-  padding: 0 !important;
 }
 
 button {
@@ -33,23 +24,20 @@ button {
 }
 
 a {
-  transition: all 0.3s ease-in;
+  @include transition(color);
+
   cursor: pointer;
-  text-decoration: none;
   color: var(--color-text);
+  text-decoration: none;
 }
 
 p {
-  margin: 0;
-  padding: 0;
-}
-
-ul,
-ol {
-  @include reset-list;
+  @include make-spacer(m, 0);
+  @include make-spacer(p, 0);
 }
 
 .picture,
+.svg,
 .img {
   @include size(100%);
 
@@ -58,162 +46,55 @@ ol {
   object-position: center;
 }
 
-.shadow {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 3;
-  background-color: rgba(0, 0, 0, 0.7);
-
-  &--active {
-    display: block;
-  }
-}
-
-[class^='col-'] {
-
-  &.padding-vertical {
-    padding-top: $grid-padding;
-    padding-bottom: $grid-padding;
-  }
-}
-
-.aside {
-  position: sticky;
-  top: 30px;
-
-  @include media-max(map_get($grid-breakpoints, lg)) {
-    position: relative;
-  }
+.content {
+  padding-top: var(--navigation-height);
+  position: relative;
+  overflow: hidden;
 }
 
 .section {
+  @include make-spacer('mb', 20);
+  @include make-spacer('mb', 24, md);
+  @include make-spacer('mb', 26, xl);
+  @include make-spacer('mb', 30, xxl);
+
   position: relative;
-  padding: 30px 0;
 }
 
-.slider {
+.container-fluid {
+  @include make-spacer('px', 3, 'xs');
+  @include make-spacer('px', 5, 'md');
+  @include make-spacer('px', 18, 'xl');
+  @include make-spacer('px', 20, 'xxl');
+  @include make-spacer('mx', auto);
 
-  .slick-arrow {
-    @include flex(center, center);
-
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: 0.3s;
-    z-index: 3;
-    font-size: 0;
-
-    &::after {
-      color: var(--color-white);
-      font-family: 'Font Awesome 5 Free';
-      font-size: 20px;
-      font-weight: 900;
-    }
-
-    @include media-max(map_get($grid-breakpoints, lg)) {
-      display: none!important;
-    }
-  }
-
-  .slick-next {
-
-    &::after {
-      content: '\f105';
-    }
-  }
-
-  .slick-prev {
-
-    &::after {
-      content: '\f104';
-    }
-  }
-
-  .slick-list,
-  .slick-track {
-    height: 100%;
-  }
-
-  .slick-slide {
-
-    > div {
-      height: 100%;
-    }
-  }
+  width: 100%;
 }
 
-.icon {
-  display: block;
-  background-image: url('../img/service/icons.png');
-  background-repeat: no-repeat;
+.container {
+  @include make-spacer('mx', auto);
 
-  &--icon-01 {
-    @include size(27px, 30px);
+  position: relative;
+  min-width: var(--min-width);
+  max-width: var(--max-width);
+  width: 100%;
 
-    background-position: 0 0;
-  }
+  &--gradient {
 
-  &--icon-02 {
-    @include size(27px, 32px);
+      &::before {
+        @include size(1053px, 766px);
 
-    background-position: -27px 0;
-  }
+        @include media-breakpoint-up(sm) {
+          @include size(1387px, 1008px);
+        }
 
-  &--icon-03 {
-    @include size(30px, 33px);
-
-    background-position: -54px 0;
-  }
-
-  &--icon-04 {
-    @include size(28px, 27px);
-
-    background-position: -84px 0;
-  }
-
-  &--icon-05 {
-    @include size(28px);
-
-    background-position: -112px 0;
-  }
-
-  &--icon-06 {
-    @include size(26px);
-
-    background-position: -140px 0;
-  }
-
-  &--icon-07 {
-    @include size(25px);
-
-    background-position: -166px 0;
-  }
-
-  &--icon-08 {
-    @include size(27px, 25px);
-
-    background-position: -191px 0;
-  }
-
-  &--icon-09 {
-    @include size(26px);
-
-    background-position: -218px 0;
-  }
-
-  &--icon-10 {
-    @include size(33px, 20px);
-
-    background-position: -244px 0;
-  }
-
-  &--icon-11 {
-    @include size(26px);
-
-    background-position: -277px 0;
+        position: absolute;
+        background-image: url('../img/gradient-2.webp');
+        background-size: cover;
+        background-position: 50% 50%;
+        filter: blur(150px);
+        z-index: -1;
+        content: '';
+      }
   }
 }

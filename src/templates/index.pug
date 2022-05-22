@@ -1,81 +1,13 @@
 ---
-title: Portfolio
+title: Mannequin
 lang: en
 ---
 extends layouts/_layout
 
 block content
+  +nav(false, false).nav--default#nav
   +header#header
   main
-    section.section
-      .container-fluid
-        .container
-          .row
-            .col-12.padding-vertical
-              +bet-sport('all sports (29)')
-          .row
-            .col-12.padding-vertical
-              +subtitle('ICE HOCKEY (3)', true).subtitle--vertical
-            .col-12.padding-vertical
-              +sport-table(3, 1)
-            .col-12.padding-vertical
-              +subtitle('FOOTBALL (5)', false).subtitle--vertical
-            .col-12.padding-vertical
-              +sport-table(5, 3)
-            .col-12.padding-vertical
-              +subtitle('baseball (2)', false).subtitle--vertical
-            .col-12.padding-vertical
-              +sport-table(2, 3)
-            .col-12.col-sm-6.col-md-4.padding-vertical
-              +post-odd(150, 3)
-            .col-12.col-sm-6.col-md-4.padding-vertical
-              +post-odd(150, 2)
-            .col-12.col-sm-6.col-md-4.padding-vertical
-              +post-odd(150, 2)
-
-    section.section
-      .container-fluid
-        .container
-          .row
-            .col-12.col-lg-8
-              .row
-                .col-12.padding-vertical
-                  +subtitle('UPCOMING MATCH', true).subtitle--vertical
-                .col-12.padding-vertical
-                  +schedule(true).schedule--timer
-                .col-12.padding-vertical
-                  +subtitle('POPULAR NEWS', true).subtitle--vertical
-                .col-12.col-sm-6.padding-vertical
-                  +post(287)
-                .col-12.col-sm-6.padding-vertical
-                  +post(287)
-                .col-12.col-sm-6.padding-vertical
-                  +post(287)
-                .col-12.col-sm-6.padding-vertical
-                  +post(287)
-                .col-12.col-sm-6.padding-vertical
-                  +post(287)
-                .col-12.col-sm-6.padding-vertical
-                  +post(287)
-            .col-12.col-lg-4
-              .aside
-                .row
-                  .col-12.padding-vertical
-                    +subtitle('latest game results').subtitle--vertical
-                  .col-12.padding-vertical
-                    +schedule-smart
-                  .col-12.padding-vertical
-                    +schedule-smart
-                  .col-12.padding-vertical
-                    +schedule-smart
-                .row
-                  .col-12.padding-vertical
-                    +subtitle('follow us').subtitle--vertical
-                  .col-6.padding-vertical
-                    +button-social('Like', 'facebook-f').button--social.button--facebook
-                  .col-6.padding-vertical
-                    +button-social('Follow', 'twitter').button--social.button--twitter
-                  .col-6.padding-vertical
-                    +button-social('Follow', 'google').button--social.button--google
-                  .col-6.padding-vertical
-                    +button-social('Follow', 'instagram').button--social.button--instagram
+    +section-about.section--about#section-about
+    +section-product.section--product#section-product
+    +section-feedback.section--feedback#section-feedback

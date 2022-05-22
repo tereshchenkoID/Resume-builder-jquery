@@ -1,160 +1,52 @@
 .button {
+  @include make-spacer('px', 6);
   @include flex(center, center);
 
   position: relative;
-  min-height: 40px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-family: var(--font-family-alt);
+  border-radius: 10px;
   font-weight: var(--typography-bold);
 
   &__text {
-    @include flex($align-items: center);
+    @include font-size(25px);
   }
 
   &--primary {
-    background-color: var(--color-primary);
-    padding: 4px 12px;
-    color: var(--color-white);
-  }
-
-  &--secondary {
-    border: 1px solid var(--color-white);
-    border-radius: 3px;
-    background-color: transparent;
-    padding: 5px 15px;
+    background-color: var(--color-dark);
+    border: 2px solid var(--color-dark);
     color: var(--color-white);
 
-
-    &:hover,
-    &--active {
+    &:hover {
       border-color: var(--color-primary);
-      background-color: var(--color-primary);
+      color: var(--color-primary);
     }
   }
 
-  &--red {
-    border-radius: 3px;
-    background-color: var(--color-red);
-    padding: 5px 15px;
-    color: var(--color-white);
+  &--disabled {
+    pointer-events: none;
+    background-color: var(--color-light);
+    border: 2px solid var(--color-light);
+    color: #B3B3B3;
   }
 
-  &--grey {
-    border: 1px solid var(--color-border);
-    border-radius: 3px;
-    background-color: transparent;
-    padding: 5px 15px;
-    color: var(--color-secondary);
-
-    &:hover,
-    &--active {
-      border-color: var(--color-primary);
-      background-color: var(--color-primary);
-      color: var(--color-white);
-    }
-  }
-
-  &--social {
-    @include size(100%, 105px);
-
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 20px;
-    overflow: hidden;
-    text-transform: capitalize;
-    color: var(--color-white);
-
-    &::before {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      transition: 0.3s;
-      opacity: 0;
-      background-color: rgba(255, 255, 255, 0.3);
-      content: '';
-    }
-
-    .button {
-
-      &__icon {
-        position: absolute;
-        left: -10px;
-        transition: 0.3s;
-        opacity: 0.3;
-        font-size: 120px;
-      }
-
-      &__circle {
-        @include flex(center, center);
-        @include size(20px);
-
-        margin-left: 5px;
-        border: 3px solid var(--color-white);
-        border-radius: 50%;
-      }
-    }
-
-    .h4 {
-      color: var(--color-white);
-    }
-
-    &:hover,
-    &--active {
-
-      &::before {
-        opacity: 1;
-      }
-
-      .button {
-
-        &__icon {
-          transform: translateX(5px);
-        }
-      }
-    }
-  }
-
-  &--facebook {
-    background-color: #3e74bd;
-  }
-
-  &--twitter {
-    background-color: #37b5e9;
-  }
-
-  &--google {
-    background-color: #f06868;
-  }
-
-  &--instagram {
-    background-color: #425c7f;
-  }
-
-  &--odd {
-    justify-content: space-between;
-    border-radius: 5px;
-    background-color: #edeff4;
-    padding: 0 15px;
-    color: var(--color-secondary);
+  &--sm {
+    height: 60px;
 
     .button {
 
       &__text {
-        font-weight: var(--typography-regular);
-      }
-
-      &__value {
-        font-weight: var(--typography-bold);
+        @include font-size(20px);
       }
     }
+  }
 
-    &:hover,
-    &--active {
-      background-color: var(--color-primary);
-      color: var(--color-white);
+  &--lg {
+    height: 80px;
+
+    .button {
+
+      &__text {
+        @include font-size(25px);
+      }
     }
   }
 }

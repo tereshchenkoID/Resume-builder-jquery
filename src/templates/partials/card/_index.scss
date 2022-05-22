@@ -1,0 +1,394 @@
+.card {
+  position: relative;
+  width: 100%;
+
+  &__status {
+    @include make-spacer('mb', 4);
+    @include make-spacer('mb', 6, sm);
+    @include size(170px, 32px);
+
+    @include media-breakpoint-up(sm) {
+      @include size(300px, 58px);
+    }
+  }
+
+  &__body {
+    @include size(100%, 860px);
+    @include flex($direction: column);
+
+    @include make-spacer('pt', 8);
+    @include make-spacer('pt', 10, sm);
+
+    @include make-spacer('px', 6);
+    @include make-spacer('pl', 8, sm);
+    @include make-spacer('pr', 10, sm);
+
+    @include make-spacer('pl', 6, md);
+    @include make-spacer('pr', 8, md);
+
+    @include make-spacer('px', 10, xl);
+
+    @include make-spacer('pl', 8, xxl);
+
+    @include make-spacer('mx', auto);
+
+    position: relative;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: var(--default-border-radius);
+    background-color: var(--color-dark);
+
+    @include media-breakpoint-up(sm) {
+      height: 840px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      height: 950px;
+    }
+
+    @include media-breakpoint-up(xxl) {
+      height: 840px;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      background-size: cover;
+      filter: blur(75px);
+      content: '';
+    }
+
+    &::before {
+      @include size(612px, 497px);
+
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      background-image: url('../img/gradient-3.webp');
+      opacity: 0.15;
+    }
+
+    &::after {
+      top: 40px;
+      left: 40px;
+      right: -40px;
+      bottom: -40px;
+      background-image: url('../img/gradient-2.webp');
+      opacity: 0;
+      z-index: -1;
+      transition: var(--default-transition);
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      &::after {
+        opacity: 0.35;
+      }
+    }
+  }
+
+  &__header {
+    @include make-spacer('mx', auto);
+    @include make-spacer('pt', 8, xl);
+    @include make-spacer('pt', 0, xxl);
+
+    flex-grow: 1;
+    max-width: 516px;
+    text-align: center;
+    color: var(--color-white);
+  }
+
+  &__title {
+    @include make-spacer('mb', 6);
+    @include font-size(40px);
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(70px)
+    }
+
+    text-transform: uppercase;
+    font-weight: var(--typography-semibold);
+    color: var(--color-white);
+  }
+
+  &__description {
+    @include make-spacer('mx', auto);
+    @include font-size(16px, 24px);
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(20px, 30px)
+    }
+
+    @include media-breakpoint-up(xl) {
+      max-width: 100%;
+    }
+
+    strong,
+    span {
+      margin: 0 3px;
+    }
+  }
+
+  &__footer {
+    @include flex(space-between, flex-end);
+    @include make-spacer('pb', 6);
+    @include make-spacer('pb', 8, sm);
+    @include make-spacer('mt', 0, xxl);
+  }
+
+  &__pictures {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 140px;
+
+    &::after {
+      @include size(612px, 497px);
+
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      background-image: url('../img/gradient-2.webp');
+      background-size: cover;
+      filter: blur(150px);
+      opacity: 0.15;
+      z-index: 1;
+      content: '';
+    }
+
+    @include media-breakpoint-up(sm) {
+      bottom: 0;
+    }
+
+    @include media-breakpoint-up(xl) {
+      bottom: 125px;
+    }
+
+    @include media-breakpoint-up(xxl) {
+      bottom: 0;
+    }
+  }
+
+  &__picture {
+    @include flex(center);
+
+    position: absolute;
+    border-radius: 50%;
+    background-color: #FFECF9;
+    overflow: hidden;
+
+    &:nth-child(2) {
+      @include size(126px);
+
+      bottom: 296px;
+      transform: translateX(calc(-50% - 125px));
+
+      @include media-breakpoint-up(sm) {
+        @include size(188px);
+
+        bottom: 265px;
+        transform: translateX(calc(-50% - 205px));
+      }
+
+      @include media-breakpoint-up(xl) {
+        bottom: 245px;
+        transform: translateX(calc(-50% - 185px));
+      }
+
+      @include media-breakpoint-up(xxl) {
+        bottom: 265px;
+        transform: translateX(calc(-50% - 205px));
+      }
+    }
+
+    &:nth-child(3) {
+      @include size(106px);
+
+      bottom: 214px;
+      transform: translateX(calc(-50% - 150px));
+
+      @include media-breakpoint-up(sm) {
+        @include size(157px);
+
+        bottom: 152px;
+        transform: translateX(calc(-50% - 260px));
+      }
+
+      @include media-breakpoint-up(xl) {
+        bottom: 132px;
+        transform: translateX(calc(-50% - 240px));
+      }
+
+      @include media-breakpoint-up(xxl) {
+        bottom: 152px;
+        transform: translateX(calc(-50% - 260px));
+      }
+    }
+
+    &--sm {
+      left: 50%;
+
+      img {
+        transform: scale(1.14);
+      }
+    }
+
+    &--lg {
+      @include size(380px);
+
+      left: 50%;
+      bottom: 0;
+      transform: translate(-50%, 0);
+
+      @include media-breakpoint-up(sm) {
+        @include size(443px);
+
+        transform: translate(-50%, 24px);
+      }
+    }
+  }
+
+  &__icon {
+    @include make-spacer('mx', auto);
+
+    @include media-breakpoint-up(sm) {
+      @include make-spacer('ml', 0);
+    }
+  }
+
+  &__wrapper {
+    @include flex($align-items: center);
+
+    position: relative;
+    z-index: 1;
+    color: #F4F4F4;
+
+    @include media-breakpoint-up(sm) {
+      flex-direction: column;
+    }
+
+    @include media-breakpoint-up(xl) {
+      flex-direction: row;
+    }
+
+    @include media-breakpoint-up(xxl) {
+      flex-direction: column;
+    }
+  }
+
+  &__label {
+    @include make-spacer('mr', 4);
+    @include make-spacer('mr', 0, sm);
+    @include make-spacer('mr', 4, xl);
+    @include make-spacer('mr', 0, xxl);
+
+    @include make-spacer('mb', 4, sm);
+    @include make-spacer('mb', 0, xl);
+    @include make-spacer('mb', 4, xxl);
+
+    @include font-size(12px, 16px);
+
+    max-width: 60px;
+    text-align: right;
+
+    @include media-breakpoint-up(sm) {
+      text-align: left;
+    }
+  }
+
+  &__link {
+    @include flex($direction: column);
+
+    color: inherit;
+
+    circle {
+      stroke: currentColor;
+    }
+
+    path {
+      fill: currentColor;
+    }
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  &--pink {
+
+    .card {
+
+      &__picture {
+
+        &--lg {
+
+          &::after {
+            top: 67px;
+            left: -93px;
+          }
+        }
+      }
+    }
+  }
+
+  &--blue {
+
+    .card {
+
+      &__picture {
+
+        &--lg {
+
+          &::after {
+            left: 71px;
+            bottom: -16px;
+          }
+        }
+      }
+    }
+  }
+
+  &--done {
+
+    .card {
+
+      &__icon {
+        @include make-spacer('ml', 0);
+      }
+    }
+  }
+
+  &--wide {
+
+    .card {
+
+      &__status {
+        display: none;
+      }
+
+      &__header {
+        @include make-spacer('mt', -2, xl);
+        @include make-spacer('mt', 5, xxl);
+        @include media-breakpoint-up(xl) {
+          margin-right: 50%;
+          max-width: 460px;
+        }
+      }
+
+      &__body {
+        @include media-breakpoint-up(xl) {
+          height: 495px;
+        }
+      }
+
+      &__pictures {
+        @include media-breakpoint-up(xl) {
+          left: 50%;
+          bottom: 0;
+        }
+      }
+    }
+  }
+}

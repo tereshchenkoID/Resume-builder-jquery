@@ -1,86 +1,97 @@
 .menu {
-  @include flex;
+  @include make-spacer('my', 0);
+  @include make-spacer('p', 0);
 
-  padding: 0;
-  height: 100%;
+  @include flex(center, center, column);
+  @include media-breakpoint-up(xl) {
+    transform: none;
+  }
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--color-dark);
+  z-index: 12;
+  max-width: 768px;
+  transform: translateX(-100%);
+  transition: var(--default-transition);
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  @include media-breakpoint-up(xl) {
+    position: static;
+    flex-direction: row;
+    background-color: transparent;
+    max-width: 100%;
+  }
+
+  &__logo,
+  &__close {
+    position: absolute;
+    top: 30px;
+
+    @include media-breakpoint-up(xl) {
+      display: none;
+    }
+  }
+
+  &__logo {
+    left: 20px;
+
+    * {
+      color: var(--color-white);
+    }
+  }
+
+  &__close {
+    @include size(20px);
+
+    @include media-breakpoint-up(sm) {
+      @include size(35px);
+    }
+
+    right: 20px;
+  }
 
   &__item {
-    margin-right: 47px;
-    height: 100%;
+    @include make-spacer('mx', 4);
+    @include make-spacer('py', 4);
+    @include make-spacer('py', 6, sm);
+    @include make-spacer('p', 0, xl);
 
-    &:last-child {
-      margin-right: 0;
-    }
+    position: relative;
 
-    &:hover,
-    &--active {
-
-      .menu {
-
-        &__link {
-          color: var(--color-primary);
-
-          @include media-max(map_get($grid-breakpoints, lg)) {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-          }
-        }
-
-        &__dropdown {
-          display: block;
-        }
-      }
-    }
-
-    @include media-max(map_get($grid-breakpoints, lg)) {
-      margin-right: 0;
+    &:first-child {
+      @include make-spacer('mx', 0, xl);
     }
   }
 
   &__link {
-    @include flex($align-items: center);
+    @include font-size(20px, 20px);
 
-    height: 100%;
+    @include media-breakpoint-up(sm) {
+      @include font-size(30px, 20px);
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include font-size(16px, 20px);
+
+      color: var(--color-grey);
+    }
+
+    display: block;
+    text-align: center;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    white-space: nowrap;
     color: var(--color-white);
-    font-family: var(--font-family-alt);
-    font-weight: var(--typography-medium);
+    font-weight: var(--typography-semibold);
 
-    @include media-max(map_get($grid-breakpoints, lg)) {
-      justify-content: space-between;
-      padding: 0 15px;
-      height: 52px;
+    &--active,
+    &:hover {
+      color: var(--color-primary) !important;
     }
-  }
-
-  &__icon {
-    margin-left: 5px;
-  }
-
-  &__dropdown {
-    display: none;
-    position: absolute;
-    transition: 0.3s;
-    z-index: 3;
-
-    @include media-max(map_get($grid-breakpoints, lg)) {
-      position: relative;
-    }
-
-    &--lg {
-      right: $grid-padding;
-      left: $grid-padding;
-    }
-  }
-
-  @include media-max(map_get($grid-breakpoints, lg)) {
-    @include size(100%, auto);
-
-    position: relative;
-    flex-direction: column;
-    transition: all 0.3s;
-    background-color: var(--color-content);
   }
 }

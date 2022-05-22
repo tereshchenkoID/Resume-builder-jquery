@@ -1,0 +1,33 @@
+mixin card(title, description, url, progress, iconType, link, className)
+  .card&attributes(attributes)
+    if (progress)
+      .card__status
+        img(src="./img/progress.webp").img
+
+    .card__body
+      .card__header
+         h3.card__title= title
+         p.card__description
+           each item, index in description.list
+            if(index === description.index)
+              strong= item
+            else
+              span= item
+
+      .card__pictures
+        each item, index in url
+          .card__picture(class=(index === 0 ? 'card__picture--lg' : 'card__picture--sm'))
+            +picture(`home/${item}`, `Product ${index}`)
+
+      .card__footer
+
+        .card__icon
+          +icon(iconType)(class=`icon--${className}`)
+
+        if (!progress)
+          .card__wrapper
+            p.card__label about product
+            a(href=link).card__link
+              svg(width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg")
+                circle(cx="30" cy="30" r="29" stroke-width="2")
+                path(d="M30.9063 37.005L42.1938 31.125L30.9063 25.245L33.19 30.18L18.4113 28.4475V33.8025L33.19 32.07L30.9063 37.005Z")

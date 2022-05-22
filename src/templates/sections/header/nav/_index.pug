@@ -1,10 +1,20 @@
-mixin nav
+mixin nav(menu, page)
   nav.nav&attributes(attributes)
     .container-fluid
-      .container.nav__wrapper
-          +logo
-          +search
-    .container-fluid
-      .container.nav__wrapper
-          +menu
-          +social
+      .container
+        .wrapper
+          .wrapper__cell
+            if (menu)
+              +toggle.js-toggle
+          .wrapper__cell
+            +logo
+          .wrapper__cell
+            +dropdown(page).js-dropdown
+          .wrapper__cell
+            if (menu)
+              +menu(menu).js-menu
+            else
+              p.text modeling service for apparel-commerce
+          .wrapper__cell
+            a(href="#section-feedback").button.button--primary.button--sm
+              span.button__text let’s talk?

@@ -1,0 +1,76 @@
+// stylelint-disable at-rule-empty-line-before
+
+@function get-prop-name($prop) {
+  @if (index((m, mx, my, mt, mb, ml, mr), $prop)) {
+    @return margin;
+  } @else if (index((p, px, py, pt, pb, pl, pr), $prop)) {
+    @return padding;
+  } @else {
+    @return null;
+  }
+}
+
+@function get-prop-postfix-group($prop) {
+  $postfix-group: ();
+
+  @if (index((pl, ml, mx, px), $prop)) {
+    $postfix-group: append($postfix-group, -left);
+  }
+
+  @if (index((pr, mr, mx, px), $prop)) {
+    $postfix-group: append($postfix-group, -right);
+  }
+
+  @if (index((pt, mt, my, py), $prop)) {
+    $postfix-group: append($postfix-group, -top);
+  }
+
+  @if (index((pb, mb, my, py), $prop)) {
+    $postfix-group: append($postfix-group, -bottom);
+  }
+
+  @return $postfix-group;
+}
+
+@function get-prop-value($prop, $size, $spacers: $spacers) {
+  $length: map-get($spacers, $size);
+
+  @if (index((px, mx, pl, pr, ml, mr), $prop)) {
+    @return $length;
+  } @else if (index((py, my, pt, pb, mt, mb), $prop)) {
+    @return $length;
+  } @else if (index((p, m), $prop)) {
+    @return $length $length;
+  } @else {
+    @error '#{$prop} is invalid value';
+  }
+}
+
+@mixin _make-spacer($prop, $size) {
+  // stylelint-disable-line
+  $prop-name: get-prop-name($prop);
+  $prop-value: get-prop-value($prop, $size);
+  $prop-postfixes: get-prop-postfix-group($prop);
+
+  @if (length($prop-postfixes) > 0) {
+    @each $postfix in $prop-postfixes {
+      #{$prop-name}#{$postfix}: $prop-value;
+    }
+  } @else {
+    #{$prop-name}: $prop-value;
+  }
+}
+
+@mixin make-spacer($prop, $size, $breakpoint: null) {
+  @if ($breakpoint) {
+    @include media-breakpoint-up($breakpoint) {
+      @include _make-spacer($prop, $size);
+    }
+  } @else {
+    @include _make-spacer($prop, $size);
+  }
+}
+
+// @include make-spacer(mb, 2);
+// mb - margin-bottom
+// 2 - grid 2 points size (1 point for example 8px)

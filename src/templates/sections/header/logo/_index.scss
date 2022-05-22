@@ -1,13 +1,11 @@
 .logo {
-  @include size(106px, 40px);
+  @include size(120px, 28px);
 
   display: block;
-  position: relative;
   flex-shrink: 0;
+  color: var(--color-title);
 
-  &__img {
-    @include size(100%);
-
-    display: block;
+  @include media-breakpoint-up(md) {
+    @include size(165px, 38px);
   }
 }

@@ -1,4 +1,4 @@
-# S-bet
+# Mannequin
 
 ## Start project
 

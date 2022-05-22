@@ -1,0 +1,26 @@
+.bullet {
+  @include flex($align-items: center);
+  @include make-spacer('mb', 8, xs);
+  @include make-spacer('mb', 10, md);
+
+  &__icon {
+    @include size(30px);
+    @include flex(center, center);
+    @include make-spacer('mr', 4);
+
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+
+    svg {
+      fill: currentColor;
+    }
+  }
+
+  &__text {
+    @include font-size(14px);
+
+    font-weight: var(--typography-bold);
+    color: var(--color-title);
+  }
+}

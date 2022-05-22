@@ -1,0 +1,13 @@
+mixin dropdown(page)
+  .dropdown&attributes(attributes)
+    .dropdown__selected
+      .dropdown__text products
+      .dropdown__icon
+        svg(width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg')
+          path(d='M11 1L6 6L1 1' stroke='#282828' stroke-linecap='round' stroke-linejoin='round')
+    .dropdown__toggle
+      a(href="./stylist.html" class=page === 'stylist' && 'dropdown__item--active').dropdown__item Mannequin Stylist
+      a(href="./synthetics.html" class=page === 'synthetics' && 'dropdown__item--active').dropdown__item Mannequin Synthetics
+      hr.dropdown__divider
+      a.dropdown__item.dropdown__item--disabled Mannequin Robotics
+      a.dropdown__item.dropdown__item--disabled Peruka

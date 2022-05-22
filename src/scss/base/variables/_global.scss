@@ -1,0 +1,18 @@
+:root {
+  --min-width: 20rem;
+  --max-width: 95.5rem;
+
+  --default-border-radius: 20px;
+  --default-box-shadow: 0px 0px 20px rgba(108, 167, 255, 0.05);
+  --default-transition: all 0.3s;
+
+  --navigation-height: 130px;
+
+  @include media-breakpoint-up(sm) {
+    --navigation-height: 86px;
+  }
+
+  @include media-breakpoint-up(md) {
+    --navigation-height: 100px;
+  }
+}
