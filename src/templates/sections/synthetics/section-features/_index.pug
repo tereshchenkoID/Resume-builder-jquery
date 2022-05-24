@@ -1,0 +1,111 @@
+-
+  var text = [
+    {
+      "id": '01',
+      "title": 'Both male and female support'
+    },
+    {
+      "id": '02',
+      "title": 'Photoshoot-grade quality'
+    },
+    {
+      "id": '03',
+      "title": 'Fully customizable parameters'
+    },
+    {
+      "id": '04',
+      "title": 'Different poses, backgrounds, etc.'
+    }
+  ]
+
+mixin section-features
+  section.section&attributes(attributes)
+    .container-fluid
+      .container
+        .block
+          .tab.js-tab.js-item-animation
+            +bullet(5, 'features')
+
+            .tab__item(data-id="tab-1").tab__item--toggle.tab__item--border.tab__item--active.js-tab-item
+              .tab__link
+                p.tab__id= `${text[0].id} /`
+                p.tab__text= text[0].title
+              .tab__icon
+            .tab__section.tab__section--active.js-tab-section#tab-1
+              .tab__body
+                .tab__block
+                  p.tab__id.tab__id--lg= `${text[0].id}/`
+                  .tab__wrapper
+                    h3.tab__title= text[0].title
+                    p.tab__description Mannequin AI can create beautiful male models as well. Fully customizable, you guessed it right.
+                .tab__slider.js-tab-slider
+                  +picture('synthetics/tab-1', 'Product 1')
+                  +picture('synthetics/tab-12', 'Product 11')
+
+
+            .tab__item(data-id="tab-2").tab__item--toggle.js-tab-item
+              .tab__link
+                p.tab__id= `${text[1].id} /`
+                p.tab__text= text[1].title
+              .tab__icon
+            .tab__section.js-tab-section#tab-2
+              .tab__body
+                .tab__block
+                  p.tab__id.tab__id--lg= `${text[1].id}/`
+                  .tab__wrapper
+                    h3.tab__title= text[1].title
+                .tab__slider.js-tab-slider
+                  +picture('synthetics/tab-2', 'Product 2')
+                  +picture('synthetics/tab-21', 'Product 21')
+
+
+            .tab__item(data-id="tab-3").tab__item--toggle.js-tab-item
+              .tab__link
+                p.tab__id= `${text[2].id} /`
+                p.tab__text= text[2].title
+              .tab__icon
+            .tab__section.js-tab-section#tab-3
+              .tab__body
+                .tab__block
+                  p.tab__id.tab__id--lg= `${text[2].id}/`
+                  .tab__wrapper
+                    h3.tab__title= text[2].title
+                    .tab__description
+                      ul.list
+                        li.list__item
+                          p.list__text Ethnicity
+                        li.list__item
+                          p.list__text Facial expressions
+                        li.list__item
+                          p.list__text Hair styles
+                        li.list__item
+                          p.list__text Hair color
+                        li.list__item
+                          p.list__text Body type
+                .tab__slider.js-tab-slider
+                  +picture('synthetics/tab-3', 'Product 3')
+                  +picture('synthetics/tab-31', 'Product 31')
+                  +picture('synthetics/tab-32', 'Product 32')
+
+            .tab__item(data-id="tab-4").tab__item--toggle.js-tab-item
+              .tab__link
+                p.tab__id= `${text[3].id} /`
+                p.tab__text= text[3].title
+              .tab__icon
+            .tab__section.js-tab-section#tab-4
+              .tab__body
+                .tab__block
+                  p.tab__id.tab__id--lg= `${text[3].id}/`
+                  .tab__wrapper
+                    h3.tab__title= text[3].title
+                    p.tab__description Even we know that photoshoots are about models poses. So our digital models can mimic most of the poses you want (full disclosure - although not all at the moment).
+                .tab__slider.js-tab-slider
+                  +picture('synthetics/tab-4', 'Product 4')
+                  +picture('synthetics/tab-41', 'Product 41')
+
+            .tab__header
+              each item, index in text
+                .tab__item(class=index === 0 && 'tab__item--active'  data-id=`tab-${index + 1}`).js-tab-item
+                  .tab__link
+                    p.tab__id= `${item.id}/`
+                    p.tab__text= item.title

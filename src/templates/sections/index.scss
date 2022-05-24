@@ -1,23 +1,23 @@
 @import './header/index';
 @import './footer/index';
 
-@import './section-header/index';
-@import './section-request/index';
+@import './default/section-header/index';
+@import './default/section-request/index';
 
 /* Home */
-@import './section-about/index';
-@import './section-product/index';
-@import './section-feedback/index';
+@import './home/section-about/index';
+@import './home/section-product/index';
+@import './home/section-feedback/index';
 
 /* Stylist */
-@import './section-sales/index';
-@import './section-stylist-capability/index';
-@import './section-integration/index';
-@import './section-plan/index';
+@import './stylist/section-sales/index';
+@import './stylist/section-benefits/index';
+@import './stylist/section-integration/index';
+@import './stylist/section-plan/index';
 
 /* Synthetics */
-@import './section-we-better/index';
-@import './section-synthetics-capability/index';
-@import './section-how-does-it-work/index';
-@import './section-where-it-can-work/index';
-@import './section-future-technology/index';
+@import './synthetics/section-we-better/index';
+@import './synthetics/section-features/index';
+@import './synthetics/section-process/index';
+@import './synthetics/section-use-cases/index';
+@import './synthetics/section-near-future/index';

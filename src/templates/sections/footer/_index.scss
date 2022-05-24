@@ -24,22 +24,7 @@
   .address {
     @include font-size(14px, 21px);
 
-    font-weight: var(--typography-bold);
     color: var(--color-white);
-  }
-
-  .grid {
-    @include make-spacer('mb', 4, sm);
-    @include make-spacer('mb', 0, xl);
-    @include flex($align-items: center);
-
-    @include media-breakpoint-up(sm) {
-      width: 100%;
-    }
-
-    @include media-breakpoint-up(xl) {
-      width: auto;
-    }
   }
 
   .text {
@@ -50,6 +35,19 @@
 
     &:hover {
       color: var(--color-primary);
+    }
+
+    &--mail {
+      @include make-spacer('mb', 4, sm);
+      @include make-spacer('mb', 0, xl);
+
+      @include media-breakpoint-up(sm) {
+        width: 100%;
+      }
+
+      @include media-breakpoint-up(xl) {
+        width: auto;
+      }
     }
 
     &--privacy {

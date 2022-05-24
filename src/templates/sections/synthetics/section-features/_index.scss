@@ -1,0 +1,324 @@
+.section {
+
+  &--features {
+
+    .bullet {
+      @include media-breakpoint-up(xl) {
+        top: 240px;
+        position: absolute;
+      }
+    }
+
+    .tab {
+
+      &__header {
+        display: none;
+        position: relative;
+
+        @include media-breakpoint-up(xl) {
+          display: grid;
+          column-gap: 24px;
+          grid-template-columns: repeat(4, 1fr);
+
+          &::before {
+            position: absolute;
+            top: 7px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: var(--color-dark);
+            z-index: 1;
+            content: '';
+          }
+        }
+      }
+
+      &__item {
+        @include make-spacer('pr', 15);
+        @include make-spacer('pr', 0, sm);
+        @include flex($align-items: center);
+
+        position: relative;
+        border-top: 2px solid var(--color-dark);
+        height: 80px;
+        cursor: pointer;
+
+        &--border {
+          border-top: 0;
+        }
+
+        @include media-breakpoint-up(sm) {
+          height: 109px;
+        }
+
+        @include media-breakpoint-up(xl) {
+          border: 0;
+          align-items: flex-end;
+        }
+
+        &::after,
+        &::before {
+          position: absolute;
+          right: 0;
+          left: 0;
+          opacity: 0;
+          transition: var(--default-transition);
+          z-index: 0;
+          content: '';
+        }
+
+        &::after {
+          top: 0;
+          background-color: var(--color-secondary);
+          height: 7px;
+        }
+
+        &::before {
+          top: 8px;
+          height: 80px;
+          background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        &:hover {
+          @include media-breakpoint-up(xl) {
+            &::before {
+              opacity: 1;
+            }
+          }
+        }
+
+        &--toggle {
+          @include media-breakpoint-up(xl) {
+            display: none;
+          }
+        }
+
+        &--active {
+          @include media-breakpoint-up(xl) {
+            color: var(--color-secondary);
+
+            &::after {
+              opacity: 1;
+            }
+          }
+
+          .tab {
+
+            &__icon {
+
+              &::after {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      &__id {
+        @include font-size(24px, 30px);
+
+        white-space: nowrap;
+
+        &--lg {
+          display: none;
+
+          @include media-breakpoint-up(xl) {
+            @include font-size(70px, 90px);
+
+            display: block;
+          }
+
+          color: var(--color-dark);
+        }
+      }
+
+      &__link {
+        @include font-size(16px, 22px);
+
+        @include media-breakpoint-up(sm) {
+          @include font-size(24px, 30px);
+        }
+
+        display: grid;
+        position: relative;
+        grid-template-columns: 42px 1fr;
+        column-gap: 20px;
+        font-weight: var(--typography-semibold);
+      }
+
+      &__icon {
+        @include flex(center, center);
+        @include size(50px);
+
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        background-color: var(--color-white);
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(108, 167, 255, 0.05);
+
+        @include media-breakpoint-up(sm) {
+          @include size(69px);
+        }
+
+        @include media-breakpoint-up(xl) {
+          display: none;
+        }
+
+        &::after,
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: var(--color-dark);
+          content: '';
+        }
+
+        &::before {
+          @include size(24px, 2px);
+        }
+
+        &::after {
+          @include size(2px, 24px);
+        }
+      }
+
+      &__section {
+        display: none;
+
+        &--active {
+          display: block;
+        }
+      }
+
+      &__body {
+        @include flex($direction: column);
+
+        @include media-breakpoint-up(xl) {
+          display: grid;
+          grid-template-columns: 1fr 640px;
+          column-gap: 85px;
+        }
+
+        @include media-breakpoint-up(xxl) {
+          grid-template-columns: 1fr 766px;
+          column-gap: 155px;
+        }
+
+        &::before {
+          @include size(662px, 718px);
+
+          position: absolute;
+          bottom: -150px;
+          right: -150px;
+          background-image: url('../img/gradient-2.webp');
+          background-size: cover;
+          background-position: 50% 50%;
+          filter: blur(150px);
+          opacity: 0.15;
+          z-index: -1;
+          content: '';
+
+          @include media-breakpoint-up(sm) {
+            @include size(1000px, 682px);
+
+            bottom: -80px;
+            right: 265px;
+          }
+
+          @include media-breakpoint-up(md) {
+            right: 50%;
+            bottom: -20px;
+            transform: translateX(50%);
+          }
+
+          @include media-breakpoint-up(xl) {
+            @include size(1471px, 1024px);
+          }
+        }
+
+        position: relative;
+      }
+
+      &__block {
+        @include media-breakpoint-up(xl) {
+          display: grid;
+          grid-template-columns: 120px 490px;
+          column-gap: 20px;
+          padding-top: 245px;
+        }
+
+        @include media-breakpoint-up(xl) {
+          padding-top: 330px;
+        }
+      }
+
+      &__description {
+        @include font-size(16px, 26px);
+
+        @include media-breakpoint-up(xl) {
+          @include font-size(20px, 36px);
+        }
+      }
+
+      &__title {
+        @include make-spacer('mb', 10, xl);
+        @include font-size(16px, 30px);
+
+        @include media-breakpoint-up(sm) {
+          @include font-size(24px, 30px);
+        }
+
+        @include media-breakpoint-up(xl) {
+          @include font-size(80px);
+
+          display: block;
+        }
+
+        display: none;
+        font-weight: var(--typography-semibold);
+      }
+
+      &__slider {
+        @include make-spacer('mx', -3);
+        @include make-spacer('mx', auto, xl);
+        @include size(375px, 506px);
+
+        @include media-breakpoint-up(sm) {
+          @include size(540px, 746px);
+        }
+
+        @include media-breakpoint-up(xl) {
+          @include size(640px, 840px);
+        }
+
+        @include media-breakpoint-up(xl) {
+          @include size(760px, 993px);
+        }
+
+        position: relative;
+        align-self: center;
+
+        .picture {
+          @include size(386px, 506px);
+
+          position: absolute;
+          left: 50%;
+          bottom: -10px;
+          transform: translateX(-50%) scale(1.1);
+
+          @include media-breakpoint-up(sm) {
+            @include size(100%);
+
+            top: 0;
+            right: 0;
+            left: 0;
+            transform: translateY(10px);
+          }
+        }
+      }
+    }
+  }
+}

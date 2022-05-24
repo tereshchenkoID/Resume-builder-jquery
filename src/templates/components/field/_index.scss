@@ -28,13 +28,12 @@
   &__placeholder {
     @include font-size(18px, 16px);
 
-    top: 28px;
+    top: 25px;
     left: 20px;
 
     @include media-breakpoint-up(sm) {
       @include font-size(20px, 27px);
 
-      top: 25px;
       left: 30px;
     }
 

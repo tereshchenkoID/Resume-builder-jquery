@@ -13,8 +13,10 @@ mixin nav(menu, page)
           .wrapper__cell
             if (menu)
               +menu(menu).js-menu
-            else
-              p.text modeling service for apparel-commerce
           .wrapper__cell
-            a(href="#section-feedback").button.button--primary.button--sm
-              span.button__text let’s talk?
+            if (menu)
+              a.button.button--primary.button--sm.js-button-modal
+                span.button__text Let’s talk
+            else
+              a(href="#section-feedback").button.button--primary.button--sm
+                span.button__text Let’s talk

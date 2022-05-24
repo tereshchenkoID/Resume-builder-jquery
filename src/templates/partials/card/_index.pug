@@ -1,5 +1,5 @@
-mixin card(title, description, url, progress, iconType, link, className)
-  .card&attributes(attributes)
+mixin card(title, description, url, progress, iconType, className)
+  a.card&attributes(attributes)
     if (progress)
       .card__status
         img(src="./img/progress.webp").img
@@ -27,7 +27,7 @@ mixin card(title, description, url, progress, iconType, link, className)
         if (!progress)
           .card__wrapper
             p.card__label about product
-            a(href=link).card__link
+            span.card__link
               svg(width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg")
                 circle(cx="30" cy="30" r="29" stroke-width="2")
                 path(d="M30.9063 37.005L42.1938 31.125L30.9063 25.245L33.19 30.18L18.4113 28.4475V33.8025L33.19 32.07L30.9063 37.005Z")

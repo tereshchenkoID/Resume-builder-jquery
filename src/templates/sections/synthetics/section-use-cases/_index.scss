@@ -1,0 +1,98 @@
+.section {
+
+  &--use-cases {
+
+    .container {
+
+      &::before {
+        @include size(610px, 443px);
+
+        left: -400px;
+        bottom: -450px;
+
+        @include media-breakpoint-up(sm) {
+          @include size(1135px, 824px);
+
+          left: -875px;
+          bottom: -850px;
+        }
+
+        @include media-breakpoint-up(md) {
+          @include size(1052px, 720px);
+
+          left: -500px;
+          bottom: -1200px;
+          transform: rotateZ(40deg);
+        }
+
+        @include media-breakpoint-up(xl) {
+          bottom: -900px;
+        }
+
+        @include media-breakpoint-up(xxl) {
+          @include size(1458px, 998px);
+
+          transform: none;
+        }
+      }
+    }
+
+    .grid {
+       @include media-breakpoint-up(xl) {
+         display: grid;
+         grid-template-columns: 660px 1fr;
+         column-gap: 90px;
+       }
+
+       @include media-breakpoint-up(xxl) {
+         grid-template-columns: 752px 1fr;
+         column-gap: 150px;
+       }
+    }
+
+    .item {
+      @include make-spacer('py', 6);
+      @include make-spacer('py', 8);
+
+      border-bottom: 2px solid var(--color-dark);
+
+      &__title {
+        @include make-spacer('mb', 6);
+        @include make-spacer('mb', 8, sm);
+        @include make-spacer('mb', 6, xl);
+        @include make-spacer('mb', 4, xxl);
+
+        font-weight: var(--typography-semibold);
+      }
+
+      &__text {
+        @include font-size(16px, 24px);
+
+        @include media-breakpoint-up(sm) {
+          @include font-size(20px, 30px);
+        }
+      }
+
+      &:first-child {
+        @include make-spacer('pt', 4);
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    .title {
+      @include make-spacer('mb', 8);
+      @include make-spacer('mb', 10, md);
+
+      &--default {
+        font-weight: var(--typography-semibold);
+      }
+
+      &--primary {
+        color: var(--color-primary);
+      }
+    }
+  }
+}

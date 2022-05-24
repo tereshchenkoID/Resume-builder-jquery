@@ -63,7 +63,15 @@ h2,
 
 h3,
 .h3 {
-  @include font-size(70px);
+  @include font-size(40px, 45px);
+
+  @include media-breakpoint-up(sm) {
+    @include font-size(60px, 70px);
+  }
+
+  @include media-breakpoint-up(xl) {
+    @include font-size(70px, 80px);
+  }
 }
 
 h4,

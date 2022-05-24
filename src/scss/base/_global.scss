@@ -82,19 +82,27 @@ p {
   &--gradient {
 
       &::before {
-        @include size(1053px, 766px);
-
-        @include media-breakpoint-up(sm) {
-          @include size(1387px, 1008px);
-        }
-
         position: absolute;
         background-image: url('../img/gradient-2.webp');
         background-size: cover;
         background-position: 50% 50%;
         filter: blur(150px);
-        z-index: -1;
+        opacity: 0.15;
         content: '';
       }
+  }
+
+  &--gradient-alt {
+
+    &::after,
+    &::before {
+      position: absolute;
+      background-image: url('../img/gradient-2.webp');
+      background-size: cover;
+      background-position: 50% 50%;
+      filter: blur(150px);
+      opacity: 0.15;
+      content: '';
+    }
   }
 }

@@ -8,24 +8,24 @@ block content
   -
     var menu = [
       {
-        text: 'about product',
+        text: 'About',
         link: '#section-we-better'
       },
       {
-        text: 'capability',
-        link: '#section-synthetics-capability'
+        text: 'Features',
+        link: '#section-features'
       },
       {
-        text: 'WHERE it CAN work',
-        link: '#section-where-it-can-work'
+        text: 'Use Cases',
+        link: '#section-use-cases'
       },
       {
-        text: 'How does it work',
-        link: '#section-how-does-it-work'
+        text: 'Process',
+        link: '#section-process'
       },
       {
-        text: 'future technology',
-        link: '#section-future-technology'
+        text: 'Near Future',
+        link: '#section-near-future'
       }
     ]
 
@@ -54,11 +54,12 @@ block content
       'pink'
     ).section--header#section-header
     +section-we-better.section--we-better#section-we-better
-    +section-synthetics-capability.section--synthetics-capability#section-synthetics-capability
-    +section-where-it-can-work.section--where-it-can-work#section-where-it-can-work
-    +section-how-does-it-work.section--how-does-it-work#section-how-does-it-work
-    +section-future-technology.section--future-technology#section-future-technology
+    +section-features.section--features#section-features
+    +section-use-cases.section--use-cases#section-use-cases
+    +section-process.section--process#section-process
+    +section-near-future.section--near-future#section-near-future
     +section-request([
       "Ready to try it?",
       "Let's talk."
     ]).section--request#section-feedback
+    +modal.js-modal

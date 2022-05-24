@@ -8,15 +8,15 @@ block content
   -
     var menu = [
       {
-        text: 'How does it work',
+        text: 'How it work',
         link: '#section-sales'
       },
       {
-        text: 'capability',
-        link: '#section-stylist-capability'
+        text: 'Benefits',
+        link: '#section-benefits'
       },
       {
-        text: 'ecommerce integration',
+        text: 'Integration',
         link: '#section-integration'
       }
     ]
@@ -36,10 +36,11 @@ block content
       'blue'
     ).section--header#section-header
     +section-sales.section--sales#section-sales
-    +section-stylist-capability.section--stylist-capability#section-stylist-capability
+    +section-benefits.section--benefits#section-benefits
     +section-integration.section--integration#section-integration
     +section-plan.section--plan#section-plan
     +section-request([
       "Let us show you the stunning",
       "looks for YOUR website"
     ]).section--request#section-feedback
+    +modal.js-modal

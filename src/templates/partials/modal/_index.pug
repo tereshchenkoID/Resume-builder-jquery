@@ -1,0 +1,7 @@
+mixin modal
+  .modal&attributes(attributes)
+    .modal__wrapper
+      a.modal__close.js-modal-close
+        svg(viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg')
+          path(d='M17.0006 17L32.0006 32M2.00061 32L17.0006 17L2.00061 32ZM32.0006 2L16.9977 17L32.0006 2ZM16.9977 17L2.00061 2L16.9977 17Z' stroke='#F4F4F4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round')
+      +feedback.js-feedback

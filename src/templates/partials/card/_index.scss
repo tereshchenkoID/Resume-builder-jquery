@@ -1,6 +1,7 @@
 .card {
   position: relative;
   width: 100%;
+  display: block;
 
   &__status {
     @include make-spacer('mb', 4);
@@ -361,6 +362,7 @@
   }
 
   &--wide {
+    pointer-events: none;
 
     .card {
 

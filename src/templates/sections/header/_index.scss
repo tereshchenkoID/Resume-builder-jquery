@@ -25,11 +25,14 @@
   .container {
 
     &::before {
+      @include size(1053px, 766px);
+
       left: -618px;
       top: -740px;
-      opacity: 0.15;
 
       @include media-breakpoint-up(sm) {
+        @include size(1387px, 1008px);
+
         left: -590px;
         top: -920px;
       }
@@ -39,7 +42,7 @@
       }
 
       @include media-breakpoint-up(xl) {
-        left: -250px;
+        left: -350px;
       }
 
       @include media-breakpoint-up(xxl) {

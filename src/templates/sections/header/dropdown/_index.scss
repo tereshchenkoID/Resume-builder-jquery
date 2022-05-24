@@ -9,14 +9,13 @@
 
     border-radius: 4px;
     background-color: var(--color-secondary);
-    color: var(--color-dark);
-    font-weight: var(--typography-semibold);
-    text-transform: uppercase;
     cursor: pointer;
     transition: var(--default-transition);
+    color: var(--color-dark);
+    font-weight: var(--typography-semibold);
 
     &:hover {
-      background-color: #ECECEC;
+      background-color: var(--color-white);
     }
   }
 
@@ -30,7 +29,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     background-color: var(--color-white);
-    width: 190px;
+    width: 200px;
 
     @include media-breakpoint-up(sm) {
       right: auto;

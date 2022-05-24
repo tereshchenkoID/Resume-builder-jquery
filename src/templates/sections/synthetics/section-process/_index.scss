@@ -1,0 +1,274 @@
+.section {
+
+  &--process {
+
+    .container {
+
+      &::before {
+        @include size(338px, 725px);
+
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @include media-breakpoint-up(sm) {
+          @include size(546px, 615px);
+
+          right: 20px;
+          left: auto;
+          bottom: -150px;
+          transform: none;
+        }
+
+        @include media-breakpoint-up(md) {
+          @include size(724px);
+        }
+
+        @include media-breakpoint-up(xl) {
+          @include size(935px, 748px);
+
+          bottom: -450px;
+        }
+
+        @include media-breakpoint-up(xxl) {
+          @include size(1378px, 716px);
+
+          right: -80px;
+          bottom: -300px;
+        }
+      }
+    }
+
+    .item {
+      @include make-spacer('py', 8);
+
+      display: grid;
+      column-gap: 30px;
+      border-top: 2px solid var(--color-dark);
+      cursor: pointer;
+
+      @include media-breakpoint-up(sm) {
+        grid-template-areas: 'id image arrow text'!important;
+
+        grid-template-columns: 40px 267px 55px 1fr;
+        align-items: center;
+      }
+
+      @include media-breakpoint-up(md) {
+        grid-template-columns: 40px 340px 55px 1fr;
+        column-gap: 45px;
+      }
+
+      @include media-breakpoint-up(xl) {
+        grid-template-columns: 90px 340px 55px 1fr;
+        column-gap: 90px;
+      }
+
+      &:nth-child(odd) {
+        grid-template-areas:
+           'id image'
+           'arrow image'
+           'text text';
+
+        .item {
+
+          &__cell {
+
+            &:nth-child(2) {
+              justify-self: end;
+            }
+          }
+        }
+      }
+
+      &:nth-child(even) {
+        grid-template-areas:
+           'image id'
+           'image arrow'
+           'text text';
+
+        .item {
+
+          &__cell {
+
+            &:nth-child(2) {
+              justify-self: start;
+            }
+          }
+
+          &__id {
+            text-align: right;
+          }
+
+          &__icon {
+            @include make-spacer('ml', auto);
+            @include make-spacer('mr', 0);
+          }
+        }
+      }
+
+      &__cell {
+
+        @include media-breakpoint-up(sm) {
+          align-self: center!important;
+        }
+
+        &:nth-child(1),
+        &:nth-child(3) {
+          align-self: end;
+
+          @include media-breakpoint-up(sm) {
+            justify-self: start!important;
+          }
+        }
+
+        &:nth-child(1) {
+          @include make-spacer('mt', 4);
+          @include make-spacer('mr', 0, sm);
+
+          grid-area: id;
+        }
+
+        &:nth-child(2) {
+          grid-area: image;
+        }
+
+        &:nth-child(3) {
+          grid-area: arrow;
+          align-self: end;
+        }
+
+        &:nth-child(4) {
+          @include make-spacer('mt', 6);
+          @include make-spacer('mt', 0, sm);
+
+          grid-area: text;
+        }
+      }
+
+      &__picture {
+        @include size(267px, 193px);
+
+        @include media-breakpoint-up(md) {
+          @include size(340px, 247px);
+        }
+
+        position: relative;
+
+        &::before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: var(--color-dark);
+          border-radius: var(--default-border-radius);
+          overflow: hidden;
+          transition: var(--default-transition);
+          transform: scale(0.9);
+          content: '';
+        }
+
+        .picture {
+          position: relative;
+          border-radius: var(--default-border-radius);
+          overflow: hidden;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      &__id {
+        @include font-size(30px, 100px);
+
+        @include media-breakpoint-up(xl) {
+          @include font-size(50px);
+        }
+
+        color: var(--color-dark);
+      }
+
+      &__icon {
+        @include size(22px);
+
+        transform: rotateZ(90deg);
+
+        @include media-breakpoint-up(sm) {
+          transform: none;
+          margin-left: auto!important;
+          margin-right: auto!important;
+        }
+      }
+
+      &__text {
+        @include media-breakpoint-up(sm) {
+          @include font-size(25px, 35px);
+        }
+
+        @include media-breakpoint-up(md) {
+          @include font-size(30px, 45px);
+        }
+
+        @include media-breakpoint-up(xl) {
+          @include font-size(45px, 50px);
+        }
+
+        color: var(--color-dark);
+        font-weight: var(--typography-semibold);
+      }
+
+      &:hover {
+
+        .item {
+
+          &__picture {
+
+            &::before {
+              transform: scale(1) translate(-20px, -20px);
+            }
+          }
+        }
+      }
+    }
+
+    .block {
+      @include make-spacer('mx', auto);
+      @include make-spacer('mt', 12);
+      @include make-spacer('mt', 16, md);
+      @include make-spacer('mt', 18, xl);
+      @include make-spacer('mt', 20, xxl);
+
+      * {
+        font-weight: var(--typography-semibold);
+      }
+
+      @include media-breakpoint-up(md) {
+        max-width: 770px;
+      }
+
+      @include media-breakpoint-up(xl) {
+        max-width: 1046px;
+      }
+
+      @include media-breakpoint-up(xl) {
+        max-width: 1280px;
+      }
+    }
+
+    .title {
+      @include make-spacer('mb', 8);
+      @include make-spacer('mb', 10, md);
+
+      @include media-breakpoint-up(sm) {
+        max-width: 578px;
+      }
+
+      @include media-breakpoint-up(md) {
+        max-width: 1045px;
+      }
+
+      @include media-breakpoint-up(xl) {
+        max-width: 1366px;
+      }
+    }
+  }
+}
