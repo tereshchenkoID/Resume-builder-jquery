@@ -1,0 +1,19 @@
+.section {
+
+  &--newest-listings {
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+
+      @include media-breakpoint-up(lg) {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+      }
+
+      &__column {
+        border: 1px solid red;
+      }
+    }
+  }
+}

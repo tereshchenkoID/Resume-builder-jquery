@@ -1,7 +1,0 @@
-.toggle {
-  @include size(46px);
-
-  @include media-breakpoint-up(sm) {
-    @include size(62px);
-  }
-}

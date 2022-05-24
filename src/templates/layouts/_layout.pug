@@ -7,9 +7,10 @@ html(lang=lang)
   head
     include _head
   body
-    +preloader.js-preloader
-
     .content
+      +nav
+      +header
       block content
       +footer#footer
+
     script(src="./js/app.js")

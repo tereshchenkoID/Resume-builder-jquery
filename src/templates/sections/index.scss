@@ -1,23 +1,9 @@
-@import './header/index';
-@import './footer/index';
+@import 'header/index';
+@import 'footer/index';
 
-@import './default/section-header/index';
-@import './default/section-request/index';
-
-/* Home */
-@import './home/section-about/index';
-@import './home/section-product/index';
-@import './home/section-feedback/index';
-
-/* Stylist */
-@import './stylist/section-sales/index';
-@import './stylist/section-benefits/index';
-@import './stylist/section-integration/index';
-@import './stylist/section-plan/index';
-
-/* Synthetics */
-@import './synthetics/section-we-better/index';
-@import './synthetics/section-features/index';
-@import './synthetics/section-process/index';
-@import './synthetics/section-use-cases/index';
-@import './synthetics/section-near-future/index';
+@import 'section-latest-startups/index';
+@import 'section-newest-listings/index';
+@import 'section-looking-hire/index';
+@import 'section-smart-solution/index';
+@import 'section-choose-plan/index';
+@import 'section-subscribe-newsletter/index';

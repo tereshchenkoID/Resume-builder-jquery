@@ -1,95 +1,88 @@
 .footer {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-accent);
+  color: #cecdf5;
 
-  .wrapper {
-    @include flex($align-items: center, $wrap: wrap);
-    @include make-spacer('px', 6, xs);
-    @include make-spacer('py', 9, xs);
-    @include make-spacer('px', 10, sm);
-    @include make-spacer('pb', 5, sm);
-    @include make-spacer('px', 12, md);
-    @include make-spacer('pr', 25, xl);
-
-    background-color: var(--color-dark);
-    border-radius: var(--default-border-radius) var(--default-border-radius) 0 0;
-    min-height: 109px;
-
-    @include media-breakpoint-up(xl) {
-      justify-content: space-between;
-      flex-wrap: nowrap;
-    }
+  &::before,
+  &::after {
+    position: absolute;
+    z-index: 0;
+    content: '';
   }
 
-  .link,
-  .text,
-  .address {
-    @include font-size(14px, 21px);
+  &::before {
+    @include size(247px, 406px);
 
-    color: var(--color-white);
+    top: 0;
+    left: 0;
+    background: url('https://rekroot.themes.zone/startup/wp-content/themes/rekroot/assets/img/fbl.jpg') top left no-repeat;
+    background-size: contain;
   }
 
-  .text {
-    @include make-spacer('mr', 1);
+  &::after {
+    @include size(389px, 420px);
+
+    bottom: 0;
+    right: 0;
+    background: url('https://rekroot.themes.zone/startup/wp-content/themes/rekroot/assets/img/fbr.jpg') top left no-repeat;
+    background-size: contain;
   }
 
-  .link {
-
-    &:hover {
-      color: var(--color-primary);
-    }
-
-    &--mail {
-      @include make-spacer('mb', 4, sm);
-      @include make-spacer('mb', 0, xl);
-
-      @include media-breakpoint-up(sm) {
-        width: 100%;
-      }
-
-      @include media-breakpoint-up(xl) {
-        width: auto;
-      }
-    }
-
-    &--privacy {
-      order: 4;
-      flex-grow: 1;
-      text-align: right;
-
-      @include media-breakpoint-up(sm) {
-        @include make-spacer('pl', 12);
-        @include make-spacer('pl', 0, xl);
-
-        text-align: left;
-      }
-
-      @include media-breakpoint-up(xl) {
-        flex-grow: unset;
-      }
-    }
-
-    &--service {
-      order: 3;
-    }
+  &__top,
+  &__bottom {
+    position: relative;
+    z-index: 1;
   }
 
-  .address {
-    @include make-spacer('my', 3);
-    @include make-spacer('mt', -8, sm);
-    @include make-spacer('mb', 0, sm);
-    @include make-spacer('my', 0, xl);
+  &__top {
+    @include make-spacer('py', 10);
+  }
 
-    order: 1;
-    width: 100%;
+  &__bottom {
+    @include make-spacer('py', 6);
+    @include font-size(13px);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
 
     @include media-breakpoint-up(sm) {
-      order: 4;
-      max-width: 235px;
-      text-align: right;
+      grid-template-columns: 1fr 1fr;
     }
 
     @include media-breakpoint-up(xl) {
-      max-width: 100%;
-      width: auto;
+      grid-template-columns: repeat(auto-fit, minmax(calc(20% - 25px), 1fr));
     }
+  }
+
+  .submenu {
+
+    &__item {
+      @include make-spacer('my', 1);
+    }
+
+    &__link {
+      display: block;
+      color: #cecdf5;
+
+      &:hover {
+        color: var(--color-white);
+      }
+    }
+  }
+
+  .logo,
+  .subtitle,
+  .text {
+    @include make-spacer('mb', 4);
+  }
+
+  .subtitle {
+    @include make-spacer('mt', 3);
+
+    color: var(--color-white);
   }
 }

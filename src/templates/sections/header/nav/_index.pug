@@ -1,22 +1,6 @@
-mixin nav(menu, page)
+mixin nav
   nav.nav&attributes(attributes)
     .container-fluid
       .container
-        .wrapper
-          .wrapper__cell
-            if (menu)
-              +toggle.js-toggle
-          .wrapper__cell
-            +logo
-          .wrapper__cell
-            +dropdown(page).js-dropdown
-          .wrapper__cell
-            if (menu)
-              +menu(menu).js-menu
-          .wrapper__cell
-            if (menu)
-              a.button.button--primary.button--sm.js-button-modal
-                span.button__text Let’s talk
-            else
-              a(href="#section-feedback").button.button--primary.button--sm
-                span.button__text Let’s talk
+        +logo
+        +menu

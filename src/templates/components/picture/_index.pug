@@ -1,4 +1,0 @@
-mixin picture(url, alt)
-  picture.picture&attributes(attributes)
-    source(srcset=`./img/${url}.webp 1x, ./img/${url}@2x.webp 2x` type="image/webp")
-    img(src=`./img/${url}@2x.webp` alt=alt loading="lazy")

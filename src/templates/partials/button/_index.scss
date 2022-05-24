@@ -1,0 +1,38 @@
+.button {
+  @include make-spacer('py', 3);
+  @include make-spacer('px', 4);
+  @include flex(center, center);
+
+  position: relative;
+  border-radius: 5px;
+  font-weight: var(--typography-bold);
+
+  &--primary {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: #3730cd;
+    }
+  }
+
+  &--secondary {
+    background-color: #E9E8F7;
+    color: var(--color-accent);
+
+    &:hover {
+      background-color: var(--color-accent);
+      color: var(--color-white);
+    }
+  }
+
+  &--bordered {
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-white);
+      color: var(--color-accent);
+    }
+  }
+}

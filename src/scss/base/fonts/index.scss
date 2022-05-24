@@ -1,1 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap');
+
+$path: '../fonts/FontAwesome';
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  src: url($path + '/fa-regular-400.eot');
+  src: url($path + '/fa-regular-400.eot?#iefix') format('embedded-opentype'),
+  url($path + '/fa-regular-400.woff2') format('woff2'),
+  url($path + '/fa-regular-400.woff') format('woff'),
+  url($path + '/fa-regular-400.ttf') format('truetype'),
+  url($path + '/fa-regular-400.svg#fontawesome') format('svg');
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  src: url($path + '/fa-brands-400.eot');
+  src: url($path + '/fa-brands-400.eot?#iefix') format('embedded-opentype'),
+  url($path + '/fa-brands-400.woff2') format('woff2'),
+  url($path + '/fa-brands-400.woff') format('woff'),
+  url($path + '/fa-brands-400.ttf') format('truetype'),
+  url($path + '/fa-brands-400.svg#fontawesome') format('svg');
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  src: url($path + '/fa-regular-400.eot');
+  src: url($path + '/fa-regular-400.eot?#iefix') format('embedded-opentype'),
+  url($path + '/fa-regular-400.woff2') format('woff2'),
+  url($path + '/fa-regular-400.woff') format('woff'),
+  url($path + '/fa-regular-400.ttf') format('truetype'),
+  url($path + '/fa-regular-400.svg#fontawesome') format('svg');
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-style: normal;
+  font-display: block;
+  src: url($path + '/fa-solid-900.eot');
+  src: url($path + '/fa-solid-900.eot?#iefix') format('embedded-opentype'),
+  url($path + '/fa-solid-900.woff2') format('woff2'),
+  url($path + '/fa-solid-900.woff') format('woff'),
+  url($path + '/fa-solid-900.ttf') format('truetype'),
+  url($path + '/fa-solid-900.svg#fontawesome') format('svg');
+}
+
+.fa,
+.far,
+.fas {
+  font-family: 'Font Awesome 5 Free';
+}
+
+.far {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 400;
+}
+
+.fab {
+  font-family: 'Font Awesome 5 Brands';
+}
+
+.fab,
+.far {
+  font-weight: 400;
+}
+
+.fa,
+.fas {
+  font-weight: 900;
+}

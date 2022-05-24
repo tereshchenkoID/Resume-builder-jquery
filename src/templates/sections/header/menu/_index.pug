@@ -1,11 +1,3 @@
-mixin menu(menu)
+mixin menu
   menu.menu&attributes(attributes)
-    .menu__logo
-      +logo
-    a.menu__close.js-menu-close
-      svg(viewBox='0 0 35 35' fill='none' xmlns='http://www.w3.org/2000/svg')
-        path(fill-rule='evenodd' clip-rule='evenodd' d='M17.5001 13.8159L3.68421 0L0 3.68421L13.8159 17.5001L0.000108611 31.316L3.68431 35.0002L17.5001 21.1843L31.3158 35L35 31.3158L21.1843 17.5001L35.0001 3.68442L31.3159 0.000214645L17.5001 13.8159Z' fill='white')
-    each item in menu
-      .menu__item
-        a(href=item.link).menu__link.js-menu-link
-          span.menu__text= item.text
+    p Menu

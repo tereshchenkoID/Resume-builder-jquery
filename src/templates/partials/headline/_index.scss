@@ -1,0 +1,26 @@
+.headline {
+  @include make-spacer('mb', 12);
+
+  &__title {
+    @include make-spacer('mb', 3);
+  }
+
+  &__text {
+    color: #747474;
+  }
+
+  &--margin {
+    margin: 0;
+  }
+
+  &--white {
+
+    .headline {
+
+      &__title,
+      &__text {
+        color: var(--color-white);
+      }
+    }
+  }
+}

@@ -7,13 +7,13 @@
 body {
   @include smooth-font;
 
-  background-color: #F4F4F4;
+  background-color: #f3f2fc;
   min-width: var(--min-width);
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+  color: #262626;
   line-height: var(--line-height);
-  color: var(--color-text);
   font-family: var(--font-family);
   font-size: var(--font-size);
   font-weight: var(--typography-regular);
@@ -53,56 +53,19 @@ p {
 }
 
 .section {
-  @include make-spacer('mb', 20);
-  @include make-spacer('mb', 24, md);
-  @include make-spacer('mb', 26, xl);
-  @include make-spacer('mb', 30, xxl);
-
-  position: relative;
-}
-
-.container-fluid {
-  @include make-spacer('px', 3, 'xs');
-  @include make-spacer('px', 5, 'md');
-  @include make-spacer('px', 18, 'xl');
-  @include make-spacer('px', 20, 'xxl');
-  @include make-spacer('mx', auto);
-
-  width: 100%;
+  padding: 85px 0;
 }
 
 .container {
-  @include make-spacer('mx', auto);
-
   position: relative;
-  min-width: var(--min-width);
+  padding: 0 var(--grid-outher);
   max-width: var(--max-width);
-  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 
-  &--gradient {
-
-      &::before {
-        position: absolute;
-        background-image: url('../img/gradient-2.webp');
-        background-size: cover;
-        background-position: 50% 50%;
-        filter: blur(150px);
-        opacity: 0.15;
-        content: '';
-      }
-  }
-
-  &--gradient-alt {
-
-    &::after,
-    &::before {
-      position: absolute;
-      background-image: url('../img/gradient-2.webp');
-      background-size: cover;
-      background-position: 50% 50%;
-      filter: blur(150px);
-      opacity: 0.15;
-      content: '';
-    }
+  &-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
   }
 }

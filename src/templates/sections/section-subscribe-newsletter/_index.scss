@@ -1,0 +1,51 @@
+.section {
+
+  &--subscribe-newsletter {
+    background-color: #e9e8f7;
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+
+      @include media-breakpoint-up(lg) {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+      }
+    }
+
+    .newsletter {
+      @include flex($align-items: center);
+      @include make-spacer('pl', 8);
+      @include make-spacer('pr', 2);
+
+      position: relative;
+      background-color: var(--color-white);
+      border-radius: 5px;
+      box-shadow: 0 0 15px 0 rgba(224, 223, 242, 0.8);
+      height: 60px;
+
+      &::before {
+        @include font-size(18px);
+
+        position: absolute;
+        top: 50%;
+        left: 18px;
+        transform: translateY(-50%);
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        content: '\f0e0';
+      }
+
+      &__field {
+        @include make-spacer('px', 2);
+        @include size(100%);
+
+        border: 0;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+  }
+}

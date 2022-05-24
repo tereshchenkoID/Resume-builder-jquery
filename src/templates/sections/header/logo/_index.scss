@@ -1,11 +1,6 @@
 .logo {
-  @include size(120px, 28px);
+  @include size(120px, 36px);
 
   display: block;
-  flex-shrink: 0;
-  color: var(--color-title);
-
-  @include media-breakpoint-up(md) {
-    @include size(165px, 38px);
-  }
+  background-color: red;
 }
