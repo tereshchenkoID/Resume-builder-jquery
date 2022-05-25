@@ -8,7 +8,7 @@
   right: 5px;
   opacity: 0;
   background-color: var(--color-white);
-  border-radius: 5px;
+  border-radius: var(--default-border-radius);
   box-shadow: var(--default-box-shadow);
   width: 300px;
 
@@ -16,16 +16,36 @@
     @include make-spacer('mx', 6);
     @include make-spacer('my', 3);
     @include make-spacer('mx', 3, xl);
-  }
 
-  &__link {
+    position: relative;
+
     @include media-breakpoint-up(xl) {
       color: var(--color-white);
     }
 
     &:hover {
-      text-decoration: underline;
+
+      .submenu {
+        display: block;
+      }
     }
+
+    i {
+      @include make-spacer('ml', 1);
+      @include font-size(12px);
+    }
+
+    &--dropdown {
+      @include make-spacer('mb', 0);
+    }
+  }
+
+  &__link {
+    color: inherit;
+
+    //&:hover {
+    //  text-decoration: underline;
+    //}
   }
 
   @include media-breakpoint-up(xl) {
@@ -40,5 +60,62 @@
 
   &--active {
     opacity: 1;
+  }
+}
+
+.submenu {
+  @include make-spacer('pt', 4);
+
+  display: none;
+
+  @include media-breakpoint-up(xl) {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__wrapper {
+    @include make-spacer('px', 4);
+    @include make-spacer('pt', 4);
+    @include make-spacer('pb', 0);
+    @include make-spacer('px', 7, xl);
+    @include make-spacer('py', 4, xl);
+
+    position: relative;
+
+    @include media-breakpoint-up(xl) {
+      background-color: var(--color-white);
+      border-radius: var(--default-border-radius);
+      box-shadow: var(--default-box-shadow);
+      width: 220px;
+    }
+
+    &:before {
+      display: none;
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 7px solid transparent;
+      border-bottom: 10px solid var(--color-white);
+      content: "";
+
+      @include media-breakpoint-up(xl) {
+        display: block;
+      }
+    }
+  }
+
+  &__item {
+    @include make-spacer('py', 2);
+  }
+
+  &__link {
+    font-weight: var(--typography-medium);
+
+    &:hover {
+      color: var(--color-accent);
+    }
   }
 }

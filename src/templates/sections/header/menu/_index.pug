@@ -7,6 +7,24 @@ mixin menu
     .menu__item
       a(href="./blog.html").menu__link Blog
     .menu__item
-      a.menu__link Pages
+      a.menu__link
+        | Pages
+        i.fa.fa-angle-down
+      .submenu
+        .submenu__wrapper
+          .submenu__item
+            a(href="#").submenu__link Pricing plan
+          .submenu__item
+            a(href="#").submenu__link Lobs Listings
+          .submenu__item
+            a(href="#").submenu__link Companies
+          .submenu__item
+            a(href="#").submenu__link Submit Companie
+          .submenu__item
+            a(href="#").submenu__link About you
+          .submenu__item
+            a(href="#").submenu__link Post a Job
+          .submenu__item
+            a(href="#").submenu__link 404 Error Page
     .menu__item
       a(href="./contact.html").menu__link Contact
