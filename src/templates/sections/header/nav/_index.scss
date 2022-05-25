@@ -6,6 +6,19 @@
   right: 0;
   left: 0;
   z-index: 12;
-  background-color: #000;
-  height: 90px;
+  height: var(--navigation-height);
+  background-color: var(--color-white);
+
+  @include media-breakpoint-up(xl) {
+    background-color: transparent;
+  }
+
+  .container {
+    @include flex(space-between, center);
+  }
+
+  .menu {
+    @include make-spacer('ml', 0);
+    @include make-spacer('mr', auto);
+  }
 }

@@ -27,12 +27,16 @@ h6 {
   color: var(--color-title);
   font-family: var(--font-family);
   font-weight: var(--typography-semibold);
-  line-height: 1.3;
+  line-height: 1.5;
 }
 
 h1,
 .h1 {
-  @include font-size(60px);
+  @include font-size(35px);
+
+  @include media-breakpoint-up(md) {
+    @include font-size(60px);
+  }
 }
 
 h2,

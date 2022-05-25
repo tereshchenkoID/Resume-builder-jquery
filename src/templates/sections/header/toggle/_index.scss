@@ -1,0 +1,42 @@
+.toggle {
+  @include flex(center, center, column);
+  @include size(34px);
+
+  border-radius: 3px;
+  background-color: var(--color-accent);
+
+  &__item {
+    @include size(22px, 2px);
+
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: all 0.3s;
+    background-color: var(--color-white);
+  }
+
+  @include media-breakpoint-up(xl) {
+    display: none;
+  }
+
+  &--active {
+
+    .toggle {
+
+      &__item {
+
+        &:nth-child(1) {
+          transform: translateY(8px) rotateZ(45deg);
+        }
+
+        &:nth-child(2) {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: translateY(-8px) rotateZ(-45deg);
+        }
+      }
+    }
+  }
+}

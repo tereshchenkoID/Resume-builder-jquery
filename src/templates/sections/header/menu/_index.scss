@@ -1,3 +1,40 @@
 .menu {
-  @include flex($align-items: center);
+  @include flex($direction: column);
+  @include make-spacer('m', 0);
+  @include make-spacer('p', 0);
+
+  position: fixed;
+  top: calc(var(--navigation-height) + 5px);
+  right: 5px;
+  opacity: 0;
+  background-color: var(--color-white);
+  border-radius: 5px;
+  box-shadow: var(--default-box-shadow);
+  width: 300px;
+
+  &__item {
+    @include make-spacer('mx', 6);
+    @include make-spacer('my', 3);
+    @include make-spacer('mx', 3, xl);
+  }
+
+  &__link {
+    @include media-breakpoint-up(xl) {
+      color: var(--color-white);
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    position: static;
+    flex-direction: row;
+    background-color: transparent;
+    opacity: 1;
+    width: auto;
+    border-radius: unset;
+    box-shadow: unset;
+  }
+
+  &--active {
+    opacity: 1;
+  }
 }
