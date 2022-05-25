@@ -21,4 +21,15 @@
     @include make-spacer('ml', 0);
     @include make-spacer('mr', auto);
   }
+
+  &--fixed {
+    background-color: var(--color-white);
+
+    .menu {
+
+      &__link {
+        color: var(--color-text);
+      }
+    }
+  }
 }

@@ -22,6 +22,10 @@
     @include media-breakpoint-up(xl) {
       color: var(--color-white);
     }
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   @include media-breakpoint-up(xl) {
