@@ -2,7 +2,7 @@
 
   &__item {
     @include flex($align-items: center);
-    @include make-spacer('py', 2);
+    @include make-spacer('py', 1);
 
     position: relative;
 
@@ -22,7 +22,7 @@
         &::before {
           @include size(4px);
 
-          top: 15px;
+          top: 13px;
           background-color: var(--color-accent);
           border-radius: 50%;
           content: '';
@@ -55,7 +55,7 @@
       &__item {
 
         &::before {
-          top: 10px;
+          top: 5px;
           content: '\f00c';
         }
       }
@@ -71,7 +71,7 @@
         &::before {
           @include font-size(16px);
 
-          top: 12px;
+          top: 8px;
           content: '\f058';
         }
       }

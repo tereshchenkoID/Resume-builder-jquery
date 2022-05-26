@@ -1,0 +1,63 @@
+.card-post {
+  border-radius: var(--default-border-radius);
+  box-shadow: var(--default-box-shadow);
+  overflow: hidden;
+
+  &__body {
+    @include make-spacer('py', 6);
+    @include make-spacer('px', 8);
+
+    background-color: var(--color-white);
+  }
+
+  &__picture {
+    @include size(100%, auto);
+  }
+
+  &__meta {
+    @include make-spacer('my', 4);
+    @include flex($align-items: center);
+  }
+
+  &__author {
+    @include make-spacer('mr', 3);
+
+    font-weight: var(--typography-semibold);
+  }
+
+  &__date {
+    @include make-spacer('pl', 3);
+
+    position: relative;
+
+    &::before {
+      @include size(4px);
+
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background-color: #545454;
+      content: '';
+    }
+  }
+
+  &__description {
+    @include make-spacer('mb', 4);
+
+    color: #545454;
+  }
+
+  &__image {
+    @include make-spacer('mr', 3);
+    @include size(42px);
+
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__button {
+    display: inline-block;
+  }
+}
