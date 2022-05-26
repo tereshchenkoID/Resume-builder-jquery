@@ -1,7 +1,7 @@
 .nav {
   @include flex($align-items: center);
 
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
@@ -22,12 +22,13 @@
     @include make-spacer('mr', auto);
   }
 
-  &--fixed {
+  &--default {
+    position: relative;
     background-color: var(--color-white);
 
     .menu {
 
-      &__item {
+      &__link {
         color: var(--color-text);
       }
     }

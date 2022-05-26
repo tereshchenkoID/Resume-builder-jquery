@@ -1,0 +1,11 @@
+.section {
+
+  &--breadcrumbs {
+    background-color: #e9e8f7;
+    min-height: 200px;
+
+    h2 {
+      @include font-size(38px);
+    }
+  }
+}

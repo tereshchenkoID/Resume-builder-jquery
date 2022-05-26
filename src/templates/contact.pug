@@ -1,0 +1,24 @@
+---
+title: Rekroot
+lang: en
+---
+extends layouts/_layout
+
+block content
+  -
+    var breadcrumbs = [
+      {
+        name: 'Home',
+        url: './index.html'
+      },
+      {
+        name: 'Contact',
+        url: false
+      }
+    ]
+
+  +nav.nav--default.js-nav
+  main
+    +section-breadcrumbs('Contact Us', breadcrumbs).section--breadcrumbs
+    +section-get-in-touch.section--get-in-touch
+    +section-subscribe-newsletter.section--subscribe-newsletter

@@ -19,10 +19,6 @@
 
     position: relative;
 
-    @include media-breakpoint-up(xl) {
-      color: var(--color-white);
-    }
-
     &:hover {
 
       .submenu {
@@ -41,11 +37,7 @@
   }
 
   &__link {
-    color: inherit;
-
-    //&:hover {
-    //  text-decoration: underline;
-    //}
+    color: var(--color-white);
   }
 
   @include media-breakpoint-up(xl) {
@@ -61,61 +53,61 @@
   &--active {
     opacity: 1;
   }
-}
 
-.submenu {
-  @include make-spacer('pt', 4);
-
-  display: none;
-
-  @include media-breakpoint-up(xl) {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  &__wrapper {
-    @include make-spacer('px', 4);
+  .submenu {
     @include make-spacer('pt', 4);
-    @include make-spacer('pb', 0);
-    @include make-spacer('px', 7, xl);
-    @include make-spacer('py', 4, xl);
 
-    position: relative;
+    display: none;
 
     @include media-breakpoint-up(xl) {
-      background-color: var(--color-white);
-      border-radius: var(--default-border-radius);
-      box-shadow: var(--default-box-shadow);
-      width: 220px;
-    }
-
-    &:before {
-      display: none;
       position: absolute;
-      top: -14px;
+      top: 100%;
       left: 50%;
       transform: translateX(-50%);
-      border: 7px solid transparent;
-      border-bottom: 10px solid var(--color-white);
-      content: "";
+    }
+
+    &__wrapper {
+      @include make-spacer('px', 4);
+      @include make-spacer('pt', 4);
+      @include make-spacer('pb', 0);
+      @include make-spacer('px', 7, xl);
+      @include make-spacer('py', 4, xl);
+
+      position: relative;
 
       @include media-breakpoint-up(xl) {
-        display: block;
+        background-color: var(--color-white);
+        border-radius: var(--default-border-radius);
+        box-shadow: var(--default-box-shadow);
+        width: 220px;
+      }
+
+      &:before {
+        display: none;
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 7px solid transparent;
+        border-bottom: 10px solid var(--color-white);
+        content: "";
+
+        @include media-breakpoint-up(xl) {
+          display: block;
+        }
       }
     }
-  }
 
-  &__item {
-    @include make-spacer('py', 2);
-  }
+    &__item {
+      @include make-spacer('py', 2);
+    }
 
-  &__link {
-    font-weight: var(--typography-medium);
+    &__link {
+      font-weight: var(--typography-medium);
 
-    &:hover {
-      color: var(--color-accent);
+      &:hover {
+        color: var(--color-accent);
+      }
     }
   }
 }
