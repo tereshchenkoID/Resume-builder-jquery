@@ -1,3 +1,72 @@
+-
+  var data = [
+    {
+      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo8-150x150.png",
+      "title": "Rival Gaming",
+      "rate": "5",
+      "location": "Montreal",
+      "category": "Securities & Investment",
+      "number": "5"
+    },
+    {
+      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo32-150x150.png",
+      "title": "Rammix INC",
+      "rate": "5",
+      "location": "Houston",
+      "category": "Accountants, Transportation",
+      "number": "3"
+    },
+    {
+      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo17-150x150.png",
+      "title": "Nested Routes Inc",
+      "rate": "4",
+      "location": "Miami",
+      "category": "Lawyers / Law Firms",
+      "number": "2"
+    },
+    {
+      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo35-150x150.png",
+      "title": "Buagaga Inc",
+      "rate": "3",
+      "location": "New York",
+      "category": "Accountants, Education",
+      "number": "3"
+    },
+    {
+      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo21-150x150.png",
+      "title": "Transparent Ideas",
+      "rate": "5",
+      "location": "New York",
+      "category": "Accountants, Education",
+      "number": "3"
+    },
+    {
+      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo16-150x150.png",
+      "title": "Software Kings",
+      "rate": "4",
+      "location": "Mobile",
+      "category": "Software Development",
+      "number": "3"
+    },
+    {
+      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo23-150x150.png",
+      "title": "mindmap.ai",
+      "rate": "4",
+      "location": "Istanbul",
+      "category": "Automotive, Finance",
+      "number": "5"
+    },
+    {
+      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo28-150x150.png",
+      "title": "Astellas Inc",
+      "rate": "4",
+      "location": "Munich",
+      "category": "Banking, Real Estate",
+      "number": "3"
+    }
+  ]
+
+
 mixin section-latest-startups
   section.section&attributes(attributes)
     .container-fluid
@@ -7,19 +76,6 @@ mixin section-latest-startups
           'Get started with best employers'
         )
         .grid
-          .grid__column
-            p 1
-          .grid__column
-            p 1
-          .grid__column
-            p 1
-          .grid__column
-            p 1
-          .grid__column
-            p 1
-          .grid__column
-            p 1
-          .grid__column
-            p 1
-          .grid__column
-            p 1
+          each item in data
+            .grid__column
+              +card-company(item)
