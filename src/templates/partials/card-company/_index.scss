@@ -1,4 +1,5 @@
 .card-company {
+  @include size(100%);
   @include make-spacer('p', 6);
 
   background-color: var(--color-white);

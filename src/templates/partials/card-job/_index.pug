@@ -1,0 +1,11 @@
+mixin card-job(data)
+  .card-job&attributes(attributes)
+    a(href="#").card-job__logo
+      img(src=data.img).img
+    .card-job__content
+      a(href="#").card-job__category= data.category
+      a(href="#").card-job__name= data.position
+      .card-job__meta
+        .card-job__company= data.title
+        .card-job__location= data.location
+        .card-job__time= data.time

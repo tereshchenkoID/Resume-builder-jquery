@@ -6,16 +6,60 @@ mixin section-newest-listings
           'Newest Listings',
           'Get started with best positions'
         )
+
+        -
+          var data = [
+            {
+              "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo8-150x150.png",
+              "title": "Rival Gaming",
+              "position": "Mid Java / Scala Developer",
+              "location": "Montreal",
+              "category": "Securities & Investment",
+              "time": "Part time"
+            },
+            {
+              "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo32-150x150.png",
+              "title": "Rammix INC",
+              "position": "Senior MLOps",
+              "location": "Houston",
+              "category": "Accountants, Transportation",
+              "time": "Full time"
+            },
+            {
+              "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo17-150x150.png",
+              "title": "Nested Routes Inc",
+              "position": "Senior MLOps",
+              "location": "Miami",
+              "category": "Lawyers / Law Firms",
+              "time": "Full time"
+            },
+            {
+              "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo35-150x150.png",
+              "title": "Buagaga Inc",
+              "position": "AI/ML Data Scientist",
+              "location": "New York",
+              "category": "Accountants, Education",
+              "time": "Full time"
+            },
+            {
+              "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo21-150x150.png",
+              "title": "Transparent Ideas",
+              "position": "Magento 2 Developer",
+              "location": "New York",
+              "category": "Accountants, Education",
+              "time": "Full time"
+            },
+            {
+              "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo16-150x150.png",
+              "title": "Software Kings",
+              "position": "HR Team Leader",
+              "location": "Mobile",
+              "category": "Software Development",
+              "time": "Full time"
+            }
+          ]
+
         .grid
-          .grid__column
-            p 1
-          .grid__column
-            p 1
-          .grid__column
-            p 1
-          .grid__column
-            p 1
-          .grid__column
-            p 1
-          .grid__column
-            p 1
+           each item in data
+             .grid__column
+               +card-job(item)
