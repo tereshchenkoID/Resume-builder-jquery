@@ -1,11 +1,17 @@
 .card-job {
   @include size(100%);
   @include make-spacer('p', 6);
-  @include flex;
+  @include flex($direction: column, $wrap: wrap);
 
+  position: relative;
   background-color: var(--color-white);
   box-shadow: var(--default-box-shadow);
   border-radius: var(--default-border-radius);
+
+  @include media-breakpoint-up(sm) {
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
 
   &__logo {
     @include make-spacer('mr', 4);
@@ -59,15 +65,29 @@
 
     text-align: left;
     color: #6f6f6f;
+  }
+
+  &__time,
+  &__location,
+  &__company,
+  &__urgent {
 
     &::before {
       @include make-spacer('mr', half);
 
       display: inline-block;
-      width: 20px;
       font-family: 'Font Awesome 5 Free';
       font-weight: 900;
       text-align: center;
+    }
+  }
+
+  &__time,
+  &__location,
+  &__company {
+
+    &::before {
+      width: 20px;
     }
   }
 
@@ -89,6 +109,76 @@
 
     &::before {
       content: '\f1ad';
+    }
+  }
+
+  &__actions {
+    @include make-spacer('mt', 2);
+    @include make-spacer('mt', 0, sm);
+    @include flex($align-items: center, $wrap: wrap);
+
+    @include media-breakpoint-up(sm) {
+      justify-content: flex-end;
+    }
+
+    & > * {
+      @include make-spacer('ml', 0);
+      @include make-spacer('mr', 2);
+      @include make-spacer('mb', 2);
+
+      @include make-spacer('ml', 2, sm);
+      @include make-spacer('mr', 0, sm);
+    }
+  }
+
+  &__urgent {
+    @include make-spacer('p', half);
+    @include flex(center, center);
+    @include font-size(11px, 17px);
+
+    border: 1px solid currentColor;
+    border-radius: var(--default-border-radius);
+    color: #dd000b;
+    font-weight: var(--typography-medium);
+    text-transform: uppercase;
+
+    &::before {
+      content: '\f017';
+    }
+  }
+
+  &__watched {
+    @include make-spacer('mr', 0);
+    @include make-spacer('ml', auto);
+
+    @include make-spacer('mr', 0, sm);
+    @include make-spacer('ml', 2, sm);
+
+    @include size(40px);
+    @include flex(center, center);
+
+    border: 1px solid #b0b0b0;
+    border-radius: var(--default-border-radius);
+    transition: color 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955), border-color 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    text-align: center;
+    font-size: 18px;
+    color: #b0b0b0;
+
+    &:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+  }
+
+  &__posted {
+    @include make-spacer('mb', 0);
+    @include font-size(12px);
+
+    width: 100%;
+    color: #b2b2b2;
+
+    @include media-breakpoint-up(sm) {
+      text-align: right;
     }
   }
 }

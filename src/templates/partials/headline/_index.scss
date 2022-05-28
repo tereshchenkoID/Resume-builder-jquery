@@ -1,8 +1,8 @@
 .headline {
   @include make-spacer('mb', 12);
 
-  &__title {
-    @include make-spacer('mb', 3);
+  &__text {
+    @include make-spacer('mt', 3);
   }
 
   &__text {
@@ -10,7 +10,7 @@
   }
 
   &--margin {
-    margin: 0;
+    margin: 0!important;
   }
 
   &--white {

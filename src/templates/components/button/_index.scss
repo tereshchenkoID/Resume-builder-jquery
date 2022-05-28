@@ -35,4 +35,11 @@
       color: var(--color-accent);
     }
   }
+
+  &--sm {
+    @include make-spacer('py', 2);
+    @include make-spacer('px', 3);
+
+    min-height: 40px;
+  }
 }

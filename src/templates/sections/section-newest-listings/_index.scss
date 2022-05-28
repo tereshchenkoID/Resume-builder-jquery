@@ -10,9 +10,6 @@
       @include media-breakpoint-up(lg) {
         grid-template-columns: repeat(2, minmax(100px, 1fr));
       }
-
-      &__column {
-      }
     }
   }
 }

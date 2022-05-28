@@ -1,12 +1,11 @@
 .menu {
-  @include flex($direction: column);
   @include make-spacer('m', 0);
   @include make-spacer('p', 0);
 
+  display: none;
   position: fixed;
   top: calc(var(--navigation-height) + 5px);
   right: 5px;
-  opacity: 0;
   background-color: var(--color-white);
   border-radius: var(--default-border-radius);
   box-shadow: var(--default-box-shadow);
@@ -41,6 +40,8 @@
   }
 
   @include media-breakpoint-up(xl) {
+    @include flex;
+
     position: static;
     flex-direction: row;
     background-color: transparent;
@@ -51,7 +52,7 @@
   }
 
   &--active {
-    opacity: 1;
+    @include flex($direction: column);
   }
 
   .submenu {

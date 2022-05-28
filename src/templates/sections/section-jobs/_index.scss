@@ -1,0 +1,233 @@
+.section {
+
+  &--jobs {
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+
+      @include media-breakpoint-up(xl) {
+        grid-template-columns: 3fr 9fr;
+      }
+
+      &__head {
+        @include make-spacer('mb', 6);
+        @include flex(space-between, center);
+      }
+    }
+
+    .breadcrumbs {
+      @include make-spacer('mt', 3);
+      @include make-spacer('mb', 6);
+    }
+
+    .headline {
+      @include make-spacer('mb', 6);
+    }
+
+    .wrapper {
+      @include make-spacer('mb', 10);
+    }
+
+    .select {
+      min-width: 150px;
+      flex-shrink: 0;
+    }
+
+    .actions {
+      @include make-spacer('ml', auto);
+      @include make-spacer('mr', 4);
+      @include flex($align-items: center);
+
+      &__item {
+        @include make-spacer('mx', half);
+        @include flex(center, center);
+        @include size(18px);
+
+        color: #b7b7b7;
+
+        &--active {
+          color: var(--color-accent);
+        }
+      }
+    }
+
+    .reset {
+      @include make-spacer('mt', 6);
+      @include font-size(12px);
+
+      display: inline-block;
+      color: var(--color-accent);
+      text-transform: uppercase;
+    }
+
+    .checked {
+      @include make-spacer('my', 1);
+      @include make-spacer('pl', 5);
+      @include flex($align-items: center);
+
+      position: relative;
+      cursor: pointer;
+
+      &::before {
+        @include flex(center, center);
+        @include size(16px);
+
+        position: absolute;
+        top: 5px;
+        left: 0;
+        border-radius: 3px;
+        background-color: var(--color-white);
+        border: 1px solid #e1e1e1;
+        transform: translateY(-2px);
+        color: #5049e1;
+        text-align: center;
+        content: '';
+      }
+
+      &__count {
+        @include make-spacer('ml', 1);
+
+        color: #a1a1a1;
+      }
+
+      &--active {
+
+        &::before {
+          @include font-size(10px);
+
+          background-color: var(--color-accent);
+          color: var(--color-white);
+          font-family: 'Font Awesome 5 Free';
+          font-weight: 900;
+          content: '\f00c';
+        }
+      }
+
+      &:hover {
+
+        .checked {
+
+          &__title {
+            color: var(--color-accent);
+          }
+        }
+      }
+    }
+
+    .jobs {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+
+      &--list {
+      }
+
+      &--grid {
+        @include media-breakpoint-up(md) {
+          grid-template-columns: repeat(2, minmax(100px, 1fr));
+        }
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: repeat(3, minmax(100px, 1fr));
+        }
+
+        .card-job {
+          flex-wrap: wrap;
+          flex-direction: column;
+
+          &__logo {
+            @include make-spacer('mb', 2);
+            @include size(65px);
+          }
+
+          &__content {
+            @include flex($direction: column);
+          }
+
+          &__name {
+            @include make-spacer('mt', 2);
+
+            order: 1;
+          }
+
+          &__category {
+            @include make-spacer('mt', auto);
+            @include make-spacer('mb', 0);
+
+            order: 3;
+            line-height: 1.5;
+
+            &:before {
+              @include make-spacer('mr', 1);
+              @include font-size(14px);
+
+              font-family: 'Font Awesome 5 Free';
+              font-weight: 400;
+              content: '\f07b';
+            }
+          }
+
+          &__meta {
+            @include make-spacer('mb', 4);
+
+            order: 2;
+          }
+
+          &__actions {
+            @include make-spacer('mt', 4);
+
+            justify-content: flex-start;
+            width: 100%;
+
+            & > * {
+              @include make-spacer('ml', 0);
+              @include make-spacer('mr', 2);
+              @include make-spacer('m', 0, sm);
+            }
+          }
+
+          &__watched {
+            @include make-spacer('ml', auto);
+            @include make-spacer('mr', 0);
+          }
+
+          &__urgent,
+          &__posted,
+          &__company {
+            position: static;
+            left: 110px;
+            z-index: 1;
+
+            @include media-breakpoint-up(sm) {
+              position: absolute;
+            }
+          }
+
+          &__company {
+            @include make-spacer('m', 0, sm);
+
+            top: 30px;
+
+            &::before {
+
+              @include media-breakpoint-up(sm) {
+                display: none;
+              }
+            }
+          }
+
+          &__urgent {
+            top: 70px;
+          }
+
+          &__posted {
+            top: 50px;
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}

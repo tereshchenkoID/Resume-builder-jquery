@@ -1,4 +1,4 @@
-mixin card-job(data)
+mixin card-job(data, actions)
   .card-job&attributes(attributes)
     a(href="#").card-job__logo
       img(src=data.img).img
@@ -6,6 +6,14 @@ mixin card-job(data)
       a(href="#").card-job__category= data.category
       a(href="#").card-job__name= data.position
       .card-job__meta
-        .card-job__company= data.title
-        .card-job__location= data.location
-        .card-job__time= data.time
+        a(href="#").card-job__company= data.title
+        a(href="#").card-job__location= data.location
+        a(href="#").card-job__time= data.time
+
+    if (actions)
+      .card-job__actions
+        .card-job__urgent Urgent
+        +button('Job details').button--secondary.button--sm.card-job__button
+        a.card-job__watched
+          i.fa.fa-plus
+        p.card-job__posted Posted 10 month ago
