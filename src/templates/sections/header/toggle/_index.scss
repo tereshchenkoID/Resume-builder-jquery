@@ -14,7 +14,7 @@
     background-color: var(--color-white);
   }
 
-  @include media-breakpoint-up(xl) {
+  @include media-breakpoint-up(lg) {
     display: none;
   }
 

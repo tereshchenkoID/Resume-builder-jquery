@@ -74,14 +74,13 @@
     }
   }
 
-  .logo,
   .subtitle,
   .text {
     @include make-spacer('mb', 4);
   }
 
   .subtitle {
-    @include make-spacer('mt', 3);
+    @include make-spacer('mt', 5);
 
     color: var(--color-white);
   }

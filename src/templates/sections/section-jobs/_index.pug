@@ -156,6 +156,18 @@ mixin section-jobs
 
             .wrapper
               +headline('Desired Salary')
+
+              .slider
+                .slider__header
+                  .slider__cell
+                    input(id="salary-min" type="number" name="salary_min").slider__field
+                  .slider__cell
+                    p -
+                  .slider__cell
+                    input(id="salary-max" type="number" name="salary_max").slider__field
+                .slider__range
+                  #salary-range
+
               +button('Filter').button--primary
 
             .wrapper
@@ -170,7 +182,7 @@ mixin section-jobs
             +breadcrumbs(breadcrumbs)
 
             .grid__head
-              +headline('Jobs currently available').headline--margin
+              +headline('Jobs currently available')
 
               .actions
                 a(data-sort="list").actions__item.js-actions-item
@@ -178,9 +190,14 @@ mixin section-jobs
                 a(data-sort="grid").actions__item.actions__item--active.js-actions-item
                   i.fa.fa-th
 
+              a.sort-button.js-sort-button
+                i.fa.fa-arrow-up
+
               +select.js-select
 
             .jobs.jobs--grid.js-jobs
               each item in jobs
                 .jobs__item
                   +card-job(item, true)
+
+            +button('Load more listings').button--primary.load-more

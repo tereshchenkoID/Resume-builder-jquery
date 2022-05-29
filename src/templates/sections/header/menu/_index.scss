@@ -14,7 +14,7 @@
   &__item {
     @include make-spacer('mx', 6);
     @include make-spacer('my', 3);
-    @include make-spacer('mx', 3, xl);
+    @include make-spacer('mx', 3, lg);
 
     position: relative;
 
@@ -36,10 +36,14 @@
   }
 
   &__link {
-    color: var(--color-white);
+    color: var(--color-text);
+
+    @include media-breakpoint-up(lg) {
+      color: var(--color-white);
+    }
   }
 
-  @include media-breakpoint-up(xl) {
+  @include media-breakpoint-up(lg) {
     @include flex;
 
     position: static;
@@ -60,7 +64,7 @@
 
     display: none;
 
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-up(lg) {
       position: absolute;
       top: 100%;
       left: 50%;
@@ -71,12 +75,12 @@
       @include make-spacer('px', 4);
       @include make-spacer('pt', 4);
       @include make-spacer('pb', 0);
-      @include make-spacer('px', 7, xl);
-      @include make-spacer('py', 4, xl);
+      @include make-spacer('px', 7, lg);
+      @include make-spacer('py', 4, lg);
 
       position: relative;
 
-      @include media-breakpoint-up(xl) {
+      @include media-breakpoint-up(lg) {
         background-color: var(--color-white);
         border-radius: var(--default-border-radius);
         box-shadow: var(--default-box-shadow);
@@ -93,7 +97,7 @@
         border-bottom: 10px solid var(--color-white);
         content: "";
 
-        @include media-breakpoint-up(xl) {
+        @include media-breakpoint-up(lg) {
           display: block;
         }
       }

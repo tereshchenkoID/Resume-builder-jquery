@@ -1,5 +1,11 @@
 .logo {
   @include size(200px, 60px);
+  @include flex($align-items: center);
+  @include font-size(32px);
 
-  display: block;
+  font-weight: var(--typography-bold);
+
+  &:focus {
+    outline: none;
+  }
 }

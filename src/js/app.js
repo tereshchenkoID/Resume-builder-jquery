@@ -1,3 +1,5 @@
+import noUiSlider from "nouislider";
+
 $('.js-toggle').on('click', function() {
   $(this).toggleClass('toggle--active')
   $('.js-menu').toggleClass('menu--active')
@@ -34,3 +36,46 @@ $('.js-actions-item').on('click', function() {
 
   changeJobsView(this.getAttribute('data-sort'));
 })
+
+$('.sort-button').on('click', function() {
+  $(this).toggleClass('sort-button--active')
+})
+
+
+
+
+const range = document.getElementById('salary-range');
+
+noUiSlider.create(range, {
+  start: [345, 9345],
+  connect: true,
+  step: 100,
+  range: {
+    'min': 345,
+    'max': 9800
+  },
+});
+
+range.noUiSlider.on('update', function(data){
+  const min = data[0];
+  const max = data[1];
+
+  // eslint-disable-next-line camelcase
+  const min_field = document.getElementById('salary-min');
+  // eslint-disable-next-line camelcase
+  const max_field = document.getElementById('salary-max');
+
+  // eslint-disable-next-line radix
+  min_field.value = parseInt(min);
+  // eslint-disable-next-line radix
+  max_field.value = parseInt(max);
+})
+
+
+document.getElementById('salary-min').addEventListener('change', function () {
+  range.noUiSlider.set([this.value, null]);
+});
+
+document.getElementById('salary-max').addEventListener('change', function () {
+  range.noUiSlider.set([null, this.value]);
+});

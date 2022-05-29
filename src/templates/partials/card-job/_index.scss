@@ -132,14 +132,14 @@
   }
 
   &__urgent {
-    @include make-spacer('p', half);
+    @include make-spacer('p', 1);
     @include flex(center, center);
-    @include font-size(11px, 17px);
+    @include font-size(11px);
 
     border: 1px solid currentColor;
     border-radius: var(--default-border-radius);
     color: #dd000b;
-    font-weight: var(--typography-medium);
+    font-weight: var(--typography-semibold);
     text-transform: uppercase;
 
     &::before {

@@ -1,3 +1,5 @@
+@import "nouislider/dist/nouislider.min.css";
+
 .section {
 
   &--jobs {
@@ -13,7 +15,24 @@
 
       &__head {
         @include make-spacer('mb', 6);
-        @include flex(space-between, center);
+        @include flex($justify-content: center, $align-items: center, $wrap: wrap);
+
+        @include media-breakpoint-up(md) {
+          justify-content: space-between;
+        }
+
+        .headline {
+          @include make-spacer('mb', 4);
+          @include make-spacer('mb', 0, md);
+
+          width: 100%;
+          text-align: center;
+
+          @include media-breakpoint-up(md) {
+            width: auto;
+            text-align: left;
+          }
+        }
       }
     }
 
@@ -30,15 +49,33 @@
       @include make-spacer('mb', 10);
     }
 
+    .sort-button {
+      @include make-spacer('mr', 4);
+
+      transition: var(--default-transition);
+      color: var(--color-accent);
+
+      &--active {
+        transform: rotateZ(180deg);
+      }
+    }
+
     .select {
-      min-width: 150px;
+      position: relative;
       flex-shrink: 0;
+      z-index: 2;
+      min-width: 170px;
     }
 
     .actions {
       @include make-spacer('ml', auto);
       @include make-spacer('mr', 4);
-      @include flex($align-items: center);
+
+      @include media-breakpoint-up(md) {
+        @include flex($align-items: center);
+      }
+
+      display: none;
 
       &__item {
         @include make-spacer('mx', half);
@@ -50,6 +87,30 @@
         &--active {
           color: var(--color-accent);
         }
+      }
+    }
+
+    .slider {
+
+      &__header,
+      &__range {
+        @include make-spacer('mb', 4);
+      }
+
+      &__header {
+        display: grid;
+        grid-template-columns: 1fr 30px 1fr;
+        align-items: center;
+        text-align: center;
+      }
+
+      &__field {
+        @include make-spacer('px', 3);
+        @include size(100%, 30px);
+
+        border: 1px solid #e2e2e2;
+        border-radius: var(--default-border-radius);
+        background-color: var(--color-white);
       }
     }
 
@@ -114,6 +175,11 @@
           }
         }
       }
+    }
+
+    .load-more {
+      @include make-spacer('mt', 4);
+      @include make-spacer('mx', auto);
     }
 
     .jobs {
@@ -228,6 +294,50 @@
           }
         }
       }
+    }
+
+
+    .noUi-target {
+      background-color: #d3d6e0;
+      border: 1px solid #d3d6e0;
+      box-shadow: none !important;
+      height: 6px;
+    }
+
+    .noUi-target .noUi-base .noUi-origin .noUi-handle {
+      @include size(20px);
+
+      border-radius: 50%;
+      background-color: var(--color-white);
+      border: 0;
+      top: -8px;
+      box-shadow: var(--default-box-shadow);
+    }
+
+    .noUi-target .noUi-base .noUi-origin .noUi-handle:before {
+      @include size(9px);
+
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background-color: var(--color-accent)
+    }
+
+    .noUi-target .noUi-base .noUi-origin .noUi-handle:after {
+      display: none;
+    }
+
+    .noUi-target .noUi-base .noUi-origin .noUi-active {
+      border-radius: 50%;
+    }
+
+    .noUi-target .noUi-connects {
+      background-color: #d3d6e0;
+    }
+
+    .noUi-target .noUi-connects .noUi-connect {
+      background-color: var(--color-accent)
     }
   }
 }
