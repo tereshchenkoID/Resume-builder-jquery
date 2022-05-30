@@ -22,9 +22,85 @@
     @include make-spacer('mr', auto);
   }
 
-  &--default {
-    position: relative;
+  .toggle {
+    order: 3;
+
+    @include media-breakpoint-up(lg) {
+      order: unset;
+    }
+  }
+
+  .account-toggle {
+    @include make-spacer('ml', auto);
+    @include make-spacer('mr', 4);
+    @include font-size(20px);
+
+    color: var(--color-accent);
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+
+    &--active {
+
+      i {
+
+        &::before {
+          content: '\f00d';
+        }
+      }
+    }
+  }
+
+  .account {
+    @include make-spacer('p', 0, lg);
+
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
     background-color: var(--color-white);
+    padding: 20px var(--grid-outher);
+    border-top: 1px solid var(--color-accent);
+
+    @include media-breakpoint-up(lg) {
+      @include flex($align-items: center);
+
+      position: static;
+      border-top: 0;
+      background-color: transparent;
+    }
+
+    &__link,
+    &__text {
+      color: var(--color-accent);
+
+      @include media-breakpoint-up(lg) {
+        color: var(--color-white);
+
+        &:hover {
+          color: var(--color-accent);
+        }
+      }
+    }
+
+    &__text {
+      @include make-spacer('mx', 2);
+    }
+
+    &__button {
+      @include make-spacer('ml', auto);
+      @include make-spacer('ml', 2, lg);
+    }
+
+    &--active {
+      @include flex($align-items: center);
+    }
+  }
+
+  &--default,
+  &--custom {
 
     .menu {
 
@@ -32,5 +108,22 @@
         color: var(--color-text);
       }
     }
+
+    .account {
+
+      &__link,
+      &__text {
+        color: var(--color-accent);
+
+        @include media-breakpoint-up(lg) {
+          color: var(--color-text);
+        }
+      }
+    }
+  }
+
+  &--default {
+    position: relative;
+    background-color: var(--color-white);
   }
 }

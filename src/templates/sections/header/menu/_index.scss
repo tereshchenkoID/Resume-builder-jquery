@@ -9,6 +9,7 @@
   background-color: var(--color-white);
   border-radius: var(--default-border-radius);
   box-shadow: var(--default-box-shadow);
+  z-index: 12;
   width: 300px;
 
   &__item {

@@ -1,0 +1,12 @@
+mixin search-jobs
+  .search-jobs&attributes(attributes)
+    .search-jobs__wrapper
+      .search-jobs__cell
+        i.fa.fa-pencil-alt.search-jobs__icon
+        input(type="text" placeholder="Keyword").search-jobs__input
+      .search-jobs__cell
+        i.fa.fa-map-marked.search-jobs__icon
+        input(type="text" placeholder="Location").search-jobs__input
+    button.button.button--primary.search-jobs__button
+      span Search Jobs
+      i.fa.fa-search

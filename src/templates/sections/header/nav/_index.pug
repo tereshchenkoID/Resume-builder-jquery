@@ -5,3 +5,11 @@ mixin nav
         +logo.js-logo
         +menu.js-menu
         +toggle.js-toggle
+
+        .account-toggle.js-account-toggle
+          i.fa.fa-user
+        .account.js-account
+          a(href="#").account__link Sign in
+          p.account__text |
+          a(href="#").account__link Dashboard
+          +button('Post a job').button--primary.account__button

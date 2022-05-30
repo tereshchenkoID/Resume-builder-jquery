@@ -11,14 +11,4 @@ mixin section-search-jobs
                 span Watched jobs (0)
 
           .grid__cell
-            .search
-              .search__wrapper
-                .search__cell
-                  i.fa.fa-pencil-alt.search__icon
-                  input(type="text" placeholder="Keyword").search__input
-                .search__cell
-                  i.fa.fa-map-marked.search__icon
-                  input(type="text" placeholder="Location").search__input
-              button.button.button--primary.search__button
-                span Search Jobs
-                i.fa.fa-search
+            +search-jobs

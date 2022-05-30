@@ -1,0 +1,96 @@
+.search-jobs {
+  position: relative;
+
+  &__wrapper {
+    display: grid;
+    position: relative;
+    background-color: var(--color-white);
+    border-radius: var(--default-border-radius);
+    box-shadow: var(--default-box-shadow);
+    overflow: hidden;
+
+    &::after {
+      @include size(100%, 1px);
+
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      background-color: #e1e1e1;
+      content: '';
+
+      @include media-breakpoint-up(md) {
+        @include size(1px, 70%);
+
+        right: auto;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: 1fr 1fr;
+      height: 66px;
+    }
+  }
+
+  &__cell {
+    position: relative;
+    height: 66px;
+  }
+
+  &__icon {
+    @include size(18px);
+
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #b3b3b3;
+  }
+
+  &__button {
+    @include size(100%, 66px);
+    @include make-spacer('mt', 4);
+    @include make-spacer('mt', 0, md);
+
+    i {
+      display: none;
+
+      @include media-breakpoint-up(md) {
+        display: block;
+      }
+    }
+
+    span {
+      display: block;
+
+      @include media-breakpoint-up(md) {
+        display: none;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      @include size(47px);
+
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__input {
+    @include make-spacer('pl', 9);
+    @include make-spacer('pr', 14);
+
+    @include size(100%);
+
+    border: 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

@@ -50,6 +50,10 @@ $('.js-filters-close').on('click', function() {
   $('.js-filters').removeClass('filters--active')
 })
 
+$('.js-account-toggle').on('click', function() {
+  $(this).toggleClass('account-toggle--active')
+  $('.js-account').toggleClass('account--active')
+})
 
 const range = document.getElementById('salary-range');
 
