@@ -19,11 +19,13 @@
 
         @include media-breakpoint-up(md) {
           justify-content: space-between;
+          flex-wrap: nowrap;
         }
 
         .headline {
           @include make-spacer('mb', 4);
           @include make-spacer('mb', 0, md);
+          @include make-spacer('mr', 4, md);
 
           width: 100%;
           text-align: center;
@@ -32,21 +34,91 @@
             width: auto;
             text-align: left;
           }
+
+          span {
+            @include make-spacer('mx', 2);
+
+            color: var(--color-accent);
+          }
         }
       }
     }
 
+    .filters {
+      @include make-spacer('py', 6);
+      @include make-spacer('px', 4);
+      @include make-spacer('p', 0, xl);
+
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      overflow-y: auto;
+      z-index: 3;
+      background-color: var(--color-white);
+      box-shadow: var(--default-box-shadow);
+      transform: translateX(-100%);
+      transition: var(--default-transition);
+
+      @include media-breakpoint-up(xl) {
+        position: static;
+        overflow: unset;
+        box-shadow: unset;
+        transform: unset;
+        background-color: transparent;
+      }
+
+      &__close {
+        @include make-spacer('mr', 0);
+        @include make-spacer('ml', auto);
+        @include flex(center, center);
+        @include size(30px);
+        @include font-size(22px);
+
+        @include media-breakpoint-up(xl) {
+          display: none;
+        }
+      }
+
+      &__wrapper {
+        @include make-spacer('mb', 10);
+
+        &:last-child {
+          @include make-spacer('mb', 0);
+        }
+      }
+
+      &--active {
+        transform: translateX(0);
+      }
+    }
+
+    .options {
+      @include flex(space-between, center);
+      @include make-spacer('mt', 6);
+      @include make-spacer('mb', 4);
+    }
+
     .breadcrumbs {
-      @include make-spacer('mt', 3);
-      @include make-spacer('mb', 6);
+      @include make-spacer('mb', 0);
+    }
+
+    .filter-toggle {
+      @include flex(center, center);
+      @include size(42px);
+      @include font-size(18px);
+
+      border-radius: var(--default-border-radius);
+      background-color: var(--color-accent);
+      color: var(--color-white);
+
+      @include media-breakpoint-up(xl) {
+        display: none;
+      }
     }
 
     .headline {
       @include make-spacer('mb', 6);
-    }
-
-    .wrapper {
-      @include make-spacer('mb', 10);
     }
 
     .sort-button {

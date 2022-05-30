@@ -10,179 +10,60 @@
     }
   ]
 
--
-  var jobs = [
-    {
-      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo8-150x150.png",
-      "title": "Rival Gaming",
-      "position": "Mid Java / Scala Developer",
-      "location": "Montreal",
-      "category": "Securities & Investment",
-      "time": "Part time"
-    },
-    {
-      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo32-150x150.png",
-      "title": "Rammix INC",
-      "position": "Senior MLOps",
-      "location": "Houston",
-      "category": "Accountants, Transportation",
-      "time": "Full time"
-    },
-    {
-      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo17-150x150.png",
-      "title": "Nested Routes Inc",
-      "position": "Senior MLOps",
-      "location": "Miami",
-      "category": "Lawyers / Law Firms",
-      "time": "Full time"
-    },
-    {
-      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo35-150x150.png",
-      "title": "Buagaga Inc",
-      "position": "AI/ML Data Scientist",
-      "location": "New York",
-      "category": "Accountants, Education",
-      "time": "Full time"
-    },
-    {
-      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo21-150x150.png",
-      "title": "Transparent Ideas",
-      "position": "Magento 2 Developer",
-      "location": "New York",
-      "category": "Accountants, Education",
-      "time": "Full time"
-    },
-    {
-      "img": "https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/04/logo16-150x150.png",
-      "title": "Software Kings",
-      "position": "HR Team Leader",
-      "location": "Mobile",
-      "category": "Software Development",
-      "time": "Full time"
-    }
-  ]
-
-
--
-  var categories = [
-    {
-      "title": "Backend Developement",
-      "count": "6"
-    },
-    {
-      "title": "Computer Networks",
-      "count": "5"
-    },
-    {
-      "title": "Databases & Big Data",
-      "count": "6"
-    },
-    {
-      "title": "Distributed Systems",
-      "count": "6"
-    },
-    {
-      "title": "Frontend Development",
-      "count": "2"
-    },
-    {
-      "title": "IT Administration & Operations",
-      "count": "3"
-    },
-    {
-      "title": "IT Consulting",
-      "count": "7"
-    },
-    {
-      "title": "IT Project Managment",
-      "count": "5"
-    },
-    {
-      "title": "Marketing & Advertising",
-      "count": "3"
-    },
-    {
-      "title": "Mobile Software Development",
-      "count": "2"
-    },
-    {
-      "title": "Product Developement",
-      "count": "6"
-    },
-    {
-      "title": "Statistics & Data Science",
-      "count": "1"
-    }
-  ]
-
--
-  var types = [
-    {
-      "title": "Freelance",
-      "count": "4"
-    },
-    {
-      "title": "Full Time",
-      "count": "4"
-    },
-    {
-      "title": "Internship",
-      "count": "3"
-    },
-    {
-      "title": "Part Time",
-      "count": "7"
-    },
-    {
-      "title": "Temporary",
-      "count": "8"
-    }
-  ]
-
 mixin section-jobs
   section.section&attributes(attributes)
     .container-fluid
       .container
         .grid
           .grid__column
-            .wrapper
-              +headline('Job Categories')
-              each item in categories
-                .checked.js-checked
-                  span.checked__title= item.title
-                  span.checked__count= `(${item.count})`
+            .filters.js-filters
+              a.filters__close.js-filters-close
+                i.fa.fa-times
+              .filters__wrapper
+                +headline('Job Categories')
+                each item in jobCategories
+                  .checked.js-checked
+                    span.checked__title= item.title
+                    span.checked__count= `(${item.count})`
 
-              a.reset Reset
+                a.reset Reset
 
-            .wrapper
-              +headline('Desired Salary')
+              .filters__wrapper
+                +headline('Desired Salary')
 
-              .slider
-                .slider__header
-                  .slider__cell
-                    input(id="salary-min" type="number" name="salary_min").slider__field
-                  .slider__cell
-                    p -
-                  .slider__cell
-                    input(id="salary-max" type="number" name="salary_max").slider__field
-                .slider__range
-                  #salary-range
+                .slider
+                  .slider__header
+                    .slider__cell
+                      input(id="salary-min" type="number" name="salary_min").slider__field
+                    .slider__cell
+                      p -
+                    .slider__cell
+                      input(id="salary-max" type="number" name="salary_max").slider__field
+                  .slider__range
+                    #salary-range
 
-              +button('Filter').button--primary
+                +button('Filter').button--primary
 
-            .wrapper
-              +headline('Job Types')
-              each item in types
-                .checked.js-checked
-                  span.checked__title= item.title
-                  span.checked__count= `(${item.count})`
-              a.reset Reset
+              .filters__wrapper
+                +headline('Job Types')
+                each item in jobTypes
+                  .checked.js-checked
+                    span.checked__title= item.title
+                    span.checked__count= `(${item.count})`
+                a.reset Reset
 
           .grid__column
-            +breadcrumbs(breadcrumbs)
+            .options
+              +breadcrumbs(breadcrumbs)
+
+              .filter-toggle.js-filter-toggle
+                i.fa.fa-filter
 
             .grid__head
-              +headline('Jobs currently available')
+              .headline
+                h3.headline__title
+                  | Jobs currently
+                  span available
 
               .actions
                 a(data-sort="list").actions__item.js-actions-item

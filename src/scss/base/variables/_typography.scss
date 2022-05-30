@@ -46,7 +46,11 @@ h2,
 
 h3,
 .h3 {
-  @include font-size(32px);
+  @include font-size(26px);
+
+  @include media-breakpoint-up(md) {
+    @include font-size(32px);
+  }
 }
 
 h4,

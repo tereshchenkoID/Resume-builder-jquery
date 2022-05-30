@@ -90,10 +90,9 @@
       }
 
       &__button {
+        @include size(100%, 66px);
         @include make-spacer('mt', 4);
         @include make-spacer('mt', 0, md);
-
-        width: 100%;
 
         i {
           display: none;

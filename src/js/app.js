@@ -42,6 +42,13 @@ $('.sort-button').on('click', function() {
 })
 
 
+$('.js-filter-toggle').on('click', function() {
+  $('.js-filters').toggleClass('filters--active')
+})
+
+$('.js-filters-close').on('click', function() {
+  $('.js-filters').removeClass('filters--active')
+})
 
 
 const range = document.getElementById('salary-range');
