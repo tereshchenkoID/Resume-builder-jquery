@@ -1,4 +1,5 @@
 import noUiSlider from "nouislider";
+import slick from 'slick-carousel';
 
 $('.js-toggle').on('click', function() {
   $(this).toggleClass('toggle--active')
@@ -57,36 +58,75 @@ $('.js-account-toggle').on('click', function() {
 
 const range = document.getElementById('salary-range');
 
-noUiSlider.create(range, {
-  start: [345, 9345],
-  connect: true,
-  step: 100,
-  range: {
-    'min': 345,
-    'max': 9800
-  },
+if (range) {
+
+  noUiSlider.create(range, {
+    start: [345, 9345],
+    connect: true,
+    step: 100,
+    range: {
+      'min': 345,
+      'max': 9800
+    },
+  });
+
+  range.noUiSlider.on('update', function(data){
+    const min = data[0];
+    const max = data[1];
+
+    // eslint-disable-next-line camelcase
+    const min_field = document.getElementById('salary-min');
+    // eslint-disable-next-line camelcase
+    const max_field = document.getElementById('salary-max');
+
+    // eslint-disable-next-line radix
+    min_field.value = parseInt(min);
+    // eslint-disable-next-line radix
+    max_field.value = parseInt(max);
+  })
+
+
+  document.getElementById('salary-min').addEventListener('change', function () {
+    range.noUiSlider.set([this.value, null]);
+  });
+
+  document.getElementById('salary-max').addEventListener('change', function () {
+    range.noUiSlider.set([null, this.value]);
+  });
+}
+
+
+$('.js-testimonial-slider').slick({
+  dots: true,
+  arrows: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true
 });
 
-range.noUiSlider.on('update', function(data){
-  const min = data[0];
-  const max = data[1];
 
-  // eslint-disable-next-line camelcase
-  const min_field = document.getElementById('salary-min');
-  // eslint-disable-next-line camelcase
-  const max_field = document.getElementById('salary-max');
-
-  // eslint-disable-next-line radix
-  min_field.value = parseInt(min);
-  // eslint-disable-next-line radix
-  max_field.value = parseInt(max);
-})
-
-
-document.getElementById('salary-min').addEventListener('change', function () {
-  range.noUiSlider.set([this.value, null]);
-});
-
-document.getElementById('salary-max').addEventListener('change', function () {
-  range.noUiSlider.set([null, this.value]);
+$('.js-career-slider').slick({
+  dots: true,
+  arrows: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  autoplay: true,
+  responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
 });

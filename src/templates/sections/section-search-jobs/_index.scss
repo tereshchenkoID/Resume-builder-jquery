@@ -1,6 +1,8 @@
 .section {
 
   &--search-jobs {
+    @include make-spacer('py', 7);
+
     background-color: #e9e8f7;
 
     .grid {
@@ -34,6 +36,10 @@
 
       i {
         @include make-spacer('mr', 1);
+      }
+
+      &:hover {
+        text-decoration: underline;
       }
     }
   }

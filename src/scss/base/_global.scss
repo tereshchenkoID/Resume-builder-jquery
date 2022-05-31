@@ -68,3 +68,39 @@ p {
     width: 100%;
   }
 }
+
+
+.slick-slider {
+  @include make-spacer('pb', 10);
+}
+
+.slick-slide {
+  @include make-spacer('px', 2);
+}
+
+.slick-dots {
+  @include flex(center, center);
+
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+
+  li {
+    @include make-spacer('m', 1);
+    @include size(10px);
+
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    opacity: 0.5;
+
+    &.slick-active {
+      opacity: 1;
+    }
+  }
+
+  button {
+    @include font-size(0);
+  }
+}

@@ -11,5 +11,10 @@
         grid-template-columns: repeat(2, minmax(100px, 1fr));
       }
     }
+
+    .button {
+      @include make-spacer('mt', 6);
+      @include make-spacer('mx', auto);
+    }
   }
 }

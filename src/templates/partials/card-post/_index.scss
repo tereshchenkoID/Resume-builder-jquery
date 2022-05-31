@@ -19,10 +19,28 @@
     @include flex($align-items: center);
   }
 
+  &__author,
+  &__date {
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+
   &__author {
     @include make-spacer('mr', 3);
 
     font-weight: var(--typography-semibold);
+  }
+
+  &__title {
+
+    a {
+
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
   }
 
   &__date {

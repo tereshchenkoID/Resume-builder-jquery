@@ -195,60 +195,6 @@
       text-transform: uppercase;
     }
 
-    .checked {
-      @include make-spacer('my', 1);
-      @include make-spacer('pl', 5);
-      @include flex($align-items: center);
-
-      position: relative;
-      cursor: pointer;
-
-      &::before {
-        @include flex(center, center);
-        @include size(16px);
-
-        position: absolute;
-        top: 5px;
-        left: 0;
-        border-radius: 3px;
-        background-color: var(--color-white);
-        border: 1px solid #e1e1e1;
-        transform: translateY(-2px);
-        color: #5049e1;
-        text-align: center;
-        content: '';
-      }
-
-      &__count {
-        @include make-spacer('ml', 1);
-
-        color: #a1a1a1;
-      }
-
-      &--active {
-
-        &::before {
-          @include font-size(10px);
-
-          background-color: var(--color-accent);
-          color: var(--color-white);
-          font-family: 'Font Awesome 5 Free';
-          font-weight: 900;
-          content: '\f00c';
-        }
-      }
-
-      &:hover {
-
-        .checked {
-
-          &__title {
-            color: var(--color-accent);
-          }
-        }
-      }
-    }
-
     .load-more {
       @include make-spacer('mt', 4);
       @include make-spacer('mx', auto);

@@ -1,0 +1,25 @@
+mixin search-form
+  .search-form&attributes(attributes)
+    h4.search-form__title Find your perfect job
+    .search-form__cell
+      .search-form__wrapper
+        i.fa.fa-pencil-alt.search-jobs__icon
+        input(type="text" placeholder="Keyword").search-jobs__input
+
+    .search-form__cell
+      .search-form__wrapper
+        i.fa.fa-map-marker-alt.search-jobs__icon
+        input(type="text" placeholder="Location").search-jobs__input
+
+    .search-form__cell
+      +select.search-form__select.js-select
+
+    .search-form__cell
+      each item in jobTypes
+        .checked.search-form__checked.js-checked
+          span.checked__title= item.title
+
+    .search-form__cell
+      button.button.button--primary.search-form__button
+        i.fa.fa-search
+        span Search

@@ -19,6 +19,10 @@
   &__title {
     line-height: 1.2;
     font-weight: var(--typography-semibold);
+
+    &:hover {
+      color: var(--color-accent);
+    }
   }
 
   &__category {

@@ -10,7 +10,7 @@
     .testimonial {
       @include font-size(18px);
 
-      display: grid;
+      display: grid!important;
       grid-template-columns: 1fr;
       align-items: center;
       grid-gap: 60px;

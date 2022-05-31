@@ -2,18 +2,20 @@
 @import 'logo/index';
 @import 'menu/index';
 @import 'toggle/index';
+@import 'account/index';
 
 .header {
   @include flex($align-items: center);
 
   position: relative;
+  padding-top: var(--navigation-height);
   height: calc(var(--navigation-height) +  350px);
-  background-color: #5049E1;
+  background-color: var(--color-accent);
   background-image: url('https://rekroot.themes.zone/startup/wp-content/uploads/sites/19/2021/11/stratupins-scaled.webp');
-  background-position: center center;
+  background-position: 50% -200px;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: var(--navigation-height);
+  background-attachment: fixed;
 
   @include media-breakpoint-up(md) {
     height: calc(var(--navigation-height) +  550px);

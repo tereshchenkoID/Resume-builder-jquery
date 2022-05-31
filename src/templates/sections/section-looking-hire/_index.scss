@@ -3,9 +3,10 @@
   &--looking-hire {
     background-color: var(--color-accent);
     background-image: url('https://rekroot.themes.zone/classic/wp-content/uploads/sites/14/2021/10/hire_back.png');
-    background-position: center center;
+    background-position: 50% 500px;
     background-repeat: no-repeat;
-    background-size: 1700px auto;
+    background-size: cover;
+    background-attachment: fixed;
 
     .grid {
       display: grid;
