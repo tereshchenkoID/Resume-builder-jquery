@@ -126,10 +126,7 @@
 
   .t-head {
     @include make-spacer('mb', 6);
-
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    grid-gap: 20px;
+    @include flex($align-items: center);
   }
 
   .t-wrapper {
@@ -157,14 +154,13 @@
   }
 
   .t-photo {
-    @include make-spacer('mb', 4);
-    @include size(100px);
-
     border-radius: 50%;
     overflow: hidden;
+    flex-shrink: 0;
 
     img {
-      @include size(100%);
+      @include make-spacer('mr', 4);
+      @include size(100px);
 
       object-fit: cover;
       object-position: 50% 50%;

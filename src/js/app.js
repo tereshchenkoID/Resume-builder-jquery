@@ -31,13 +31,13 @@ function initCropped() {
   $('#dropped-modal-button').removeClass('dropped-modal__button--disabled')
 }
 
-function debounce(func, timeout = 300){
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => { func.apply(this, args); }, timeout);
-  };
-}
+// function debounce(func, timeout = 300){
+//   let timer;
+//   return (...args) => {
+//     clearTimeout(timer);
+//     timer = setTimeout(() => { func.apply(this, args); }, timeout);
+//   };
+// }
 
 const initializeQuill = function (item) {
   const quill = new Quill(`#${item.el}`, {
@@ -55,15 +55,13 @@ const initializeQuill = function (item) {
 
   quill.root.innerHTML = item.value;
 
-  const a = debounce((delta, oldDelta, source) => {
+  quill.on('text-change', (delta, oldDelta, source) => {
     if (source === 'user') {
       const id = quill.container.getAttribute('id').replace('editor_', '')
 
       builder.handleChangeEditor(id, quill.root.innerHTML)
     }
-  }, builder.timeout)
-
-  quill.on('text-change', (delta, oldDelta, source) => a(delta, oldDelta, source))
+  })
 }
 
 const a4 = {
@@ -73,7 +71,6 @@ const a4 = {
 }
 
 function Builder() {
-  this.timeout = 2000
   this.data = {}
   this.url = './json/config.json'
   this.user = {
@@ -90,8 +87,12 @@ function Builder() {
   }
 
   this.template = localStorage.getItem('template') || "Dublin"
-  this.refTemplate = document.getElementById(this.template.toLowerCase())
-  this.refCanvas = document.getElementById('resume-canvas')
+
+  this.refBlock = $('#resume-block')
+  this.refBlockTemplate = this.refBlock.find(`#${this.template.toLowerCase()}`)[0]
+
+  this.refCanvas = $('#resume-canvas')
+  this.refCanvasTemplate = this.refCanvas.find(`#${this.template.toLowerCase()}`)[0]
 }
 
 Builder.prototype.photoUploadHTML = function(){
@@ -128,13 +129,16 @@ Builder.prototype.photoUploadHTML = function(){
 }
 
 Builder.prototype.savePDF = function() {
-  const HTML_Width = this.refTemplate.offsetWidth;
-  const HTML_Height = this.refTemplate.offsetHeight;
+  const canvas = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
+  const HTML_Width = canvas.outerWidth();
+  const HTML_Height = canvas.outerHeight();
   const PDF_Width = HTML_Width;
   const PDF_Height = PDF_Width * a4.diff;
 
+  const element = this.refCanvas.find(`#${this.template.toLowerCase()}`)[0]
+
   html2canvas(
-    this.refTemplate,
+    element,
     {
       scale: 2,
       imageTimeout: 0
@@ -173,9 +177,13 @@ Builder.prototype.savePDF = function() {
 
 Builder.prototype.initPages = function() {
   if (!this.resume.pages_init) {
+    const canvas = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
+    console.log("Init")
 
-    let HTML_Height = this.refTemplate.offsetHeight;
-    const HTML_Width = this.refTemplate.offsetWidth;
+    // canvas.style = `height: ${Math.ceil(canvas.outerHeight() / (canvas.outerWidth() * a4.diff)) * a4.height}px`
+
+    const HTML_Height = canvas.outerHeight();
+    const HTML_Width = canvas.outerWidth();
     const PDF_Width = HTML_Width;
     const PDF_Height = PDF_Width * a4.diff;
 
@@ -183,39 +191,15 @@ Builder.prototype.initPages = function() {
 
     this.resume.pages_total = total
 
-    // $(this.refTemplate).css('height', Math.ceil(HTML_Height / PDF_Height) * a4.height)
-    // HTML_Height = Math.ceil(HTML_Height / PDF_Height) * a4.height
-    //
-    // console.log(HTML_Height)
-
     if (this.resume.pages_current > total) {
       this.resume.pages_current = total
 
       localStorage.setItem('current', total)
     }
 
-    this.refCanvas.innerHTML = '';
+    this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
 
-    html2canvas(
-      this.refTemplate,
-      {
-        scale: 2,
-        imageTimeout: 0,
-        backgroundColor:	'#fff',
-        height: PDF_Height * (Math.ceil(HTML_Height / PDF_Height) + 1)
-      }
-    ).then(
-      (canvas) => {
-        canvas.getContext('2d');
-
-        canvas.style = `width: ${PDF_Width}px; transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
-        // canvas.style = `width: ${PDF_Width}px; transform: translateY(-${this.resume.pages_current * PDF_Height}px);`
-
-        this.resume.pages_init = true
-        this.refCanvas.appendChild(canvas)
-      }
-    )
-
+    // this.refCanvas.html(this.refBlock.html())
     this.updateCount()
   }
 }
@@ -231,30 +215,13 @@ Builder.prototype.nextPage = function() {
     ++this.resume.pages_current
     localStorage.setItem('current', this.resume.pages_current)
 
-    const HTML_Width = this.refTemplate.offsetWidth;
+    const canvas = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
+    const HTML_Width = canvas.outerWidth();
     const PDF_Width = HTML_Width;
     const PDF_Height = PDF_Width * a4.diff;
 
-    this.refCanvas.innerHTML = '';
-
-    html2canvas(
-      this.refTemplate,
-      {
-        scale: 2,
-        imageTimeout: 0,
-        backgroundColor: '#fff',
-        height: a4.height * (this.resume.pages_total + 1)
-      }
-    ).then(
-      (canvas) => {
-        canvas.getContext('2d');
-
-        canvas.style = `width: ${PDF_Width}px; transform: translateY(-${this.resume.pages_current * PDF_Height}px);`
-
-        this.refCanvas.appendChild(canvas)
-        this.updateCount()
-      }
-    )
+    this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
+    this.updateCount()
   }
 }
 
@@ -264,30 +231,13 @@ Builder.prototype.prevPage = function() {
     --this.resume.pages_current
     localStorage.setItem('current', this.resume.pages_current)
 
-    const HTML_Width = this.refTemplate.offsetWidth;
+    const canvas = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
+    const HTML_Width = canvas.outerWidth();
     const PDF_Width = HTML_Width;
     const PDF_Height = PDF_Width * a4.diff;
 
-    this.refCanvas.innerHTML = '';
-
-    html2canvas(
-      this.refTemplate,
-      {
-        scale: 2,
-        imageTimeout: 0,
-        backgroundColor: '#fff',
-        height: a4.height * (this.resume.pages_total + 1)
-      }
-    ).then(
-      (canvas) => {
-        canvas.getContext('2d');
-
-        canvas.style = `width: ${PDF_Width}px; transform: translateY(-${this.resume.pages_current * PDF_Height}px);`
-
-        this.refCanvas.appendChild(canvas)
-        this.updateCount()
-      }
-    )
+    this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
+    this.updateCount()
   }
 }
 
@@ -321,13 +271,13 @@ Builder.prototype.initCanvas = function() {
 
   $('#resume-block').css({
     "width": a4.width,
-    "height": a4.height
+    "height": a4.height,
+    "transform": `scale(${this.resume.scale})`
   });
 
   $('#resume-canvas').css({
     "width": a4.width,
-    "height": a4.height,
-    "transform": `scale(${this.resume.scale})`
+    "height": a4.height
   });
 }
 
@@ -337,20 +287,19 @@ Builder.prototype.updateCanvas = function() {
 }
 
 Builder.prototype.updateCanvasData = function(remove) {
-  const block = document.getElementById(this.template.toLowerCase())
   const user = JSON.parse(localStorage.getItem('user'))
 
   if (remove) {
-    block.querySelector(`#t-${remove}`).innerHTML = ''
+    this.refBlockTemplate.querySelector(`#t-${remove}`).innerHTML = ''
   }
 
   for (let key in user) {
-    if (block.querySelector(`#t-${key}`)) {
+    if (this.refBlockTemplate.querySelector(`#t-${key}`)) {
       if (user[key].hasOwnProperty('label')) {
-        block.querySelector(`#t-${key}`).innerHTML = user[key].label
+        this.refBlockTemplate.querySelector(`#t-${key}`).innerHTML = user[key].label
       }
       else {
-        block.querySelector(`#t-${key}`).innerHTML = user[key]
+        this.refBlockTemplate.querySelector(`#t-${key}`).innerHTML = user[key]
       }
     }
   }
@@ -358,10 +307,21 @@ Builder.prototype.updateCanvasData = function(remove) {
   $.each(this.data.fieldset, function (index, item) {
     $(`#t-section-${index}`).html(item.name)
   })
+
+  this.refCanvas.html(this.refBlock.html())
+  // this.refCanvasTemplate.style = 'transform: none'
 }
 
 Builder.prototype.updateCanvasPhoto = function() {
-  $('#t-photo').attr('src', builder.photo)
+  if (builder.photo.length !== 0) {
+    this.refBlockTemplate.querySelector('#t-photo').innerHTML = `<img src="${builder.photo}">`
+  }
+  else {
+    this.refBlockTemplate.querySelector('#t-photo').innerHTML = ''
+  }
+
+  this.refCanvas.html(this.refBlock.html())
+  // this.refCanvasTemplate.style = 'transform: none'
 }
 
 Builder.prototype.handleChange = function(e) {
@@ -385,7 +345,6 @@ Builder.prototype.handleChange = function(e) {
 
   localStorage.setItem('user', JSON.stringify(this.user))
 
-
   this.updateCanvasData(remove)
   this.updateCanvas()
 }
@@ -400,8 +359,8 @@ Builder.prototype.handleChangeEditor = function(name, value) {
 }
 
 Builder.prototype.drawConfig = function() {
-  const self = this
   let html = ''
+  const self = this
   const editor = []
 
   const storage = JSON.parse(localStorage.getItem('user'))
@@ -457,8 +416,6 @@ Builder.prototype.drawConfig = function() {
                     placeholder: s_item.placeholder,
                     value: self.user[s_item.name] || s_item.value
                   })
-
-                  // html += `<textarea class="textarea" name="${s_item.name}" required="${s_item.required}" autocomplete="true">${self.user[s_item.name] || s_item.value}</textarea>`
                 }
                 else if (s_item.type === 'select') {
                   html += `<select class="select" name="${s_item.name}" required="${s_item.required}">`;
@@ -486,18 +443,23 @@ Builder.prototype.drawConfig = function() {
 
   localStorage.setItem('user', JSON.stringify(this.user));
 
-  this.refTemplate = document.getElementById(this.template.toLowerCase())
-
   this.updateCanvasData()
   this.updateCanvasPhoto()
-  this.initPages();
+  // this.initPages();
 
   $('#filters-list').html(html)
   $('#filters-title').val(this.user.title)
 
-  $.each(editor, function (index, item) {
-    initializeQuill(item)
-  })
+  if ($('#content-main').length > 0) {
+    $.each(editor, function (index, item) {
+      initializeQuill(item)
+    })
+  }
+  else {
+    setTimeout(() => {
+      this.updateCanvas();
+    }, 500);
+  }
 }
 
 Builder.prototype.getConfig = function() {
@@ -521,13 +483,19 @@ Builder.prototype.initTemplate = function() {
   const self = this
 
   $.ajax({
-    url: `./${this.template}/${this.template}.html`,
+    url: `./${self.template}/${self.template}.html`,
     async: false,
     method: "GET",
     success(data) {
-      $('#resume-block').html(data)
+      self.refBlock.html(data)
+      self.refCanvas.html(self.refBlock.html())
 
-      self.refTemplate = document.getElementById($('#resume-block').find('.page').attr('id'))
+      self.refBlockTemplate = self.refBlock.find(`#${self.template.toLowerCase()}`)[0]
+      self.refCanvasTemplate = self.refCanvas.find(`#${self.template.toLowerCase()}`)[0]
+
+      setTimeout(() => {
+        self.refBlock.css('opacity', '1')
+      }, 500);
     },
     error(xhr, status, error) {
       console.log(xhr.responseText, status, error);
@@ -543,13 +511,12 @@ Builder.prototype.initCard = function() {
 
 const builder = new Builder();
 
+builder.initCard()
 builder.initTemplate()
 builder.getConfig()
-// builder.initCanvas()
 builder.resizeCanvas()
-builder.initCard()
 
-$('#filters').on('change', 'input', function(e) {
+$('#filters').on('input', 'input', function(e) {
   builder.handleChange(e)
 });
 
@@ -567,9 +534,12 @@ $('.js-card').on('click', function() {
 
   builder.initCard()
   builder.initTemplate()
-  builder.updateCanvasData()
-  builder.updateCanvasPhoto()
-  builder.updateCanvas()
+
+  setTimeout(() => {
+    builder.updateCanvasData()
+    builder.updateCanvasPhoto()
+    builder.updateCanvas()
+  }, 500);
 })
 
 $('#count-next').on('click', function() {
@@ -645,10 +615,6 @@ $('#dropped-modal-button').on('click', function() {
   $('#filter-photo-editor').html(builder.photoUploadHTML())
 
   builder.updateCanvasPhoto()
-
-  setTimeout(() => {
-    builder.updateCanvas()
-  }, 500);
 });
 
 
@@ -675,14 +641,12 @@ $('body').on('click', '#dropped-delete-link', function() {
   localStorage.setItem('o_photo', '')
 
   builder.updateCanvasPhoto()
-  builder.updateCanvas()
 
   if(cropper) cropper.destroy()
 
   $('#filter-photo-editor').html(builder.photoUploadHTML())
   $('#dropped-modal-button').addClass('dropped-modal__button--disabled')
 });
-
 
 $('.js-cropped-button').on('click', function (){
   $('.js-cropped-button').removeClass('btn-group__button--active')

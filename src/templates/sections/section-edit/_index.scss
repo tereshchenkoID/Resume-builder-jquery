@@ -81,10 +81,14 @@
       overflow: hidden;
       background-color: var(--color-white);
 
-      &__block {
+      &__canvas {
         position: absolute;
         opacity: 0;
         z-index: -1;
+      }
+
+      &__block {
+        opacity: 0;
       }
     }
 

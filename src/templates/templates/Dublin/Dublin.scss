@@ -149,15 +149,14 @@
   }
 
   .t-photo {
-    @include make-spacer('mx', auto);
-    @include make-spacer('mb', 4);
-    @include size(120px);
+    @include flex(center, center);
 
     border-radius: 50%;
     overflow: hidden;
 
     img {
-      @include size(100%);
+      @include make-spacer('mb', 4);
+      @include size(120px);
 
       object-fit: cover;
       object-position: 50% 50%;

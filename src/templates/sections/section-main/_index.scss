@@ -389,13 +389,17 @@
         overflow: hidden;
       }
 
-      &__block {
+      &__canvas {
+        //position: fixed;
+        //left: 150px;
+
         position: absolute;
         opacity: 0;
         z-index: -1;
       }
 
-      &__canvas {
+      &__block {
+        opacity: 0;
       }
     }
 
