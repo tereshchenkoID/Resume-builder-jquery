@@ -1,0 +1,32 @@
+.count {
+  @include make-spacer('mb', 2);
+
+  display: none;
+  color: var(--color-white);
+
+  @include media-breakpoint-up(lg) {
+    @include flex(center, center);
+  }
+
+  span {
+    @include make-spacer('mx', 1);
+  }
+
+  &__button {
+    @include size(24px);
+
+    color: var(--color-white);
+
+    &:first-child {
+      transform: rotateZ(180deg);
+    }
+
+    &:hover {
+      color: var(--color-accent);
+    }
+
+    svg {
+      fill: currentColor;
+    }
+  }
+}

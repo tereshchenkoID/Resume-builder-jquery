@@ -12,6 +12,7 @@
   "rules": {
     "dollar-sign/dollar-sign": [2, "ignoreProperties"],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "no-unused-vars": 1
+    "no-unused-vars": 1,
+    "camelcase": ["error", {"allow": ["aa_bb"]}]
   }
 }

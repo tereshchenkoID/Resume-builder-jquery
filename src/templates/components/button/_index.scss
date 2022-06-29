@@ -1,45 +1,18 @@
 .button {
-  @include make-spacer('py', 3);
-  @include make-spacer('px', 4);
   @include flex(center, center);
+  @include make-spacer('px', 3);
 
-  position: relative;
-  border-radius: var(--default-border-radius);
-  font-weight: var(--typography-bold);
+  border-radius: 3px;
+  color: var(--color-white);
+  background-color: var(--color-accent);
+  z-index: 1;
+  height: 40px;
+  white-space: nowrap;
 
-  &--primary {
-    background-color: var(--color-accent);
-    color: var(--color-white);
+  svg {
+    @include make-spacer('mr', 1);
+    @include size(20px);
 
-    &:hover {
-      background-color: #3730cd;
-    }
-  }
-
-  &--secondary {
-    background-color: #E9E8F7;
-    color: var(--color-accent);
-
-    &:hover {
-      background-color: var(--color-accent);
-      color: var(--color-white);
-    }
-  }
-
-  &--bordered {
-    border: 1px solid var(--color-white);
-    color: var(--color-white);
-
-    &:hover {
-      background-color: var(--color-white);
-      color: var(--color-accent);
-    }
-  }
-
-  &--sm {
-    @include make-spacer('py', 2);
-    @include make-spacer('px', 3);
-
-    min-height: 40px;
+    fill: currentColor;
   }
 }

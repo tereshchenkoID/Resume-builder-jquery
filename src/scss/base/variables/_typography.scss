@@ -33,10 +33,6 @@ h6 {
 h1,
 .h1 {
   @include font-size(35px);
-
-  @include media-breakpoint-up(md) {
-    @include font-size(60px);
-  }
 }
 
 h2,
@@ -47,10 +43,6 @@ h2,
 h3,
 .h3 {
   @include font-size(26px);
-
-  @include media-breakpoint-up(md) {
-    @include font-size(32px);
-  }
 }
 
 h4,

@@ -18,6 +18,7 @@ const renderHtml = (onlyChanged) => {
   return gulp
     .src([
       `${config.src.templates  }/*.pug`,
+      `${config.src.templates  }/templates/**/*.pug`,
     ])
     .pipe(plumber({ errorHandler: config.errorHandler }))
     .pipe(gulpif(onlyChanged, changed(config.dest.html, { extension: '.html' })))
@@ -40,11 +41,11 @@ const build = gulp => gulp.parallel('pug');
 const watch = gulp => {
   return function() {
     gulp.watch([
-      `${config.src.templates  }/**/*.pug`
+      `${config.src.root  }/**/*.pug`
     ], gulp.parallel('pug:changed'));
 
     gulp.watch([
-      `${config.src.templates  }/**/*.pug`
+      `${config.src.root  }/**/*.pug`
     ], gulp.parallel('pug'));
   }
 };

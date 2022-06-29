@@ -1,13 +1,13 @@
-.select {
+.field {
   @include make-spacer('py', 2);
   @include make-spacer('px', 3);
 
   display: block;
   border-radius: var(--default-border-radius);
   caret-color: var(--color-accent);
+  height: var(--default-height);
   background-color: rgba(239, 242, 249, 1);
   border: 1px solid rgba(239, 242, 249, 1);
-  height: var(--default-height);
   outline: none;
   transition: color 0.1s ease 0s;
 

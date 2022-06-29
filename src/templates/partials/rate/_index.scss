@@ -1,9 +1,0 @@
-.rate {
-  @include flex(center, center);
-
-  &__item {
-    @include make-spacer('mx', half);
-
-    color: var(--color-accent);
-  }
-}

@@ -50,7 +50,10 @@ const processors = [
 ];
 
 gulp.task('sass', () => gulp
-  .src(`${config.src.scss  }/*.{sass,scss}`)
+  .src([
+    `${config.src.scss  }/*.{sass,scss}`,
+    `${config.src.templates  }/templates/**/*.{sass,scss}`
+  ])
   .pipe(sourcemaps.init())
   .pipe(sass({
       outputStyle: 'compressed', // nested, expanded, compact, compressed
@@ -59,7 +62,10 @@ gulp.task('sass', () => gulp
   .on('error', config.errorHandler)
   .pipe(postcss(processors))
   .pipe(sourcemaps.write('./'))
-  .pipe(gulp.dest(config.dest.css))
+  .pipe(
+    // gulp.dest(config.dest.css),
+    gulp.dest(`${config.dest.root}/`)
+  )
 );
 
 // eslint-disable-next-line no-shadow

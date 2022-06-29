@@ -1,0 +1,234 @@
+.section {
+
+  &--edit {
+    @include make-spacer('py', 13);
+    @include make-spacer('pb', 0, sm);
+
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: rgba(73, 81, 99, 1);
+    height: 100vh;
+    overflow: hidden;
+
+    @include media-breakpoint-up(sm) {
+      grid-template-columns: 250px 1fr;
+    }
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: 400px 1fr;
+    }
+
+
+    .left,
+    .right {
+      @include make-spacer('p', 5);
+      @include make-spacer('p', 5, lg);
+    }
+
+    .left {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--color-black);
+      overflow-y: auto;
+
+      @include media-breakpoint-up(sm) {
+        position: static;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        height: unset;
+      }
+
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: var(--color-secondary);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border: 2px solid transparent;
+        background-clip: content-box;
+        background-color: var(--color-accent);
+      }
+    }
+
+
+    .right {
+      @include flex(center, center, column);
+
+      overflow: hidden;
+
+      @include media-breakpoint-up(sm) {
+        position: fixed;
+        top: 65px;
+        right: 0;
+        bottom: 0;
+        left: 250px;
+      }
+
+      @include media-breakpoint-up(md) {
+        left: 400px;
+      }
+    }
+
+    .resume {
+      @include flex(center, center);
+
+      position: relative;
+      overflow: hidden;
+      background-color: var(--color-white);
+
+      &__block {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+
+    .nav {
+      @include make-spacer('px', 3);
+      @include flex(space-between, center);
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(15, 20, 30, 1);
+      height: 65px;
+      z-index: 1;
+    }
+
+    .link {
+      @include flex(center, center);
+
+      color: rgba(255, 255, 255, 0.5);
+
+      svg {
+        @include size(24px);
+
+        transform: rotateZ(180deg);
+        fill: currentColor;
+      }
+
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+
+    .button {
+      @include flex(center, center);
+      @include make-spacer('px', 5);
+
+      border-radius: 3px;
+      color: var(--color-white);
+      background-color: var(--color-accent);
+      height: 40px;
+    }
+
+    .list {
+      @include flex(center, center);
+
+      @include media-breakpoint-up(sm) {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+      }
+
+      @include media-breakpoint-up(md) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      cursor: pointer;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+
+      &--active,
+      &:hover {
+
+        .card {
+
+          &__preview {
+            outline: 3px solid var(--color-accent);
+          }
+        }
+      }
+
+      &--active {
+
+        .card {
+
+          &__text {
+            color: var(--color-accent)
+          }
+
+          &__icon {
+            opacity: 1;
+          }
+        }
+      }
+
+      &__text {
+        @include make-spacer('px', 2);
+        @include make-spacer('px', 0, sm);
+        @include make-spacer('mb', 2, sm);
+      }
+
+      &__preview {
+        display: none;
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--default-border-radius);
+        transition: var(--default-transition);
+
+        @include media-breakpoint-up(sm) {
+          display: block;
+          height: 290px;
+        }
+
+        @include media-breakpoint-up(md) {
+          display: block;
+          height: 225px;
+        }
+      }
+
+      &__image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-size: cover;
+      }
+
+      &__resume {
+        @include flex(center, center);
+
+        overflow: hidden;
+      }
+
+      &__icon {
+        @include flex(center, center);
+        @include size(40px);
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        border-radius: 50%;
+        color: var(--color-white);
+        background-color: var(--color-accent);
+        opacity: 0;
+
+        svg {
+          fill: currentColor;
+        }
+      }
+    }
+  }
+}

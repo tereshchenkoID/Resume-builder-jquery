@@ -1,0 +1,443 @@
+.section {
+
+  &--main {
+    display: grid;
+    align-items: center;
+    min-height: 100vh;
+
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .left,
+    .right {
+      @include make-spacer('p', 5);
+      @include make-spacer('p', 10, lg);
+
+      height: 100%;
+    }
+
+    .left {
+      background-color: var(--color-white);
+    }
+
+    .right {
+      @include flex(flex-end, center);
+
+      position: fixed;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      overflow: hidden;
+      height: 75px;
+
+      @include media-breakpoint-up(lg) {
+        @include size(50%, unset);
+
+        justify-content: center;
+        flex-direction: column;
+        top: 0;
+        left: unset;
+        background-color: var(--color-secondary);
+      }
+    }
+
+    .btn-group {
+      @include make-spacer('mx', 1);
+      @include make-spacer('mb', 1);
+      @include flex(center, center);
+
+      border-radius: var(--default-border-radius);
+      overflow: hidden;
+
+      &__button {
+        @include make-spacer('p', 1);
+        @include flex(center, center);
+        @include size(30px);
+
+        border-radius: 0;
+        opacity: 0.8;
+
+        svg {
+          @include make-spacer('m', 0);
+          @include size(16px);
+        }
+
+        &:hover,
+        &--active {
+          opacity: 1;
+        }
+      }
+    }
+
+    .save {
+      @include make-spacer('mb', 2);
+      @include make-spacer('mx', auto);
+      @include flex(center, center);
+
+      color: #0F141F;
+      transition: var(--default-transition);
+
+      svg {
+        @include make-spacer('mr', 1);
+
+        fill: currentColor;
+      }
+
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+
+    .options {
+      @include flex(space-between, center);
+
+      position: absolute;
+      right: var(--grid-outher);
+      bottom: var(--grid-outher);
+      left: var(--grid-outher);
+    }
+
+    .title {
+      @include make-spacer('mx', auto);
+      @include make-spacer('mb', 4);
+      @include font-size(24px);
+
+      display: block;
+      border: 0;
+      border-bottom: 1px solid transparent;
+      transition: var(--default-transition);
+      text-align: center;
+
+      &:focus {
+        outline: none;
+        border-bottom-color: var(--color-accent);
+      }
+    }
+
+    .dropped {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      align-items: center;
+      grid-gap: 10px;
+
+      &__image {
+        @include flex(center, center);
+        @include size(80px);
+
+        background-color: #eff2f9;
+        background-size: cover;
+        border-radius: var(--default-border-radius);
+        overflow: hidden;
+
+        svg {
+          fill: rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+          object-fit: cover;
+        }
+      }
+
+      &__link {
+        @include make-spacer('my', 1);
+        @include font-size(18px, 20px);
+
+        display: block;
+        font-weight: var(--typography-medium);
+        text-align: left;
+
+        &--accent {
+          color: var(--color-accent);
+        }
+
+        &--default {
+          color: rgba(0, 0, 0, 0.4);
+
+          &:hover {
+            color: #f00;
+          }
+        }
+      }
+    }
+
+    .editor {
+      height: 250px;
+    }
+
+    .ql-toolbar,
+    .ql-container {
+      border: 0!important;
+    }
+
+    .ql-toolbar {
+      border-radius: var(--default-border-radius) var(--default-border-radius) 0 0;
+    }
+
+    .ql-container {
+      @include font-size(16px);
+
+      border-radius: 0 0 var(--default-border-radius) var(--default-border-radius);
+      overflow: hidden;
+    }
+
+    .ql-toolbar,
+    .ql-editor {
+      background-color: rgba(239, 242, 249, 1);
+    }
+
+    .dropped-modal {
+      @include flex(center, center);
+
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 11;
+
+      &--active {
+        @include flex(center, center);
+      }
+
+      &__wrapper {
+        @include flex($direction: column);
+        @include size(100%, 680px);
+
+        border-radius: 6px;
+        background-color: rgb(15, 20, 30);
+        //overflow: hidden;
+        max-width: 680px;
+        max-height: 100vh;
+        overflow-y: auto;
+      }
+
+      &__header,
+      &__footer {
+        @include make-spacer('px', 5);
+
+        height: 70px;
+        flex-shrink: 0;
+      }
+
+      &__header {
+        @include flex(flex-end, center);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      &__footer {
+        @include flex(space-between, center);
+
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      &__body {
+        @include flex(center, center, column);
+        @include make-spacer('p', 5);
+
+        flex-grow: 1;
+      }
+
+      &__content {
+        @include make-spacer('mb', 4);
+
+        text-align: center;
+        line-height: 1.5;
+      }
+
+      &__options {
+        @include flex($justify-content: center, $align-items: center, $wrap: wrap);
+      }
+
+      &__icon {
+        @include make-spacer('mx', auto);
+        @include make-spacer('mb', 4);
+        @include size(48px);
+      }
+
+      &__text {
+        @include font-size(18px, 22px);
+
+        max-width: 250px;
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      &__close {
+        @include size(24px);
+
+        color: rgba(255, 255, 255, 0.2);
+
+        &:hover {
+          color: var(--color-accent);
+        }
+
+        svg {
+          fill: currentColor;
+        }
+      }
+
+      &__button,
+      &__upload {
+        @include make-spacer('py', 2);
+
+        position: relative;
+        z-index: 1;
+        border-radius: var(--default-border-radius);
+        height: 38px;
+        color: var(--color-white);
+      }
+
+      &__button {
+        @include make-spacer('px', 5);
+
+        &--disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+      }
+
+      &__picture {
+        @include make-spacer('my', 4);
+        @include make-spacer('mx', auto);
+        @include size(300px);
+      }
+
+      &__uploading {
+        @include flex(center, center);
+        @include size(100%);
+
+        border: 1px dashed rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        overflow: hidden;
+
+        input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          visibility: hidden;
+          opacity: 0;
+          z-index: -1;
+        }
+      }
+
+      &__edit {
+        display: none;
+      }
+
+      &__preview {
+        @include make-spacer('mx', auto);
+        @include size(80px);
+
+        overflow: hidden;
+        border-radius: var(--default-border-radius);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+
+        img {
+          @include size(100%);
+
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+      }
+
+      &__box {
+        @include flex(center, center);
+        @include size(100%);
+
+        position: relative;
+      }
+
+      &__upload {
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        align-items: center;
+        grid-gap: 5px;
+        cursor: pointer;
+        transition: var(--default-transition);
+        opacity: 0.6;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        svg {
+          @include size(24px);
+        }
+      }
+
+      &__file {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0;
+      }
+    }
+
+    .resume {
+      display: none;
+      background-color: var(--color-white);
+
+      @include media-breakpoint-up(lg) {
+        @include flex(center, center);
+
+        overflow: hidden;
+      }
+
+      &__block {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+      }
+
+      &__canvas {
+      }
+    }
+
+    .filter {
+      overflow: hidden;
+
+      &__title {
+
+      }
+
+      &__body {
+        @include make-spacer('mx', -3);
+        @include make-spacer('mb', 4);
+        @include flex($wrap: wrap);
+      }
+
+      &__label {
+        @include make-spacer('mb', 2);
+
+        color: rgba(130, 139, 162, 1);
+      }
+
+      &__item {
+        @include flex($justify-content: flex-end, $direction: column);
+        @include make-spacer('my', 3);
+        @include make-spacer('px', 3);
+
+        flex: 1 1 100%;
+
+        @include media-breakpoint-up(sm) {
+          flex: 1 1 50%;
+        }
+
+        &--wide {
+          flex: 1 1 100%;
+        }
+      }
+    }
+  }
+}
+
+
+.uploading {
+  @include size(100%);
+}

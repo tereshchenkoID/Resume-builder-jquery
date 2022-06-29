@@ -1,0 +1,143 @@
+mixin section-main
+  section&attributes(attributes)
+    .left#left
+      button.save#button-send
+        svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24')
+          path(d='M6 18.98A5.5 5.5 0 016.5 8a6.5 6.5 0 0112.48 2.03 4.5 4.5 0 01.02 8.94V19H6v-.02z')
+          path(stroke='#FFF' stroke-width='2' stroke-linejoin='round' d='M9 11.5l2.5 2.5 3.5-4')
+        | Saved
+
+      #filters
+        input(type="text" name="title" required="true").title#filters-title
+        #filters-list
+
+    .right#right
+      +count
+
+      .resume#resume
+        .resume__block#resume-block
+        .resume__canvas#resume-canvas
+
+      .options
+        a(href="./edit.html").button
+          svg(width='24' height='24' viewbox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg')
+            path(d='M5.5 5.5v4h4v-4h-4zM11 4v7H4V4h7zm3.5 1.5v4h4v-4h-4zM20 4v7h-7V4h7zM5.5 14.5v4h4v-4h-4zM11 13v7H4v-7h7zm3.5 1.5v4h4v-4h-4zM20 13v7h-7v-7h7z')
+          | Select Template
+        button(type="button").button#button-save Save PDF
+
+    .dropped-modal#dropped-modal
+      .dropped-modal__wrapper
+        .dropped-modal__header
+          button.dropped-modal__close#dropped-modal-close
+            svg(width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+              path(d='M10.5857864,12 L3.79289322,5.20710678 L5.20710678,3.79289322 L12,10.5857864 L18.7928932,3.79289322 L20.2071068,5.20710678 L13.4142136,12 L20.2071068,18.7928932 L18.7928932,20.2071068 L12,13.4142136 L5.20710678,20.2071068 L3.79289322,18.7928932 L10.5857864,12 Z')
+        .dropped-modal__body
+          .dropped-modal__box
+            label(for="dropped-modal-input").dropped-modal__uploading#dropped-modal-uploading
+              input(type='file' name='filepond')#dropped-modal-input
+
+              .dropped-modal__content
+                button.dropped-modal__icon
+                  svg(width='48' height='40' fill='none' xmlns='http://www.w3.org/2000/svg')
+                    rect(x='1' y='1' width='46' height='38' rx='3' stroke='#7A8599' stroke-width='2')
+                    circle(cx='35' cy='13' r='4' stroke='#7A8599' stroke-width='2')
+                    path(d='M1 30l12-12.9a4 4 0 016 0l9.2 9.9a4 4 0 005.7 0l2.3-2.2a4 4 0 015.6 0L47 30' stroke='#7A8599' stroke-width='2')
+                p.dropped-modal__text Select photo from your computer.
+
+            .dropped-modal__edit#dropped-modal-edit
+              .dropped-modal__preview#dropped-modal-preview
+              .dropped-modal__picture
+                img(src="").dropped-modal__preview#dropped-modal-image
+
+              .dropped-modal__options
+                .btn-group
+                  button(data-style="up").button.btn-group__button.btn-group__button--move.js-cropped-button.js-cropped-button-move
+                    svg(xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='64px' height='64px' viewBox='0 0 64 64' xml:space='preserve')
+                      polyline(fill='none' stroke='#fff' stroke-width='2' stroke-linejoin='bevel' stroke-miterlimit='10' points='56,39 63,32 56,25 ')
+                      polyline(fill='none' stroke='#fff' stroke-width='2' stroke-linejoin='bevel' stroke-miterlimit='10' points='8,25 1,32 8,39')
+                      line(fill='none' stroke='#fff' stroke-width='2' stroke-miterlimit='10' x1='1' y1='32' x2='32' y2='32')
+                      line(fill='none' stroke='#fff' stroke-width='2' stroke-miterlimit='10' x1='32' y1='32' x2='63' y2='32')
+                      polyline(fill='none' stroke='#fff' stroke-width='2' stroke-linejoin='bevel' stroke-miterlimit='10' points='39,8 32,1 25,8')
+                      polyline(fill='none' stroke='#fff' stroke-width='2' stroke-linejoin='bevel' stroke-miterlimit='10' points='25,56 32,63 39,56 ')
+                      line(fill='none' stroke='#fff' stroke-width='2' stroke-miterlimit='10' x1='32' y1='63' x2='32' y2='32')
+                      line(fill='none' stroke='#fff' stroke-width='2' stroke-miterlimit='10' x1='32' y1='32' x2='32' y2='1')
+
+                  button(data-style="down").button.btn-group__button.btn-group__button--crop.js-cropped-button.js-cropped-button-crop
+                    svg(xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='64px' height='64px' viewBox='0 0 64 64' xml:space='preserve')
+                      polyline(fill='none' stroke='#fff' stroke-width='2' stroke-miterlimit='10' points='0,11 53,11 53,64 ')
+                      polyline(fill='none' stroke='#fff' stroke-width='2' stroke-miterlimit='10' points='11,0 11,53 64,53 ')
+                      line(fill='none' stroke='#fff' stroke-width='2' stroke-miterlimit='10' x1='11' y1='53' x2='63' y2='1')
+
+
+                .btn-group
+                  button(data-style="up" title="Zoom +").button.btn-group__button.btn-group__button--zoom.js-cropped-button.js-cropped-button-zoom
+                    svg(viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg')
+                      g(id='15.-Zoom-in' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round')
+                        g(transform='translate(2.000000, 2.000000)' stroke='#fff' stroke-width='4')
+                          path#Layer-1(d='M40,80 C62.09139,80 80,62.09139 80,40 C80,17.90861 62.09139,0 40,0 C17.90861,0 0,17.90861 0,40 C0,62.09139 17.90861,80 40,80 Z')
+                          path#Layer-2(d='M96,96 L68.4954549,68.4954549')
+                          path#Layer-3(d='M40,20 L40,60')
+                          path#Layer-4(d='M60,40.4642857 L20,40.4642857')
+
+                  button(data-style="down" title="Zoom -").button.btn-group__button.btn-group__button--zoom.js-cropped-button.js-cropped-button-zoom
+                    svg(viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg')
+                      g(id='16.-Zoom-out' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round')
+                        g(transform='translate(2.000000, 2.000000)' stroke='#fff' stroke-width='4')
+                          path#Layer-1(d='M40,80 C62.09139,80 80,62.09139 80,40 C80,17.90861 62.09139,0 40,0 C17.90861,0 0,17.90861 0,40 C0,62.09139 17.90861,80 40,80 Z')
+                          path#Layer-2(d='M96,96 L68.4954549,68.4954549')
+                          path#Layer-3(d='M60,40.4642857 L20,40.4642857')
+
+
+                .btn-group
+                  button(style="transform: scaleX(-1)" data-style="left" title="Rotate left").button.btn-group__button.btn-group__button--rotate.js-cropped-button.js-cropped-button-rotate
+                    svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64')
+                      path(d='M39.75,22.28A1.5,1.5,0,0,0,41.05,24l9.58,1.19a1.56,1.56,0,0,0,1.28-.47,1.66,1.66,0,0,0,.3-.49h0a1.31,1.31,0,0,0,.09-.34l1.19-9.58a1.5,1.5,0,0,0-3-.37l-.64,5.21C37.4,2.29,10.63,11,10.5,32A21.81,21.81,0,0,0,53,38.79a1.5,1.5,0,0,0-2.85-.93A18.81,18.81,0,0,1,13.5,32c.16-18.73,24.38-25.79,34.6-10.2L41.42,21A1.5,1.5,0,0,0,39.75,22.28Z')
+
+                  button(data-style="right" title="Rotate right").button.btn-group__button.btn-group__button--rotate.js-cropped-button.js-cropped-button-rotate
+                      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64')
+                        path(d='M39.75,22.28A1.5,1.5,0,0,0,41.05,24l9.58,1.19a1.56,1.56,0,0,0,1.28-.47,1.66,1.66,0,0,0,.3-.49h0a1.31,1.31,0,0,0,.09-.34l1.19-9.58a1.5,1.5,0,0,0-3-.37l-.64,5.21C37.4,2.29,10.63,11,10.5,32A21.81,21.81,0,0,0,53,38.79a1.5,1.5,0,0,0-2.85-.93A18.81,18.81,0,0,1,13.5,32c.16-18.73,24.38-25.79,34.6-10.2L41.42,21A1.5,1.5,0,0,0,39.75,22.28Z')
+
+                .btn-group
+                  button(style="transform: rotateZ(180deg);" data-style="left" title="Move left").button.btn-group__button.btn-group__button--move.js-cropped-button.js-cropped-button-move
+                    svg(viewBox='0 0 32 32' xml:space='preserve' xmlns='http://www.w3.org/2000/svg')
+                      path(clip-rule='evenodd' d='M32,16.009c0-0.267-0.11-0.522-0.293-0.714  l-9.899-9.999c-0.391-0.395-1.024-0.394-1.414,0c-0.391,0.394-0.391,1.034,0,1.428l8.193,8.275H1c-0.552,0-1,0.452-1,1.01  s0.448,1.01,1,1.01h27.586l-8.192,8.275c-0.391,0.394-0.39,1.034,0,1.428c0.391,0.394,1.024,0.394,1.414,0l9.899-9.999  C31.894,16.534,31.997,16.274,32,16.009z' fill='#fff' fill-rule='evenodd')
+                  button(data-style="right" title="Move right").button.btn-group__button.btn-group__button--move.js-cropped-button.js-cropped-button-move
+                    svg(viewBox='0 0 32 32' xml:space='preserve' xmlns='http://www.w3.org/2000/svg')
+                      path(clip-rule='evenodd' d='M32,16.009c0-0.267-0.11-0.522-0.293-0.714  l-9.899-9.999c-0.391-0.395-1.024-0.394-1.414,0c-0.391,0.394-0.391,1.034,0,1.428l8.193,8.275H1c-0.552,0-1,0.452-1,1.01  s0.448,1.01,1,1.01h27.586l-8.192,8.275c-0.391,0.394-0.39,1.034,0,1.428c0.391,0.394,1.024,0.394,1.414,0l9.899-9.999  C31.894,16.534,31.997,16.274,32,16.009z' fill='#fff' fill-rule='evenodd')
+                  button(style="transform: rotateZ(-90deg);" data-style="top" title="Move top").button.btn-group__button.btn-group__button--move.js-cropped-button.js-cropped-button-move
+                    svg(viewBox='0 0 32 32' xml:space='preserve' xmlns='http://www.w3.org/2000/svg')
+                      path(clip-rule='evenodd' d='M32,16.009c0-0.267-0.11-0.522-0.293-0.714  l-9.899-9.999c-0.391-0.395-1.024-0.394-1.414,0c-0.391,0.394-0.391,1.034,0,1.428l8.193,8.275H1c-0.552,0-1,0.452-1,1.01  s0.448,1.01,1,1.01h27.586l-8.192,8.275c-0.391,0.394-0.39,1.034,0,1.428c0.391,0.394,1.024,0.394,1.414,0l9.899-9.999  C31.894,16.534,31.997,16.274,32,16.009z' fill='#fff' fill-rule='evenodd')
+                  button(style="transform: rotateZ(90deg);" data-style="bottom" title="Move bottom").button.btn-group__button.btn-group__button--move.js-cropped-button.js-cropped-button-move
+                    svg(viewBox='0 0 32 32' xml:space='preserve' xmlns='http://www.w3.org/2000/svg')
+                      path(clip-rule='evenodd' d='M32,16.009c0-0.267-0.11-0.522-0.293-0.714  l-9.899-9.999c-0.391-0.395-1.024-0.394-1.414,0c-0.391,0.394-0.391,1.034,0,1.428l8.193,8.275H1c-0.552,0-1,0.452-1,1.01  s0.448,1.01,1,1.01h27.586l-8.192,8.275c-0.391,0.394-0.39,1.034,0,1.428c0.391,0.394,1.024,0.394,1.414,0l9.899-9.999  C31.894,16.534,31.997,16.274,32,16.009z' fill='#fff' fill-rule='evenodd')
+
+        .dropped-modal__footer
+          label(for="dropped-modal-new-input").dropped-modal__upload
+            svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none')
+              mask#a(mask-type='alpha' maskUnits='userSpaceOnUse' x='11' y='15' width='2' height='6')
+                path(d='M11 15h2v6h-2v-6z' fill='url(#paint0_linear)')
+              g(mask='url(#a)')
+                path(d='M11 15h2v6h-2v-6z' fill='#B8BECC')
+              mask#b(mask-type='alpha' maskUnits='userSpaceOnUse' x='3' y='7' width='2' height='8')
+                path(fill='url(#paint1_linear)' d='M3 7h2v8H3z')
+              g(mask='url(#b)')
+                path(fill='#B8BECC' d='M3 7h2v8H3z')
+              mask#c(mask-type='alpha' maskUnits='userSpaceOnUse' x='19' y='7' width='2' height='8')
+                path(fill='url(#paint2_linear)' d='M19 7h2v8h-2z')
+              g(mask='url(#c)')
+                path(fill='#B8BECC' d='M19 7h2v8h-2z')
+              path(fill-rule='evenodd' clip-rule='evenodd' d='M5 5v2H3V4.5C3 3.67 3.67 3 4.5 3h15c.83 0 1.5.67 1.5 1.5V7h-2V5H5zm6 6.16l-2.5 2.1-1.32-1.51 4.16-3.5a1 1 0 011.32 0l4.16 3.5-1.32 1.5-2.5-2.09V15h-2v-3.84z' fill='#B8BECC')
+              defs
+                lineargradient#paint0_linear(x1='12' y1='15' x2='12' y2='21' gradientUnits='userSpaceOnUse')
+                  stop(stop-color='#7A8599')
+                  stop(offset='1' stop-color='#7A8599' stop-opacity='0')
+                lineargradient#paint1_linear(x1='4' y1='7' x2='4' y2='15' gradientUnits='userSpaceOnUse')
+                  stop(stop-color='#7A8599')
+                  stop(offset='1' stop-color='#7A8599' stop-opacity='0')
+                lineargradient#paint2_linear(x1='20' y1='7' x2='20' y2='15' gradientUnits='userSpaceOnUse')
+                  stop(stop-color='#7A8599')
+                  stop(offset='1' stop-color='#7A8599' stop-opacity='0')
+            input(type="file").dropped-modal__file#dropped-modal-new-input
+            | Upload new
+
+          button(type="button").button.dropped-modal__button.dropped-modal__button--disabled#dropped-modal-button Save Changes
