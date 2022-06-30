@@ -98,6 +98,10 @@
       left: var(--grid-outher);
     }
 
+    .uploading {
+      @include size(100%);
+    }
+
     .title {
       @include make-spacer('mx', auto);
       @include make-spacer('mb', 4);
@@ -439,9 +443,4 @@
       }
     }
   }
-}
-
-
-.uploading {
-  @include size(100%);
 }

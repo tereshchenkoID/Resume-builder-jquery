@@ -115,8 +115,7 @@
   }
 
   .t-right {
-    @include make-spacer('pt', 36);
-
+    //@include make-spacer('pt', 36);
     background-color: var(--color-primary);
 
     * {
@@ -134,6 +133,10 @@
 
     &--center {
       text-align: center;
+    }
+
+    &:last-child {
+      @include make-spacer('mb', 0);
     }
   }
 
@@ -154,8 +157,6 @@
   }
 
   .t-photo {
-    border-radius: 50%;
-    overflow: hidden;
     flex-shrink: 0;
 
     img {
@@ -164,6 +165,16 @@
 
       object-fit: cover;
       object-position: 50% 50%;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+
+  .t-qr-code {
+    @include size(150px);
+
+    img {
+      @include size(100%);
     }
   }
 }

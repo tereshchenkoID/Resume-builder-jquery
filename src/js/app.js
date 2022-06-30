@@ -7,6 +7,8 @@ import Quill from 'Quill';
 
 import Cropper from 'cropperjs';
 
+import qrCode from 'qr-code-and-vcard/dist/QrCode.min';
+
 let cropper
 
 function initCropped() {
@@ -72,7 +74,9 @@ const a4 = {
 
 function Builder() {
   this.data = {}
-  this.url = './json/config.json'
+  this.templates = {}
+  this.urlConfig = './json/config.json'
+  this.urlTemplates = './json/templates.json'
   this.user = {
     'title': 'Title'
   }
@@ -129,13 +133,18 @@ Builder.prototype.photoUploadHTML = function(){
 }
 
 Builder.prototype.savePDF = function() {
-  const canvas = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
-  const HTML_Width = canvas.outerWidth();
-  const HTML_Height = canvas.outerHeight();
+  this.initQR()
+  this.refCanvas.html(this.refBlock.html())
+
+  const canvasTemplate = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
+  const HTML_Width = canvasTemplate.outerWidth();
+  const HTML_Height = canvasTemplate.outerHeight();
   const PDF_Width = HTML_Width;
   const PDF_Height = PDF_Width * a4.diff;
 
   const element = this.refCanvas.find(`#${this.template.toLowerCase()}`)[0]
+
+  // $(element).css(`height`, `${Math.ceil(canvasTemplate.outerHeight() / (canvasTemplate.outerWidth() * a4.diff)) * a4.height}px`)
 
   html2canvas(
     element,
@@ -180,8 +189,6 @@ Builder.prototype.initPages = function() {
     const canvas = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
     console.log("Init")
 
-    // canvas.style = `height: ${Math.ceil(canvas.outerHeight() / (canvas.outerWidth() * a4.diff)) * a4.height}px`
-
     const HTML_Height = canvas.outerHeight();
     const HTML_Width = canvas.outerWidth();
     const PDF_Width = HTML_Width;
@@ -199,7 +206,6 @@ Builder.prototype.initPages = function() {
 
     this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
 
-    // this.refCanvas.html(this.refBlock.html())
     this.updateCount()
   }
 }
@@ -221,6 +227,11 @@ Builder.prototype.nextPage = function() {
     const PDF_Height = PDF_Width * a4.diff;
 
     this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
+
+
+    // const preview = $(this.refBlock).find(`#${this.template.toLowerCase()}`)
+    // preview.css(`height`, `${Math.ceil(canvas.outerHeight() / (canvas.outerWidth() * a4.diff)) * a4.height}px`)
+
     this.updateCount()
   }
 }
@@ -237,6 +248,10 @@ Builder.prototype.prevPage = function() {
     const PDF_Height = PDF_Width * a4.diff;
 
     this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
+
+    // const preview = $(this.refBlock).find(`#${this.template.toLowerCase()}`)
+    // preview.css(`height`, `${Math.ceil(canvas.outerHeight() / (canvas.outerWidth() * a4.diff)) * a4.height}px`)
+
     this.updateCount()
   }
 }
@@ -321,7 +336,6 @@ Builder.prototype.updateCanvasPhoto = function() {
   }
 
   this.refCanvas.html(this.refBlock.html())
-  // this.refCanvasTemplate.style = 'transform: none'
 }
 
 Builder.prototype.handleChange = function(e) {
@@ -378,7 +392,7 @@ Builder.prototype.drawConfig = function() {
 
               $.each(c_item.fields, function (s_index, s_item) {
 
-                html += `<div class="filter__item ${s_item.type === 'textarea' && 'filter__item--wide'}">
+                html += `<div class="filter__item ${s_item.type === 'textarea' ? 'filter__item--wide' : ''}">
                             <p class="filter__label">${s_item.label}</p>`
 
                 if (s_item.type === 'select') {
@@ -406,10 +420,10 @@ Builder.prototype.drawConfig = function() {
                 }
 
                 if (s_item.type === 'text' || s_item.type === 'email') {
-                  html += `<input type="${s_item.type}" name="${s_item.name}" value="${self.user[s_item.name] || s_item.value}" required="${s_item.required}" class="field js-field" autocomplete="true"/>`;
+                  html += `<input type="${s_item.type}" name="${s_item.name}" value="${self.user[s_item.name] || s_item.value}" required="${s_item.required}" pattern="${s_item.validation}" class="field js-field" autocomplete="true"/>`;
                 }
                 else if (s_item.type === 'textarea') {
-                  html += `<div class="editor" id="editor_${s_item.name}"></div>`
+                  html += `<div class="editor" id="editor_${s_item.name}" pattern="${s_item.validation}"></div>`
 
                   editor.push({
                     el: `editor_${s_item.name}`,
@@ -422,12 +436,13 @@ Builder.prototype.drawConfig = function() {
 
                           $.each(s_item.options, function (o_index, o_item) {
                             const selected = self.user[s_item.name].value === o_item.value
+                            const disabled = o_item.value === "-1" ? 'disabled' : ''
 
                             if (selected) {
-                              html += `<option value="${o_item.value}" selected="${selected}">${o_item.name}</option>`
+                              html += `<option value="${o_item.value}" selected="${selected}" ${disabled}>${o_item.name}</option>`
                             }
                             else {
-                              html += `<option value="${o_item.value}">${o_item.name}</option>`
+                              html += `<option value="${o_item.value}" ${disabled}>${o_item.name}</option>`
                             }
                           })
 
@@ -445,7 +460,7 @@ Builder.prototype.drawConfig = function() {
 
   this.updateCanvasData()
   this.updateCanvasPhoto()
-  // this.initPages();
+  this.initQR()
 
   $('#filters-list').html(html)
   $('#filters-title').val(this.user.title)
@@ -455,18 +470,17 @@ Builder.prototype.drawConfig = function() {
       initializeQuill(item)
     })
   }
-  else {
-    setTimeout(() => {
-      this.updateCanvas();
-    }, 500);
-  }
+
+  setTimeout(() => {
+    this.updateCanvas();
+  }, 500);
 }
 
 Builder.prototype.getConfig = function() {
   const self = this
 
   $.ajax({
-    url: self.url,
+    url: self.urlConfig,
     method: "GET",
     dataType: "json",
     success (data) {
@@ -490,6 +504,9 @@ Builder.prototype.initTemplate = function() {
       self.refBlock.html(data)
       self.refCanvas.html(self.refBlock.html())
 
+      // self.refCanvas.html(data)
+      // self.refBlock.html(self.refCanvas.html())
+
       self.refBlockTemplate = self.refBlock.find(`#${self.template.toLowerCase()}`)[0]
       self.refCanvasTemplate = self.refCanvas.find(`#${self.template.toLowerCase()}`)[0]
 
@@ -503,18 +520,88 @@ Builder.prototype.initTemplate = function() {
   });
 }
 
+Builder.prototype.drawTemplatesList = function() {
+  let html = ''
+  const self = this
+  const active = localStorage.getItem('template') || this.template
+
+  $.each(self.templates.fieldset, function (index, item) {
+    html += `<div class="card js-card ${item.name === active ? 'card--active' : ''}" data-name="${item.name}">
+                <p class="card__text">${item.name}</p>
+                <div class="card__preview">
+                  <div class="card__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.6917162,8.75389189 L18.3082838,10.2461081 L12.3082838,16.7461081 C11.8845221,17.2051833 11.1639539,17.2195889 10.7221825,16.7778175 L6.22218254,12.2778175 L7.77781746,10.7221825 L11.4682653,14.4126304 L16.6917162,8.75389189 Z"></path>
+                    </svg>
+                  </div>
+                  <div class="card__image" style="background-image: url('${item.img}')"></div>
+                </div>
+              </div>`
+  })
+
+  $('#list').html(html)
+}
+
+Builder.prototype.getTemplatesList = function() {
+  const self = this
+
+  $.ajax({
+    url: self.urlTemplates,
+    method: "GET",
+    dataType: "json",
+    success (data) {
+      self.templates = data;
+      self.drawTemplatesList()
+    },
+    error(xhr, status, error){
+      console.log(xhr.responseText, status, error);
+    }
+  });
+}
+
 Builder.prototype.initCard = function() {
   const active = localStorage.getItem('template') || this.template
 
   $(`[data-name="${active}"]`).addClass('card--active')
 }
 
+Builder.prototype.initQR = function() {
+  console.log("Update")
+
+  const testCard = {
+    version: '3.0',
+    lastName: this.user.last_name,
+    firstName: this.user.first_name,
+    namePrefix: 'MR',
+    gender: 'M',
+    homePhone: this.user.phone,
+    birthday: this.user.date_birth,
+    email: this.user.email,
+    homeAddress: {
+      label: 'Home Address',
+      street: this.user.address,
+      city: this.user.city,
+      postalCode: this.user.postal_code,
+      countryRegion:  this.user.country,
+    },
+  }
+
+  this.refBlockTemplate.querySelector('#t-qr-code').innerHTML = qrCode.createVCardQr(
+    testCard,
+    {
+      typeNumber: 15,
+      cellSize: 10
+    }
+  )
+}
+
 const builder = new Builder();
 
-builder.initCard()
 builder.initTemplate()
+builder.getTemplatesList()
 builder.getConfig()
 builder.resizeCanvas()
+
 
 $('#filters').on('input', 'input', function(e) {
   builder.handleChange(e)
@@ -523,24 +610,6 @@ $('#filters').on('input', 'input', function(e) {
 $('#filters').on('change', 'select', function(e) {
   builder.handleChange(e)
 });
-
-$('.js-card').on('click', function() {
-  $('.js-card').removeClass('card--active')
-
-  const a = $(this).attr('data-name')
-
-  builder.template = a
-  localStorage.setItem('template', a)
-
-  builder.initCard()
-  builder.initTemplate()
-
-  setTimeout(() => {
-    builder.updateCanvasData()
-    builder.updateCanvasPhoto()
-    builder.updateCanvas()
-  }, 500);
-})
 
 $('#count-next').on('click', function() {
   builder.nextPage()
@@ -617,6 +686,28 @@ $('#dropped-modal-button').on('click', function() {
   builder.updateCanvasPhoto()
 });
 
+$('#dropped-modal-close').on('click', function() {
+  $('#dropped-modal').toggleClass('dropped-modal--active')
+})
+
+$('body').on('click', '.js-card', function() {
+  $('.js-card').removeClass('card--active')
+
+  const a = $(this).attr('data-name')
+
+  builder.template = a
+  localStorage.setItem('template', a)
+
+  builder.initCard()
+  builder.initTemplate()
+
+  setTimeout(() => {
+    builder.updateCanvasData()
+    builder.updateCanvasPhoto()
+    builder.initQR()
+    builder.updateCanvas()
+  }, 500);
+})
 
 $('body').on('click', '#dropped-add-link', function() {
   $('#dropped-modal').toggleClass('dropped-modal--active')
@@ -648,6 +739,7 @@ $('body').on('click', '#dropped-delete-link', function() {
   $('#dropped-modal-button').addClass('dropped-modal__button--disabled')
 });
 
+// Editor Events
 $('.js-cropped-button').on('click', function (){
   $('.js-cropped-button').removeClass('btn-group__button--active')
   $(this).toggleClass('btn-group__button--active')
@@ -712,7 +804,4 @@ $('.js-cropped-button-crop').on('click', function (){
     cropper.setDragMode('crop')
   }
 })
-
-$('#dropped-modal-close').on('click', function() {
-  $('#dropped-modal').toggleClass('dropped-modal--active')
-})
+// End Editor Events

@@ -7,6 +7,7 @@ html(lang='en')
     meta(name="viewport" content="width=device-width, initial-scale=1")
 
     link(rel="stylesheet" href="./Sydney/Sydney.css")
+
   body
     .page.page--sydney#sydney
       .t-left
@@ -25,6 +26,8 @@ html(lang='en')
 
       .t-right
         .t-wrapper
+          .t-qr-code#t-qr-code
+        .t-wrapper
           h6.t-h6#t-section-1
           .t-item#t-email
           .t-item#t-phone
@@ -36,3 +39,20 @@ html(lang='en')
           .t-item#t-place_birth
           .t-item#t-nationality
           .t-item#t-driving_license
+
+  //script.
+  //  window.onload = function () {
+  //    console.log()
+  //
+  //    var HEIGHT = document.querySelector('.page').offsetHeight
+  //    var pages = Math.ceil(HEIGHT / 1122.52)
+  //
+  //    document.querySelectorAll('.page').forEach(div => {
+  //      div.style.height = `${pages * 1122.52}px`
+  //
+  //      console.log(div)
+  //    })
+  //
+  //    // document.querySelector('.page').style.height = `${pages * 1122.52}px`
+  //    console.log(HEIGHT, pages)
+  //  };

@@ -128,6 +128,10 @@
     &--center {
       text-align: center;
     }
+
+    &:last-child {
+      @include make-spacer('mb', 0);
+    }
   }
 
   .t-item {
@@ -151,15 +155,22 @@
   .t-photo {
     @include flex(center, center);
 
-    border-radius: 50%;
-    overflow: hidden;
-
     img {
       @include make-spacer('mb', 4);
       @include size(120px);
 
       object-fit: cover;
       object-position: 50% 50%;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+
+  .t-qr-code {
+    @include size(150px);
+
+    img {
+      @include size(100%);
     }
   }
 }

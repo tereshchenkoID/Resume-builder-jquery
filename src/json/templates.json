@@ -1,0 +1,14 @@
+{
+  "fieldset": [
+    {
+      "name": "Dublin",
+      "img": "https://s3.resume.io/uploads/local_template_image/image/488/persistent-resource/dublin-resume-templates.jpg",
+      "url": "./Dublin/Dublin.html"
+    },
+    {
+      "name": "Sydney",
+      "img": "https://s3.resume.io/uploads/local_template_image/image/441/persistent-resource/sydney-resume-templates.jpg",
+      "url": "./Sydney/Sydney.html"
+    }
+  ]
+}
