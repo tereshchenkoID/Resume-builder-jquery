@@ -59,6 +59,12 @@
       }
     }
 
+    img {
+      display: block;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
     .t-h1,
     .t-h2,
     .t-h3,
@@ -159,18 +165,16 @@
       @include make-spacer('mb', 4);
       @include size(120px);
 
-      object-fit: cover;
-      object-position: 50% 50%;
       border-radius: 50%;
       overflow: hidden;
     }
   }
 
   .t-qr-code {
-    @include size(150px);
 
     img {
-      @include size(100%);
+      @include make-spacer('mb', 6);
+      @include size(150px);
     }
   }
 }

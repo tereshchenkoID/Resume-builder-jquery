@@ -59,6 +59,12 @@
       }
     }
 
+    img {
+      display: block;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
     .t-h1,
     .t-h2,
     .t-h3,
@@ -115,7 +121,6 @@
   }
 
   .t-right {
-    //@include make-spacer('pt', 36);
     background-color: var(--color-primary);
 
     * {
@@ -163,18 +168,16 @@
       @include make-spacer('mr', 4);
       @include size(100px);
 
-      object-fit: cover;
-      object-position: 50% 50%;
       border-radius: 50%;
       overflow: hidden;
     }
   }
 
   .t-qr-code {
-    @include size(150px);
 
     img {
-      @include size(100%);
+      @include make-spacer('mb', 6);
+      @include size(150px);
     }
   }
 }

@@ -11,6 +11,20 @@ import qrCode from 'qr-code-and-vcard/dist/QrCode.min';
 
 let cropper
 
+function setHeight() {
+  const HEIGHT = document.querySelectorAll('.page')[1].offsetHeight
+  console.log(HEIGHT)
+  const pages = Math.ceil(HEIGHT / 1122.52)
+
+  document.querySelectorAll('.page')[0].style.height = `${pages * 1122.2}px`
+
+  // document.querySelectorAll('.page').forEach(div => {
+  //   div.style.minHeight = `${pages * 1122.2}px`
+  //
+  //   console.log(pages)
+  // })
+}
+
 function initCropped() {
   cropper = new Cropper(document.getElementById('dropped-modal-image'),
     {
@@ -133,7 +147,7 @@ Builder.prototype.photoUploadHTML = function(){
 }
 
 Builder.prototype.savePDF = function() {
-  this.initQR()
+  // this.initQR()
   this.refCanvas.html(this.refBlock.html())
 
   const canvasTemplate = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
@@ -143,8 +157,6 @@ Builder.prototype.savePDF = function() {
   const PDF_Height = PDF_Width * a4.diff;
 
   const element = this.refCanvas.find(`#${this.template.toLowerCase()}`)[0]
-
-  // $(element).css(`height`, `${Math.ceil(canvasTemplate.outerHeight() / (canvasTemplate.outerWidth() * a4.diff)) * a4.height}px`)
 
   html2canvas(
     element,
@@ -186,9 +198,11 @@ Builder.prototype.savePDF = function() {
 
 Builder.prototype.initPages = function() {
   if (!this.resume.pages_init) {
-    const canvas = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
-    console.log("Init")
+    // setHeight()
 
+    // console.log("Init")
+
+    const canvas = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
     const HTML_Height = canvas.outerHeight();
     const HTML_Width = canvas.outerWidth();
     const PDF_Width = HTML_Width;
@@ -198,13 +212,15 @@ Builder.prototype.initPages = function() {
 
     this.resume.pages_total = total
 
+    console.log(this.resume.pages_total)
+
     if (this.resume.pages_current > total) {
       this.resume.pages_current = total
 
       localStorage.setItem('current', total)
     }
 
-    this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
+    $(this.refBlockTemplate).css({'transform': `translateY(-${localStorage.getItem('current') * PDF_Height}px)`})
 
     this.updateCount()
   }
@@ -226,7 +242,8 @@ Builder.prototype.nextPage = function() {
     const PDF_Width = HTML_Width;
     const PDF_Height = PDF_Width * a4.diff;
 
-    this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
+    $(this.refBlockTemplate).css({'transform': `translateY(-${localStorage.getItem('current') * PDF_Height}px)`})
+    // this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
 
 
     // const preview = $(this.refBlock).find(`#${this.template.toLowerCase()}`)
@@ -247,7 +264,8 @@ Builder.prototype.prevPage = function() {
     const PDF_Width = HTML_Width;
     const PDF_Height = PDF_Width * a4.diff;
 
-    this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
+    $(this.refBlockTemplate).css({'transform': `translateY(-${localStorage.getItem('current') * PDF_Height}px)`})
+    // this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
 
     // const preview = $(this.refBlock).find(`#${this.template.toLowerCase()}`)
     // preview.css(`height`, `${Math.ceil(canvas.outerHeight() / (canvas.outerWidth() * a4.diff)) * a4.height}px`)
@@ -324,7 +342,6 @@ Builder.prototype.updateCanvasData = function(remove) {
   })
 
   this.refCanvas.html(this.refBlock.html())
-  // this.refCanvasTemplate.style = 'transform: none'
 }
 
 Builder.prototype.updateCanvasPhoto = function() {
@@ -361,6 +378,7 @@ Builder.prototype.handleChange = function(e) {
 
   this.updateCanvasData(remove)
   this.updateCanvas()
+  // setHeight()
 }
 
 Builder.prototype.handleChangeEditor = function(name, value) {
@@ -460,7 +478,7 @@ Builder.prototype.drawConfig = function() {
 
   this.updateCanvasData()
   this.updateCanvasPhoto()
-  this.initQR()
+  // this.initQR()
 
   $('#filters-list').html(html)
   $('#filters-title').val(this.user.title)
@@ -704,7 +722,7 @@ $('body').on('click', '.js-card', function() {
   setTimeout(() => {
     builder.updateCanvasData()
     builder.updateCanvasPhoto()
-    builder.initQR()
+    // builder.initQR()
     builder.updateCanvas()
   }, 500);
 })
