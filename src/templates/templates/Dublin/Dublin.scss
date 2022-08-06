@@ -144,8 +144,11 @@
     @include make-spacer('mb', 2);
     @include font-size(14px, 16px);
 
-    span {
-      background-color: var(--color-white)!important;
+    &--transparent {
+
+      span {
+        background-color: transparent!important;
+      }
     }
   }
 

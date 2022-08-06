@@ -13,16 +13,11 @@ let cropper
 
 function setHeight() {
   const HEIGHT = document.querySelectorAll('.page')[1].offsetHeight
-  console.log(HEIGHT)
+
   const pages = Math.ceil(HEIGHT / 1122.52)
 
-  document.querySelectorAll('.page')[0].style.height = `${pages * 1122.2}px`
-
-  // document.querySelectorAll('.page').forEach(div => {
-  //   div.style.minHeight = `${pages * 1122.2}px`
-  //
-  //   console.log(pages)
-  // })
+  document.querySelectorAll('.page')[0].style.height = `${pages * 1122.5}px`
+  document.querySelectorAll('.page')[1].style.height = 'unset'
 }
 
 function initCropped() {
@@ -198,9 +193,7 @@ Builder.prototype.savePDF = function() {
 
 Builder.prototype.initPages = function() {
   if (!this.resume.pages_init) {
-    // setHeight()
-
-    // console.log("Init")
+    setHeight()
 
     const canvas = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
     const HTML_Height = canvas.outerHeight();
@@ -211,8 +204,6 @@ Builder.prototype.initPages = function() {
     const total = Math.ceil(HTML_Height / PDF_Height) - 1
 
     this.resume.pages_total = total
-
-    console.log(this.resume.pages_total)
 
     if (this.resume.pages_current > total) {
       this.resume.pages_current = total
@@ -277,7 +268,7 @@ Builder.prototype.prevPage = function() {
 Builder.prototype.resizeCanvas = function() {
   const resizeObserver = new ResizeObserver((event) => {
     const width = event[0].contentBoxSize[0].inlineSize
-    const height = event[0].contentBoxSize[0].blockSize
+    const height = event[0].contentBoxSize[0].blockSize - 92
 
     if (height < width * a4.diff) {
       this.resume.height = height
@@ -378,7 +369,7 @@ Builder.prototype.handleChange = function(e) {
 
   this.updateCanvasData(remove)
   this.updateCanvas()
-  // setHeight()
+  setHeight()
 }
 
 Builder.prototype.handleChangeEditor = function(name, value) {
@@ -584,7 +575,6 @@ Builder.prototype.initCard = function() {
 }
 
 Builder.prototype.initQR = function() {
-  console.log("Update")
 
   const testCard = {
     version: '3.0',
