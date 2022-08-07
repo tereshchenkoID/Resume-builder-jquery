@@ -120,10 +120,21 @@
     }
 
     .dropped {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      align-items: center;
-      grid-gap: 10px;
+
+      &__alert {
+        @include make-spacer('mb', 2);
+
+        display: none;
+        font-size: 12px;
+        color: var(--color-red);
+      }
+
+      &__container {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        align-items: center;
+        grid-gap: 10px;
+      }
 
       &__image {
         @include flex(center, center);
@@ -160,6 +171,22 @@
 
           &:hover {
             color: #f00;
+          }
+        }
+      }
+
+      &--disabled {
+
+        .dropped {
+
+          &__alert {
+            display: block;
+          }
+
+          &__container {
+            user-select: none;
+            pointer-events: none;
+            opacity: 0.5;
           }
         }
       }

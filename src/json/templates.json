@@ -14,6 +14,11 @@
       "name": "Vienna",
       "img": "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/406/persistent-resource/vienna-resume-templates.jpg",
       "url": "./Vienna/Vienna.html"
+    },
+    {
+      "name": "Amsterdam",
+      "img": "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/503/persistent-resource/amsterdam-resume-templates.jpg",
+      "url": "./Amsterdam/Amsterdam.html"
     }
   ]
 }
