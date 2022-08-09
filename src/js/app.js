@@ -821,3 +821,41 @@ $('.js-cropped-button-crop').on('click', function (){
   }
 })
 // End Editor Events
+
+
+
+function initLanguage() {
+  const select = $('.js-language-select').find('span')
+  const set = localStorage.getItem('language') || false
+  let find;
+
+  if (set) {
+    find = $(`.language__item[data-lang="${set}"]`)
+    select.text(find.text())
+    select[0].setAttribute('data-lang', set)
+  }
+  else {
+    find = $('.language__item')[0]
+    select.text($(find).text())
+    select[0].setAttribute('data-lang', find.getAttribute('data-lang'))
+  }
+
+  $(find).addClass('language__item--active')
+}
+
+initLanguage()
+
+$('.js-language').click(function() {
+  $(this).toggleClass('language--active')
+})
+
+$('.js-language-item').click(function() {
+  const select = $('.js-language-select').find('span')
+  $('.language__item').removeClass('language__item--active')
+  $(this).addClass('language__item--active')
+
+  select.text($(this).text())
+  select[0].setAttribute('data-lang', $(this)[0].getAttribute('data-lang'))
+
+  localStorage.setItem('language', $(this)[0].getAttribute('data-lang'))
+})

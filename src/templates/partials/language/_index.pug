@@ -1,0 +1,10 @@
+mixin language
+  .language&attributes(attributes)
+    .language__select.js-language-select
+      span(data-lang="")
+    .language__dropdown
+      .language__list
+        a.language__item(data-lang="ua").js-language-item Українська
+        a.language__item(data-lang="en").js-language-item English
+        a.language__item(data-lang="de").js-language-item Deutsch
+        a.language__item(data-lang="fr").js-language-item Francais

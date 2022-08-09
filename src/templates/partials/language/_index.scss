@@ -1,0 +1,59 @@
+.language {
+  @include make-spacer('mb', 4);
+  @include make-spacer('mx', auto);
+
+  position: relative;
+  z-index: 1;
+  max-width: 150px;
+  background-color: #eff2f9;
+  cursor: pointer;
+  border-radius: var(--default-border-radius);
+
+  &__select {
+    @include make-spacer('px', 2);
+    @include make-spacer('py', 1);
+  }
+
+  &__dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+    background-color: #eff2f9;
+    border-radius: var(--default-border-radius);
+    overflow: hidden;
+  }
+
+  &__list {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  &__item {
+    @include make-spacer('px', 2);
+    @include make-spacer('py', 1);
+    @include flex($align-items: center);
+
+    &--active,
+    &:hover {
+      color: var(--color-accent);
+    }
+
+    &--active {
+      pointer-events: none;
+      opacity: 0.4;
+      user-select: none;
+    }
+  }
+
+  &--active {
+
+    .language {
+
+      &__dropdown {
+        display: block;
+      }
+    }
+  }
+}
