@@ -169,7 +169,7 @@
       ]
     },
     {
-      "name": "Skills",
+      "name": "Languages",
       "dublicate": true,
       "open": true,
       "fields": [
@@ -235,7 +235,7 @@
     {
       "name": "Education",
       "dublicate": true,
-      "open": true,
+      "open": false,
       "fields": [
         {
           "name": "education_school",

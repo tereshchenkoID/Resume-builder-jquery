@@ -501,7 +501,7 @@ Builder.prototype.drawConfig = function() {
                 const name = c_item.name.replace(' ', '_').toLowerCase()
 
                 $.each(c_item.row, function (r_index, r_item) {
-                  html += `<div class="filter__group js-filter-group">
+                  html += `<div class="filter__group ${c_item.open ? 'filter__group--active' : ''} js-filter-group">
                              <button
                                 data-section="${name}"
                                 data-count="${r_index}"
@@ -526,6 +526,7 @@ Builder.prototype.drawConfig = function() {
                     if (item.type === 'text' || item.type === 'email') {
                       html += `
                           <div class="filter__item">
+                              <p class="filter__label">${item.label}</p>
                               <input
                                 type="${item.type}"
                                 data-section="${name}"
@@ -543,6 +544,7 @@ Builder.prototype.drawConfig = function() {
                     else if (item.type === 'textarea') {
                       html += `
                           <div class="filter__item filter__item--wide">
+                            <p class="filter__label">${item.label}</p>
                             <div class="editor"
                               data-section="${name}"
                               data-count="${r_index}"
@@ -560,6 +562,7 @@ Builder.prototype.drawConfig = function() {
                     }
                     else if (item.type  === 'select') {
                       html += `<div class="filter__item">
+                                <p class="filter__label">${item.label}</p>
                                 <select class="select"
                                   data-section="${name}"
                                   data-count="${r_index}"
