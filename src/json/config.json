@@ -170,8 +170,8 @@
     },
     {
       "name": "Skills",
-      "duplicate": true,
-      "open": false,
+      "dublicate": true,
+      "open": true,
       "fields": [
         {
           "name": "skills_name",
@@ -225,7 +225,7 @@
       ],
       "row": [
         [
-          "English", "1"
+          "English", "2"
         ],
         [
           "French", "2"
@@ -234,7 +234,7 @@
     },
     {
       "name": "Education",
-      "duplicate": true,
+      "dublicate": true,
       "open": true,
       "fields": [
         {
