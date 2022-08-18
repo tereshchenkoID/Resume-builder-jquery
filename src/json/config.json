@@ -3,7 +3,7 @@
     {
       "name": "Personal Details",
       "required": true,
-      "open": true,
+      "open": false,
       "fields": [
         {
           "name": "work_type",
@@ -32,7 +32,7 @@
         {
           "name": "first_name",
           "type": "text",
-          "palceholder": "First Name",
+          "placeholder": "First Name",
           "label": "First Name",
           "lang": "en",
           "required": true,
@@ -154,7 +154,7 @@
     {
       "name": "Professional Summary",
       "required": true,
-      "open": true,
+      "open": false,
       "fields": [
         {
           "name": "profile",
@@ -166,6 +166,125 @@
           "validation": "/.*/",
           "value": "Aome text here"
         }
+      ]
+    },
+    {
+      "name": "Skills",
+      "duplicate": true,
+      "open": false,
+      "fields": [
+        {
+          "name": "skills_name",
+          "type": "text",
+          "placeholder": "Skill",
+          "label": "Skill",
+          "lang": "en",
+          "required": true,
+          "validation": "/[A-Za-z\\s]{3,20}/",
+          "value": ""
+        },
+        {
+          "name": "skills_level",
+          "type": "select",
+          "label": "Select language level",
+          "lang": "en",
+          "required": false,
+          "options": [
+            {
+              "name": "Select from list",
+              "value": "-1",
+              "selected": false
+            },
+            {
+              "name": "Novice",
+              "value": "1",
+              "selected": true
+            },
+            {
+              "name": "Beginner",
+              "value": "2",
+              "selected": false
+            },
+            {
+              "name": "Skillful",
+              "value": "3",
+              "selected": false
+            },
+            {
+              "name": "Experienced",
+              "value": "4",
+              "selected": false
+            },
+            {
+              "name": "Expert",
+              "value": "5",
+              "selected": false
+            }
+          ]
+        }
+      ],
+      "row": [
+        [
+          "English", "1"
+        ],
+        [
+          "French", "2"
+        ]
+      ]
+    },
+    {
+      "name": "Education",
+      "duplicate": true,
+      "open": true,
+      "fields": [
+        {
+          "name": "education_school",
+          "type": "text",
+          "placeholder": "School",
+          "label": "School",
+          "lang": "en",
+          "required": true,
+          "validation": "/[A-Za-z\\s]{3,20}/",
+          "value": ""
+        },
+        {
+          "name": "education_degree",
+          "type": "text",
+          "placeholder": "Degree",
+          "label": "Degree",
+          "lang": "en",
+          "required": true,
+          "validation": "/[0-9\\s]{0,3}/",
+          "value": ""
+        },
+        {
+          "name": "education_city",
+          "type": "text",
+          "placeholder": "City",
+          "label": "City",
+          "lang": "en",
+          "required": true,
+          "validation": "/[A-Za-z\\s]{3,20}/",
+          "value": ""
+        },
+        {
+          "name": "education_description",
+          "type": "textarea",
+          "placeholder": "e.g. Graduated with High Honors ...",
+          "label": "Description",
+          "lang": "en",
+          "required": false,
+          "validation": "/.*/",
+          "value": "Aome text here"
+        }
+      ],
+      "row": [
+        [
+          "School name", "98", "Kiev", "Description"
+        ],
+        [
+          "1", "2", "Kiev", "Description 2"
+        ]
       ]
     }
   ]
