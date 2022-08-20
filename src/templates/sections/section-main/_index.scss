@@ -481,6 +481,10 @@
           flex: 1 1 50%;
         }
 
+        &--tiny {
+          flex: 1 1 25%;
+        }
+
         &--wide {
           flex: 1 1 100%;
         }
@@ -497,11 +501,8 @@
       }
 
       &__group {
-        @include flex($wrap: wrap);
         @include make-spacer('mx', 3);
         @include make-spacer('mb', 3);
-        @include make-spacer('pt', 6);
-        @include make-spacer('pb', 2);
 
         position: relative;
         flex: 1 1 100%;
@@ -526,6 +527,10 @@
                 }
               }
             }
+
+            &__header {
+              border-bottom: 1px solid #eff2f9;
+            }
           }
         }
       }
@@ -537,15 +542,36 @@
         display: none;
       }
 
+      &__header {
+        @include flex($justify-content: center, $direction: column);
+
+        @include make-spacer('pl', 3);
+        @include make-spacer('pr', 20);
+        @include make-spacer('py', 2);
+
+        position: relative;
+        min-height: 55px;
+      }
+
+      &__head {
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+
+      &__subtitle {
+        opacity: 0.6;
+      }
+
       &__button {
         @include flex(center, center);
         @include size(40px);
 
         position: absolute;
-        top: 0;
+        top: 50%;
+        transform: translateY(-50%);
 
         &--toggle {
-          right: 0;
+          right: 15px;
           background-color: #eff2f9;
 
           svg {
@@ -555,7 +581,7 @@
         }
 
         &--remove {
-          left: 0;
+          right: 55px;
           background-color: var(--color-red);
         }
       }

@@ -160,18 +160,168 @@
           "name": "profile",
           "type": "textarea",
           "placeholder": "e.g. Passionate science teacher with 8+ years of experience and a track record of ...",
-          "label": "Profile",
+          "label": "Write 2-4 short & energetic sentences to interest the reader! Mention your role, experience & most importantly - your biggest achievements, best qualities and skills.",
+          "lang": "en",
+          "required": false,
+          "validation": "/.*/",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "Employment History",
+      "dublicate": true,
+      "open": true,
+      "fields": [
+        {
+          "name": "employment_position",
+          "type": "text",
+          "placeholder": "Job title",
+          "label": "Job title",
+          "lang": "en",
+          "required": true,
+          "validation": "/[A-Za-z\\s]{3,20}/",
+          "value": ""
+        },
+        {
+          "name": "employment_count",
+          "type": "text",
+          "placeholder": "Employer",
+          "label": "Employer",
+          "lang": "en",
+          "required": true,
+          "validation": "/[0-9\\s]{0,3}/",
+          "value": ""
+        },
+        {
+          "name": "employment_start",
+          "type": "date",
+          "placeholder": "Start",
+          "label": "Start",
+          "lang": "en",
+          "required": true,
+          "validation": "\\d{1,2}/\\d{1,2}/\\d{4}",
+          "value": ""
+        },
+        {
+          "name": "employment_end",
+          "type": "date",
+          "placeholder": "End",
+          "label": "End",
+          "lang": "en",
+          "required": true,
+          "validation": "\\d{1,2}/\\d{1,2}/\\d{4}",
+          "value": ""
+        },
+        {
+          "name": "employment_city",
+          "type": "text",
+          "placeholder": "City",
+          "label": "City",
+          "lang": "en",
+          "required": true,
+          "validation": "/[A-Za-z\\s]{3,20}/",
+          "value": ""
+        },
+        {
+          "name": "employment_description",
+          "type": "textarea",
+          "placeholder": "e.g. Created and implemented lesson plans based on child-led interests and curiosities.",
+          "label": "Description",
+          "lang": "en",
+          "required": false,
+          "validation": "/.*/",
+          "value": ""
+        }
+      ],
+      "row": [
+        [
+          "Work name 1", "20", "2001-01-01", "2002-01-01", "Kiev", "Description 1"
+        ],
+        [
+          "Work name 2", "50", "2002-02-02", "2003-02-02", "Kiev", "Description 2"
+        ]
+      ]
+    },
+    {
+      "name": "Education",
+      "dublicate": true,
+      "open": false,
+      "fields": [
+        {
+          "name": "education_school",
+          "type": "text",
+          "placeholder": "School",
+          "label": "School",
+          "lang": "en",
+          "required": true,
+          "validation": "/[A-Za-z\\s]{3,20}/",
+          "value": ""
+        },
+        {
+          "name": "education_degree",
+          "type": "text",
+          "placeholder": "Degree",
+          "label": "Degree",
+          "lang": "en",
+          "required": true,
+          "validation": "/[0-9\\s]{0,3}/",
+          "value": ""
+        },
+        {
+          "name": "education_start",
+          "type": "date",
+          "placeholder": "Start",
+          "label": "Start",
+          "lang": "en",
+          "required": true,
+          "validation": "\\d{1,2}/\\d{1,2}/\\d{4}",
+          "value": ""
+        },
+        {
+          "name": "education_end",
+          "type": "date",
+          "placeholder": "End",
+          "label": "End",
+          "lang": "en",
+          "required": true,
+          "validation": "\\d{1,2}/\\d{1,2}/\\d{4}",
+          "value": ""
+        },
+        {
+          "name": "education_city",
+          "type": "text",
+          "placeholder": "City",
+          "label": "City",
+          "lang": "en",
+          "required": true,
+          "validation": "/[A-Za-z\\s]{3,20}/",
+          "value": ""
+        },
+        {
+          "name": "education_description",
+          "type": "textarea",
+          "placeholder": "e.g. Graduated with High Honors ...",
+          "label": "Description",
           "lang": "en",
           "required": false,
           "validation": "/.*/",
           "value": "Aome text here"
         }
+      ],
+      "row": [
+        [
+          "School name 1", "98", "2001-01-01", "2002-01-01", "Kiev", "Description 1"
+        ],
+        [
+          "School name 2", "102", "2002-02-02", "2003-02-02", "Kiev", "Description 2"
+        ]
       ]
     },
     {
-      "name": "Languages",
+      "name": "Skills",
       "dublicate": true,
-      "open": true,
+      "open": false,
       "fields": [
         {
           "name": "skills_name",
@@ -186,7 +336,7 @@
         {
           "name": "skills_level",
           "type": "select",
-          "label": "Select language level",
+          "label": "Level",
           "lang": "en",
           "required": false,
           "options": [
@@ -225,6 +375,60 @@
       ],
       "row": [
         [
+          "HTML", "5"
+        ],
+        [
+          "CSS", "5"
+        ]
+      ]
+    },
+    {
+      "name": "Languages",
+      "dublicate": true,
+      "open": false,
+      "fields": [
+        {
+          "name": "language_name",
+          "type": "text",
+          "placeholder": "Language",
+          "label": "Language",
+          "lang": "en",
+          "required": true,
+          "validation": "/[A-Za-z\\s]{3,20}/",
+          "value": ""
+        },
+        {
+          "name": "language_level",
+          "type": "select",
+          "label": "Select language level",
+          "lang": "en",
+          "required": false,
+          "options": [
+            {
+              "name": "Select from list",
+              "value": "-1",
+              "selected": false
+            },
+            {
+              "name": "Native speaker",
+              "value": "1",
+              "selected": true
+            },
+            {
+              "name": "Highly proficient",
+              "value": "2",
+              "selected": false
+            },
+            {
+              "name": "Very good command",
+              "value": "3",
+              "selected": false
+            }
+          ]
+        }
+      ],
+      "row": [
+        [
           "English", "2"
         ],
         [
@@ -233,58 +437,20 @@
       ]
     },
     {
-      "name": "Education",
-      "dublicate": true,
+      "name": "Hobbies",
+      "required": true,
       "open": false,
       "fields": [
         {
-          "name": "education_school",
-          "type": "text",
-          "placeholder": "School",
-          "label": "School",
-          "lang": "en",
-          "required": true,
-          "validation": "/[A-Za-z\\s]{3,20}/",
-          "value": ""
-        },
-        {
-          "name": "education_degree",
-          "type": "text",
-          "placeholder": "Degree",
-          "label": "Degree",
-          "lang": "en",
-          "required": true,
-          "validation": "/[0-9\\s]{0,3}/",
-          "value": ""
-        },
-        {
-          "name": "education_city",
-          "type": "text",
-          "placeholder": "City",
-          "label": "City",
-          "lang": "en",
-          "required": true,
-          "validation": "/[A-Za-z\\s]{3,20}/",
-          "value": ""
-        },
-        {
-          "name": "education_description",
+          "name": "hobbies",
           "type": "textarea",
-          "placeholder": "e.g. Graduated with High Honors ...",
-          "label": "Description",
+          "placeholder": "e.g. Skiing, Painting, Chess",
+          "label": "What do you like?",
           "lang": "en",
           "required": false,
           "validation": "/.*/",
-          "value": "Aome text here"
+          "value": ""
         }
-      ],
-      "row": [
-        [
-          "School name", "98", "Kiev", "Description"
-        ],
-        [
-          "1", "2", "Kiev", "Description 2"
-        ]
       ]
     }
   ]

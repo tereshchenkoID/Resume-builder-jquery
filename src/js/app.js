@@ -385,8 +385,6 @@ Builder.prototype.handleChange = function(e) {
         value,
         label: e.currentTarget.options[e.currentTarget.selectedIndex].text
       }
-
-      console.log(this.user)
     }
   }
 
@@ -414,6 +412,19 @@ Builder.prototype.handleChangeEditor = function(name, value, e) {
 
   this.updateCanvasData()
   this.updateCanvas()
+}
+
+Builder.prototype.addDublicate = function(el) {
+  const self = this
+  const section = el.closest('.js-filter').getAttribute('data-section')
+
+
+  self.user[section].push([
+    "1",
+    "2"
+  ])
+
+  console.log(self.user)
 }
 
 Builder.prototype.setDublicate = function() {
@@ -484,7 +495,9 @@ Builder.prototype.drawConfig = function() {
   this.user.title = (storage && storage.hasOwnProperty('title')) ? storage['title'] : this.user.title
 
   $.each(self.data.fieldset, function (c_index, c_item) {
-    html += `<div class="filter js-filter ${c_item.open ? 'filter--active' : ''}">
+    const name = c_item.name.replace(' ', '_').toLowerCase()
+
+    html += `<div class="filter js-filter ${c_item.open ? 'filter--active' : ''}" data-section="${name}">
               <h4 class="filter__title js-filter-title">
                 <span>${c_item.name}</span>
                 <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -498,34 +511,42 @@ Builder.prototype.drawConfig = function() {
               }
 
               if (c_item.dublicate) {
-                const name = c_item.name.replace(' ', '_').toLowerCase()
 
                 $.each(c_item.row, function (r_index, r_item) {
                   html += `<div class="filter__group ${c_item.open ? 'filter__group--active' : ''} js-filter-group">
-                             <button
-                                data-section="${name}"
-                                data-count="${r_index}"
-                                class="filter__button filter__button--remove js-filter-remove"
-                             >
-                                <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M14 6h3v2H3V6h3V3c0-.55228.44772-1 1-1h6c.5523 0 1 .44772 1 1v3zm-9 4h10v8H5v-8zm2 6h6v-4H7v4zm5-10V4H8v2h4z" fill="#fff"></path>
-                                </svg>
-                             </button>
-                             <button
-                                class="filter__button filter__button--toggle js-filter-toggle"
-                             >
-                               <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M9.431 7.257l1.352-1.474 5.893 5.48a1 1 0 0 1 0 1.474l-5.893 5.45-1.352-1.475L14.521 12 9.43 7.257z"></path>
-                               </svg>
-                             </button>
+                            <div class="filter__header">
+                                <h6  class="filter__head">${r_item[0] || 'Not specified'}</h6>`
+
+                                if(r_item.length > 4) {
+                                  html += `<p class="filter__subtitle">${r_item[2]}-${r_item[3]}</p>`
+                                }
+
+                       html += `
+                                <button
+                                  data-section="${name}"
+                                  data-count="${r_index}"
+                                  class="filter__button filter__button--remove js-filter-remove"
+                               >
+                                  <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 6h3v2H3V6h3V3c0-.55228.44772-1 1-1h6c.5523 0 1 .44772 1 1v3zm-9 4h10v8H5v-8zm2 6h6v-4H7v4zm5-10V4H8v2h4z" fill="#fff"></path>
+                                  </svg>
+                               </button>
+                               <button
+                                  class="filter__button filter__button--toggle js-filter-toggle"
+                               >
+                                 <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.431 7.257l1.352-1.474 5.893 5.48a1 1 0 0 1 0 1.474l-5.893 5.45-1.352-1.475L14.521 12 9.43 7.257z"></path>
+                                 </svg>
+                               </button>
+                            </div>
                            <div class="filter__dropdown js-filter-dropdown">`
 
                   $.each(r_item, function (a_index, a_item) {
                     const item = c_item.fields[a_index]
 
-                    if (item.type === 'text' || item.type === 'email') {
+                    if (item.type === 'text' || item.type === 'email' || item.type === 'date') {
                       html += `
-                          <div class="filter__item">
+                          <div class="filter__item ${item.type === 'date' ? 'filter__item--tiny' : ''}">
                               <p class="filter__label">${item.label}</p>
                               <input
                                 type="${item.type}"
@@ -619,7 +640,7 @@ Builder.prototype.drawConfig = function() {
                   html += `<div class="filter__item ${s_item.type === 'textarea' ? 'filter__item--wide' : ''}">
                               <p class="filter__label">${s_item.label}</p>`
 
-                  if (s_item.type === 'text' || s_item.type === 'email') {
+                  if (s_item.type === 'text' || s_item.type === 'email' || s_item.type === 'date') {
                     html += `<input type="${s_item.type}"
                                 name="${s_item.name}"
                                 value="${self.user[s_item.name] || s_item.value}"
@@ -1074,22 +1095,23 @@ $('.js-language-item').click(function() {
 
 
 $('body').on('click', '.js-filter-toggle', function() {
-  $(this).parent('.js-filter-group').toggleClass('filter__group--active')
+  $(this).closest('.js-filter-group').toggleClass('filter__group--active')
 })
 
 $('body').on('click', '.js-filter-remove', function() {
   const el = $(this)[0]
   $(this).parent('.js-filter-group').remove()
 
-  const section = el.getAttribute('data-section') || false
-  const count = el.getAttribute('data-count') || false
-
-  // builder.user[section]
-
+  // const section = el.getAttribute('data-section') || false
+  // const count = el.getAttribute('data-count') || false
+  //
   // builder.user[section].splice(builder.user[section][count].indexOf(), 1)
   // console.log(builder.user)
 })
 
 $('body').on('click', '.js-filter-link', function() {
+  const el = $(this)[0]
+
+  builder.addDublicate(el)
   alert("Add")
 })
