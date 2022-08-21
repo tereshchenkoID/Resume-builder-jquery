@@ -492,7 +492,10 @@
 
       &__link {
         @include flex($align-items: center);
+        @include make-spacer('px', 3);
+        @include make-spacer('mb', 3);
 
+        flex: 1 1 100%;
         color: var(--color-accent);
 
         * {

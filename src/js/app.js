@@ -416,15 +416,22 @@ Builder.prototype.handleChangeEditor = function(name, value, e) {
 
 Builder.prototype.addDublicate = function(el) {
   const self = this
-  const section = el.closest('.js-filter').getAttribute('data-section')
-
+  const parent = el.closest('.js-filter')
+  const count = parent.getAttribute('data-count')
+  const section = parent.getAttribute('data-section')
 
   self.user[section].push([
     "1",
     "2"
   ])
 
-  console.log(self.user)
+  console.log(self.data.fieldset[count].fields)
+
+  const content = `<div class="filter__group filter__group--active js-filter-group">
+                     <p>Test</p>
+                   </div>`;
+
+  el.insertAdjacentHTML("beforebegin", content)
 }
 
 Builder.prototype.setDublicate = function() {
@@ -497,7 +504,7 @@ Builder.prototype.drawConfig = function() {
   $.each(self.data.fieldset, function (c_index, c_item) {
     const name = c_item.name.replace(' ', '_').toLowerCase()
 
-    html += `<div class="filter js-filter ${c_item.open ? 'filter--active' : ''}" data-section="${name}">
+    html += `<div class="filter js-filter ${c_item.open ? 'filter--active' : ''}" data-count="${c_index}" data-section="${name}">
               <h4 class="filter__title js-filter-title">
                 <span>${c_item.name}</span>
                 <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -512,128 +519,128 @@ Builder.prototype.drawConfig = function() {
 
               if (c_item.dublicate) {
 
-                $.each(c_item.row, function (r_index, r_item) {
-                  html += `<div class="filter__group ${c_item.open ? 'filter__group--active' : ''} js-filter-group">
-                            <div class="filter__header">
-                                <h6  class="filter__head">${r_item[0] || 'Not specified'}</h6>`
+                if (c_item.row && c_item.row.length > 0) {
+                  $.each(c_item.row, function (r_index, r_item) {
+                    html += `<div class="filter__group js-filter-group">
+                              <div class="filter__header">
+                                  <h6  class="filter__head">${r_item[0] || 'Not specified'}</h6>`
 
-                                if(r_item.length > 4) {
-                                  html += `<p class="filter__subtitle">${r_item[2]}-${r_item[3]}</p>`
-                                }
+                                  if(r_item.length > 4) {
+                                    html += `<p class="filter__subtitle">${r_item[2]}-${r_item[3]}</p>`
+                                  }
 
-                       html += `
-                                <button
-                                  data-section="${name}"
-                                  data-count="${r_index}"
-                                  class="filter__button filter__button--remove js-filter-remove"
-                               >
-                                  <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M14 6h3v2H3V6h3V3c0-.55228.44772-1 1-1h6c.5523 0 1 .44772 1 1v3zm-9 4h10v8H5v-8zm2 6h6v-4H7v4zm5-10V4H8v2h4z" fill="#fff"></path>
-                                  </svg>
-                               </button>
-                               <button
-                                  class="filter__button filter__button--toggle js-filter-toggle"
-                               >
-                                 <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9.431 7.257l1.352-1.474 5.893 5.48a1 1 0 0 1 0 1.474l-5.893 5.45-1.352-1.475L14.521 12 9.43 7.257z"></path>
-                                 </svg>
-                               </button>
-                            </div>
-                           <div class="filter__dropdown js-filter-dropdown">`
+                         html += `
+                                  <button
+                                    data-section="${name}"
+                                    data-count="${r_index}"
+                                    class="filter__button filter__button--remove js-filter-remove"
+                                 >
+                                    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M14 6h3v2H3V6h3V3c0-.55228.44772-1 1-1h6c.5523 0 1 .44772 1 1v3zm-9 4h10v8H5v-8zm2 6h6v-4H7v4zm5-10V4H8v2h4z" fill="#fff"></path>
+                                    </svg>
+                                 </button>
+                                 <button
+                                    class="filter__button filter__button--toggle js-filter-toggle"
+                                 >
+                                   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M9.431 7.257l1.352-1.474 5.893 5.48a1 1 0 0 1 0 1.474l-5.893 5.45-1.352-1.475L14.521 12 9.43 7.257z"></path>
+                                   </svg>
+                                 </button>
+                              </div>
+                             <div class="filter__dropdown js-filter-dropdown">`
 
-                  $.each(r_item, function (a_index, a_item) {
-                    const item = c_item.fields[a_index]
+                    $.each(r_item, function (a_index, a_item) {
+                      const item = c_item.fields[a_index]
 
-                    if (item.type === 'text' || item.type === 'email' || item.type === 'date') {
-                      html += `
-                          <div class="filter__item ${item.type === 'date' ? 'filter__item--tiny' : ''}">
-                              <p class="filter__label">${item.label}</p>
-                              <input
-                                type="${item.type}"
-                                data-section="${name}"
-                                data-count="${r_index}"
-                                data-index="${a_index}"
-                                name="${item.name}"
-                                value="${storage[name].length > 0 ? storage[name][r_index][a_index] : a_item}"
-                                required="${item.required}"
-                                pattern="${item.validation}"
-                                class="field js-field"
-                                autocomplete="true"
-                              />
-                          </div>`;
-                    }
-                    else if (item.type === 'textarea') {
-                      html += `
-                          <div class="filter__item filter__item--wide">
-                            <p class="filter__label">${item.label}</p>
-                            <div class="editor"
-                              data-section="${name}"
-                              data-count="${r_index}"
-                              data-index="${a_index}"
-                              id="editor_${item.name}_${r_index}_${a_index}"
-                              pattern="${item.validation}">
-                            </div>
-                          </div>`
-
-                      editor.push({
-                        el: `editor_${item.name}_${r_index}_${a_index}`,
-                        placeholder: item.placeholder,
-                        value: storage[name].length > 0 ? storage[name][r_index][a_index] : a_item
-                      })
-                    }
-                    else if (item.type  === 'select') {
-                      html += `<div class="filter__item">
+                      if (item.type === 'text' || item.type === 'email' || item.type === 'date') {
+                        html += `
+                            <div class="filter__item ${item.type === 'date' ? 'filter__item--tiny' : ''}">
                                 <p class="filter__label">${item.label}</p>
-                                <select class="select"
+                                <input
+                                  type="${item.type}"
                                   data-section="${name}"
                                   data-count="${r_index}"
                                   data-index="${a_index}"
                                   name="${item.name}"
+                                  value="${storage[name].length > 0 ? storage[name][r_index][a_index] : a_item}"
                                   required="${item.required}"
-                                >`;
-
-                                $.each(item.options, function (o_index, o_item) {
-                                  const value = storage[name].length > 0 ? storage[name][r_index][a_index] : a_item
-                                  const selected = value === o_item.value
-                                  const disabled = o_item.value === "-1" ? 'disabled' : ''
-
-                                  if (selected) {
-                                    html += `<option
-                                               value="${o_item.value}"
-                                               selected="${selected}"
-                                               ${disabled}
-                                             >
-                                                 ${o_item.name}
-                                             </option>`
-                                  }
-                                  else {
-                                    html += `<option
-                                               value="${o_item.value}"
-                                               ${disabled}
-                                             >
-                                                 ${o_item.name}
-                                             </option>`
-                                  }
-                      })
-
-                      html += `</select>
+                                  pattern="${item.validation}"
+                                  class="field js-field"
+                                  autocomplete="true"
+                                />
+                            </div>`;
+                      }
+                      else if (item.type === 'textarea') {
+                        html += `
+                            <div class="filter__item filter__item--wide">
+                              <p class="filter__label">${item.label}</p>
+                              <div class="editor"
+                                data-section="${name}"
+                                data-count="${r_index}"
+                                data-index="${a_index}"
+                                id="editor_${item.name}_${r_index}_${a_index}"
+                                pattern="${item.validation}">
+                              </div>
                             </div>`
-                    }
-                  })
 
-                  html += `</div>
-                        </div>`;
-                })
+                        editor.push({
+                          el: `editor_${item.name}_${r_index}_${a_index}`,
+                          placeholder: item.placeholder,
+                          value: storage[name].length > 0 ? storage[name][r_index][a_index] : a_item
+                        })
+                      }
+                      else if (item.type  === 'select') {
+                        html += `<div class="filter__item">
+                                  <p class="filter__label">${item.label}</p>
+                                  <select class="select"
+                                    data-section="${name}"
+                                    data-count="${r_index}"
+                                    data-index="${a_index}"
+                                    name="${item.name}"
+                                    required="${item.required}"
+                                  >`;
+
+                                  $.each(item.options, function (o_index, o_item) {
+                                    const value = storage[name].length > 0 ? storage[name][r_index][a_index] : a_item
+                                    const selected = value === o_item.value
+                                    const disabled = o_item.value === "-1" ? 'disabled' : ''
+
+                                    if (selected) {
+                                      html += `<option
+                                                 value="${o_item.value}"
+                                                 selected="${selected}"
+                                                 ${disabled}
+                                               >
+                                                   ${o_item.name}
+                                               </option>`
+                                    }
+                                    else {
+                                      html += `<option
+                                                 value="${o_item.value}"
+                                                 ${disabled}
+                                               >
+                                                   ${o_item.name}
+                                               </option>`
+                                    }
+                        })
+
+                        html += `</select>
+                              </div>`
+                      }
+                    })
+
+                    html += `</div>
+                          </div>`;
+                  })
+                }
 
                 html += `
-                    <div class="filter__item filter__item--wide">
-                        <a class="filter__link js-filter-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <polygon points="13 11 17 11 17 13 13 13 13 17 11 17 11 13 7 13 7 11 11 11 11 7 13 7" fill="currentColor"></polygon>
-                            </svg>
-                            <span>Add one more</span>
-                        </a>
-                    </div>`;
+                    <a class="filter__link js-filter-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="13 11 17 11 17 13 13 13 13 17 11 17 11 13 7 13 7 11 11 11 11 7 13 7" fill="currentColor"></polygon>
+                        </svg>
+                        <span>Add one more</span>
+                    </a>`;
               }
               else {
                 $.each(c_item.fields, function (s_index, s_item) {
@@ -1113,5 +1120,4 @@ $('body').on('click', '.js-filter-link', function() {
   const el = $(this)[0]
 
   builder.addDublicate(el)
-  alert("Add")
 })
