@@ -314,12 +314,8 @@ Builder.prototype.updateCanvas = function() {
   this.initPages()
 }
 
-Builder.prototype.updateCanvasData = function(remove) {
+Builder.prototype.updateCanvasData = function() {
   const user = JSON.parse(localStorage.getItem('user'))
-
-  if (remove) {
-    this.refBlockTemplate.querySelector(`#t-${remove}`).innerHTML = ''
-  }
 
   for (let key in user) {
     if (this.refBlockTemplate.querySelector(`#t-${key}`)) {
@@ -357,28 +353,20 @@ Builder.prototype.handleChange = function(e) {
   const {name, value} = e.currentTarget;
   const section = e.currentTarget.getAttribute('data-section') || false
   const count = e.currentTarget.getAttribute('data-count') || false
-  const index = e.currentTarget.getAttribute('data-index') || false
-  let remove
+  const key = e.currentTarget.getAttribute('data-key') || false
 
-  if (value === '') {
-    // add condition for delete
-    remove = name
-    delete this.user[name]
+  if (section) {
+    this.user[section][count][key] = value
   }
   else {
-    if (section) {
-      this.user[section][count][index] = value
-    }
-    else {
-      if (e.currentTarget.type !== 'select-one') {
-        this.user[name] = value
-      }
+    if (e.currentTarget.type !== 'select-one') {
+      this.user[name] = value
     }
   }
 
   if (e.currentTarget.type === 'select-one') {
     if (section) {
-      this.user[section][count][index] = value
+      this.user[section][count][key] = value
     }
     else {
       this.user[name] = {
@@ -390,7 +378,7 @@ Builder.prototype.handleChange = function(e) {
 
   localStorage.setItem('user', JSON.stringify(this.user))
 
-  this.updateCanvasData(remove)
+  this.updateCanvasData()
   this.updateCanvas()
   setHeight()
 }
@@ -425,7 +413,7 @@ Builder.prototype.addDublicate = function(el) {
     "2"
   ])
 
-  console.log(self.data.fieldset[count].fields)
+  // console.log(self.data.fieldset[count].fields)
 
   const content = `<div class="filter__group filter__group--active js-filter-group">
                      <p>Test</p>
@@ -521,12 +509,14 @@ Builder.prototype.drawConfig = function() {
 
                 if (c_item.row && c_item.row.length > 0) {
                   $.each(c_item.row, function (r_index, r_item) {
+                    const keys = Object.keys(r_item)
+
                     html += `<div class="filter__group js-filter-group">
                               <div class="filter__header">
-                                  <h6  class="filter__head">${r_item[0] || 'Not specified'}</h6>`
+                                  <h6  class="filter__head">${r_item[keys[0]]}</h6>`
 
-                                  if(r_item.length > 4) {
-                                    html += `<p class="filter__subtitle">${r_item[2]}-${r_item[3]}</p>`
+                                  if(keys.length > 4) {
+                                    html += `<p class="filter__subtitle">${r_item[keys[2]].replaceAll('-', '.')}-${r_item[keys[3]].replaceAll('-', '.')}</p>`
                                   }
 
                          html += `
@@ -549,10 +539,12 @@ Builder.prototype.drawConfig = function() {
                               </div>
                              <div class="filter__dropdown js-filter-dropdown">`
 
-                    $.each(r_item, function (a_index, a_item) {
-                      const item = c_item.fields[a_index]
+
+                    for (let key in r_item) {
+                      const item = c_item.fields.find(function(e){ return e.name === key });
 
                       if (item.type === 'text' || item.type === 'email' || item.type === 'date') {
+
                         html += `
                             <div class="filter__item ${item.type === 'date' ? 'filter__item--tiny' : ''}">
                                 <p class="filter__label">${item.label}</p>
@@ -560,9 +552,9 @@ Builder.prototype.drawConfig = function() {
                                   type="${item.type}"
                                   data-section="${name}"
                                   data-count="${r_index}"
-                                  data-index="${a_index}"
+                                  data-key="${key}"
                                   name="${item.name}"
-                                  value="${storage[name].length > 0 ? storage[name][r_index][a_index] : a_item}"
+                                  value="${storage[name].length > 0 ? storage[name][r_index][key] : r_item[key]}"
                                   required="${item.required}"
                                   pattern="${item.validation}"
                                   class="field js-field"
@@ -572,63 +564,62 @@ Builder.prototype.drawConfig = function() {
                       }
                       else if (item.type === 'textarea') {
                         html += `
-                            <div class="filter__item filter__item--wide">
-                              <p class="filter__label">${item.label}</p>
-                              <div class="editor"
-                                data-section="${name}"
-                                data-count="${r_index}"
-                                data-index="${a_index}"
-                                id="editor_${item.name}_${r_index}_${a_index}"
-                                pattern="${item.validation}">
-                              </div>
-                            </div>`
+                                <div class="filter__item filter__item--wide">
+                                  <p class="filter__label">${item.label}</p>
+                                  <div class="editor"
+                                    data-section="${name}"
+                                    data-count="${r_index}"
+                                    data-key="${key}"
+                                    id="editor_${item.name}_${r_index}_${key}"
+                                    pattern="${item.validation}">
+                                  </div>
+                                </div>`
 
                         editor.push({
-                          el: `editor_${item.name}_${r_index}_${a_index}`,
+                          el: `editor_${item.name}_${r_index}_${key}`,
                           placeholder: item.placeholder,
-                          value: storage[name].length > 0 ? storage[name][r_index][a_index] : a_item
+                          value: storage[name].length > 0 ? storage[name][r_index][key] : r_item[key]
                         })
                       }
                       else if (item.type  === 'select') {
                         html += `<div class="filter__item">
-                                  <p class="filter__label">${item.label}</p>
-                                  <select class="select"
-                                    data-section="${name}"
-                                    data-count="${r_index}"
-                                    data-index="${a_index}"
-                                    name="${item.name}"
-                                    required="${item.required}"
-                                  >`;
+                                      <p class="filter__label">${item.label}</p>
+                                      <select class="select"
+                                        data-section="${name}"
+                                        data-count="${r_index}"
+                                        data-key="${key}"
+                                        name="${item.name}"
+                                        required="${item.required}"
+                                      >`;
 
-                                  $.each(item.options, function (o_index, o_item) {
-                                    const value = storage[name].length > 0 ? storage[name][r_index][a_index] : a_item
-                                    const selected = value === o_item.value
-                                    const disabled = o_item.value === "-1" ? 'disabled' : ''
+                        $.each(item.options, function (o_index, o_item) {
+                          const value = storage[name].length > 0 ? storage[name][r_index][key] : r_item[key]
+                          const selected = value === o_item.value
+                          const disabled = o_item.value === "-1" ? 'disabled' : ''
 
-                                    if (selected) {
-                                      html += `<option
-                                                 value="${o_item.value}"
-                                                 selected="${selected}"
-                                                 ${disabled}
-                                               >
-                                                   ${o_item.name}
-                                               </option>`
-                                    }
-                                    else {
-                                      html += `<option
-                                                 value="${o_item.value}"
-                                                 ${disabled}
-                                               >
-                                                   ${o_item.name}
-                                               </option>`
-                                    }
+                          if (selected) {
+                            html += `<option
+                                        value="${o_item.value}"
+                                        selected="${selected}"
+                                        ${disabled}
+                                      >
+                                        ${o_item.name}
+                                      </option>`
+                          }
+                          else {
+                            html += `<option
+                                        value="${o_item.value}"
+                                        ${disabled}
+                                    >
+                                      ${o_item.name}
+                                    </option>`
+                          }
                         })
 
                         html += `</select>
-                              </div>`
+                                </div>`
                       }
-                    })
-
+                    }
                     html += `</div>
                           </div>`;
                   })
