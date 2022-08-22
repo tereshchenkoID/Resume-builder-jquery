@@ -388,7 +388,7 @@
       "open": false,
       "fields": [
         {
-          "name": "language_name",
+          "name": "languages_name",
           "type": "text",
           "placeholder": "Language",
           "label": "Language",
@@ -398,7 +398,7 @@
           "value": ""
         },
         {
-          "name": "language_level",
+          "name": "languages_level",
           "type": "select",
           "label": "Select language level",
           "lang": "en",
@@ -451,6 +451,61 @@
           "validation": "/.*/",
           "value": ""
         }
+      ]
+    },
+    {
+      "name": "Courses",
+      "dublicate": true,
+      "open": false,
+      "fields": [
+        {
+          "name": "courses_school",
+          "type": "text",
+          "placeholder": "Course",
+          "label": "Course",
+          "lang": "en",
+          "required": true,
+          "validation": "/[A-Za-z\\s]{3,20}/",
+          "value": ""
+        },
+        {
+          "name": "courses_institution",
+          "type": "text",
+          "placeholder": "Institution",
+          "label": "Degree",
+          "lang": "en",
+          "required": true,
+          "validation": "/[0-9\\s]{0,3}/",
+          "value": ""
+        },
+        {
+          "name": "courses_start",
+          "type": "date",
+          "placeholder": "Start",
+          "label": "Start",
+          "lang": "en",
+          "required": true,
+          "validation": "\\d{1,2}/\\d{1,2}/\\d{4}",
+          "value": ""
+        },
+        {
+          "name": "courses_end",
+          "type": "date",
+          "placeholder": "End",
+          "label": "End",
+          "lang": "en",
+          "required": true,
+          "validation": "\\d{1,2}/\\d{1,2}/\\d{4}",
+          "value": ""
+        }
+      ],
+      "row": [
+        [
+          "Courses name 1", "Institution name", "2001-01-01", "2002-01-01"
+        ],
+        [
+          "Courses name 2", "Institution name", "2002-02-02", "2003-02-02"
+        ]
       ]
     }
   ]

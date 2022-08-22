@@ -314,20 +314,34 @@ Builder.prototype.updateCanvas = function() {
   this.initPages()
 }
 
-Builder.prototype.updateCanvasData = function(remove) {
+Builder.prototype.updateCanvasData = function() {
+  const self = this
   const user = JSON.parse(localStorage.getItem('user'))
-
-  if (remove) {
-    this.refBlockTemplate.querySelector(`#t-${remove}`).innerHTML = ''
-  }
 
   for (let key in user) {
     if (this.refBlockTemplate.querySelector(`#t-${key}`)) {
-      if (user[key].hasOwnProperty('label')) {
-        this.refBlockTemplate.querySelector(`#t-${key}`).innerHTML = user[key].label
+
+      if (typeof user[key] === 'object') {
+        self.refBlockTemplate.querySelector(`#t-${key}`).innerHTML = ''
+
+        $.each(user[key], function (index, r_item) {
+          if (!user[key].hasOwnProperty('label')) {
+
+            let html = `<div class="t-list t-list--${r_item.length}">`
+              $.each(r_item, function (index, a_item) {
+                html += `<div>${a_item}</div>`
+              })
+            html += `</div>`
+
+            self.refBlockTemplate.querySelector(`#t-${key}`).insertAdjacentHTML('beforeend', html)
+          }
+          else {
+            self.refBlockTemplate.querySelector(`#t-${key}`).innerHTML = user[key].label
+          }
+        })
       }
       else {
-        this.refBlockTemplate.querySelector(`#t-${key}`).innerHTML = user[key]
+        self.refBlockTemplate.querySelector(`#t-${key}`).innerHTML = user[key]
       }
     }
   }
@@ -355,29 +369,21 @@ Builder.prototype.updateCanvasPhoto = function() {
 
 Builder.prototype.handleChange = function(e) {
   const {name, value} = e.currentTarget;
-  const section = e.currentTarget.getAttribute('data-section') || false
-  const count = e.currentTarget.getAttribute('data-count') || false
-  const index = e.currentTarget.getAttribute('data-index') || false
-  let remove
+  const section = e.currentTarget.getAttribute('data-section') || '-1'
+  const count = e.currentTarget.getAttribute('data-count') || '-1'
+  const index = e.currentTarget.getAttribute('data-index') || '-1'
 
-  if (value === '') {
-    // add condition for delete
-    remove = name
-    delete this.user[name]
+  if (section !== '-1') {
+    this.user[section][count][index] = value
   }
   else {
-    if (section) {
-      this.user[section][count][index] = value
-    }
-    else {
-      if (e.currentTarget.type !== 'select-one') {
-        this.user[name] = value
-      }
+    if (e.currentTarget.type !== 'select-one') {
+      this.user[name] = value
     }
   }
 
   if (e.currentTarget.type === 'select-one') {
-    if (section) {
+    if (section !== '-1') {
       this.user[section][count][index] = value
     }
     else {
@@ -390,18 +396,18 @@ Builder.prototype.handleChange = function(e) {
 
   localStorage.setItem('user', JSON.stringify(this.user))
 
-  this.updateCanvasData(remove)
+  this.updateCanvasData()
   this.updateCanvas()
   setHeight()
 }
 
 Builder.prototype.handleChangeEditor = function(name, value, e) {
   const el = $(`#${e.el}`)[0]
-  const section = el.getAttribute('data-section') || false
-  const count = el.getAttribute('data-count') || false
-  const index = el.getAttribute('data-index') || false
+  const section = el.getAttribute('data-section') || '-1'
+  const count = el.getAttribute('data-count') || '-1'
+  const index = el.getAttribute('data-index') || '-1'
 
-  if (section) {
+  if (section !== '-1') {
     this.user[section][count][index] = value
   }
   else {
@@ -419,19 +425,84 @@ Builder.prototype.addDublicate = function(el) {
   const parent = el.closest('.js-filter')
   const count = parent.getAttribute('data-count')
   const section = parent.getAttribute('data-section')
+  let text_editor = {
+    id: '',
+    placeholder: ''
+  }
 
-  self.user[section].push([
-    "1",
-    "2"
-  ])
+  const data = []
+  let html = `<div class="filter__group filter__group--active js-filter-group">
+                ${ self.filterHeaderHTML(section, count, [])}
+                <div class="filter__dropdown js-filter-dropdown">`
 
-  console.log(self.data.fieldset[count].fields)
+                $.each(self.data.fieldset[count].fields, function (c_index, c_item) {
+                  const name = c_item.name.replace(' ', '_').toLowerCase()
 
-  const content = `<div class="filter__group filter__group--active js-filter-group">
-                     <p>Test</p>
-                   </div>`;
+                  if (c_item.type === 'text' || c_item.type === 'email' || c_item.type === 'date') {
+                    html += `<div class="filter__item ${c_item.type === 'date' ? 'filter__item--tiny' : ''}">
+                                <p class="filter__label">${c_item.label}</p>
+                                ${
+                                  self.inputHTML(
+                                    c_item.type,
+                                    name,
+                                    section,
+                                    count,
+                                    c_item.name,
+                                    c_item.type === 'date' ? '2022-01-01' :'Unset',
+                                    c_item.required,
+                                    c_item.validation
+                                  )
+                                }
+                            </div>`;
+                  }
+                  else if (c_item.type === 'textarea') {
+                    text_editor.id = `editor_${c_item.name}_${self.user[section].length}_${c_index}`
 
-  el.insertAdjacentHTML("beforebegin", content)
+                    html += `<div class="filter__item filter__item--wide">
+                                <p class="filter__label">${c_item.label}</p>
+                                ${
+                                  self.editorHTML(
+                                    text_editor.id,
+                                    section,
+                                    self.user[section].length,
+                                    c_index,
+                                    c_item.validation
+                                  )
+                                }
+                              </div>`
+                  }
+                  else if (c_item.type  === 'select') {
+                    html += `<div class="filter__item">
+                               <p class="filter__label">${c_item.label}</p>
+                               ${
+                                  self.selectHTML(
+                                    name,
+                                    section,
+                                    count,
+                                    c_item.name,
+                                    c_item.required,
+                                    c_item.options,
+                                    -1
+                                  )
+                               }
+                            </div>`
+                  }
+
+                  data.push("")
+                })
+
+    html += `</div>
+            </div>`;
+
+  // self.user[section].push(data)
+
+  el.insertAdjacentHTML("beforebegin", html)
+
+  initializeQuill({
+    el: text_editor.id,
+    placeholder: text_editor.placeholder,
+    value: `Type here...`
+  })
 }
 
 Builder.prototype.setDublicate = function() {
@@ -491,6 +562,106 @@ Builder.prototype.setDublicate = function() {
   localStorage.setItem('user', JSON.stringify(this.user))
 }
 
+Builder.prototype.filterHeaderHTML = function(section, count, data) {
+  let html = ''
+
+  html += `<div class="filter__header">
+            <h6 class="filter__head">${data[0] || 'Not specified'}</h6>`
+
+            if(data.length > 4) {
+              html += `<p class="filter__subtitle">${data[2]}-${data[3]}</p>`
+            }
+
+  html += ` <button
+              data-section="${section}"
+              data-count="${count}"
+              class="filter__button filter__button--remove js-filter-remove"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M14 6h3v2H3V6h3V3c0-.55228.44772-1 1-1h6c.5523 0 1 .44772 1 1v3zm-9 4h10v8H5v-8zm2 6h6v-4H7v4zm5-10V4H8v2h4z"
+                  fill="#fff">
+                </path>
+              </svg>
+            </button>
+            <button
+              class="filter__button filter__button--toggle js-filter-toggle"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M9.431 7.257l1.352-1.474 5.893 5.48a1 1 0 0 1 0 1.474l-5.893 5.45-1.352-1.475L14.521 12 9.43 7.257z">
+                </path>
+              </svg>
+            </button>
+          </div>`
+
+  return html
+}
+
+Builder.prototype.inputHTML = function(type, section, count, index, name, value, required, pattern) {
+  return `<input
+            class="field js-field"
+            autoComplete="true"
+            type=${type}
+            data-section=${section}
+            data-count=${count}
+            data-index=${index}
+            name=${name}
+            value=${value}
+            required=${required}
+            pattern="${pattern}"
+          />`
+}
+
+Builder.prototype.editorHTML = function(id, section, count, index, pattern) {
+  return `<div
+            class="editor"
+            data-section="${section}"
+            data-count="${count}"
+            data-index="${index}"
+            id="${id}"
+            pattern="${pattern}">
+          </div>`
+}
+
+Builder.prototype.selectHTML = function(section, count, index, name, required, options, value) {
+  let html = `<select
+                class="select"
+                data-section="${section}"
+                data-count="${count}"
+                data-index="${index}"
+                name="${name}"
+                required="${required}"
+              >`;
+
+                $.each(options, function (o_index, o_item) {
+                  const selected = value === o_item.value
+                  const disabled = o_item.value === "-1" ? 'disabled' : ''
+
+                  if (selected) {
+                    html += `<option
+                               value="${o_item.value}"
+                               selected="${selected}"
+                               ${disabled}
+                             >
+                                 ${o_item.name}
+                             </option>`
+                  }
+                  else {
+                    html += `<option
+                               value="${o_item.value}"
+                               ${disabled}
+                             >
+                                 ${o_item.name}
+                             </option>`
+                  }
+                })
+
+  html += `</select>`;
+
+  return html;
+}
+
 Builder.prototype.drawConfig = function() {
   let html = ''
   const self = this
@@ -522,31 +693,7 @@ Builder.prototype.drawConfig = function() {
                 if (c_item.row && c_item.row.length > 0) {
                   $.each(c_item.row, function (r_index, r_item) {
                     html += `<div class="filter__group js-filter-group">
-                              <div class="filter__header">
-                                  <h6  class="filter__head">${r_item[0] || 'Not specified'}</h6>`
-
-                                  if(r_item.length > 4) {
-                                    html += `<p class="filter__subtitle">${r_item[2]}-${r_item[3]}</p>`
-                                  }
-
-                         html += `
-                                  <button
-                                    data-section="${name}"
-                                    data-count="${r_index}"
-                                    class="filter__button filter__button--remove js-filter-remove"
-                                 >
-                                    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M14 6h3v2H3V6h3V3c0-.55228.44772-1 1-1h6c.5523 0 1 .44772 1 1v3zm-9 4h10v8H5v-8zm2 6h6v-4H7v4zm5-10V4H8v2h4z" fill="#fff"></path>
-                                    </svg>
-                                 </button>
-                                 <button
-                                    class="filter__button filter__button--toggle js-filter-toggle"
-                                 >
-                                   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M9.431 7.257l1.352-1.474 5.893 5.48a1 1 0 0 1 0 1.474l-5.893 5.45-1.352-1.475L14.521 12 9.43 7.257z"></path>
-                                   </svg>
-                                 </button>
-                              </div>
+                             ${ self.filterHeaderHTML(name, r_index, r_item) }
                              <div class="filter__dropdown js-filter-dropdown">`
 
                     $.each(r_item, function (a_index, a_item) {
@@ -556,31 +703,33 @@ Builder.prototype.drawConfig = function() {
                         html += `
                             <div class="filter__item ${item.type === 'date' ? 'filter__item--tiny' : ''}">
                                 <p class="filter__label">${item.label}</p>
-                                <input
-                                  type="${item.type}"
-                                  data-section="${name}"
-                                  data-count="${r_index}"
-                                  data-index="${a_index}"
-                                  name="${item.name}"
-                                  value="${storage[name].length > 0 ? storage[name][r_index][a_index] : a_item}"
-                                  required="${item.required}"
-                                  pattern="${item.validation}"
-                                  class="field js-field"
-                                  autocomplete="true"
-                                />
+                                ${
+                                  self.inputHTML(
+                                    item.type,
+                                    name,
+                                    r_index,
+                                    a_index,
+                                    item.name,
+                                    storage[name].length > 0 ? storage[name][r_index][a_index] : a_item,
+                                    item.required,
+                                    item.validation
+                                  )
+                                }
                             </div>`;
                       }
                       else if (item.type === 'textarea') {
                         html += `
                             <div class="filter__item filter__item--wide">
                               <p class="filter__label">${item.label}</p>
-                              <div class="editor"
-                                data-section="${name}"
-                                data-count="${r_index}"
-                                data-index="${a_index}"
-                                id="editor_${item.name}_${r_index}_${a_index}"
-                                pattern="${item.validation}">
-                              </div>
+                              ${
+                                self.editorHTML(
+                                  `editor_${item.name}_${r_index}_${a_index}`,
+                                  name,
+                                  r_index,
+                                  a_index,
+                                  item.validation
+                                )
+                              }
                             </div>`
 
                         editor.push({
@@ -592,40 +741,18 @@ Builder.prototype.drawConfig = function() {
                       else if (item.type  === 'select') {
                         html += `<div class="filter__item">
                                   <p class="filter__label">${item.label}</p>
-                                  <select class="select"
-                                    data-section="${name}"
-                                    data-count="${r_index}"
-                                    data-index="${a_index}"
-                                    name="${item.name}"
-                                    required="${item.required}"
-                                  >`;
-
-                                  $.each(item.options, function (o_index, o_item) {
-                                    const value = storage[name].length > 0 ? storage[name][r_index][a_index] : a_item
-                                    const selected = value === o_item.value
-                                    const disabled = o_item.value === "-1" ? 'disabled' : ''
-
-                                    if (selected) {
-                                      html += `<option
-                                                 value="${o_item.value}"
-                                                 selected="${selected}"
-                                                 ${disabled}
-                                               >
-                                                   ${o_item.name}
-                                               </option>`
-                                    }
-                                    else {
-                                      html += `<option
-                                                 value="${o_item.value}"
-                                                 ${disabled}
-                                               >
-                                                   ${o_item.name}
-                                               </option>`
-                                    }
-                        })
-
-                        html += `</select>
-                              </div>`
+                                  ${
+                                    self.selectHTML(
+                                      name,
+                                      r_index,
+                                      a_index,
+                                      item.name,
+                                      item.required,
+                                      item.options,
+                                      storage[name].length > 0 ? storage[name][r_index][a_index] : a_item
+                                    )
+                                  }
+                                </div>`
                       }
                     })
 
@@ -648,21 +775,25 @@ Builder.prototype.drawConfig = function() {
                               <p class="filter__label">${s_item.label}</p>`
 
                   if (s_item.type === 'text' || s_item.type === 'email' || s_item.type === 'date') {
-                    html += `<input type="${s_item.type}"
-                                name="${s_item.name}"
-                                value="${self.user[s_item.name] || s_item.value}"
-                                required="${s_item.required}"
-                                pattern="${s_item.validation}"
-                                class="field js-field"
-                                autocomplete="true"
-                              />`;
+                    html += self.inputHTML(
+                             s_item.type,
+                       -1,
+                        -1,
+                        -1,
+                           s_item.name,
+                           self.user[s_item.name] || s_item.value,
+                           s_item.required,
+                           s_item.validation
+                        )
                   }
                   else if (s_item.type === 'textarea') {
-                    html += `<div class="editor"
-                                id="editor_${s_item.name}"
-                                pattern="${s_item.validation}"
-                             >
-                             </div>`
+                    html += self.editorHTML(
+                         `editor_${s_item.name}`,
+                            -1,
+                            -1,
+                            -1,
+                            s_item.validation
+                         )
 
                     editor.push({
                       el: `editor_${s_item.name}`,
@@ -671,32 +802,15 @@ Builder.prototype.drawConfig = function() {
                     })
                   }
                   else if (s_item.type === 'select') {
-                    html += `<select class="select" name="${s_item.name}" required="${s_item.required}">`;
-
-                    $.each(s_item.options, function (o_index, o_item) {
-                      const selected = self.user[s_item.name].value === o_item.value
-                      const disabled = o_item.value === "-1" ? 'disabled' : ''
-
-                      if (selected) {
-                        html += `<option
-                                    value="${o_item.value}"
-                                    selected="${selected}"
-                                    ${disabled}
-                                 >
-                                     ${o_item.name}
-                                 </option>`
-                      }
-                      else {
-                        html += `<option
-                                    value="${o_item.value}"
-                                    ${disabled}
-                                >
-                                    ${o_item.name}
-                                </option>`
-                      }
-                    })
-
-                    html += `</select>`
+                    html += self.selectHTML(
+                              -1,
+                              -1,
+                              -1,
+                              s_item.name,
+                              s_item.required,
+                              s_item.options,
+                              self.user[s_item.name].value
+                            )
                   }
 
                   html += `</div>`
@@ -1069,18 +1183,20 @@ function initLanguage() {
   const set = localStorage.getItem('language') || false
   let find;
 
-  if (set) {
-    find = $(`.language__item[data-lang="${set}"]`)
-    select.text(find.text())
-    select[0].setAttribute('data-lang', set)
-  }
-  else {
-    find = $('.language__item')[0]
-    select.text($(find).text())
-    select[0].setAttribute('data-lang', find.getAttribute('data-lang'))
-  }
+  if (select.length > 0) {
+    if (set) {
+      find = $(`.language__item[data-lang="${set}"]`)
+      select.text(find.text())
+      select[0].setAttribute('data-lang', set)
+    }
+    else {
+      find = $('.language__item')[0]
+      select.text($(find).text())
+      select[0].setAttribute('data-lang', find.getAttribute('data-lang'))
+    }
 
-  $(find).addClass('language__item--active')
+    $(find).addClass('language__item--active')
+  }
 }
 
 initLanguage()

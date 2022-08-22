@@ -173,6 +173,63 @@
     }
   }
 
+  .t-list {
+    @include flex($wrap: wrap);
+    @include make-spacer('mb', 4);
+
+    & > * {
+      flex: 1 1 50%;
+
+      &:nth-child(1),
+      &:nth-child(2) {
+        flex: 1 1 100%;
+      }
+
+      &:nth-child(1) {
+        font-weight: var(--typography-bold);
+        text-decoration: underline;
+      }
+    }
+
+    &--4,
+    &--5,
+    &--6 {
+
+      & > * {
+        flex: 1 1 50%;
+
+        &:nth-child(3),
+        &:nth-child(4) {
+          opacity: 0.5;
+          letter-spacing: 2px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    &--2 {
+
+      & > * {
+
+        &:nth-child(1),
+        &:nth-child(2) {
+          flex: 1 1 50%;
+        }
+      }
+    }
+
+    &--5,
+    &--6 {
+
+      & > * {
+
+        &:last-child {
+          flex: 1 1 100%;
+        }
+      }
+    }
+  }
+
   .t-qr-code {
 
     img {
