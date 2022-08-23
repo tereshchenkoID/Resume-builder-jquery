@@ -425,30 +425,28 @@ Builder.prototype.addDublicate = function(el) {
   const parent = el.closest('.js-filter')
   const count = parent.getAttribute('data-count')
   const section = parent.getAttribute('data-section')
-  let text_editor = {
-    id: '',
-    placeholder: ''
-  }
-
+  const editor = []
   const data = []
+  let val = -1
+
   let html = `<div class="filter__group filter__group--active js-filter-group">
                 ${ self.filterHeaderHTML(section, count, [])}
                 <div class="filter__dropdown js-filter-dropdown">`
 
                 $.each(self.data.fieldset[count].fields, function (c_index, c_item) {
-                  const name = c_item.name.replace(' ', '_').toLowerCase()
 
                   if (c_item.type === 'text' || c_item.type === 'email' || c_item.type === 'date') {
+                    val = c_item.type === 'date' ? '2022-01-01' : 'Unset'
                     html += `<div class="filter__item ${c_item.type === 'date' ? 'filter__item--tiny' : ''}">
                                 <p class="filter__label">${c_item.label}</p>
                                 ${
                                   self.inputHTML(
                                     c_item.type,
-                                    name,
                                     section,
-                                    count,
+                                    self.user[section].length,
+                                    c_index,
                                     c_item.name,
-                                    c_item.type === 'date' ? '2022-01-01' :'Unset',
+                                    val,
                                     c_item.required,
                                     c_item.validation
                                   )
@@ -456,13 +454,17 @@ Builder.prototype.addDublicate = function(el) {
                             </div>`;
                   }
                   else if (c_item.type === 'textarea') {
-                    text_editor.id = `editor_${c_item.name}_${self.user[section].length}_${c_index}`
+                    editor.push({
+                      el: `editor_${c_item.name}_${self.user[section].length}_${c_index}`,
+                      placeholder: c_item.placeholder,
+                      value: val
+                    })
 
                     html += `<div class="filter__item filter__item--wide">
                                 <p class="filter__label">${c_item.label}</p>
                                 ${
                                   self.editorHTML(
-                                    text_editor.id,
+                                    `editor_${c_item.name}_${self.user[section].length}_${c_index}`,
                                     section,
                                     self.user[section].length,
                                     c_index,
@@ -476,33 +478,33 @@ Builder.prototype.addDublicate = function(el) {
                                <p class="filter__label">${c_item.label}</p>
                                ${
                                   self.selectHTML(
-                                    name,
                                     section,
-                                    count,
+                                    self.user[section].length,
+                                    c_index,
                                     c_item.name,
                                     c_item.required,
                                     c_item.options,
-                                    -1
+                                    val
                                   )
                                }
                             </div>`
                   }
 
-                  data.push("")
+                  data.push(val)
                 })
 
     html += `</div>
             </div>`;
 
-  // self.user[section].push(data)
+  self.user[section].push(data)
 
   el.insertAdjacentHTML("beforebegin", html)
 
-  initializeQuill({
-    el: text_editor.id,
-    placeholder: text_editor.placeholder,
-    value: `Type here...`
-  })
+  if ($('#content-main').length > 0 && editor.length > 0) {
+    $.each(editor, function (index, item) {
+      initializeQuill(item)
+    })
+  }
 }
 
 Builder.prototype.setDublicate = function() {
@@ -830,7 +832,7 @@ Builder.prototype.drawConfig = function() {
   $('#filters-list').html(html)
   $('#filters-title').val(this.user.title)
 
-  if ($('#content-main').length > 0) {
+  if ($('#content-main').length > 0 && editor.length > 0) {
     $.each(editor, function (index, item) {
       initializeQuill(item)
     })
