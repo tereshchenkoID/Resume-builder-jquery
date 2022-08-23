@@ -420,6 +420,26 @@ Builder.prototype.handleChangeEditor = function(name, value, e) {
   this.updateCanvas()
 }
 
+Builder.prototype.removeDublicate = function(el)  {
+  console.log(this.user)
+
+
+  const parent = el.closest('.js-filter')
+  const group = el.closest('.js-filter-group')
+  const section = parent.getAttribute('data-section')
+  const count = group.getAttribute('data-count')
+
+  this.user[section].splice(this.user[section][count].indexOf(), 1)
+
+  group.remove()
+
+  $.each(this.user[section], function (index) {
+    $(parent).find('.js-filter-group')[index].setAttribute('data-count', index)
+  })
+
+  localStorage.setItem('user', JSON.stringify(this.user))
+}
+
 Builder.prototype.addDublicate = function(el) {
   const self = this
   const parent = el.closest('.js-filter')
@@ -429,7 +449,7 @@ Builder.prototype.addDublicate = function(el) {
   const data = []
   let val = -1
 
-  let html = `<div class="filter__group filter__group--active js-filter-group">
+  let html = `<div class="filter__group filter__group--active js-filter-group" data-count="${self.data.fieldset[count].row.length}">
                 ${ self.filterHeaderHTML(section, count, [])}
                 <div class="filter__dropdown js-filter-dropdown">`
 
@@ -694,7 +714,7 @@ Builder.prototype.drawConfig = function() {
 
                 if (c_item.row && c_item.row.length > 0) {
                   $.each(c_item.row, function (r_index, r_item) {
-                    html += `<div class="filter__group js-filter-group">
+                    html += `<div class="filter__group js-filter-group" data-count="${r_index}">
                              ${ self.filterHeaderHTML(name, r_index, r_item) }
                              <div class="filter__dropdown js-filter-dropdown">`
 
@@ -1225,13 +1245,8 @@ $('body').on('click', '.js-filter-toggle', function() {
 
 $('body').on('click', '.js-filter-remove', function() {
   const el = $(this)[0]
-  $(this).parent('.js-filter-group').remove()
 
-  // const section = el.getAttribute('data-section') || false
-  // const count = el.getAttribute('data-count') || false
-  //
-  // builder.user[section].splice(builder.user[section][count].indexOf(), 1)
-  // console.log(builder.user)
+  builder.removeDublicate(el)
 })
 
 $('body').on('click', '.js-filter-link', function() {
