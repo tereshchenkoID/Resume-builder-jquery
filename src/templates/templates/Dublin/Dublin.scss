@@ -173,6 +173,14 @@
     }
   }
 
+  .t-section {
+    @include make-spacer('mb', 6);
+
+    &:last-child {
+      @include make-spacer('mb', 0);
+    }
+  }
+
   .t-list {
     @include flex($wrap: wrap);
     @include make-spacer('mb', 4);
@@ -227,6 +235,22 @@
           flex: 1 1 100%;
         }
       }
+    }
+  }
+
+  .t-skill {
+    @include size(100%, 6px);
+
+    position: relative;
+    align-self: center;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    div {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      background-color: var(--color-white);
     }
   }
 

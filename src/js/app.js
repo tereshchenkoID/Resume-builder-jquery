@@ -328,9 +328,24 @@ Builder.prototype.updateCanvasData = function() {
           if (!user[key].hasOwnProperty('label')) {
 
             let html = `<div class="t-list t-list--${r_item.length}">`
+
               $.each(r_item, function (index, a_item) {
-                html += `<div>${a_item}</div>`
+
+                if (key === 'skills') {
+                  if (index === 0) {
+                    html += `<div>${a_item}</div>`
+                  }
+                  else {
+                    html += `<div class="t-skill">
+                                <div style="width: calc(100% / ${a_item})"></div>
+                            </div>`
+                  }
+                }
+                else {
+                  html += `<div>${a_item}</div>`
+                }
               })
+
             html += `</div>`
 
             self.refBlockTemplate.querySelector(`#t-${key}`).insertAdjacentHTML('beforeend', html)
@@ -347,7 +362,7 @@ Builder.prototype.updateCanvasData = function() {
   }
 
   $.each(this.data.fieldset, function (index, item) {
-    $(`#t-section-${index}`).html(item.name)
+    $(`#t-section-${index}`).html(`${item.name}:`)
   })
 
   this.refCanvas.html(this.refBlock.html())
@@ -423,9 +438,6 @@ Builder.prototype.handleChangeEditor = function(name, value, e) {
 }
 
 Builder.prototype.removeDublicate = function(el)  {
-  console.log(this.user)
-
-
   const parent = el.closest('.js-filter')
   const group = el.closest('.js-filter-group')
   const section = parent.getAttribute('data-section')
@@ -440,6 +452,8 @@ Builder.prototype.removeDublicate = function(el)  {
   })
 
   localStorage.setItem('user', JSON.stringify(this.user))
+
+  this.updateCanvasData()
 }
 
 Builder.prototype.addDublicate = function(el) {
@@ -588,20 +602,20 @@ Builder.prototype.setDublicate = function() {
 
 Builder.prototype.headerChange = function(e, index) {
   const group = $(e).closest('.js-filter-group')
-  const head = group.find('.js-filter-header')
-  const subtitle = group.find('.js-filter-subtitle')
+  const head = group.find('.js-filter-head')
+  // const subtitle = group.find('.js-filter-subtitle')
 
   if (index === '0') {
     head[0].innerHTML = e.value
   }
 
-  if (index === '2') {
-    subtitle.find('span:first-child')[0].innerHTML = e.value
-  }
-
-  if (index === '3') {
-    subtitle.find('span:last-child')[0].innerHTML = e.value
-  }
+  // if (index === '2') {
+  //   subtitle.find('span:first-child')[0].innerHTML = e.value
+  // }
+  //
+  // if (index === '3') {
+  //   subtitle.find('span:last-child')[0].innerHTML = e.value
+  // }
 }
 
 Builder.prototype.filterHeaderHTML = function(section, count, data) {
@@ -610,13 +624,13 @@ Builder.prototype.filterHeaderHTML = function(section, count, data) {
   html += `<div class="filter__header js-filter-header">
             <h6 class="filter__head js-filter-head">${data[0] || 'Not specified'}</h6>`
 
-            if(data.length > 4) {
-              html += `<p class="filter__subtitle js-filter-subtitle">
-                         <span>${data[2]}</span>
-                         <span>-</span>
-                         <span>${data[3]}</span>
-                       </p>`
-            }
+            // if(data.length > 4) {
+            //   html += `<p class="filter__subtitle js-filter-subtitle">
+            //              <span>${data[2]}</span>
+            //              <span>-</span>
+            //              <span>${data[3]}</span>
+            //            </p>`
+            // }
 
   html += ` <button
               data-section="${section}"
@@ -648,13 +662,13 @@ Builder.prototype.inputHTML = function(type, section, count, index, name, value,
   return `<input
             class="field js-field"
             autoComplete="true"
-            type=${type}
-            data-section=${section}
-            data-count=${count}
-            data-index=${index}
-            name=${name}
-            value=${value}
-            required=${required}
+            type="${type}"
+            data-section="${section}"
+            data-count="${count}"
+            data-index="${index}"
+            name="${name}"
+            value="${value}"
+            required="${required}"
             pattern="${pattern}"
           />`
 }
@@ -739,6 +753,9 @@ Builder.prototype.drawConfig = function() {
                 if (storage[name].length > 0) {
                   c_item.row = storage[name]
                 }
+                else {
+                  c_item.row = []
+                }
 
                 if (c_item.row && c_item.row.length > 0) {
                   $.each(c_item.row, function (r_index, r_item) {
@@ -753,6 +770,7 @@ Builder.prototype.drawConfig = function() {
                         html += `
                             <div class="filter__item ${item.type === 'date' ? 'filter__item--tiny' : ''}">
                                 <p class="filter__label">${item.label}</p>
+
                                 ${
                                   self.inputHTML(
                                     item.type,
@@ -760,7 +778,7 @@ Builder.prototype.drawConfig = function() {
                                     r_index,
                                     a_index,
                                     item.name,
-                                    storage[name].length > 0 ? storage[name][r_index][a_index] : a_item,
+                                    a_item,
                                     item.required,
                                     item.validation
                                   )
