@@ -375,6 +375,7 @@ Builder.prototype.handleChange = function(e) {
 
   if (section !== '-1') {
     this.user[section][count][index] = value
+    this.headerChange(e.currentTarget, index)
   }
   else {
     if (e.currentTarget.type !== 'select-one') {
@@ -385,6 +386,7 @@ Builder.prototype.handleChange = function(e) {
   if (e.currentTarget.type === 'select-one') {
     if (section !== '-1') {
       this.user[section][count][index] = value
+      this.headerChange(e.currentTarget, index)
     }
     else {
       this.user[name] = {
@@ -584,14 +586,36 @@ Builder.prototype.setDublicate = function() {
   localStorage.setItem('user', JSON.stringify(this.user))
 }
 
+Builder.prototype.headerChange = function(e, index) {
+  const group = $(e).closest('.js-filter-group')
+  const head = group.find('.js-filter-header')
+  const subtitle = group.find('.js-filter-subtitle')
+
+  if (index === '0') {
+    head[0].innerHTML = e.value
+  }
+
+  if (index === '2') {
+    subtitle.find('span:first-child')[0].innerHTML = e.value
+  }
+
+  if (index === '3') {
+    subtitle.find('span:last-child')[0].innerHTML = e.value
+  }
+}
+
 Builder.prototype.filterHeaderHTML = function(section, count, data) {
   let html = ''
 
-  html += `<div class="filter__header">
-            <h6 class="filter__head">${data[0] || 'Not specified'}</h6>`
+  html += `<div class="filter__header js-filter-header">
+            <h6 class="filter__head js-filter-head">${data[0] || 'Not specified'}</h6>`
 
             if(data.length > 4) {
-              html += `<p class="filter__subtitle">${data[2]}-${data[3]}</p>`
+              html += `<p class="filter__subtitle js-filter-subtitle">
+                         <span>${data[2]}</span>
+                         <span>-</span>
+                         <span>${data[3]}</span>
+                       </p>`
             }
 
   html += ` <button
@@ -711,6 +735,10 @@ Builder.prototype.drawConfig = function() {
               }
 
               if (c_item.dublicate) {
+
+                if (storage[name].length > 0) {
+                  c_item.row = storage[name]
+                }
 
                 if (c_item.row && c_item.row.length > 0) {
                   $.each(c_item.row, function (r_index, r_item) {
