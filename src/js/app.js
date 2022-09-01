@@ -42,14 +42,6 @@ function initCropped() {
   $('#dropped-modal-button').removeClass('dropped-modal__button--disabled')
 }
 
-// function debounce(func, timeout = 300){
-//   let timer;
-//   return (...args) => {
-//     clearTimeout(timer);
-//     timer = setTimeout(() => { func.apply(this, args); }, timeout);
-//   };
-// }
-
 const initializeQuill = function (item) {
   const quill = new Quill(`#${item.el}`, {
     modules: {
@@ -89,23 +81,31 @@ function Builder() {
   this.user = {
     'title': 'Title'
   }
-  this.photo = localStorage.getItem('photo') || '',
+  this.photo = sessionStorage.getItem('photo') || '',
   this.resume = {
     height: 0,
     width: 0,
     scale: 1,
     pages_total: 0,
-    pages_current: localStorage.getItem('current') || 0,
+    pages_current: sessionStorage.getItem('current') || 0,
     pages_init: false
   }
+  this.maxValue = {}
 
-  this.template = localStorage.getItem('template') || "Dublin"
+  this.template = sessionStorage.getItem('template') || "Dublin"
 
   this.refBlock = $('#resume-block')
   this.refBlockTemplate = this.refBlock.find(`#${this.template.toLowerCase()}`)[0]
 
   this.refCanvas = $('#resume-canvas')
   this.refCanvasTemplate = this.refCanvas.find(`#${this.template.toLowerCase()}`)[0]
+}
+
+Builder.prototype.setScale = function(val, key) {
+  const max = this.maxValue[key]
+  const delay = 100 / max
+
+  return delay * (parseInt(val, 10) + 1)
 }
 
 Builder.prototype.photoUploadHTML = function(){
@@ -212,33 +212,35 @@ Builder.prototype.initPages = function() {
     if (this.resume.pages_current > total) {
       this.resume.pages_current = total
 
-      localStorage.setItem('current', total)
+      sessionStorage.setItem('current', total)
     }
 
-    $(this.refBlockTemplate).css({'transform': `translateY(-${localStorage.getItem('current') * PDF_Height}px)`})
+    $(this.refBlockTemplate).css({'transform': `translateY(-${sessionStorage.getItem('current') * PDF_Height}px)`})
 
     this.updateCount()
   }
 }
 
 Builder.prototype.updateCount = function () {
-  $('#count-current').html(this.resume.pages_current)
-  $('#count-total').html(this.resume.pages_total)
+  // $('#count-current').html(this.resume.pages_current)
+  // $('#count-total').html(this.resume.pages_total)
+  $('#count-current').html(parseInt(this.resume.pages_current, 10) + 1)
+  $('#count-total').html(parseInt(this.resume.pages_total) + 1)
 }
 
 Builder.prototype.nextPage = function() {
   if (this.resume.pages_current < this.resume.pages_total) {
 
     ++this.resume.pages_current
-    localStorage.setItem('current', this.resume.pages_current)
+    sessionStorage.setItem('current', this.resume.pages_current)
 
     const canvas = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
     const HTML_Width = canvas.outerWidth();
     const PDF_Width = HTML_Width;
     const PDF_Height = PDF_Width * a4.diff;
 
-    $(this.refBlockTemplate).css({'transform': `translateY(-${localStorage.getItem('current') * PDF_Height}px)`})
-    // this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
+    $(this.refBlockTemplate).css({'transform': `translateY(-${sessionStorage.getItem('current') * PDF_Height}px)`})
+    // this.refBlockTemplate.style = `transform: translateY(-${sessionStorage.getItem('current') * PDF_Height}px);`
 
 
     // const preview = $(this.refBlock).find(`#${this.template.toLowerCase()}`)
@@ -252,15 +254,15 @@ Builder.prototype.prevPage = function() {
   if (this.resume.pages_current > 0) {
 
     --this.resume.pages_current
-    localStorage.setItem('current', this.resume.pages_current)
+    sessionStorage.setItem('current', this.resume.pages_current)
 
     const canvas = $(this.refCanvas).find(`#${this.template.toLowerCase()}`)
     const HTML_Width = canvas.outerWidth();
     const PDF_Width = HTML_Width;
     const PDF_Height = PDF_Width * a4.diff;
 
-    $(this.refBlockTemplate).css({'transform': `translateY(-${localStorage.getItem('current') * PDF_Height}px)`})
-    // this.refBlockTemplate.style = `transform: translateY(-${localStorage.getItem('current') * PDF_Height}px);`
+    $(this.refBlockTemplate).css({'transform': `translateY(-${sessionStorage.getItem('current') * PDF_Height}px)`})
+    // this.refBlockTemplate.style = `transform: translateY(-${sessionStorage.getItem('current') * PDF_Height}px);`
 
     // const preview = $(this.refBlock).find(`#${this.template.toLowerCase()}`)
     // preview.css(`height`, `${Math.ceil(canvas.outerHeight() / (canvas.outerWidth() * a4.diff)) * a4.height}px`)
@@ -314,9 +316,23 @@ Builder.prototype.updateCanvas = function() {
   this.initPages()
 }
 
+Builder.prototype.findLabel = function (key, value) {
+  let a;
+
+  $.each(this.data.fieldset, function (c_index, c_item) {
+    $.each(c_item.fields, function (s_index, s_item) {
+      if (s_item.name === key) {
+        a = s_item.options.find(function(e){return e.value === value.toString()});
+      }
+    })
+  })
+
+  return a.name
+}
+
 Builder.prototype.updateCanvasData = function() {
   const self = this
-  const user = JSON.parse(localStorage.getItem('user'))
+  const user = JSON.parse(sessionStorage.getItem('user'))
 
   for (let key in user) {
     if (this.refBlockTemplate.querySelector(`#t-${key}`)) {
@@ -325,19 +341,19 @@ Builder.prototype.updateCanvasData = function() {
         self.refBlockTemplate.querySelector(`#t-${key}`).innerHTML = ''
 
         $.each(user[key], function (index, r_item) {
-          if (!user[key].hasOwnProperty('label')) {
+          if (!user[key].hasOwnProperty('type')) {
 
             let html = `<div class="t-list t-list--${r_item.length}">`
 
               $.each(r_item, function (index, a_item) {
 
-                if (key === 'skills') {
+                if (key === 'skills' || key === 'languages') {
                   if (index === 0) {
                     html += `<div>${a_item}</div>`
                   }
                   else {
-                    html += `<div class="t-skill">
-                                <div style="width: calc(100% / ${a_item})"></div>
+                    html += `<div class="t-scale">
+                                <div style="width: ${self.setScale(a_item, key)}%"></div>
                             </div>`
                   }
                 }
@@ -351,7 +367,7 @@ Builder.prototype.updateCanvasData = function() {
             self.refBlockTemplate.querySelector(`#t-${key}`).insertAdjacentHTML('beforeend', html)
           }
           else {
-            self.refBlockTemplate.querySelector(`#t-${key}`).innerHTML = user[key].label
+            self.refBlockTemplate.querySelector(`#t-${key}`).innerHTML = self.findLabel(key, user[key].value)
           }
         })
       }
@@ -406,16 +422,15 @@ Builder.prototype.handleChange = function(e) {
     else {
       this.user[name] = {
         value,
-        label: e.currentTarget.options[e.currentTarget.selectedIndex].text
+        type: 'select'
       }
     }
   }
 
-  localStorage.setItem('user', JSON.stringify(this.user))
+  sessionStorage.setItem('user', JSON.stringify(this.user))
 
   this.updateCanvasData()
   this.updateCanvas()
-  setHeight()
 }
 
 Builder.prototype.handleChangeEditor = function(name, value, e) {
@@ -431,7 +446,7 @@ Builder.prototype.handleChangeEditor = function(name, value, e) {
     this.user[name] = value
   }
 
-  localStorage.setItem('user', JSON.stringify(this.user))
+  sessionStorage.setItem('user', JSON.stringify(this.user))
 
   this.updateCanvasData()
   this.updateCanvas()
@@ -451,9 +466,10 @@ Builder.prototype.removeDublicate = function(el)  {
     $(parent).find('.js-filter-group')[index].setAttribute('data-count', index)
   })
 
-  localStorage.setItem('user', JSON.stringify(this.user))
+  sessionStorage.setItem('user', JSON.stringify(this.user))
 
   this.updateCanvasData()
+  this.updateCanvas()
 }
 
 Builder.prototype.addDublicate = function(el) {
@@ -545,7 +561,7 @@ Builder.prototype.addDublicate = function(el) {
 
 Builder.prototype.setDublicate = function() {
   const self = this
-  const storage = JSON.parse(localStorage.getItem('user'))
+  const storage = JSON.parse(sessionStorage.getItem('user'))
 
   $.each(self.data.fieldset, function (c_index, c_item) {
 
@@ -580,7 +596,7 @@ Builder.prototype.setDublicate = function() {
             })
 
             self.user[s_item.name] = {
-              label: find.name,
+              type: 'select',
               value: find.value
             }
           }
@@ -597,7 +613,7 @@ Builder.prototype.setDublicate = function() {
     }
   })
 
-  localStorage.setItem('user', JSON.stringify(this.user))
+  sessionStorage.setItem('user', JSON.stringify(this.user))
 }
 
 Builder.prototype.headerChange = function(e, index) {
@@ -729,7 +745,7 @@ Builder.prototype.drawConfig = function() {
 
   this.setDublicate()
 
-  const storage = JSON.parse(localStorage.getItem('user'))
+  const storage = JSON.parse(sessionStorage.getItem('user'))
   this.user.title = (storage && storage.hasOwnProperty('title')) ? storage['title'] : this.user.title
 
   $.each(self.data.fieldset, function (c_index, c_item) {
@@ -750,10 +766,11 @@ Builder.prototype.drawConfig = function() {
 
               if (c_item.dublicate) {
 
-                if (storage[name].length > 0) {
+                if (storage[name] && storage[name].length > 0) {
                   c_item.row = storage[name]
                 }
                 else {
+                  self.user[name] = []
                   c_item.row = []
                 }
 
@@ -765,6 +782,11 @@ Builder.prototype.drawConfig = function() {
 
                     $.each(r_item, function (a_index, a_item) {
                       const item = c_item.fields[a_index]
+
+
+                      if(item.type === 'select') {
+                        self.maxValue[name] = item.options.length
+                      }
 
                       if (item.type === 'text' || item.type === 'email' || item.type === 'date') {
                         html += `
@@ -889,7 +911,7 @@ Builder.prototype.drawConfig = function() {
           </div>`;
   });
 
-  localStorage.setItem('user', JSON.stringify(this.user));
+  sessionStorage.setItem('user', JSON.stringify(this.user));
 
   this.updateCanvasData()
   this.updateCanvasPhoto()
@@ -958,7 +980,7 @@ Builder.prototype.initTemplate = function() {
 Builder.prototype.drawTemplatesList = function() {
   let html = ''
   const self = this
-  const active = localStorage.getItem('template') || this.template
+  const active = sessionStorage.getItem('template') || this.template
 
   $.each(self.templates.fieldset, function (index, item) {
     html += `<div class="card js-card ${item.name === active ? 'card--active' : ''}" data-name="${item.name}">
@@ -995,7 +1017,7 @@ Builder.prototype.getTemplatesList = function() {
 }
 
 Builder.prototype.initCard = function() {
-  const active = localStorage.getItem('template') || this.template
+  const active = sessionStorage.getItem('template') || this.template
 
   $(`[data-name="${active}"]`).addClass('card--active')
 }
@@ -1069,7 +1091,7 @@ $('#dropped-modal-input').on('change', function() {
     $('#dropped-modal-edit').show()
     $('#dropped-modal-image').attr('src', reader.result.toString())
 
-    localStorage.setItem('o_photo', reader.result.toString())
+    sessionStorage.setItem('o_photo', reader.result.toString())
 
     initCropped();
   };
@@ -1083,7 +1105,7 @@ $('#dropped-modal-new-input').on('change', function() {
   reader.onload = () => {
     $('#dropped-modal-image').attr('src', reader.result.toString())
 
-    localStorage.setItem('o_photo', reader.result.toString())
+    sessionStorage.setItem('o_photo', reader.result.toString())
 
     if (cropper) {
       cropper.destroy()
@@ -1111,7 +1133,7 @@ $('#dropped-modal-button').on('click', function() {
 
   builder.photo = path
 
-  localStorage.setItem('photo', path)
+  sessionStorage.setItem('photo', path)
 
   $('#dropped-modal').toggleClass('dropped-modal--active')
   $('#dropped-modal-uploading').show()
@@ -1131,7 +1153,7 @@ $('body').on('click', '.js-card', function() {
   const a = $(this).attr('data-name')
 
   builder.template = a
-  localStorage.setItem('template', a)
+  sessionStorage.setItem('template', a)
 
   builder.initCard()
   builder.initTemplate()
@@ -1155,7 +1177,7 @@ $('body').on('click', '#dropped-edit-link', function() {
   $('#dropped-modal-edit').show()
 
   if (!cropper) {
-    $('#dropped-modal-image').attr('src', localStorage.getItem('o_photo'))
+    $('#dropped-modal-image').attr('src', sessionStorage.getItem('o_photo'))
 
     initCropped();
   }
@@ -1163,8 +1185,8 @@ $('body').on('click', '#dropped-edit-link', function() {
 
 $('body').on('click', '#dropped-delete-link', function() {
   builder.photo = ''
-  localStorage.setItem('photo', '')
-  localStorage.setItem('o_photo', '')
+  sessionStorage.setItem('photo', '')
+  sessionStorage.setItem('o_photo', '')
 
   builder.updateCanvasPhoto()
 
@@ -1248,7 +1270,7 @@ $('.js-cropped-button-crop').on('click', function (){
 
 function initLanguage() {
   const select = $('.js-language-select').find('span')
-  const set = localStorage.getItem('language') || false
+  const set = sessionStorage.getItem('language') || false
   let find;
 
   if (select.length > 0) {
@@ -1281,7 +1303,7 @@ $('.js-language-item').click(function() {
   select.text($(this).text())
   select[0].setAttribute('data-lang', $(this)[0].getAttribute('data-lang'))
 
-  localStorage.setItem('language', $(this)[0].getAttribute('data-lang'))
+  sessionStorage.setItem('language', $(this)[0].getAttribute('data-lang'))
 })
 
 

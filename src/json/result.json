@@ -1,0 +1,40 @@
+{
+  "address": "Teremki 18",
+  "city": "Kiev",
+  "country": "Ukraine",
+  "courses": [
+    ["Courses name 1", "Institution name", "2001-01-01", "2002-01-01"],
+    ["Courses name 2", "Institution name", "2002-02-02", "2003-02-02"]
+  ],
+  "date_birth": "23.04.1991",
+  "driving_license": "C, B",
+  "education": [
+    ["School name 1", "98", "2001-01-01", "2002-01-01", "Kiev", "<p>Description 1</p>"],
+    ["School name 2", "102", "2002-02-02", "2003-02-02", "Kiev", "<p>Description 2</p>"]
+  ],
+  "email": "test@mail.com",
+  "employment_history": [
+    ["Work name 1", "20", "2001-01-01", "2002-01-01", "Kiev", "<p>Description 1</p>"],
+    ["Work name 2", "50", "2002-02-02", "2003-02-02", "Kiev", "<p>Description 2</p>"]
+  ],
+  "first_name": "Ivan",
+  "hobbies": "",
+  "languages": [
+    ["English", "2"],
+    ["French", "2"]
+  ],
+  "last_name": "Sidorov",
+  "nationality": "Ukrainian",
+  "phone": "+3",
+  "place_birth": "Ukraine",
+  "postal_code": "00000",
+  "profile": "<p>Aome text here</p>",
+  "skills": [
+    ["HTML", "5"]
+  ],
+  "title": "Title",
+  "work_type": {
+    "type": "select",
+    "value": "2"
+  }
+}
