@@ -224,6 +224,7 @@ Builder.prototype.initPages = function() {
 Builder.prototype.updateCount = function () {
   // $('#count-current').html(this.resume.pages_current)
   // $('#count-total').html(this.resume.pages_total)
+
   $('#count-current').html(parseInt(this.resume.pages_current, 10) + 1)
   $('#count-total').html(parseInt(this.resume.pages_total) + 1)
 }
@@ -619,19 +620,10 @@ Builder.prototype.setDublicate = function() {
 Builder.prototype.headerChange = function(e, index) {
   const group = $(e).closest('.js-filter-group')
   const head = group.find('.js-filter-head')
-  // const subtitle = group.find('.js-filter-subtitle')
 
   if (index === '0') {
     head[0].innerHTML = e.value
   }
-
-  // if (index === '2') {
-  //   subtitle.find('span:first-child')[0].innerHTML = e.value
-  // }
-  //
-  // if (index === '3') {
-  //   subtitle.find('span:last-child')[0].innerHTML = e.value
-  // }
 }
 
 Builder.prototype.filterHeaderHTML = function(section, count, data) {
@@ -639,14 +631,6 @@ Builder.prototype.filterHeaderHTML = function(section, count, data) {
 
   html += `<div class="filter__header js-filter-header">
             <h6 class="filter__head js-filter-head">${data[0] || 'Not specified'}</h6>`
-
-            // if(data.length > 4) {
-            //   html += `<p class="filter__subtitle js-filter-subtitle">
-            //              <span>${data[2]}</span>
-            //              <span>-</span>
-            //              <span>${data[3]}</span>
-            //            </p>`
-            // }
 
   html += ` <button
               data-section="${section}"
